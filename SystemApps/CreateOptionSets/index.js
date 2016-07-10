@@ -73,6 +73,7 @@ router.post("/updateOptionSets", function(req, res, next) {
                 objResult.err = err;
                 objResult.return_id = _id;
                 res.send(objResult);
+                
             } else {
                 doc.save(function(error) {
 
