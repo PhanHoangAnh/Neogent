@@ -352,10 +352,32 @@ function createSingleControlGroup(template, isReload) {
     //Test
     if (isReload) {
         container = "div2";
+        // 1. add popover for container_div
+        $(container_div).attr("data-toggle", "popover");
+        $(container_div).attr("data-placement", "right");
+        container_div.attribute = template["fields"];
+        container_div.controlType = template["Input Type"];
+        var popoverContent = createAttributePanel(container_div);
+        // 2. Create popover
+        $(container_div).popover({
+            html: true,
+            trigger: 'click',
+            title: container_div.controlType,
+            content: function() {
+                $('[data-toggle=popover]').each(function() {
+                    // hide any open popovers when the anywhere else in the body is clicked                            
+                    if (this != $(container_div).get(0)) {
+                        $(this).popover('hide');
+                    }
+                });
+                return popoverContent;
+            }
+        });
+        // 2. add CUST properties for container_div
+        container_div["CUST"] = template["CUST"];
     } else {
         var container = template["container"];
     }
-
     document.getElementById(container).appendChild(container_div);
 }
 
@@ -363,7 +385,6 @@ function createAttributePanel(nodeCopy, title) {
 
     var controlType = nodeCopy.controlType;
     var fields = nodeCopy.attribute;
-
     var main_panel = document.createElement('main_panel');
     main_panel.classList.add("col-md-12");
     main_panel.classList.add("col-lg-12");
@@ -687,7 +708,8 @@ function loadOptionSets(optSet) {
         // mockObj.fields =
         mockObj["Input Type"] = optSet.components[i]["data-controlType"];
         mockObj["label"] = optSet.components[i]["attributes"]["label"];
-        console.log("optSet components", optSet.components, mockObj);
+        console.log("optSet: ", optSet.components[i]);
+        mockObj["CUST"] = optSet["components"][i]["attributes"];
         createSingleControlGroup(mockObj, true);
     }
 }
