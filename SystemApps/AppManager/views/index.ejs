@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Application Manager</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/shop.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--script type="text/javascript" src='js/navbar.js'></script-->
+    <style type="text/css">
+    .br-response {
+    min-height: 220px;
+    }
+    .controls {
+    margin-top: 15px;
+    /*vertical-align: middle;*/
+    }
+    @media (min-width: 979px) {
+    .br-response {
+    min-height: 160px;
+    padding-left: 15px;
+    }
+    #sidebar.affix-bottom {
+    position: absolute;
+    }
+    #sidebar.affix-top {
+    position: static;
+    /*margin-top: 30px;*/
+    /*width: 300px;*/
+    }
+    #sidebar.affix {
+    position: fixed;
+    top: 70px;
+    /*width: 300px;*/
+    }
+    }
+    .introduction .label {
+    background-color: #5CB85C;
+    }
+    </style>
+    <body>
+        <div class="user-account">
+            <span class="username-text">Admin</span>
+            <span class="avatar-img"><img src="img/background/beauty_01.jpg"></span>
+        </div>
+        <!-- /User -->
+        
+        <!-- Search box -->
+        <div class="search-box">
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <form role="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" name="q" placeholder="Search" class="form-control" style = "border-color: #8f29b3;">
+                </form>
+            </div>
+        </div>
+        <!-- /Search box -->
+        
+        <!-- Heading page -->
+        <!-- <section class="heading-page" style="padding-top: 100px;"> -->
+        <div class="container-fluid">
+            <div class="col-md-12 col-lg-12">
+                <!-- <img src="img/AppManager.png" style = "width: 70px"> -->
+                <h1 style = "color:#fff">Application Manager</h1>
+            </div>
+            <!-- </section>  -->
+            <!-- /Heading page -->
+            <hr>
+            <template id = "AppTemp">
+            <div class="col-xs-6 col-sm-3 col-md-2">
+                <div class="flat-item">
+                    <a app-role = "link">
+                        <div class="inner-item">
+                            <img app-role = "AppIcon">
+                        </div>
+                        <p class="caption-text" app-role = "Caption">Admin</p>
+                    </a>
+                </div>
+            </div>
+            </template>
+            <!-- Metro style -->
+            <div class="container-fluid dashboard-management" id="start-offset">
+                <!--center-->
+                <div class="col-md-12" id = "AppManagerBoard">
+                </div>
+                <!--/center-->
+            </div>
+            <!-- /Metro style -->
+            <div id="phasebeam">
+                <canvas width="700" height="650"></canvas>
+                <canvas width="700" height="650"></canvas>
+                <canvas width="700" height="650"></canvas>
+            </div>
+            <script type="text/javascript" src="js/phasebeam.js"></script>
+        </body>
+        <script type="text/javascript">
+        var data = <%- JSON.stringify(data) %>
+        LoadApp();
+        function LoadApp(){
+            var root = document.getElementById("AppManagerBoard");
+            var AppTemplate = document.getElementById('AppTemp').content;
+            for(var i in data){
+                if(data[i].url == 'appManager'){
+                    continue;
+                }
+                var link = AppTemplate.querySelector('[app-role = "link"]')
+                var icon = AppTemplate.querySelector('[app-role = "AppIcon"]');
+                var caption = AppTemplate.querySelector('[app-role = "Caption"]');
+                link.setAttribute('href', data[i].url);
+                icon.setAttribute('src',window.location.href + data[i].logo);
+                caption.innerHTML = data[i].name;
+                root.appendChild(document.importNode(AppTemplate,true));
+            }
+        }
+        </script>
+    </html>

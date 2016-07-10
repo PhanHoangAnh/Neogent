@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Attribute Sets</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/shop.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/imagePreview.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/AttributeSets/controls.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/AttributeSets/DragNDrop.js" type="text/javascript" charset="utf-8" async defer></script>
+    <!--script type="text/javascript" src='js/navbar.js'></script-->
+    <style type="text/css">
+    .br-response {
+    min-height: 220px;
+    }
+    .controls {
+    margin-top: 15px;
+    /*vertical-align: middle;*/
+    }
+    @media (min-width: 979px) {
+    .br-response {
+    min-height: 160px;
+    padding-left: 15px;
+    }
+    #sidebar.affix-bottom {
+    position: absolute;
+    }
+    #sidebar.affix-top {
+    position: static;
+    /*margin-top: 30px;*/
+    /*width: 300px;*/
+    }
+    #sidebar.affix {
+    position: fixed;
+    top: 70px;
+    /*width: 300px;*/
+    }
+    }
+    .introduction .label {
+    background-color: #5CB85C;
+    }
+    .form-control {
+    border-radius: 0px;
+    background-color: #fff;
+    }
+    img {
+    width: 100%; /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+    }
+    </style>
+    <body>
+        <!-- Dont touch this section -->
+        <!-- NavBar -->
+        <div id="nav-wrapper">
+            <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <img src="img/CatLogo.png" class="logo">
+                        </div>
+                        <div class='site-name hidden-xs'>
+                            AbcJSC
+                        </div>
+                        <div id = "AppManagerBoard">
+                            
+                        </div>
+                        <div class="navbar-header">
+                            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <nav class="collapse navbar-collapse 'navbar-right" role="navigation">
+                            <!-- <ul class="nav navbar-nav ">
+                                <li class='navbar-right'>
+                                    <a href="#sec">Get Started</a>
+                                </li>
+                                <li class='navbar-right'>
+                                    <a href="#sec">Edit</a>
+                                </li>
+                                <li class='navbar-right'>
+                                    <a href="#sec">Visualize</a>
+                                </li>
+                                <li class='navbar-right'>
+                                    <a href="#sec">Prototype</a>
+                                </li>
+                            </ul> -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template id = "AppTemp">
+        <a class='mini-broad' app-role = "link">
+            <img app-role = "AppIcon">
+        </a>
+        </template>
+        <!-- /NavBar -->
+        <section class='heading-page' style="background:url('img/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: .4">
+            <div class="container-fluid">
+                <!-- Breadcrumb stay here -->
+                <div class="col-md-12 col-lg-12 ">
+                    <h1 class="col-md-6 col-lg-6"> Create Options Set</h1>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <!-- Metro style -->
+        <div class="container-fluid attribute-sets" id="start-offset">
+            <!--Left Sidebar-->
+            <div class="col-md-6">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Create Option Set by Drag & Drop </legend>
+                    <div class="row">
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="SetsIcon">
+                            <img src ='../img/logo.png' id = "iconHolder" data-toggle="modal" data-target="#m_icon">
+                        </div>
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" id="SetsName">
+                            <legend data-controltype="label">Set's Name</legend>
+                        </div>
+                    </div>
+                    <div id="div2" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                </fieldset>
+            </div>
+            <!--/Left Sidebar-->
+            <!-- Right Sidebar -->
+            <div class="col-md-6">
+                <fieldset class="scheduler-border">
+                    <legend class="scheduler-border">Input Types</legend>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active">
+                            <a href="#standardElement" role="tab" data-toggle="tab">
+                                <i class="fa fa-circle"></i> Standard Elements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#timeElements" role="tab" data-toggle="tab" onclick="saveElement()">
+                                <i class="fa fa-circle-o"></i> Time Elements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#otherElements" role="tab" data-toggle="tab" onclick="saveElement()">
+                                <i class="fa fa-circle-thin"></i> Other Elements
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#jsonoutput" role="tab" data-toggle="tab" onclick="saveElement()">
+                                <i class="fa fa-code"></i> JSON output
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#ManageSets" role="tab" data-toggle="tab" onclick="testLoadOptionSets()">
+                                <i class="fa fa-code"></i>Manage Sets
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="standardElement" class="connectedSortable tab-pane fade active in">
+                            <!-- Controls Attribute start here -->
+                        </div>
+                        <div id="timeElements" class="connectedSortable tab-pane fade">
+                            <!-- Controls Attribute start here -->
+                        </div>
+                        <div id="otherElements" class="connectedSortable tab-pane fade">
+                            <!-- Controls Attribute start here -->
+                        </div>
+                        <div id="jsonoutput" class=" tab-pane fade " style="margin-top:25px">
+                            <!-- Controls Attribute start here -->
+                        <pre id="printJSON" class="container-fluid">JSON Output</pre>
+                    </div>
+                    <div id="ManageSets" class="connectedSortable tab-pane fade">
+                        <!-- Controls Attribute start here -->
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <!-- /Right Sidebar -->
+    <!-- /Metro style -->
+    <div id="end-offset"></div>
+    <section class="divider">
+        <div style = "padding: 70px 0; text-align: center;">
+            <button type="button" class="btn btn-primary" style="width: 100px;">Save And Exit</button>
+            <button type="button" class="btn btn-success" style="width: 100px;">Clone New</button>
+            <button type="button" class="btn btn-info" style="width: 100px;">Exit</button>
+        </div>
+    </section>
+    <footer>
+        <div style=" width: 100%; background-color: rgba(0,0,0,.85); height: 90px;">
+            @Copyright:abcd@abc.jsc
+        </div>
+    </footer>
+</div>
+<div id="phasebeam">
+    <canvas width="700" height="650"></canvas>
+    <canvas width="700" height="650"></canvas>
+    <canvas width="700" height="650"></canvas>
+</div>
+<!--  -->
+<div class="modal fade" id="m_icon" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Select Icon for this Option Sets.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Drag and zoom the image to make an icon</p>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="imageBox" id='iconImg' style="height: 400px;">
+                            <div class="thumbBox" id = "thumbIcon"></div>
+                            <div class="spinner" style="display: none" id = "spinnerIcon" >Loading...</div>
+                        </div>
+                        <div class="action">
+                            <span class="file-input btn btn-primary btn-file">
+                                Browse&hellip;
+                                <input type="file" multiple id='iconFile'>
+                            </span>
+                            <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
+                            <input type="button" id="icon_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                            <input type="button" id="icon_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="preview">
+                            <img id='icon_preview' src="">
+                        </div>
+                        <div class="preview-md">
+                            <img id='icon_preview-md' src="">
+                        </div>
+                        <div class="preview-sm">
+                            <img id='icon_preview-sm' src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+<script type="text/javascript" src="js/phasebeam3.js"></script>
+<script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+</body>
+<script type="text/javascript">
+$(function() {
+    // $('#nav-wrapper').height($("#nav").height());
+    // $('#nav-wrapper').height(200);
+    $('#nav').affix({
+        offset: {
+            top: function() {
+                // Do other stuff here-- chipl
+                return $('#start-offset').offset().top / 2;
+            }
+        }
+    });
+    // Sidebar affix
+    $('#sidebar').affix({
+        offset: {
+            top: $('#start-offset').offset().top + 0,
+            bottom: $('#end-offset').outerHeight() - 20
+        }
+    }).on('affix.bs.affix', function() { // before affix
+        $(this).css({
+            /*'top': headerHeight,*/ // for fixed height
+            'width': $(this).outerWidth() // variable widths
+        });
+    }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+        // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+    });;
+});
+$(document).ready(function() {
+    /** code inside **/
+    var masthead = $("#masthead");
+    masthead.addClass('start');
+    var data = <%- JSON.stringify(data) %>
+    var img_Icon;
+    document.querySelector('#iconFile').addEventListener('change', function(el) {
+        initIcon(this);
+    }, false);
+
+    LoadApp();
+
+    function LoadApp() {
+        var root = document.getElementById("AppManagerBoard");
+        var AppTemplate = document.getElementById('AppTemp').content;
+        var pathArray = window.location.pathname.split('/');
+        remove = pathArray.splice(pathArray.length - 2, 2);
+        var newPathname = "";
+        for (i = 0; i < pathArray.length; i++) {
+            newPathname += pathArray[i];
+            newPathname += "/";
+        }
+        for (var i in data) {
+            var link = AppTemplate.querySelector('[app-role = "link"]')
+            var icon = AppTemplate.querySelector('[app-role = "AppIcon"]');
+            var caption = AppTemplate.querySelector('[app-role = "Caption"]');
+            link.setAttribute('href', window.location.protocol + '//' + window.location.host + newPathname + data[i].url);
+            icon.setAttribute('src', window.location.protocol + '//' + window.location.host + newPathname + data[i].logo);
+            // caption.innerHTML = data[i].name;
+            root.appendChild(document.importNode(AppTemplate, true));
+        }
+    };
+
+});
+
+</script>
+</html>

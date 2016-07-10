@@ -1,0 +1,125 @@
+/*animation element sliding left*/
+
+.animation-element.slide-up {
+    opacity: .5;
+    /*  -moz-transition: all 1,5s ease-in;
+  -webkit-transition: all 1,5s ease-in;
+  -o-transition: all 1,5s ease-in;*/
+    transition: all 1.5s ease-in;
+    /*  -moz-transform: translate3d(-100px, 0px, 0px);
+  -webkit-transform: translate3d(-100px, 0px, 0px);
+  -o-transform: translate(-100px, 0px);
+  -ms-transform: translate(-100px, 0px);*/
+    /*transform: translate3d(-100px, 1px, 0px);*/
+}
+
+.animation-element.slide-up.in-view {
+    opacity: 1;
+    /*-moz-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transition-duration: .3s;*/
+    transition: all 1.5s ease-in;
+    /*transform: translate3d(0px, 0px, 0px);*/
+}
+
+
+/*animation slide left styled for testimonials*/
+
+.breadcrumb {
+    list-style: none;
+    overflow: hidden;
+    font: 18px;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.breadcrumb li {
+    float: left;
+    vertical-align: middle;
+    padding:0;
+}
+
+.breadcrumb li:before {
+    padding: 0 10px;
+    color: #ccc;
+    content: "";
+}
+
+.breadcrumb li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0 10px 20px;
+    background: rgba(0, 0, 0, 1);
+    position: relative;
+    display: block;
+    float: left;
+    vertical-align: middle;
+}
+
+.breadcrumb li a:after {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    left: 100%;
+    z-index: 2;
+}
+
+.breadcrumb li a:before {
+    content: " ";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    /* Go big on the size, and let overflow hide */
+    border-bottom: 50px solid transparent;
+    border-left: 30px solid white;
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+    margin-left: 1px;
+    left: 100%;
+    z-index: 1;
+}
+
+.breadcrumb li:first-child a {
+    /*padding-left: 10px;*/
+}
+
+.breadcrumb li:nth-child(2) a {
+    background: rgba(0, 0, 0, .7);
+}
+
+.breadcrumb li:nth-child(2) a:after {
+    border-left-color: rgba(0, 0, 0, .7);
+}
+
+.breadcrumb li:nth-child(3) a {
+    background: rgba(0, 0, 0, .4);
+}
+
+.breadcrumb li:nth-child(3) a:after {
+    border-left-color: rgba(0, 0, 0, .4);
+}
+
+.breadcrumb li a:hover {
+    background: rgba(255, 0, 0, 1);
+}
+
+.breadcrumb li a:hover:after {
+    border-left-color: rgba(255, 0, 0, 1) !important;
+}
+
+.fa {
+    font-size: 18px;
+}

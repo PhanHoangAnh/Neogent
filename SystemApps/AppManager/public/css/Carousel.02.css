@@ -1,0 +1,38 @@
+/*@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);*/
+
+.carousel.carousel-fade .item {
+    /*-webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;*/
+    
+    transition: all 1.5s ease-in-out;    
+    transform: translate(20px, -50px);
+    opacity: 0.4;
+    /*transform: rotateX(150deg);*/    
+    transform: scale(0.8);
+    /*-webkit-transform: rotate720deg);
+    transform: rotate(720deg);*/
+}
+.carousel.carousel-fade .active.item {
+    opacity: 1;
+    /*transform: skew(0deg,0deg);*/
+    transform: translate(0px, -0px);    
+    /*opacity: 0.4;*/
+    /*transform: rotateX(150deg);*/    
+    transform: scale(1);
+}
+.carousel.carousel-fade .active.left, .carousel.carousel-fade .active.right {
+    left: 30;
+    z-index: 2;
+    opacity: 0.4;
+    filter: alpha(opacity=0.4);    
+}
+.carousel.carousel-fade .next, .carousel.carousel-fade .prev {
+    left: 30;
+    z-index: 1;
+    transition: all 1.5s ease-in-out;
+}
+.carousel.carousel-fade .carousel-control {
+    z-index: 3;
+}

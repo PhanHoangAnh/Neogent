@@ -1,0 +1,178 @@
+//position
+@mixin ver-pos {
+  top: 50%;
+  @include translateY (-50%);
+}
+@mixin hoz-pos {
+  left: 50%;
+  @include translateX (-50%);
+}
+@mixin center-pos {
+  top: 50%; left: 50%;
+  @include translate(-50%, -50%);
+}
+
+//box shadow
+@mixin box-shadow($box-value) {
+  -webkit-box-shadow: $box-value;
+  -moz-box-shadow: $box-value;
+  box-shadow: $box-value;
+}
+
+//box-sizing
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+  -moz-box-sizing: $box-model;
+  box-sizing: $box-model;
+}
+
+//border-radius
+@mixin border-radius($b-deg) {
+  -webkit-border-radius: $b-deg;
+  -moz-border-radius: $b-deg;
+  border-radius: $b-deg;
+}
+
+//transition
+@mixin single-transition($property,$duration){
+  -webkit-transition: $property $duration ease-in-out;
+  -moz-transition: $property $duration ease-in-out;
+  -o-transition: $property $duration ease-in-out;
+  transition: $property $duration ease-in-out;
+}
+
+//user selected
+@mixin user-select ($user-select) {
+  -moz-user-select: $user-select;
+  -webkit-user-select: $user-select;
+  -ms-user-select: $user-select;
+  user-select: $user-select;
+}
+
+//scroll-x
+@mixin scroll-x {overflow-x: auto; overflow-y: hidden;}
+//scroll-y
+@mixin scroll-y {overflow-x: hidden; overflow-y: auto;}
+
+//ellipsis
+@mixin ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+//button style
+@mixin button-style{
+  position: relative;
+  color: $orange; font-family: $titleFont; font-size: $sizeS;
+  text-align: center; letter-spacing: .1px; text-transform: uppercase;
+  width: auto; height: 46px; line-height: 40px;
+  padding: 0 20px; margin: 0;
+  cursor: pointer;
+  border: $orange solid 3px;
+  @include user-select(none);
+  &:after, &:before {content: ""; position: absolute; font-family: $icomoon;}
+}
+
+//dropdown style
+@mixin dropdown-style {display: block;
+  @include button-style; text-align: left;
+  padding: 0 35px 0 16px;
+  &:after {content: "\e603"; font-size: 16px; top: 1px; right: 16px;}
+}
+@mixin dropdown-box {position: relative;
+  ul {position: absolute; top: 46px; left: 0; z-index: 99;
+    width: 100%; background: $grayLDark; display: none;
+  }
+  li {@include button-style;
+    border-width: 0 3px 3px; text-align: left; height: auto; line-height: normal;
+    padding: 0;
+    a {color: $orange; display: block; padding: 13px 16px 12px;}
+    &:hover {
+      &, a {color: $grayLDark;}
+      a {background: $orangeL;}
+    }
+  }
+  &.open {
+    ul {display: block;}
+    .d-label, li, a {color: $orangeL; border-color: $orangeL;}
+    .d-label, li {@include box-shadow(0 0 5px $orangeL);}
+    a {text-shadow: 0 0 5px $orangeL;}
+    .d-label:after {content: "\e602";}
+  }
+}
+
+//line for nav
+@mixin v-line {
+  border: rgba(black, .1) solid 1px;
+}
+
+//arrow style
+@mixin arrow-left($color,$width,$lwidth) {
+  border: transparent solid $width;
+  border-right-width: 0;
+  border-left-color: $color;
+  border-left-width: $lwidth;
+  -webkit-transform: scale(.9999);
+}
+@mixin arrow-down ($color,$width,$twidth) {
+  border: transparent solid $width;
+  border-top-width: $twidth;
+  border-top-color: $color;
+  -webkit-transform: scale(.9999);
+}
+@mixin arrow-up ($color,$width,$bwidth) {
+  border: transparent solid $width;
+  border-bottom-width: $bwidth;
+  border-bottom-color: $color;
+  -webkit-transform: scale(.9999);
+}
+
+//pattern background
+@mixin pattern-bkg {
+  background: url($patternBkg) 0 0 repeat;
+}
+@mixin pattern-o-bkg {
+  background: url($patternOrBkg) 0 0 repeat;
+}
+
+//bento area background
+@mixin bento-bkg {
+  background-image: url(../images/gradient.png), url(../images/bento_bkg.jpg);
+  background-position: 0 100%, 0 0; background-repeat: repeat-x, no-repeat;
+  background-size: auto auto, cover;
+}
+
+//clearfix
+@mixin clearer {
+  zoom: 1;
+  &:after {
+    content: '.';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+  }
+}
+
+
+//media queries
+
+//large desktop: 1200px;
+//desktop: 960px - up
+//tablet: 768px - 959px
+//mob: down - 767px
+//large mob: fix width: 566px;
+
+$w-tablet: 768px;
+$w-desktop: 992px;
+
+@mixin mobile {
+  @media only screen and (max-width: $w-tablet - 1) {@content;}
+}
+@mixin tablet {
+  @media only screen and (min-width: $w-tablet) and (max-width: $w-desktop - 1) {@content;}
+}
+@mixin desktop {
+  @media only screen and (min-width: $w-desktop) {@content;}
+}

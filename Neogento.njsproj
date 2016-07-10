@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{8c3d4a99-b3d8-4c5a-a67c-3849f4c85dbd}</ProjectGuid>
+        <ProjectHome />
+        <ProjectView>ShowAllFiles</ProjectView>
+        <StartupFile>app.js</StartupFile>
+        <WorkingDirectory>.</WorkingDirectory>
+        <OutputPath>.</OutputPath>
+        <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+    <ItemGroup>
+        <Content Include="package.json" />
+        <Compile Include="app.js" />
+        <Compile Include="config.js" />
+        <Compile Include="RSAGenerator.js" />
+        <Compile Include="routes\index.js" />
+        <Content Include="Stuff\gamebanner.jpg" />
+        <Content Include="Stuff\gamebanner_02.jpg" />
+        <Content Include="Stuff\Storm.jpg" />
+        <Content Include="Stuff\underground.jpg" />
+        <Compile Include="TestBed\APITestBed.js" />
+        <Compile Include="TestBed\cryptoUtils.js" />
+        <Compile Include="TestBed\postJson_withEncrypt.js" />
+        <Compile Include="TestBed\test.js" />
+        <Compile Include="utils\CryptoUtils.js" />
+        <Content Include="views\error.ejs" />
+        <Content Include="views\index.ejs" />
+        <Compile Include="middlewares\SSOServices\SsoUtils.js" />
+        <Content Include="public\images\AppManager.png" />
+        <Content Include="public\stylesheets\style.css" />
+        <Compile Include="SystemApps\AppManager\index.js" />
+        <Compile Include="SystemApps\AppManager\setting.js" />
+        <Compile Include="SystemApps\AppTemplate\index.js" />
+        <Compile Include="SystemApps\CreateOptionSets\index.js" />
+        <Compile Include="SystemApps\CreateOptionSets\setting.js" />
+        <Content Include="SystemApps\AppManager\views\error.ejs" />
+        <Content Include="SystemApps\AppManager\views\index.ejs" />
+        <Content Include="SystemApps\AppManager\views\template.ejs" />
+        <Content Include="SystemApps\AppManager\public\css\animate.css" />
+        <Content Include="SystemApps\AppManager\public\css\blog.css" />
+        <Content Include="SystemApps\AppManager\public\css\breadcrumb.css" />
+        <Content Include="SystemApps\AppManager\public\css\calendar.css" />
+        <Content Include="SystemApps\AppManager\public\css\Carousel.02.css" />
+        <Content Include="SystemApps\AppManager\public\css\Carousel.03.css" />
+        <Content Include="SystemApps\AppManager\public\css\Carousel.css" />
+        <Content Include="SystemApps\AppManager\public\css\component.css" />
+        <Content Include="SystemApps\AppManager\public\css\imagePreview.css" />
+        <Content Include="SystemApps\AppManager\public\css\itemDetails.css" />
+        <Content Include="SystemApps\AppManager\public\css\main.css" />
+        <Content Include="SystemApps\AppManager\public\css\navbar.css" />
+        <Content Include="SystemApps\AppManager\public\css\shop.css" />
+        <Content Include="SystemApps\AppManager\public\css\sidebar.css" />
+        <Content Include="SystemApps\AppManager\public\css\startrating.css" />
+        <Content Include="SystemApps\AppManager\public\fonts\RobotoCondensed-Bold.svg" />
+        <Content Include="SystemApps\AppManager\public\fonts\RobotoCondensed-BoldItalic.svg" />
+        <Content Include="SystemApps\AppManager\public\fonts\RobotoCondensed-Italic.svg" />
+        <Content Include="SystemApps\AppManager\public\fonts\RobotoCondensed-Light.svg" />
+        <Content Include="SystemApps\AppManager\public\fonts\RobotoCondensed-LightItalic.svg" />
+        <Content Include="SystemApps\AppManager\public\fonts\RobotoCondensed-Regular.svg" />
+        <Content Include="SystemApps\AppManager\public\img\AppManager.png" />
+        <Content Include="SystemApps\AppManager\public\img\CatLogo.png" />
+        <Content Include="SystemApps\AppManager\public\img\logo.png" />
+        <Content Include="SystemApps\AppManager\public\img\LogoIcon.png" />
+        <Content Include="SystemApps\AppManager\public\img\Storm.jpg" />
+        <Content Include="SystemApps\AppManager\public\img\Settings.ico" />
+        <Compile Include="SystemApps\AppManager\public\js\bootstrap-notify.min.js" />
+        <Compile Include="SystemApps\AppManager\public\js\calendar.02.js" />
+        <Compile Include="SystemApps\AppManager\public\js\html2canvas.js" />
+        <Compile Include="SystemApps\AppManager\public\js\interactVid.js" />
+        <Compile Include="SystemApps\AppManager\public\js\phasebeam.js" />
+        <Compile Include="SystemApps\AppManager\public\js\phasebeam3.js" />
+        <Compile Include="SystemApps\AppManager\public\js\socketManager.js" />
+        <Compile Include="SystemApps\AppManager\public\js\utils.js" />
+        <Content Include="SystemApps\AppManager\public\img\background\beauty_01.jpg" />
+        <Content Include="SystemApps\AppManager\public\img\background\beauty_02.jpg" />
+        <Content Include="SystemApps\AppManager\public\img\Products\product3.jpg" />
+        <Content Include="SystemApps\AppManager\public\js\api\easyrtc.css" />
+        <Compile Include="SystemApps\AppManager\public\js\api\adapter.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\easyrtc.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\easyrtc_ft.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\easyrtc_int.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\easyrtc_lang_en.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\easy_app.js" />
+        <Compile Include="SystemApps\AppManager\public\js\AttributeSets\controls.js" />
+        <Compile Include="SystemApps\AppManager\public\js\AttributeSets\DragNDrop.js" />
+        <Compile Include="SystemApps\AppManager\public\js\Crypto\cryptico.js" />
+        <Compile Include="SystemApps\AppManager\public\js\Crypto\cryptoUtils.js" />
+        <Compile Include="SystemApps\AppManager\public\js\Crypto\postJson_withEncrypt.js" />
+        <Compile Include="SystemApps\AppManager\public\js\Crypto\test.js" />
+        <Compile Include="SystemApps\AppManager\public\js\ImageSelector\chiplcrop.js" />
+        <Content Include="SystemApps\AppManager\public\js\api\img\easyrtc.png" />
+        <Content Include="SystemApps\AppManager\public\js\api\img\powered_by_easyrtc.png" />
+        <Content Include="SystemApps\AppManager\public\js\api\img\priologic_logo_white.png" />
+        <Content Include="SystemApps\AppManager\public\js\api\img\x.svg" />
+        <Content Include="SystemApps\AppManager\public\js\api\labs\inline-installcode.html" />
+        <Content Include="SystemApps\AppManager\public\js\api\labs\README.md" />
+        <Compile Include="SystemApps\AppManager\public\js\api\labs\desktop_capture_iframe_version.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\labs\desktop_capture_no_iframe_version.js" />
+        <Compile Include="SystemApps\AppManager\public\js\api\labs\easyrtc_rates.js" />
+        <Content Include="SystemApps\AppTemplate\views\failpassrefactor.jpg" />
+        <Content Include="SystemApps\AppTemplate\views\error.ejs" />
+        <Content Include="SystemApps\AppTemplate\views\index.ejs" />
+        <Content Include="SystemApps\AppTemplate\views\template.ejs" />
+        <Content Include="SystemApps\AppTemplate\public\css\style.css" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\icon.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\icon2.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\LogoSamples\1.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\LogoSamples\2.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\LogoSamples\3.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\LogoSamples\4.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\LogoSamples\5.png" />
+        <Content Include="SystemApps\AppTemplate\public\imgs\LogoSamples\6.png" />
+        <Content Include="SystemApps\CreateOptionSets\views\error.ejs" />
+        <Content Include="SystemApps\CreateOptionSets\views\index.ejs" />
+        <Content Include="SystemApps\CreateOptionSets\views\template.ejs" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\animate.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\blog.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\breadcrumb.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\calendar.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\Carousel.02.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\Carousel.03.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\Carousel.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\component.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\imagePreview.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\itemDetails.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\main.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\navbar.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\shop.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\sidebar.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\css\startrating.css" />
+        <Content Include="SystemApps\CreateOptionSets\public\fonts\RobotoCondensed-Bold.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\fonts\RobotoCondensed-BoldItalic.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\fonts\RobotoCondensed-Italic.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\fonts\RobotoCondensed-Light.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\fonts\RobotoCondensed-LightItalic.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\fonts\RobotoCondensed-Regular.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\CatLogo.png" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\logo.png" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\LogoIcon.png" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\gamebanner.jpg" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\gamebanner_02.jpg" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\Settings.ico" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\bootstrap-notify.min.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\calendar.02.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\html2canvas.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\interactVid.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\phasebeam.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\phasebeam3.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\socketManager.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\utils.js" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\background\beauty_01.jpg" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\background\beauty_02.jpg" />
+        <Content Include="SystemApps\CreateOptionSets\public\img\Products\product3.jpg" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\easyrtc.css" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\adapter.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\easyrtc.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\easyrtc_ft.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\easyrtc_int.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\easyrtc_lang_en.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\easy_app.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\AttributeSets\controls.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\AttributeSets\DragNDrop.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\Crypto\cryptico.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\Crypto\cryptoUtils.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\Crypto\postJson_withEncrypt.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\Crypto\test.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\ImageSelector\chiplcrop.js" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\img\easyrtc.png" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\img\powered_by_easyrtc.png" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\img\priologic_logo_white.png" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\img\x.svg" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\labs\inline-installcode.html" />
+        <Content Include="SystemApps\CreateOptionSets\public\js\api\labs\README.md" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\labs\desktop_capture_iframe_version.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\labs\desktop_capture_no_iframe_version.js" />
+        <Compile Include="SystemApps\CreateOptionSets\public\js\api\labs\easyrtc_rates.js" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="bin" />
+        <Folder Include="middlewares" />
+        <Folder Include="middlewares\SSOServices" />
+        <Folder Include="public" />
+        <Folder Include="public\images" />
+        <Folder Include="public\javascripts" />
+        <Folder Include="public\stylesheets" />
+        <Folder Include="routes" />
+        <Folder Include="Stuff" />
+        <Folder Include="SystemApps" />
+        <Folder Include="SystemApps\AppManager" />
+        <Folder Include="SystemApps\AppManager\public" />
+        <Folder Include="SystemApps\AppManager\public\css" />
+        <Folder Include="SystemApps\AppManager\public\fonts" />
+        <Folder Include="SystemApps\AppManager\public\img" />
+        <Folder Include="SystemApps\AppManager\public\img\background" />
+        <Folder Include="SystemApps\AppManager\public\img\Products" />
+        <Folder Include="SystemApps\AppManager\public\js" />
+        <Folder Include="SystemApps\AppManager\public\js\api" />
+        <Folder Include="SystemApps\AppManager\public\js\api\img" />
+        <Folder Include="SystemApps\AppManager\public\js\api\labs" />
+        <Folder Include="SystemApps\AppManager\public\js\AttributeSets" />
+        <Folder Include="SystemApps\AppManager\public\js\Crypto" />
+        <Folder Include="SystemApps\AppManager\public\js\ImageSelector" />
+        <Folder Include="SystemApps\AppManager\public\scss" />
+        <Folder Include="SystemApps\AppManager\views" />
+        <Folder Include="SystemApps\AppTemplate" />
+        <Folder Include="SystemApps\AppTemplate\public" />
+        <Folder Include="SystemApps\AppTemplate\public\css" />
+        <Folder Include="SystemApps\AppTemplate\public\imgs" />
+        <Folder Include="SystemApps\AppTemplate\public\imgs\LogoSamples" />
+        <Folder Include="SystemApps\AppTemplate\public\js" />
+        <Folder Include="SystemApps\AppTemplate\views" />
+        <Folder Include="SystemApps\CreateOptionSets" />
+        <Folder Include="SystemApps\CreateOptionSets\public" />
+        <Folder Include="SystemApps\CreateOptionSets\public\css" />
+        <Folder Include="SystemApps\CreateOptionSets\public\fonts" />
+        <Folder Include="SystemApps\CreateOptionSets\public\img" />
+        <Folder Include="SystemApps\CreateOptionSets\public\img\background" />
+        <Folder Include="SystemApps\CreateOptionSets\public\img\Products" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js\api" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js\api\img" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js\api\labs" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js\AttributeSets" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js\Crypto" />
+        <Folder Include="SystemApps\CreateOptionSets\public\js\ImageSelector" />
+        <Folder Include="SystemApps\CreateOptionSets\public\scss" />
+        <Folder Include="SystemApps\CreateOptionSets\views" />
+        <Folder Include="TestBed" />
+        <Folder Include="utils" />
+        <Folder Include="views" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+    <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+    <ProjectExtensions>
+        <VisualStudio>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+            <WebProjectProperties>
+              <UseIIS>False</UseIIS>
+              <AutoAssignPort>True</AutoAssignPort>
+              <DevelopmentServerPort>0</DevelopmentServerPort>
+              <DevelopmentServerVPath>/</DevelopmentServerVPath>
+              <IISUrl>http://localhost:48022/</IISUrl>
+              <NTLMAuthentication>False</NTLMAuthentication>
+              <UseCustomServer>True</UseCustomServer>
+              <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+              <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+            </WebProjectProperties>
+          </FlavorProperties>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+            <WebProjectProperties>
+              <StartPageUrl>
+              </StartPageUrl>
+              <StartAction>CurrentPage</StartAction>
+              <AspNetDebugging>True</AspNetDebugging>
+              <SilverlightDebugging>False</SilverlightDebugging>
+              <NativeDebugging>False</NativeDebugging>
+              <SQLDebugging>False</SQLDebugging>
+              <ExternalProgram>
+              </ExternalProgram>
+              <StartExternalURL>
+              </StartExternalURL>
+              <StartCmdLineArguments>
+              </StartCmdLineArguments>
+              <StartWorkingDirectory>
+              </StartWorkingDirectory>
+              <EnableENC>False</EnableENC>
+              <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+            </WebProjectProperties>
+          </FlavorProperties>
+        </VisualStudio>
+    </ProjectExtensions>
+</Project>
