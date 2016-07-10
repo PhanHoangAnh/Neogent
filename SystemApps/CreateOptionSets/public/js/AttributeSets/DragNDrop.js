@@ -142,8 +142,8 @@ function createSingleControlGroup(template, isReload) {
             input.classList.add("col-lg-12");
             input.classList.add("form-control");
             input.type = "text";
-            if (template["placeholder"]) {
-                input.placeholder = template["placeholder"];
+            if (template["placeholder"] || template["fields"]["placeholder"]) {
+                input.placeholder = template["placeholder"] || template["fields"]["placeholder"].value;
             }
             input.setAttribute("data-controlType", "text");
             input_cover.appendChild(input);
@@ -362,24 +362,24 @@ function createSingleControlGroup(template, isReload) {
 function createAttributePanel(nodeCopy, title) {
 
     var controlType = nodeCopy.controlType;
-    var fileds = nodeCopy.attribute;
+    var fields = nodeCopy.attribute;
 
     var main_panel = document.createElement('main_panel');
     main_panel.classList.add("col-md-12");
     main_panel.classList.add("col-lg-12");
     main_panel.classList.add("clearfix")
-    for (var item in fileds) {
+    for (var item in fields) {
         var label = document.createElement("LABEL");
         label.classList.add("col-lg-12");
         label.classList.add("col-md-12");
         main_panel.appendChild(label);
         if (item != "options" && item != "min" && item != "max") {
-            label.innerHTML = fileds[item]["label"];
+            label.innerHTML = fields[item]["label"];
             var input = document.createElement("input");
             input.classList.add("col-md-12");
             input.classList.add("col-lg-12");
-            input.type = fileds[item]["Input Type"];
-            input.placeholder = fileds[item]["value"];
+            input.type = fields[item]["Input Type"];
+            input.placeholder = fields[item]["value"];
 
             input.setAttribute("data-controlType", item);
             input.addEventListener("change", changeControlAttribute, false);
@@ -400,7 +400,7 @@ function createAttributePanel(nodeCopy, title) {
                 input.classList.remove("col-md-12");
                 input.classList.add("col-md-6");
                 input.classList.add("col-lg-6");
-                input.type = fileds[item]["Input Type"];
+                input.type = fields[item]["Input Type"];
                 input.addEventListener("change", changeControlAttribute, false);
                 row.appendChild(label);
                 row.appendChild(input);
@@ -417,8 +417,8 @@ function createAttributePanel(nodeCopy, title) {
             input.classList.add("col-lg-12");
             label.innerHTML = "Options";
             var opt_string = "";
-            for (var opt in fileds["options"]) {
-                opt_string = opt_string + fileds["options"][opt] + "\n";
+            for (var opt in fields["options"]) {
+                opt_string = opt_string + fields["options"][opt] + "\n";
             }
             input.value = opt_string;
             input.setAttribute("data-controlType", item)
@@ -679,17 +679,14 @@ function loadOptionSets(optSet) {
             }
         }
         for (var k in mockObj.fields) {
-            var currentItem = mockObj.fields[k];
-            console.log("Current Fields: ", currentItem);
-            var compareItem = optSet.components[i].attributes;
-
-            console.log(compareItem);
-            // if (compareItem) {
-            //     mockObj.fields[k].value = compareItem;
-            // }
+            var compareItem = optSet.components[i].attributes[k];
+            if (compareItem) {
+                mockObj.fields[k].value = compareItem;
+            }
         }
         // mockObj.fields =
         mockObj["Input Type"] = optSet.components[i]["data-controlType"];
+        mockObj["label"] = optSet.components[i]["attributes"]["label"];
         console.log("optSet components", optSet.components, mockObj);
         createSingleControlGroup(mockObj, true);
     }
