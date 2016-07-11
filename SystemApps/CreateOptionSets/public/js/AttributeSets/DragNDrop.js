@@ -634,23 +634,6 @@ function saveElement() {
     }
     compObj.components = printedList
     document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
-
-    // Post Attributes List to server
-    var currentUrl = window.location.href + "updateOptionSets"
-    $.ajax({
-        // url: './userToken',
-        url: currentUrl,
-        method: 'POST',
-        data: compObj,
-        complete: function(data, status, jqXHR) {
-            if (!data.responseJSON.err) {
-                compObj.objId = data.responseJSON.return_id
-            } else {
-                console.log(data.responseJSON.err);
-            }
-        }
-    });
-    // end of Post Attributes List
 }
 
 function initIcon(el) {
@@ -707,7 +690,14 @@ function loadOptionSets(optSet) {
         }
         for (var k in mockObj.fields) {
             var compareItem = optSet.components[i].attributes[k];
-            if (compareItem) {
+            console.log("mockObj.fields[k] ", k, mockObj.fields[k]);
+            if (k == "options") {
+                var optArr = compareItem.split('\n');
+                optArr = optArr.filter(function(n) {
+                    return n != "";
+                });
+                mockObj.fields[k] = optArr;
+            } else {
                 mockObj.fields[k].value = compareItem;
             }
         }
@@ -715,10 +705,30 @@ function loadOptionSets(optSet) {
         mockObj["Input Type"] = optSet.components[i]["data-controlType"];
         mockObj["label"] = optSet.components[i]["attributes"]["label"];
         mockObj["CUST"] = optSet["components"][i]["attributes"];
+        console.log("from loadOptionSets: mockObj ", mockObj);
         createSingleControlGroup(mockObj, true);
     }
 }
 
 function testLoadOptionSets() {
     loadOptionSets(compObj);
+}
+
+function saveAttributeSets() {
+    // Post Attributes List to server
+    var currentUrl = window.location.href + "updateOptionSets"
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        method: 'POST',
+        data: compObj,
+        complete: function(data, status, jqXHR) {
+            if (!data.responseJSON.err) {
+                compObj.objId = data.responseJSON.return_id
+            } else {
+                console.log(data.responseJSON.err);
+            }
+        }
+    });
+    // end of Post Attributes List
 }
