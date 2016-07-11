@@ -733,3 +733,34 @@ function saveAttributeSets() {
     });
     // end of Post Attributes List
 }
+
+function loadOptionSets() {
+    // Get Attributes List from server
+    var currentUrl = window.location.href + "getOptionSets"
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        method: 'GET',
+        // data: compObj,
+        complete: function(data, status, jqXHR) {
+
+            if (!data.responseJSON.err) {
+                console.log(data.responseJSON.doc);
+                createOptionSetPanel(data.responseJSON.doc);
+            } else {
+                console.log(data.responseJSON.err)
+            }
+        }
+    });
+    // end of Get Attributes List from server
+}
+
+function createOptionSetPanel(optSet) {
+    var root = document.getElementById("LoadOptionSets");
+    var optionSetTemplate = document.getElementById("optionSet").content;
+    for (var i in optSet) {
+        var optionSetName = optionSetTemplate.querySelector('[app-role="setsName"]');
+        optionSetName.innerHTML = optSet[i]["setName"];
+        root.appendChild(document.importNode(optionSetTemplate, true));
+    }
+}

@@ -82,22 +82,6 @@
                             <span class="icon-bar"></span>
                             </button>
                         </div>
-                        <nav class="collapse navbar-collapse 'navbar-right" role="navigation">
-                            <!-- <ul class="nav navbar-nav ">
-                                <li class='navbar-right'>
-                                    <a href="#sec">Get Started</a>
-                                </li>
-                                <li class='navbar-right'>
-                                    <a href="#sec">Edit</a>
-                                </li>
-                                <li class='navbar-right'>
-                                    <a href="#sec">Visualize</a>
-                                </li>
-                                <li class='navbar-right'>
-                                    <a href="#sec">Prototype</a>
-                                </li>
-                            </ul> -->
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -106,6 +90,16 @@
         <a class='mini-broad' app-role = "link">
             <img app-role = "AppIcon">
         </a>
+        </template>
+        <template id = "optionSet">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" id="SetsIcon">
+                    <img src='../img/logo.png' id="iconHolder" app-role="icon">
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" id="SetsName">
+                    <legend app-role="setsName">Set's Name</legend>
+                </div>
+            </div>
         </template>
         <!-- /NavBar -->
         <section class='heading-page' style="background:url('img/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: .4">
@@ -166,6 +160,11 @@
                                 <i class="fa fa-code"></i>Manage Sets
                             </a>
                         </li>
+                        <li>
+                            <a href="#LoadOptionSets" role="tab" data-toggle="tab" onclick="loadOptionSets()">
+                                <i class="fa fa-code"></i>Load OptionSets
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div id="standardElement" class="connectedSortable tab-pane fade active in">
@@ -182,6 +181,9 @@
                         <pre id="printJSON" class="container-fluid">JSON Output</pre>
                     </div>
                     <div id="ManageSets" class="connectedSortable tab-pane fade">
+                        <!-- Controls Attribute start here -->
+                    </div>
+                    <div id="LoadOptionSets" class="connectedSortable tab-pane fade">
                         <!-- Controls Attribute start here -->
                     </div>
                 </div>

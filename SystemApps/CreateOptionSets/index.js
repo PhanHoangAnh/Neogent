@@ -39,15 +39,17 @@ router.get('/', function(req, res, next) {
         data: setting
     });
 });
+//  Global variables for Business functions
+
+var objResult = {};
+objResult.status = 0
+objResult.err = null;
+objResult.return_id = null;
 //
 router.post("/updateOptionSets", function(req, res, next) {
     console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
     //var optionSets = dbEngine.OptionSets();
     var optionSets = mongoose.model('OptionSets');
-    var objResult = {};
-    objResult.status = 0
-    objResult.err = null;
-    objResult.return_id = null;
     var _id = req.body.objId;
     if (!_id) {
         var doc = new optionSets();
@@ -71,12 +73,10 @@ router.post("/updateOptionSets", function(req, res, next) {
             if (err) {
                 objResult.status = 2;
                 objResult.err = err;
-                objResult.return_id = _id;
                 res.send(objResult);
-                
+
             } else {
                 doc.save(function(error) {
-
                     objResult.status = 3;
                     objResult.err = error;
                     objResult.return_id = _id;
@@ -88,6 +88,23 @@ router.post("/updateOptionSets", function(req, res, next) {
 });
 
 router.get("/getOptionSets", function(req, res, next) {
+    console.log("from /getOptionSets");
+    var optionSets = mongoose.model('OptionSets');
+    var query = { shopName: req.shopname };
+    optionSets.find(query, function(err, doc) {
+        if (err) {
+            objResult.status = 4;
+            objResult.err = err;
+            res.send(objResult);
+            return;
+        }
+        objResult.status = 0
+        objResult.err = null;
+        objResult.doc = doc;
+        res.send(objResult);
+        objResult.doc = null;
+        // res.end(JSON.stringify(doc));
+    })
 
 })
 
