@@ -564,15 +564,15 @@ function createAttributePanel(nodeCopy, title) {
                     input.type = inputType;
                     for (var item in optArr) {
                         // Set input name later
-                        input.classList.add("col-md-6");
-                        input.classList.add("col-lg-6");
+                        input.classList.add("c-left");
+                        // input.classList.add("col-lg-6");
                         input.value = item;
                         var copy_radio = input.cloneNode(true);
                         controls[elem].appendChild(copy_radio);
                         var span = document.createElement("span")
                         span.innerHTML = optArr[item];
-                        span.classList.add("col-md-6");
-                        span.classList.add("col-lg-6");
+                        span.classList.add("col-md-11");
+                        span.classList.add("col-lg-11");
                         controls[elem].appendChild(span);
                     }
                     controls[elem].appendChild(describe);
@@ -707,7 +707,6 @@ function loadOptionSets(optSet) {
         // copy object to avoid the refer
         var CUST = Object.assign({}, optSet["components"][i]["attributes"])
         mockObj["CUST"] = CUST;
-        console.log("from loadOptionSets: mockObj ", mockObj);
         createSingleControlGroup(mockObj, true);
     }
 }
