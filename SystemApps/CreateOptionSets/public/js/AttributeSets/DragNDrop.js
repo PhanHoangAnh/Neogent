@@ -51,7 +51,14 @@ $(function() {
             connectWith: $(sortableDiv),
             remove: function(e, ui) {
                 // 
+                // upgrade for Attribute Set
+                if (ui.item[0].getAttribute("app-role") == "optionSet") {
+                    console.log(ui.item[0].getAttribute("app-role"));
+                    console.log(ui.item[0]["CUST"]);
+                    return;
+                }
                 var nodeCopy = ui.item.clone();
+                //
                 newId++;
                 nodeCopy[0].id = newId; /* We cannot use the same ID */
                 nodeCopy.attr("data-toggle", "popover");
@@ -102,6 +109,8 @@ $(function() {
                 $('.placeholder').show();
             }
         });
+
+
     })
     // Create controls from JSON definition
 $(function CreateControlsTemplate() {
@@ -745,7 +754,7 @@ function loadOptionSets() {
         complete: function(data, status, jqXHR) {
 
             if (!data.responseJSON.err) {
-                console.log(data.responseJSON.doc);
+                // console.log(data.responseJSON.doc);
                 createOptionSetPanel(data.responseJSON.doc);
             } else {
                 console.log(data.responseJSON.err)
@@ -756,11 +765,17 @@ function loadOptionSets() {
 }
 
 function createOptionSetPanel(optSet) {
-    var root = document.getElementById("LoadOptionSets");
+    var _root = document.getElementById("LoadOptionSets");
+    while (_root.firstChild) {
+        _root.removeChild(_root.firstChild);
+    }
     var optionSetTemplate = document.getElementById("optionSet").content;
     for (var i in optSet) {
         var optionSetName = optionSetTemplate.querySelector('[app-role="setsName"]');
         optionSetName.innerHTML = optSet[i]["setName"];
-        root.appendChild(document.importNode(optionSetTemplate, true));
+        optionSetName.style = "border-bottom: 1px solid #555;";
+        _root.appendChild(document.importNode(optionSetTemplate, true));
+        optionSetTemplate["CUST"] = optSet[i].components;
+        console.log(optionSetTemplate["CUST"], optSet[i].components);
     }
 }
