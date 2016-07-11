@@ -690,7 +690,7 @@ function loadOptionSets(optSet) {
         }
         for (var k in mockObj.fields) {
             var compareItem = optSet.components[i].attributes[k];
-            
+
             if (k == "options") {
                 var optArr = compareItem.split('\n');
                 optArr = optArr.filter(function(n) {
@@ -704,7 +704,9 @@ function loadOptionSets(optSet) {
         // mockObj.fields =
         mockObj["Input Type"] = optSet.components[i]["data-controlType"];
         mockObj["label"] = optSet.components[i]["attributes"]["label"];
-        mockObj["CUST"] = optSet["components"][i]["attributes"];
+        // copy object to avoid the refer
+        var CUST = Object.assign({}, optSet["components"][i]["attributes"])
+        mockObj["CUST"] = CUST;
         console.log("from loadOptionSets: mockObj ", mockObj);
         createSingleControlGroup(mockObj, true);
     }
