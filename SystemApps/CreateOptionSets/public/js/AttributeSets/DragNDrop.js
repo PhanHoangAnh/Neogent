@@ -690,7 +690,7 @@ function loadOptionSets(optSet) {
         }
         for (var k in mockObj.fields) {
             var compareItem = optSet.components[i].attributes[k];
-            console.log("mockObj.fields[k] ", k, mockObj.fields[k]);
+            
             if (k == "options") {
                 var optArr = compareItem.split('\n');
                 optArr = optArr.filter(function(n) {
