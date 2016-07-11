@@ -422,6 +422,8 @@ function createAttributePanel(nodeCopy, title) {
                 input.classList.add("col-md-6");
                 input.classList.add("col-lg-6");
                 input.type = fields[item]["Input Type"];
+                // console.log("from createAttributePanel: ", fields[item]);
+                input.checked = (fields[item].value == "true");
                 input.addEventListener("change", changeControlAttribute, false);
                 row.appendChild(label);
                 row.appendChild(input);
@@ -503,6 +505,10 @@ function createAttributePanel(nodeCopy, title) {
         for (var elem in controls) {
 
             htmlNodeCopy["CUST"][ctrType] = this.value;
+            // exception for require fields
+            if (ctrType == "required") {
+                this.value = this.checked;
+            }
             if (controls[elem] instanceof Node && ctrType == "placeholder" && (controls[elem].type == "text" || controls[elem].type == "number")) {
                 controls[elem].placeholder = this.value;
             }
@@ -708,7 +714,6 @@ function loadOptionSets(optSet) {
         // mockObj.fields =
         mockObj["Input Type"] = optSet.components[i]["data-controlType"];
         mockObj["label"] = optSet.components[i]["attributes"]["label"];
-        console.log("optSet: ", optSet.components[i]);
         mockObj["CUST"] = optSet["components"][i]["attributes"];
         createSingleControlGroup(mockObj, true);
     }
