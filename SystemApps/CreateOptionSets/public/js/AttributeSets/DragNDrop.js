@@ -728,7 +728,19 @@ function loadOptionSets(optSet) {
 
 
 function saveAttributeSets() {
-    // Post Attributes List to server
+    var sortableDiv = document.querySelector("#div2");
+    var elementLists = sortableDiv.querySelectorAll("[id]");
+    var printedList = [];
+    for (var elem in elementLists) {
+        if (elementLists[elem]["CUST"]) {
+            var jsonObj = {}
+            jsonObj["data-controlType"] = elementLists[elem].getAttribute("data-controlType");
+            jsonObj["attributes"] = elementLists[elem]["CUST"];
+            printedList.push(jsonObj);
+        }
+    }
+    compObj.components = printedList
+        // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
     $.ajax({
         // url: './userToken',
@@ -784,4 +796,15 @@ function createOptionSetPanel(optSet) {
         var realNode = document.getElementById(newId);
         realNode["CUST"] = optSet[i];
     }
+}
+
+function createNewSet() {
+    compObj = new Object();
+    compObj.setName = "Create new AttributeSets"
+    loadOptionSets(compObj);
+}
+
+function cloneSet() {
+    delete compObj.objId;
+    requestOptionSets();
 }

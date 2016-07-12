@@ -51,6 +51,7 @@ router.post("/updateOptionSets", function(req, res, next) {
     //var optionSets = dbEngine.OptionSets();
     var optionSets = mongoose.model('OptionSets');
     var _id = req.body.objId;
+    console.log("Not id ?", !_id);
     if (!_id) {
         var doc = new optionSets();
         doc._id = _id = mongoose.Types.ObjectId();
@@ -66,16 +67,16 @@ router.post("/updateOptionSets", function(req, res, next) {
         });
     } else {
         optionSets.findById(_id, function(err, doc) {
-            doc.setName = req.body.setName;
-            doc.scope = "Global";
-            doc.components = req.body.components;
-            doc.shopName = req.shopname;
             if (err) {
                 objResult.status = 2;
                 objResult.err = err;
                 res.send(objResult);
 
             } else {
+                doc.setName = req.body.setName;
+                doc.scope = "Global";
+                doc.components = req.body.components;
+                doc.shopName = req.shopname;
                 doc.save(function(error) {
                     objResult.status = 3;
                     objResult.err = error;
