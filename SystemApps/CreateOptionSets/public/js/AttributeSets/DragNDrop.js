@@ -480,7 +480,7 @@ function createAttributePanel(nodeCopy, title) {
         $('[data-toggle=popover]').each(function() {
             $(this).popover('hide');
         });
-        saveElement();
+        // saveElement();
     }, false);
 
     var controlHandler = document.createElement("div");
@@ -740,7 +740,8 @@ function saveAttributeSets() {
         }
     }
     compObj.components = printedList
-        // Post Attributes List to server
+    console.log("compObj before save: ", compObj);
+    // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
     $.ajax({
         // url: './userToken',
@@ -750,6 +751,7 @@ function saveAttributeSets() {
         complete: function(data, status, jqXHR) {
             if (!data.responseJSON.err) {
                 compObj.objId = data.responseJSON.return_id
+                requestOptionSets();
             } else {
                 console.log(data.responseJSON.err);
             }
@@ -806,5 +808,4 @@ function createNewSet() {
 
 function cloneSet() {
     delete compObj.objId;
-    requestOptionSets();
 }
