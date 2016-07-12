@@ -54,7 +54,7 @@ router.post("/updateOptionSets", function(req, res, next) {
     if (!_id) {
         var doc = new optionSets();
         doc._id = _id = mongoose.Types.ObjectId();
-        doc.setName = req.body.optionSetsName;
+        doc.setName = req.body.setName;
         doc.scope = "Global";
         doc.components = req.body.components;
         doc.shopName = req.shopname;
@@ -66,7 +66,7 @@ router.post("/updateOptionSets", function(req, res, next) {
         });
     } else {
         optionSets.findById(_id, function(err, doc) {
-            doc.setName = req.body.optionSetsName;
+            doc.setName = req.body.setName;
             doc.scope = "Global";
             doc.components = req.body.components;
             doc.shopName = req.shopname;

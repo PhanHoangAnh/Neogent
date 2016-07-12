@@ -23,8 +23,9 @@ $(function() {
             },
             placeholder: "ui-sortable-placeholder",
             receive: function(e, ui) {
-                console.log(ui.item[0]["CUST"]);
-                loadOptionSets(ui.item[0]["CUST"]);
+                if (ui.item[0].getAttribute("app-role") == "optionSet") {
+                    loadOptionSets(ui.item[0]["CUST"]);
+                }
                 ui.sender.sortable("cancel");
             },
             over: function(e, ui) {
@@ -586,7 +587,7 @@ function createAttributePanel(nodeCopy, title) {
                 } else {
                     controls[elem].innerHTML = this.value;
                     if (title) {
-                        compObj.optionSetsName = this.value;
+                        compObj.setName = this.value;
                     }
                 }
             }
@@ -685,7 +686,8 @@ function initIcon(el) {
 function loadOptionSets(optSet) {
     //1. Load option Sets Name
     var setsName = document.getElementById("SetsName").querySelector('[data-controltype="label"]');
-    setsName.innerHTML = optSet.optionSetsName;
+    compObj.setName = setsName.innerHTML = optSet.setName;
+    compObj.objId = optSet._id;
     //2. Rendering component and its attributes
     // clear div2 before add new element
     var airField = document.getElementById("div2");
@@ -724,9 +726,6 @@ function loadOptionSets(optSet) {
     }
 }
 
-function testLoadOptionSets() {
-    loadOptionSets(compObj);
-}
 
 function saveAttributeSets() {
     // Post Attributes List to server
