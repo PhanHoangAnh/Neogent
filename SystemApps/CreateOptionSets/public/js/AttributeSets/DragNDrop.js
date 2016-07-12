@@ -7,9 +7,7 @@ $(function() {
         $(sortableDiv).sortable({
             // connectWith: ".connectedSortable",
             receive: function(e, ui) {
-                console.log("receive: ", sortableIn);
                 sortableIn = 1;
-
             },
             start: function(e, ui) {
                 // modify ui.placeholder however you like
@@ -25,6 +23,8 @@ $(function() {
             },
             placeholder: "ui-sortable-placeholder",
             receive: function(e, ui) {
+                console.log(ui.item[0]["CUST"]);
+                loadOptionSets(ui.item[0]["CUST"]);
                 ui.sender.sortable("cancel");
             },
             over: function(e, ui) {
@@ -53,8 +53,6 @@ $(function() {
                 // 
                 // upgrade for Attribute Set
                 if (ui.item[0].getAttribute("app-role") == "optionSet") {
-                    console.log(ui.item[0].getAttribute("app-role"));
-                    console.log(ui.item[0]["CUST"]);
                     return;
                 }
                 var nodeCopy = ui.item.clone();
@@ -689,6 +687,12 @@ function loadOptionSets(optSet) {
     var setsName = document.getElementById("SetsName").querySelector('[data-controltype="label"]');
     setsName.innerHTML = optSet.optionSetsName;
     //2. Rendering component and its attributes
+    // clear div2 before add new element
+    var airField = document.getElementById("div2");
+    while (airField.firstChild) {
+        airField.removeChild(airField.firstChild);
+    }
+    //
     for (var i in optSet.components) {
         var mockObj = {};
         for (var k in data) {
@@ -743,7 +747,7 @@ function saveAttributeSets() {
     // end of Post Attributes List
 }
 
-function loadOptionSets() {
+function requestOptionSets() {
     // Get Attributes List from server
     var currentUrl = window.location.href + "getOptionSets"
     $.ajax({
@@ -771,11 +775,14 @@ function createOptionSetPanel(optSet) {
     }
     var optionSetTemplate = document.getElementById("optionSet").content;
     for (var i in optSet) {
+        newId++;
         var optionSetName = optionSetTemplate.querySelector('[app-role="setsName"]');
         optionSetName.innerHTML = optSet[i]["setName"];
         optionSetName.style = "border-bottom: 1px solid #555;";
-        _root.appendChild(document.importNode(optionSetTemplate, true));
-        optionSetTemplate["CUST"] = optSet[i].components;
-        console.log(optionSetTemplate["CUST"], optSet[i].components);
+        var tempContainer = optionSetTemplate.querySelector('[app-role = "optionSet"]');
+        tempContainer.id = newId;
+        var node = _root.appendChild(document.importNode(optionSetTemplate, true));
+        var realNode = document.getElementById(newId);
+        realNode["CUST"] = optSet[i];
     }
 }
