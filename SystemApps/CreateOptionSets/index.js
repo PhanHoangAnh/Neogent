@@ -47,7 +47,8 @@ objResult.err = null;
 objResult.return_id = null;
 //
 router.post("/updateOptionSets", function(req, res, next) {
-    console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
+    // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
+
     //var optionSets = dbEngine.OptionSets();
     var optionSets = mongoose.model('OptionSets');
     var _id = req.body.objId;
@@ -71,7 +72,6 @@ router.post("/updateOptionSets", function(req, res, next) {
                 objResult.status = 2;
                 objResult.err = err;
                 res.send(objResult);
-
             } else {
                 doc.setName = req.body.setName;
                 doc.scope = "Global";
@@ -89,7 +89,7 @@ router.post("/updateOptionSets", function(req, res, next) {
 });
 
 router.get("/getOptionSets", function(req, res, next) {
-    console.log("from /getOptionSets");
+    // console.log("from /getOptionSets");
     var optionSets = mongoose.model('OptionSets');
     var query = { shopName: req.shopname };
     optionSets.find(query, function(err, doc) {
@@ -107,7 +107,22 @@ router.get("/getOptionSets", function(req, res, next) {
         // res.end(JSON.stringify(doc));
     })
 
-})
+});
+
+router.get("/deleteOptionSets/:id", function(req, res, next) {
+    var _id = req.params.id;
+    // console.log("remove id: ", _id);
+    var optionSets = mongoose.model('OptionSets');
+    optionSets.findByIdAndRemove(_id, function(err) {
+        objResult.status = 0
+        objResult.err = null;
+        if (err) {
+            objResult.status = 5;
+            objResult.err = err;
+        }
+        res.send(objResult);
+    })
+});
 
 app.use(router);
 module.exports = app;

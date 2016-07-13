@@ -740,8 +740,7 @@ function saveAttributeSets() {
         }
     }
     compObj.components = printedList
-    console.log("compObj before save: ", compObj);
-    // Post Attributes List to server
+        // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
     $.ajax({
         // url: './userToken',
@@ -808,4 +807,26 @@ function createNewSet() {
 
 function cloneSet() {
     delete compObj.objId;
+}
+
+function deleteSet() {
+    if (compObj.objId) {
+        var currentUrl = window.location.href + "deleteOptionSets/" + compObj.objId
+        $.ajax({
+            // url: './userToken',
+            url: currentUrl,
+            method: 'GET',
+            // data: compObj,
+            complete: function(data, status, jqXHR) {
+
+                if (!data.responseJSON.err) {
+                    // console.log(data.responseJSON.doc);
+                    createNewSet();
+                    requestOptionSets();
+                } else {
+                    console.log(data.responseJSON.err)
+                }
+            }
+        });
+    }
 }
