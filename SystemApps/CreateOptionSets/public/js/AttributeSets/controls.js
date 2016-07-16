@@ -25,6 +25,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -56,6 +61,11 @@ var data = [{
                 "label": "More info",
                 "Input Type": "text",
                 "value": "Describe attribute"
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
             },
             "cols": {
                 "label": "cols",
@@ -102,6 +112,11 @@ var data = [{
                 "2": "value 2",
                 "3": "value 3",
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -145,6 +160,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -182,7 +202,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
-
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -220,6 +244,11 @@ var data = [{
                 "2": "value 2",
                 "3": "value 3",
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -252,6 +281,11 @@ var data = [{
                 "label": "Placeholder",
                 "Input Type": "text",
                 "value": "placeholder"
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
             },
             "describe": {
                 "label": "More info",
@@ -292,6 +326,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -323,6 +362,11 @@ var data = [{
                 "label": "More info",
                 "Input Type": "text",
                 "value": "Describe attribute"
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
             },
             "required": {
                 "label": "Required",
@@ -358,6 +402,11 @@ var data = [{
             },
             "min": 1,
             "max": 200,
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -390,6 +439,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -421,6 +475,11 @@ var data = [{
                 "label": "More info",
                 "Input Type": "text",
                 "value": "Describe attribute"
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
             },
             "required": {
                 "label": "Required",
@@ -459,6 +518,11 @@ var data = [{
                 "Input Type": "checkbox",
                 "value": false
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "invisible": {
                 "label": "invisible",
                 "Input Type": "checkbox",
@@ -492,6 +556,11 @@ var data = [{
             "weight": {
                 "label": "Weight ratio",
                 "Input Type": "number"
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
             },
             "required": {
                 "label": "Required",
@@ -532,6 +601,11 @@ var data = [{
                 "label": "Weight ratio",
                 "Input Type": "number"
             },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
             "required": {
                 "label": "Required",
                 "Input Type": "checkbox",
@@ -570,6 +644,11 @@ var data = [{
             "weight": {
                 "label": "Weight ratio",
                 "Input Type": "number"
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
             },
             "required": {
                 "label": "Required",
