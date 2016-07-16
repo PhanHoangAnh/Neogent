@@ -413,7 +413,7 @@ function createAttributePanel(nodeCopy, title) {
             input.setAttribute("data-controlType", item);
             input.addEventListener("change", changeControlAttribute, false);
 
-            if (item == "required") {
+            if (item == "required" || item == "invisible") {
                 var row = document.createElement("div");
                 // row.classList.add("row");
                 row.classList.add("clearfix");
@@ -424,7 +424,7 @@ function createAttributePanel(nodeCopy, title) {
                 label.classList.remove("col-md-12");
                 label.classList.add("col-lg-6");
                 label.classList.add("col-md-6");
-                label.innerHTML = "Require";
+                label.innerHTML = item;
                 input.classList.remove("col-lg-12");
                 input.classList.remove("col-md-12");
                 input.classList.add("col-md-6");
@@ -513,8 +513,8 @@ function createAttributePanel(nodeCopy, title) {
         for (var elem in controls) {
 
             htmlNodeCopy["CUST"][ctrType] = this.value;
-            // exception for require fields
-            if (ctrType == "required") {
+            // exception for require and invisible fields
+            if (ctrType == "required" || ctrType == "invisible") {
                 this.value = this.checked;
             }
             if (controls[elem] instanceof Node && ctrType == "placeholder" && (controls[elem].type == "text" || controls[elem].type == "number")) {

@@ -29,6 +29,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -64,6 +69,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -94,6 +104,11 @@ var data = [{
             },
             "required": {
                 "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
                 "Input Type": "checkbox",
                 "value": false
             }
@@ -134,6 +149,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -167,6 +187,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -197,6 +222,11 @@ var data = [{
             },
             "required": {
                 "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
                 "Input Type": "checkbox",
                 "value": false
             }
@@ -234,6 +264,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -261,6 +296,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -286,6 +326,11 @@ var data = [{
             },
             "required": {
                 "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
                 "Input Type": "checkbox",
                 "value": false
             }
@@ -317,6 +362,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -342,6 +392,11 @@ var data = [{
             },
             "required": {
                 "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
                 "Input Type": "checkbox",
                 "value": false
             }
@@ -371,6 +426,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -396,6 +456,11 @@ var data = [{
             },
             "required": {
                 "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
                 "Input Type": "checkbox",
                 "value": false
             }
@@ -432,6 +497,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -466,6 +536,11 @@ var data = [{
                 "label": "Required",
                 "Input Type": "checkbox",
                 "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
             }
         }
     }, {
@@ -498,6 +573,11 @@ var data = [{
             },
             "required": {
                 "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
                 "Input Type": "checkbox",
                 "value": false
             }
