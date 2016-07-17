@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/imagePreview.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
     <link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -86,7 +87,7 @@
                 </div>
             </div>
         </div>
-       <template id = "AppTemp">
+        <template id = "AppTemp">
         <a class='mini-broad' app-role = "link">
             <img app-role = "AppIcon">
         </a>
@@ -96,14 +97,15 @@
             <div class="container-fluid">
                 <!-- Breadcrumb stay here -->
                 <div class="col-md-12 col-lg-12 ">
-                    <h1 class="col-md-6 col-lg-6"> Create Options Set</h1>
+                    <h1 class="col-md-6 col-lg-6"> Create Product</h1>
                 </div>
             </div>
         </section>
         <hr>
         <!-- Metro style -->
-        <div class="container-fluid attribute-sets" id="start-offset">
-            
+        <div class="container-fluid attribute-sets page-wrap" id="start-offset" >
+            <div class = "controlExpanding"></div> 
+            <div class = "contentCollasing"></div>
     	</div>
     <!-- /Right Sidebar -->
     <!-- /Metro style -->
@@ -188,7 +190,22 @@ $(document).ready(function() {
             // caption.innerHTML = data[i].name;
             root.appendChild(document.importNode(AppTemplate, true));
         }
+        
     };
+    $(function(){
+
+    $('#slide-submenu').on('click',function() {                 
+        $(this).closest('.list-group').fadeOut('slide',function(){
+            $('.mini-submenu').fadeIn();    
+        });
+        
+      });
+
+    $('.mini-submenu').on('click',function(){       
+        $(this).next('.list-group').toggle('slide');
+        $('.mini-submenu').hide();
+    })
+})
 
 });
 

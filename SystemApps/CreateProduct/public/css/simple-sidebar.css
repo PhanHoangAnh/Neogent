@@ -1,0 +1,35 @@
+.contentExpanding {
+    width: 100%;
+    min-height: 100%;
+}
+
+.contentCollasing {
+    width: 75%;
+    min-height: 100%;
+    border: 1px solid blue; 
+}
+
+.controlExpanding {
+    width: 25%;
+    min-height: 100%;
+    border: 1px solid red; 
+    margin-right: 10px;
+}
+
+.controlCollasing {
+    width: 0;
+    min-height: 100%;
+}
+
+.page-wrap {
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
