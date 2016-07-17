@@ -9,9 +9,9 @@ var setting = [{
     path: "../CreateOptionSets/",
     logo: "OptionSets/img/LogoIcon.png"
 }, {
-    name: "Template",
-    url: "template",
-    path: "../AppTemplate/",
+    name: "Create Product",
+    url: "createProduct",
+    path: "../CreateProduct/",
     logo: "template/imgs/icon.png"
 }, {
     name: "Template",
