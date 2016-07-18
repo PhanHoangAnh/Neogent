@@ -2,7 +2,7 @@
 <html lang="en">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Attribute Sets</title>
+<title>Create Product</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -97,8 +97,18 @@ img {
             <img app-role="AppIcon">
         </a>
     </template>
+    <template id="optionSet">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;" app-role="optionSet">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <img src='../img/logo.png' id="iconHolder" app-role="icon">
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                <legend app-role="setsName">Set's Name</legend>
+            </div>
+        </div>
+    </template>
     <!-- /NavBar -->
-    <section class='heading-page' style="background:url('img/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: .4">
+    <section class='heading-page' style="background:url('img/createProduct.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
         <div class="container-fluid">
             <!-- Breadcrumb stay here -->
             <div class="col-md-12 col-lg-12 ">
@@ -109,15 +119,14 @@ img {
     <hr>
     <!-- Metro style -->
     <div class="container-fluid attribute-sets page-wrap" id="start-offset">
-        <div class="contentCollasing content">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    Set Product
-                    <button type="button" class="btn btn-default" id="showPanel">Show Panel</button>
+        <div class="contentCollasing content" id="content">
+            <div class="row" style="position: relative;">
+                <div id="showPanel">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
-        <div class="controlExpanding">
+        <div class="controlExpanding" id="panel">
             <div class="panel panel-default">
                 <div class="panel-body">List of Attributes Sets</div>
             </div>
@@ -183,6 +192,15 @@ $(document).ready(function() {
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
     LoadApp();
+    var showPanel = document.getElementById("showPanel");
+    showPanel.addEventListener("click", function(evt) {
+        var content = document.getElementById("content");
+        var panel = document.getElementById("panel");
+        content.classList.toggle("contentExpanding");
+        content.classList.toggle("contentCollasing");
+        panel.classList.toggle("controlCollasing");
+        panel.classList.toggle("controlExpanding");
+    }, false);
 
     function LoadApp() {
         var root = document.getElementById("AppManagerBoard");

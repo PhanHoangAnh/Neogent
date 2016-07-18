@@ -48,3 +48,18 @@
     display: flex;
     /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
+
+#showPanel {
+    position: absolute;
+    top: 0;
+    right: -0px;
+   /* width: 32px;
+    height: 32px;
+    background: #fafafa;*/
+    cursor: pointer;
+    padding: 10px;
+    /*text-align: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 30px;*/
+}

@@ -109,20 +109,5 @@ router.get("/getOptionSets", function(req, res, next) {
 
 });
 
-router.get("/deleteOptionSets/:id", function(req, res, next) {
-    var _id = req.params.id;
-    // console.log("remove id: ", _id);
-    var optionSets = mongoose.model('OptionSets');
-    optionSets.findByIdAndRemove(_id, function(err) {
-        objResult.status = 0
-        objResult.err = null;
-        if (err) {
-            objResult.status = 5;
-            objResult.err = err;
-        }
-        res.send(objResult);
-    })
-});
-
 app.use(router);
 module.exports = app;
