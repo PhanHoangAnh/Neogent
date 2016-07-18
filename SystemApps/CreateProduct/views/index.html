@@ -109,11 +109,15 @@ img {
     <hr>
     <!-- Metro style -->
     <div class="container-fluid attribute-sets page-wrap" id="start-offset">
-        <div class="contentCollasing content" id = "content">
-        <button type="button" class="btn btn-default pull-right" id="showPanel">Show Panel</button>
-        
+        <div class="contentCollasing content">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Set Product
+                    <button type="button" class="btn btn-default" id="showPanel">Show Panel</button>
+                </div>
+            </div>
         </div>
-        <div class="controlExpanding" id = "panel">
+        <div class="controlExpanding">
             <div class="panel panel-default">
                 <div class="panel-body">List of Attributes Sets</div>
             </div>
@@ -179,16 +183,6 @@ $(document).ready(function() {
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
     LoadApp();
-
-    var showPanel = document.getElementById("showPanel");
-    showPanel.addEventListener("click",function(evt){
-        var content = document.getElementById("content");
-        var panel = document.getElementById("panel");
-        content.classList.toggle("contentExpanding");
-        content.classList.toggle("contentCollasing");
-        panel.classList.toggle("controlCollasing");
-        panel.classList.toggle("controlExpanding");
-    },false);
 
     function LoadApp() {
         var root = document.getElementById("AppManagerBoard");

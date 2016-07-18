@@ -1,24 +1,33 @@
+.content {
+    background-color: #fafafa;
+}
+
 .contentExpanding {
     width: 100%;
     min-height: 100%;
+    -webkit-transition: width 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
 }
 
 .contentCollasing {
     width: 75%;
     min-height: 100%;
-    border: 1px solid blue; 
+    -webkit-transition: width 1s;
+    /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
 }
 
 .controlExpanding {
     width: 25%;
     min-height: 100%;
-    border: 1px solid red; 
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .controlCollasing {
     width: 0;
     min-height: 100%;
+    display: none;
 }
 
 .page-wrap {
