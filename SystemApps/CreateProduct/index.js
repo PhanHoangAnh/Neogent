@@ -46,47 +46,6 @@ objResult.status = 0
 objResult.err = null;
 objResult.return_id = null;
 //
-router.post("/updateOptionSets", function(req, res, next) {
-    // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
-
-    //var optionSets = dbEngine.OptionSets();
-    var optionSets = mongoose.model('OptionSets');
-    var _id = req.body.objId;
-    console.log("Not id ?", !_id);
-    if (!_id) {
-        var doc = new optionSets();
-        doc._id = _id = mongoose.Types.ObjectId();
-        doc.setName = req.body.setName;
-        doc.scope = "Global";
-        doc.components = req.body.components;
-        doc.shopName = req.shopname;
-        doc.save(function(err) {
-            objResult.status = 1;
-            objResult.err = err;
-            objResult.return_id = _id;
-            res.send(objResult);
-        });
-    } else {
-        optionSets.findById(_id, function(err, doc) {
-            if (err) {
-                objResult.status = 2;
-                objResult.err = err;
-                res.send(objResult);
-            } else {
-                doc.setName = req.body.setName;
-                doc.scope = "Global";
-                doc.components = req.body.components;
-                doc.shopName = req.shopname;
-                doc.save(function(error) {
-                    objResult.status = 3;
-                    objResult.err = error;
-                    objResult.return_id = _id;
-                    res.send(objResult);
-                })
-            }
-        });
-    }
-});
 
 router.get("/getOptionSets", function(req, res, next) {
     // console.log("from /getOptionSets");

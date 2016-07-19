@@ -9,8 +9,8 @@ var setting = [
     url: "OptionSets",
     logo: "OptionSets/img/LogoIcon.png"
 }, {
-    name: "Template",
-    url: "template",
+    name: "createProduct",
+    url: "createProduct",
     logo: "template/imgs/icon.png"
 },
 {

@@ -107,6 +107,16 @@ img {
             </div>
         </div>
     </template>
+    <template id="controlTemplate">
+        <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
+            <div class="col-md-3 col-lg-3">
+                <label data-controltype="label"></label>
+            </div>
+            <div class="col-md-9 col-lg-9" app-role="inputHandler">
+                <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
+            </div>
+        </div>
+    </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/createProduct.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
         <div class="container-fluid">
@@ -120,21 +130,19 @@ img {
     <!-- Metro style -->
     <div class="container-fluid attribute-sets page-wrap" id="start-offset">
         <div class="contentCollasing content" id="content">
-            <div class="row" style="position: relative;">
+            <div class="row" style="position: relative; min-height: 32px">
                 <div id="showPanel">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                 </div>
             </div>
-            <div class = "connectedSortable" id = "productAttributes" style = "min-height:100%">
-                
+            <div class="connectedSortable" id="productAttributes" style="min-height:100%">
             </div>
         </div>
         <div class="controlExpanding" id="panel">
             <div class="panel panel-default">
                 <div class="panel-body">List of Attributes Sets</div>
             </div>
-            <div class = "connectedSortable" id = "LoadOptionSets">
-                
+            <div class="connectedSortable" id="LoadOptionSets">
             </div>
         </div>
     </div>
@@ -197,7 +205,7 @@ $(document).ready(function() {
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
-    LoadApp();
+    LoadRelatedApp();
     requestOptionSets();
     var showPanel = document.getElementById("showPanel");
     showPanel.addEventListener("click", function(evt) {
@@ -209,7 +217,7 @@ $(document).ready(function() {
         panel.classList.toggle("controlExpanding");
     }, false);
 
-    function LoadApp() {
+    function LoadRelatedApp() {
         var root = document.getElementById("AppManagerBoard");
         var AppTemplate = document.getElementById('AppTemp').content;
         var pathArray = window.location.pathname.split('/');

@@ -21,7 +21,19 @@ $(function() {
 
         },
         receive: function(e, ui) {
-            // ui.sender.sortable("cancel");
+            // 
+            if (ui.item[0].getAttribute("app-role") == "optionSet") {
+                // Do some stuff here        
+                var root = document.getElementById("productAttributes");
+                // clear root first
+                while (root.firstChild) {
+                    root.removeChild(root.firstChild);
+                }
+                for (var i in ui.item[0]["CUST"]["components"]) {
+                    create_productAttributes(ui.item[0]["CUST"]["components"][i]);
+                }
+            }
+            ui.sender.sortable("cancel");
         },
         placeholder: "ui-sortable-placeholder",
         out: function(event, ui) {
@@ -50,7 +62,7 @@ function requestOptionSets() {
         }
     });
     // end of Get Attributes List from server
-}
+};
 var newId = 0;
 
 function createOptionSetPanel(optSet) {
@@ -66,8 +78,18 @@ function createOptionSetPanel(optSet) {
         optionSetName.style = "border-bottom: 1px solid #555;";
         var tempContainer = optionSetTemplate.querySelector('[app-role = "optionSet"]');
         tempContainer.id = newId;
-        var node = _root.appendChild(document.importNode(optionSetTemplate, true));
+        _root.appendChild(document.importNode(optionSetTemplate, true));
         var realNode = document.getElementById(newId);
         realNode["CUST"] = optSet[i];
     }
+};
+
+function create_productAttributes(prop) {
+    console.log("component properties: ", prop);
+    var root = document.getElementById("productAttributes");
+    // create template
+    var controlTemplate = document.getElementById("controlTemplate").content
+    controlTemplate.querySelector('[data-controltype="label"]').innerHTML = prop["attributes"]["label"];
+    controlTemplate.querySelector('[data-controltype="describe"]').innerHTML = prop["attributes"]['describe'];
+    root.appendChild(document.importNode(controlTemplate, true));
 }

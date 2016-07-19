@@ -641,7 +641,7 @@ function saveElement() {
         }
     }
     compObj.components = printedList
-    document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
+    // document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
 }
 
 function initIcon(el) {
