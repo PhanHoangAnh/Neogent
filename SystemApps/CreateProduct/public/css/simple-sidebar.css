@@ -1,5 +1,8 @@
 .content {
-    background-color: #d3d3d3;
+    background-color: #9d968e;
+    /*#0f1119;*/
+    /*#21263a;*/
+    color: #fafafa;
 }
 
 .contentExpanding {
@@ -53,7 +56,7 @@
     position: absolute;
     top: 0;
     right: -0px;
-   /* width: 32px;
+    /* width: 32px;
     height: 32px;
     background: #fafafa;*/
     cursor: pointer;

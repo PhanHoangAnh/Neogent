@@ -29,9 +29,8 @@ $(function() {
                 while (root.firstChild) {
                     root.removeChild(root.firstChild);
                 }
-                for (var i in ui.item[0]["CUST"]["components"]) {
-                    create_productAttributes(ui.item[0]["CUST"]["components"][i]);
-                }
+
+                create_productAttributes(ui.item[0]["CUST"]["components"]);
             }
             ui.sender.sortable("cancel");
         },
@@ -85,11 +84,56 @@ function createOptionSetPanel(optSet) {
 };
 
 function create_productAttributes(prop) {
-    console.log("component properties: ", prop);
-    var root = document.getElementById("productAttributes");
-    // create template
-    var controlTemplate = document.getElementById("controlTemplate").content
-    controlTemplate.querySelector('[data-controltype="label"]').innerHTML = prop["attributes"]["label"];
-    controlTemplate.querySelector('[data-controltype="describe"]').innerHTML = prop["attributes"]['describe'];
-    root.appendChild(document.importNode(controlTemplate, true));
+    // console.log("component properties: ", prop);
+    for (var i in prop) {
+        newId++;
+        var _root = document.getElementById("productAttributes");
+        // create template
+        var controlTemplate = document.getElementById("controlTemplate").content
+        controlTemplate.querySelector('[data-controltype="label"]').innerHTML = prop[i]["attributes"]["label"];
+        controlTemplate.querySelector('[data-controltype="describe"]').innerHTML = prop[i]["attributes"]['describe'];
+        var inputHandler = controlTemplate.querySelector('[app-role="inputHandler"]');
+        inputHandler.id = newId;
+        _root.appendChild(document.importNode(controlTemplate, true));
+        var rHandler = document.getElementById(newId);
+        createInputObject(rHandler, prop[i]["data-controlType"], prop[i]["attributes"]);
+    }
+
+}
+
+function createInputObject(node, cType, attributes) {
+    var inputObject = null;
+    if (cType == "radio" || cType == "checkbox") {
+        console.log(attributes);
+        var opts = attributes["options"].split('\n');
+        for (var i in opts) {
+            inputObject = document.getElementById("optionInput").content;
+            var input = inputObject.querySelector('[app-role = "option"]');
+            input.value = i;
+            var span = inputObject.querySelector('[app-role = "displayValue"]');
+            span.innerHTML = opts[i];
+            input.type = cType;
+            input.id = attributes["id"];
+            input.name = attributes["id"];
+            var rObject = document.importNode(inputObject, true);
+            var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+            node.insertBefore(rObject, describe);
+        }
+    } else if (cType == "select") {
+
+    } else if (cType == "image") {
+        return;
+    } else {
+        inputObject = document.getElementById("standardInput").content;
+        var input = inputObject.querySelector('[data-controltype="text"]');
+        input.type = cType;
+        input.id = attributes["id"];
+        input.placeholder = attributes["placeholder"];
+        input.min = attributes["min"];
+        input.max = attributes["max"];
+        var rObject = document.importNode(inputObject, true);
+        var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+        node.insertBefore(rObject, describe);
+    }
+
 }
