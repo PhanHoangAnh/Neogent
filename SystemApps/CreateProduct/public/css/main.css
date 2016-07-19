@@ -525,7 +525,7 @@ em {
 }
 /* line 298, ../scss/main.scss */
 .attribute-sets legend, .attribute-sets label, .attribute-sets .help-block, .attribute-sets a, .attribute-sets span {
-  color: #FFF;
+  color: #555;
   font-weight: normal;
 }
 /* line 303, ../scss/main.scss */

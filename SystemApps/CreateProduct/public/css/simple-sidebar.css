@@ -1,8 +1,9 @@
 .content {
-    background-color: #9d968e;
+    background-color: #d2d2d2;
+    /*rgba(0, 19, 16, .8)*/
     /*#0f1119;*/
     /*#21263a;*/
-    color: #fafafa;
+    /*color: #575757;*/
 }
 
 .contentExpanding {
