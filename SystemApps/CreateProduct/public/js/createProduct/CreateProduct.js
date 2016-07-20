@@ -98,7 +98,6 @@ function create_productAttributes(prop) {
         var rHandler = document.getElementById(newId);
         createInputObject(rHandler, prop[i]["data-controlType"], prop[i]["attributes"]);
     }
-
 }
 
 function createInputObject(node, cType, attributes) {
@@ -134,8 +133,8 @@ function createInputObject(node, cType, attributes) {
             opt.innerHTML = opts[i];
             select.appendChild(opt);
         }
-        console.log(select);
         // var rObject = document.importNode(inputObject, true);
+        select.id = attributes.id;
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(document.importNode(inputObject, true), describe);
         // clear select after import
@@ -144,6 +143,13 @@ function createInputObject(node, cType, attributes) {
         }
 
     } else if (cType == "image") {
+        console.log('from image', attributes);
+        inputObject = document.getElementById("imgInput").content;
+        var img = inputObject.querySelector('[data-controltype="img"]');
+        img.id = attributes.id;
+        var rObject = document.importNode(inputObject, true);
+        var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+        node.insertBefore(rObject, describe);        
         return;
     } else {
         inputObject = document.getElementById("standardInput").content;

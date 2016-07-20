@@ -123,6 +123,16 @@ img {
     <template id="standardInput">
         <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
     </template>
+    <template id="selectInput">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
+        </select>
+    </template>
+    <template id="imgInput">
+        <div class="col-md-9 col-lg-9">
+            <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" class="col-md-12 col-lg-12 form-control" style="height: auto;">
+            <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
+        </div>
+    </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/createProduct.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
         <div class="container-fluid">
@@ -143,40 +153,62 @@ img {
             </div>
             <fieldset class="scheduler-border" style="margin: 10px">
                 <legend class="scheduler-border">System Attribute</legend>
-                <!-- Custom SKU -->
-                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                <!-- Displayed Name -->
+                <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Custom Atribute</label>
+                        <label data-controltype="label">Displayed Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Custom Attribute" data-controltype="text">
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Custom Attribute</span>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Displayed Name" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Disaplayed Name</span>
+                    </div>
+                </div>
+                <!-- Custom SKU -->
+                <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Custom SKU</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Custom SKU" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Custom SKU</span>
                     </div>
                 </div>
                 <!-- Price -->
-                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                <!-- https://gist.github.com/Fluidbyte/2973986 -->
+                <!-- Base -->
+                <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Price</label>
+                        <label data-controltype="label">Base Price</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Describe attribute</span>
+                        <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Base Price" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Base Price</span>
+                    </div>
+                </div>
+                <!-- Current -->
+                <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Current Price</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Current Price" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Current Price</span>
                     </div>
                 </div>
                 <!-- Unit -->
-                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Unit</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Unit </span>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Units of Measurement" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Unit</span>
                     </div>
                 </div>
                 <!-- Currency -->
-                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Text Input</label>
+                        <label data-controltype="label">Currency</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
