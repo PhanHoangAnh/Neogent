@@ -104,8 +104,10 @@ function create_productAttributes(prop) {
 function createInputObject(node, cType, attributes) {
     var inputObject = null;
     if (cType == "radio" || cType == "checkbox") {
-        console.log(attributes);
         var opts = attributes["options"].split('\n');
+        opts = opts.filter(function(n) {
+            return n != "";
+        });
         for (var i in opts) {
             inputObject = document.getElementById("optionInput").content;
             var input = inputObject.querySelector('[app-role = "option"]');
@@ -120,6 +122,26 @@ function createInputObject(node, cType, attributes) {
             node.insertBefore(rObject, describe);
         }
     } else if (cType == "select") {
+        inputObject = document.getElementById("selectInput").content;
+        var select = inputObject.querySelector('[data-controltype="select"]');
+        var opts = attributes["options"].split('\n');
+        opts = opts.filter(function(n) {
+            return n != "";
+        });
+        for (var i in opts) {
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerHTML = opts[i];
+            select.appendChild(opt);
+        }
+        console.log(select);
+        // var rObject = document.importNode(inputObject, true);
+        var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+        node.insertBefore(document.importNode(inputObject, true), describe);
+        // clear select after import
+        while (select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
 
     } else if (cType == "image") {
         return;

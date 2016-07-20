@@ -108,14 +108,20 @@ img {
         </div>
     </template>
     <template id="controlTemplate">
-        <div class="row control" style="position: relative; left: 0px; top: 0px;">
+        <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
             <div class="col-md-3 col-lg-3">
-                <label data-controltype="label">Text Input</label>
+                <label data-controltype="label"></label>
             </div>
             <div class="col-md-9 col-lg-9" app-role="inputHandler">
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
             </div>
         </div>
+    </template>
+    <template id="optionInput">
+        <input type="" name="" class="c-left" value="0" app-role="option"><span class="col-md-11 col-lg-11" app-role="displayValue"></span>
+    </template>
+    <template id="standardInput">
+        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
     </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/createProduct.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
@@ -130,13 +136,60 @@ img {
     <!-- Metro style -->
     <div class="container-fluid attribute-sets page-wrap" id="start-offset">
         <div class="contentCollasing content" id="content">
-            <div class="row" style="position: relative;">
+            <div class="row" style="position: relative; min-height: 32px">
                 <div id="showPanel">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
                 </div>
             </div>
-            <div class="connectedSortable" id="productAttributes" style="min-height:100%">
-            </div>
+            <fieldset class="scheduler-border" style="margin: 10px">
+                <legend class="scheduler-border">System Attribute</legend>
+                <!-- Custom SKU -->
+                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Custom Atribute</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Custom Attribute" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Custom Attribute</span>
+                    </div>
+                </div>
+                <!-- Price -->
+                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Price</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Describe attribute</span>
+                    </div>
+                </div>
+                <!-- Unit -->
+                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Unit</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Unit </span>
+                    </div>
+                </div>
+                <!-- Currency -->
+                <div class="row control" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Text Input</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Describe attribute</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="scheduler-border" style="margin: 10px">
+                <legend class="scheduler-border">Custom Attribute</legend>
+                <div class="connectedSortable" id="productAttributes" style="min-height:100px;">
+                    <p>Drag Attribute Set here</p>
+                </div>
+            </fieldset>
         </div>
         <div class="controlExpanding" id="panel">
             <div class="panel panel-default">
