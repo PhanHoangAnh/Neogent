@@ -96,12 +96,13 @@ function create_productAttributes(prop) {
         inputHandler.id = newId;
         _root.appendChild(document.importNode(controlTemplate, true));
         var rHandler = document.getElementById(newId);
-        createInputObject(rHandler, prop[i]["data-controlType"], prop[i]["attributes"]);
+        createInputObject(rHandler, prop[i]["data-controlType"], prop[i]["attributes"], prop[i]);
     }
 }
 
-function createInputObject(node, cType, attributes) {
+function createInputObject(node, cType, attributes, origin) {
     var inputObject = null;
+    // console.log("rawData: ", origin);
     if (cType == "radio" || cType == "checkbox") {
         var opts = attributes["options"].split('\n');
         opts = opts.filter(function(n) {
@@ -120,6 +121,13 @@ function createInputObject(node, cType, attributes) {
             var describe = node.parentNode.querySelector('[data-controltype="describe"]');
             node.insertBefore(rObject, describe);
         }
+        var rInputs = node.querySelectorAll('[app-role="option"]');
+        // rInputs["DATASTORE"] = origin;
+        console.log(rInputs);
+        for (var i = 0; i < rInputs.length; i++) {
+            rInputs[i].addEventListener("click", getInputFromOption, false);
+            // console.log(getEventListener(rInputs[i]));
+        }
     } else if (cType == "select") {
         inputObject = document.getElementById("selectInput").content;
         var select = inputObject.querySelector('[data-controltype="select"]');
@@ -129,7 +137,7 @@ function createInputObject(node, cType, attributes) {
         });
         for (var i in opts) {
             var opt = document.createElement('option');
-            opt.value = i;
+            // opt.value = i;
             opt.innerHTML = opts[i];
             select.appendChild(opt);
         }
@@ -141,9 +149,11 @@ function createInputObject(node, cType, attributes) {
         while (select.firstChild) {
             select.removeChild(select.firstChild);
         }
+        var rInput = node.querySelector('[data-controltype="select"]');
+        rInput["DATASTORE"] = origin;
+        rInput.addEventListener("change", getInputData, false);
 
     } else if (cType == "image") {
-        console.log('from image', attributes);
         inputObject = document.getElementById("imgInput").content;
         var img = inputObject.querySelector('[data-controltype="img"]');
         img.id = attributes.id;
@@ -166,9 +176,22 @@ function createInputObject(node, cType, attributes) {
         input.placeholder = attributes["placeholder"];
         input.min = attributes["min"];
         input.max = attributes["max"];
+        input["DATASTORE"] = origin;
+        input.addEventListener("onchange", getInputData, false);
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(rObject, describe);
+        var rInput = node.querySelector('[data-controltype="text"]');
+        rInput["DATASTORE"] = origin;
+        rInput.addEventListener("change", getInputData, false);
     }
+}
 
+function getInputData(evt) {
+    this["DATASTORE"]["InputValue"] = evt.target.value;
+    console.log("from getInputData: ", this["DATASTORE"], this);
+}
+
+function getInputFromOption(evt) {
+    console.log("here");
 }
