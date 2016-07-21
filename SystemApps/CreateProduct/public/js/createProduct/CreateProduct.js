@@ -147,9 +147,14 @@ function createInputObject(node, cType, attributes) {
         inputObject = document.getElementById("imgInput").content;
         var img = inputObject.querySelector('[data-controltype="img"]');
         img.id = attributes.id;
+        // Set ratio to image
+        var imgMask = inputObject.querySelector('[data-controltype="imgMask"]');
+        var imgRatio = (attributes["height"] / attributes["weight"] * 100) + "%";
+        imgMask.style.paddingTop = imgRatio;
+        console.log("imgRatio: ", imgRatio);
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
-        node.insertBefore(rObject, describe);        
+        node.insertBefore(rObject, describe);
         return;
     } else {
         inputObject = document.getElementById("standardInput").content;
