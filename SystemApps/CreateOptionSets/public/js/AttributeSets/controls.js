@@ -557,6 +557,11 @@ var data = [{
                 "label": "Width ratio",
                 "Input Type": "number"
             },
+            "imageGroup": {
+                "label": "Images Group",
+                "Input Type": "text",
+                "value": "Assign Images Group"
+            },
             "displayGroup": {
                 "label": "Assign Dipsplay Group",
                 "Input Type": "text",

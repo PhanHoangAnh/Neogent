@@ -152,6 +152,8 @@ function createInputObject(node, cType, attributes) {
         var imgRatio = (attributes["height"] / attributes["width"] * 100) + "%";
         imgMask.style.paddingTop = imgRatio;
         console.log("imgRatio: ", imgRatio);
+        var imgsCollection = inputObject.querySelector('[data-controltype="collection"]') //data-controltype="collection"
+        imgsCollection.innerHTML = "In collection: " + attributes["imageGroup"];
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(rObject, describe);
