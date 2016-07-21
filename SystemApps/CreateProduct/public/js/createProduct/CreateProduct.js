@@ -122,11 +122,9 @@ function createInputObject(node, cType, attributes, origin) {
             node.insertBefore(rObject, describe);
         }
         var rInputs = node.querySelectorAll('[app-role="option"]');
-        // rInputs["DATASTORE"] = origin;
-        console.log(rInputs);
+        node["DATASTORE"] = origin;
         for (var i = 0; i < rInputs.length; i++) {
             rInputs[i].addEventListener("click", getInputFromOption, false);
-            // console.log(getEventListener(rInputs[i]));
         }
     } else if (cType == "select") {
         inputObject = document.getElementById("selectInput").content;
@@ -188,10 +186,24 @@ function createInputObject(node, cType, attributes, origin) {
 }
 
 function getInputData(evt) {
+    this.setAttribute("app-datastore", true);
     this["DATASTORE"]["InputValue"] = evt.target.value;
-    console.log("from getInputData: ", this["DATASTORE"], this);
+    console.log("from getInputData: ", this.parentNode["DATASTORE"], this);
 }
 
 function getInputFromOption(evt) {
-    console.log("here");
+    // console.log("here", evt.target.value, this.parentNode);
+
+    if (!this.parentNode["DATASTORE"]) {
+        console.log("No DATASTORE");
+        return;
+    }
+    this.parentNode.setAttribute("app-datastore", true);
+    if (this.parentNode["DATASTORE"]["data-controlType"] == "radio") {
+        this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
+    }
+    if (this.parentNode["DATASTORE"]["data-controlType"] == "checkbox") {
+        // this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
+        // console.log("Do it latter");
+    }
 }
