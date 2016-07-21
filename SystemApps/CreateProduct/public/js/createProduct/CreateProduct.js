@@ -149,7 +149,7 @@ function createInputObject(node, cType, attributes) {
         img.id = attributes.id;
         // Set ratio to image
         var imgMask = inputObject.querySelector('[data-controltype="imgMask"]');
-        var imgRatio = (attributes["height"] / attributes["weight"] * 100) + "%";
+        var imgRatio = (attributes["height"] / attributes["width"] * 100) + "%";
         imgMask.style.paddingTop = imgRatio;
         console.log("imgRatio: ", imgRatio);
         var rObject = document.importNode(inputObject, true);

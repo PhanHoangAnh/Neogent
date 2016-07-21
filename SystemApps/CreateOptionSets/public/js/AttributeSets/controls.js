@@ -553,8 +553,8 @@ var data = [{
                 "label": "Height ratio",
                 "Input Type": "number"
             },
-            "weight": {
-                "label": "Weight ratio",
+            "width": {
+                "label": "Width ratio",
                 "Input Type": "number"
             },
             "displayGroup": {
