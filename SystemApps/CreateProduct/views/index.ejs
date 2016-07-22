@@ -100,7 +100,7 @@ img {
     <template id="optionSet">
         <div class="row" style="margin-top: 5px;margin-bottom: 5px;" app-role="optionSet">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <img src='../img/logo.png' id="iconHolder" app-role="icon">
+                <img src='../img/logo.png' id="iconHolder" app-role="icon" >
             </div>
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                 <legend app-role="setsName">Set's Name</legend>
@@ -129,7 +129,7 @@ img {
     </template>
     <template id="imgInput">
         <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover;" data-controltype="img">
-            <div data-controltype="imgMask">
+            <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon">
             </div>
         </div>
         <span ><i data-controltype="collection">Collection</i></span>
@@ -256,6 +256,53 @@ img {
     </div>
     <!--  -->
     <!--  -->
+    <!--  -->
+<div class="modal fade" id="m_icon" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Select Icon for this Option Sets.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Drag and zoom the image to make an icon</p>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="imageBox" id='iconImg' style="height: 400px;">
+                            <div class="thumbBox" id = "thumbIcon"></div>
+                            <div class="spinner" style="display: none" id = "spinnerIcon" >Loading...</div>
+                        </div>
+                        <div class="action">
+                            <span class="file-input btn btn-primary btn-file">
+                                Browse&hellip;
+                                <input type="file" multiple id='imgSource'>
+                            </span>
+                            <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
+                            <input type="button" id="icon_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                            <input type="button" id="icon_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="preview">
+                            <img id='icon_preview' src="">
+                        </div>
+                        <div class="preview-md">
+                            <img id='icon_preview-md' src="">
+                        </div>
+                        <div class="preview-sm">
+                            <img id='icon_preview-sm' src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
     <script type="text/javascript" src="js/phasebeam3.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
 </body>
@@ -293,6 +340,11 @@ $(document).ready(function() {
     var data = <%- JSON.stringify(data) %>
     LoadRelatedApp();
     requestOptionSets();
+
+    document.querySelector('#imgSource').addEventListener('change', function(el) {
+        initImg(this);
+    }, false);
+
     var showPanel = document.getElementById("showPanel");
     showPanel.addEventListener("click", function(evt) {
         var content = document.getElementById("content");

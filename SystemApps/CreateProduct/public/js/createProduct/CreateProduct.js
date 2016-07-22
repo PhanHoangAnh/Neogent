@@ -159,7 +159,8 @@ function createInputObject(node, cType, attributes, origin) {
         var imgMask = inputObject.querySelector('[data-controltype="imgMask"]');
         var imgRatio = (attributes["height"] / attributes["width"] * 100) + "%";
         imgMask.style.paddingTop = imgRatio;
-        console.log("imgRatio: ", imgRatio);
+        imgMask.customRatio = imgRatio;
+        imgMask.customImg = img;
         var imgsCollection = inputObject.querySelector('[data-controltype="collection"]') //data-controltype="collection"
         imgsCollection.innerHTML = "In collection: " + attributes["imageGroup"];
         var rObject = document.importNode(inputObject, true);
@@ -215,3 +216,45 @@ function getInputFromOption(evt) {
     }
     // console.log(this.parentNode["DATASTORE"]["InputValue"])
 }
+
+var img_Store;
+
+function initImg(el) {
+    options = {
+        imageBox: '#iconImg',
+        thumbBox: '#thumbIcon',
+        spinner: '#spinnerIcon',
+        imgSrc: ''
+    }
+    var reader = new FileReader();
+    cropper = new cropbox(options, iconPreview);
+    reader.onload = function(e) {
+        options.imgSrc = e.target.result;
+        cropper.resetOption(options);
+    }
+
+    reader.readAsDataURL(el.files[0]);
+    // el.files = [];
+    document.querySelector('#icon_btnZoomIn').addEventListener('click', function() {
+        cropper.zoomIn();
+    })
+    document.querySelector('#icon_btnZoomOut').addEventListener('click', function() {
+        cropper.zoomOut();
+    })
+    $('#m_icon').on('hidden.bs.modal', function() {
+        // console.log('close modal:');
+        // document.getElementById('iconHolder').setAttribute('src', img_Store);
+    });
+    $('#m_icon').on('shown.bs.modal', function(event) {
+        //console.log($(event.relatedTarget));
+        cropper.resetOption(options);
+    });
+
+    function iconPreview(data) {
+        img_Store = data;
+        document.getElementById('icon_preview').setAttribute('src', data);
+        document.getElementById('icon_preview-md').setAttribute('src', data);
+        document.getElementById('icon_preview-sm').setAttribute('src', data);
+    }
+
+};
