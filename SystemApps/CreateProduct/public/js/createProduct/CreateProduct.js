@@ -111,7 +111,7 @@ function createInputObject(node, cType, attributes, origin) {
         for (var i in opts) {
             inputObject = document.getElementById("optionInput").content;
             var input = inputObject.querySelector('[app-role = "option"]');
-            input.value = i;
+            input.value = opts[i];
             var span = inputObject.querySelector('[app-role = "displayValue"]');
             span.innerHTML = opts[i];
             input.type = cType;
@@ -192,18 +192,26 @@ function getInputData(evt) {
 }
 
 function getInputFromOption(evt) {
-    // console.log("here", evt.target.value, this.parentNode);
-
     if (!this.parentNode["DATASTORE"]) {
         console.log("No DATASTORE");
         return;
     }
     this.parentNode.setAttribute("app-datastore", true);
-    if (this.parentNode["DATASTORE"]["data-controlType"] == "radio") {
+    if (evt.target.type == "radio") {
         this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
+        // get data from value
     }
-    if (this.parentNode["DATASTORE"]["data-controlType"] == "checkbox") {
+    if (evt.target.type == "checkbox") {
         // this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
-        // console.log("Do it latter");
+        var inputValues = [];
+        var checkArray = this.parentNode.querySelectorAll('[type="checkbox"]');
+        console.log(checkArray);
+        for (var i = 0; i < checkArray.length; i++) {
+            if (checkArray[i].checked == true) {
+                inputValues.push(checkArray[i].value);
+            }
+        }
+        this.parentNode["DATASTORE"]["InputValue"] = inputValues;
     }
+    // console.log(this.parentNode["DATASTORE"]["InputValue"])
 }
