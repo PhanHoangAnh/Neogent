@@ -129,7 +129,8 @@ img {
     </template>
     <template id="imgInput">
         <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover;" data-controltype="img">
-            <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon">
+            <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
+            <div data-controltype="imgMask" >
             </div>
         </div>
         <span ><i data-controltype="collection">Collection</i></span>
@@ -257,7 +258,7 @@ img {
     <!--  -->
     <!--  -->
     <!--  -->
-<div class="modal fade" id="m_icon" role="dialog">
+<div class="modal fade" id="cropImageModal" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
@@ -269,7 +270,7 @@ img {
                 <p>Drag and zoom the image to make an icon</p>
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="imageBox" id='iconImg' style="height: 400px;">
+                        <div class="imageBox" id='iconImg' style="height: 400px;" app-role = "imageBox">
                             <div class="thumbBox" id = "thumbIcon"></div>
                             <div class="spinner" style="display: none" id = "spinnerIcon" >Loading...</div>
                         </div>

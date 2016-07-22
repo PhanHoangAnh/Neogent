@@ -158,14 +158,20 @@ function createInputObject(node, cType, attributes, origin) {
         // Set ratio to image
         var imgMask = inputObject.querySelector('[data-controltype="imgMask"]');
         var imgRatio = (attributes["height"] / attributes["width"] * 100) + "%";
+        var rRatio = attributes["height"] / attributes["width"];
         imgMask.style.paddingTop = imgRatio;
-        imgMask.customRatio = imgRatio;
-        imgMask.customImg = img;
+
+        //imgMask.addEventListener('click', openModal, false);
         var imgsCollection = inputObject.querySelector('[data-controltype="collection"]') //data-controltype="collection"
         imgsCollection.innerHTML = "In collection: " + attributes["imageGroup"];
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(rObject, describe);
+        //config real Mask
+        var rMark = node.parentNode.querySelector('[data-controltype="imgMask"]');
+        rMark.addEventListener('click', openModal, false);
+        rMark.customRatio = rRatio;
+        rMark.customImg = img;
         return;
     } else {
         inputObject = document.getElementById("standardInput").content;
@@ -217,6 +223,21 @@ function getInputFromOption(evt) {
     // console.log(this.parentNode["DATASTORE"]["InputValue"])
 }
 
+function openModal(evt) {
+    console.log(this.customRatio, this.customImg);
+    var thumbIcon = document.getElementById("thumbIcon");
+    var imageBox = document.getElementById("iconImg");
+    thumbIcon.style.width = 700 + "px";
+    thumbIcon.style.marginLeft = (-350) + "px";
+    var height = 700 * this.customRatio;
+    var top = -height / 2;
+    thumbIcon.style.height = height + "px";
+    thumbIcon.style.marginTop = top + "px";
+    imageBox.style.height = height + 30 + "px";
+    console.log("height: ", height);
+    $(cropImageModal).modal("show");
+}
+
 var img_Store;
 
 function initImg(el) {
@@ -242,13 +263,14 @@ function initImg(el) {
         cropper.zoomOut();
     })
     $('#m_icon').on('hidden.bs.modal', function() {
-        // console.log('close modal:');
+        console.log('close modal:');
         // document.getElementById('iconHolder').setAttribute('src', img_Store);
     });
-    $('#m_icon').on('shown.bs.modal', function(event) {
-        //console.log($(event.relatedTarget));
+    $('#m_icon').on('show.bs.modal', function(event) {
+        console.log("here...open modal");
+        console.log($(event.relatedTarget));
         cropper.resetOption(options);
-    });
+    }).modal('show');
 
     function iconPreview(data) {
         img_Store = data;

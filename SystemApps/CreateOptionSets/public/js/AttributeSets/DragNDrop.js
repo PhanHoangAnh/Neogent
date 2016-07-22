@@ -641,7 +641,7 @@ function saveElement() {
         }
     }
     compObj.components = printedList
-    // document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
+        // document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
 }
 
 function initIcon(el) {
@@ -667,12 +667,12 @@ function initIcon(el) {
         cropper.zoomOut();
     })
     $('#m_icon').on('hidden.bs.modal', function() {
-        // console.log('close modal:');
         document.getElementById('iconHolder').setAttribute('src', img_Icon);
     });
-    $('#m_icon').on('shown.bs.modal', function() {
+    $('#m_icon').on('show.bs.modal', function() {
+        console.log('Good from show modal');
         cropper.resetOption(options);
-    });
+    }).modal('show');
 
     function iconPreview(data) {
         img_Icon = data;
