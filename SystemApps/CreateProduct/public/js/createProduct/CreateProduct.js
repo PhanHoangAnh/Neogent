@@ -171,7 +171,7 @@ function createInputObject(node, cType, attributes, origin) {
         var rMark = node.parentNode.querySelector('[data-controltype="imgMask"]');
         rMark.addEventListener('click', openModal, false);
         rMark.customRatio = rRatio;
-        rMark.customImg = img;
+        rMark.customImg = img.id;
         return;
     } else {
         inputObject = document.getElementById("standardInput").content;
@@ -223,19 +223,28 @@ function getInputFromOption(evt) {
     // console.log(this.parentNode["DATASTORE"]["InputValue"])
 }
 
+var currentImageTarget;
+var currentHeigh;
+var currentWidth;
+
 function openModal(evt) {
-    console.log(this.customRatio, this.customImg);
+    // console.log(this.customRatio, this.customImg);
+    img_Store = null;
     var thumbIcon = document.getElementById("thumbIcon");
     var imageBox = document.getElementById("iconImg");
-    thumbIcon.style.width = 700 + "px";
-    thumbIcon.style.marginLeft = (-350) + "px";
+
+    console.log("offsetWidth: ", imageBox.clientWidth);
+
+    currentHeigh = thumbIcon.style.width = 700 + "px";
+    currentWidth = thumbIcon.style.marginLeft = (-350) + "px";
     var height = 700 * this.customRatio;
     var top = -height / 2;
     thumbIcon.style.height = height + "px";
     thumbIcon.style.marginTop = top + "px";
     imageBox.style.height = height + 30 + "px";
-    console.log("height: ", height);
     $(cropImageModal).modal("show");
+    currentImageTarget = document.getElementById(this.customImg);
+
 }
 
 var img_Store;
@@ -261,22 +270,30 @@ function initImg(el) {
     })
     document.querySelector('#icon_btnZoomOut').addEventListener('click', function() {
         cropper.zoomOut();
-    })
-    $('#m_icon').on('hidden.bs.modal', function() {
-        console.log('close modal:');
-        // document.getElementById('iconHolder').setAttribute('src', img_Store);
     });
-    $('#m_icon').on('show.bs.modal', function(event) {
-        console.log("here...open modal");
-        console.log($(event.relatedTarget));
-        cropper.resetOption(options);
-    }).modal('show');
 
     function iconPreview(data) {
         img_Store = data;
         document.getElementById('icon_preview').setAttribute('src', data);
         document.getElementById('icon_preview-md').setAttribute('src', data);
         document.getElementById('icon_preview-sm').setAttribute('src', data);
+        // var prop = "#f3f3f3 url('" + img_Store + "') no-repeat right top"
+        // currentImageTarget.style.backgroundSize = 'contain';
+        // console.log(currentImageTarget.style.backgroundSize);
+        // currentImageTarget.style.background = prop;
     }
 
 };
+
+function saveImage() {
+    console.log("okie", !!img_Store, currentImageTarget, currentImageTarget.parentNode);
+    //1. Remove current element
+    //2. Create image instead of removed element
+    var img = document.createElement('img');
+    img.setAttribute('src', img_Store);
+    img.style.position = "absolute";
+    var mask = currentImageTarget.querySelector('[data-controltype="imgMask"]')
+    currentImageTarget.insertBefore(img, mask);
+
+    //3. Binding related information to system
+}

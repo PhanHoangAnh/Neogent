@@ -128,9 +128,9 @@ img {
         </select>
     </template>
     <template id="imgInput">
-        <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover;" data-controltype="img">
+        <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover; position:relative" data-controltype="img">
             <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
-            <div data-controltype="imgMask" >
+            <div data-controltype="imgMask" style="position:relative; z-index:5;" >
             </div>
         </div>
         <span ><i data-controltype="collection">Collection</i></span>
@@ -298,7 +298,7 @@ img {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick = 'saveImage()'>Done</button>
             </div>
         </div>
     </div>
