@@ -25,7 +25,7 @@ var cropbox = function(options, fn_cb) {
                     dw = parseInt(size[0]),
                     dh = parseInt(size[1]),
                     sh = parseInt(this.image.height),
-                    sw = parseInt(this.image.width);                    
+                    sw = parseInt(this.image.width);
                 canvas.width = width;
                 canvas.height = height;
                 var context = canvas.getContext("2d");
@@ -87,12 +87,21 @@ var cropbox = function(options, fn_cb) {
 
             // var pw = (el.clientWidth - w) / 2;
             // var ph = (el.clientHeight - h) / 2;
+            el = document.querySelector(options.imageBox);
 
             el.setAttribute('style',
                 'background-image: url(' + obj.image.src + '); ' +
                 'background-size: ' + w + 'px ' + h + 'px; ' +
                 'background-position: ' + obj.bgX + 'px ' + obj.bgY + 'px; ' +
                 'background-repeat: no-repeat');
+            el.style.height = currentHeight;
+            // //"url('img_tree.png')";
+            // el.style.backgroundImage = "url('" + obj.image.src + "')";
+            // el.style.
+            // el.style.
+            // el.style.
+            // el.style.
+
             fn_cb(obj.getDataURL());
         },
         imgMouseDown = function(e) {

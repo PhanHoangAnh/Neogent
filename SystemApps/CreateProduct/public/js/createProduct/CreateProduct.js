@@ -224,38 +224,37 @@ function getInputFromOption(evt) {
 }
 
 var currentImageTarget;
-var currentHeigh;
-var currentWidth;
+var currentHeight
 
 function openModal(evt) {
     // console.log(this.customRatio, this.customImg);
     img_Store = null;
     var thumbIcon = document.getElementById("thumbIcon");
     var imageBox = document.getElementById("iconImg");
-
-    console.log("offsetWidth: ", imageBox.clientWidth);
-
-    currentHeigh = thumbIcon.style.width = 700 + "px";
-    currentWidth = thumbIcon.style.marginLeft = (-350) + "px";
+    console.log("current Ratio: ", this.customRatio);
+    thumbIcon.style.width = 700 + "px";
+    thumbIcon.style.marginLeft = (-350) + "px";
     var height = 700 * this.customRatio;
+
     var top = -height / 2;
     thumbIcon.style.height = height + "px";
     thumbIcon.style.marginTop = top + "px";
-    imageBox.style.height = height + 30 + "px";
+    imageBox.style.height = currentHeight = height + 30 + "px";
     $(cropImageModal).modal("show");
     currentImageTarget = document.getElementById(this.customImg);
 
 }
 
 var img_Store;
+options = {
+    imageBox: '#iconImg',
+    thumbBox: '#thumbIcon',
+    spinner: '#spinnerIcon',
+    imgSrc: ''
+}
 
 function initImg(el) {
-    options = {
-        imageBox: '#iconImg',
-        thumbBox: '#thumbIcon',
-        spinner: '#spinnerIcon',
-        imgSrc: ''
-    }
+
     var reader = new FileReader();
     cropper = new cropbox(options, iconPreview);
     reader.onload = function(e) {
@@ -286,10 +285,19 @@ function initImg(el) {
 };
 
 function saveImage() {
+    if (!img_Store) {
+        return;
+    }
     console.log("okie", !!img_Store, currentImageTarget, currentImageTarget.parentNode);
     //1. Remove current element
+    var currentImgs = currentImageTarget.querySelectorAll('[app-datastore="true"]');
+    for (var i = 0; i < currentImgs.length; i++) {
+        currentImgs[i].parentNode.removeChild(currentImgs[i]);
+    }
+
     //2. Create image instead of removed element
     var img = document.createElement('img');
+    img.setAttribute('app-datastore', true);
     img.setAttribute('src', img_Store);
     img.style.position = "absolute";
     var mask = currentImageTarget.querySelector('[data-controltype="imgMask"]')
