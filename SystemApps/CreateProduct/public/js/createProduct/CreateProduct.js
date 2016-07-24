@@ -1,17 +1,3 @@
-// $(".connectedSortable").sortable({
-//     // connectWith: $(document.getElementById("productAttributes")),
-//     // remove: function(e, ui) {
-
-//     // },
-//     // receive: function(e, ui) {
-//     //     // ui.sender.sortable("cancel");
-//     // },
-//     // placeholder: "ui-sortable-placeholder",
-//     // out: function(event, ui) {
-
-//     // }
-// });
-
 $(function() {
     var productAttributes = document.querySelector("#productAttributes");
     $(".connectedSortable").sortable({
@@ -29,15 +15,12 @@ $(function() {
                 while (root.firstChild) {
                     root.removeChild(root.firstChild);
                 }
-
                 create_productAttributes(ui.item[0]["CUST"]["components"]);
             }
             ui.sender.sortable("cancel");
         },
         placeholder: "ui-sortable-placeholder",
-        out: function(event, ui) {
-
-        }
+        out: function(event, ui) {}
 
     });
 })
@@ -163,7 +146,7 @@ function createInputObject(node, cType, attributes, origin) {
 
         //imgMask.addEventListener('click', openModal, false);
         var imgsCollection = inputObject.querySelector('[data-controltype="collection"]') //data-controltype="collection"
-        imgsCollection.innerHTML = "In collection: " + attributes["imageGroup"];
+        imgsCollection.innerHTML = "Collection: " + attributes["imageGroup"];
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(rObject, describe);
@@ -173,6 +156,22 @@ function createInputObject(node, cType, attributes, origin) {
         rMark.customRatio = rRatio;
         rMark.customImg = img.id;
         return;
+    } else if (cType == 'textarea') {
+        inputObject = document.getElementById("textAreaInput").content;
+        var input = inputObject.querySelector('[data-controltype="textarea"]');
+        input.type = cType;
+        input.id = attributes["id"];
+        input.placeholder = attributes["placeholder"];
+        input.min = attributes["min"];
+        input.max = attributes["max"];
+        input["DATASTORE"] = origin;
+        input.addEventListener("onchange", getInputData, false);
+        var rObject = document.importNode(inputObject, true);
+        var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+        node.insertBefore(rObject, describe);
+        var rInput = node.querySelector('[data-controltype="textarea"]');
+        rInput["DATASTORE"] = origin;
+        rInput.addEventListener("change", getInputData, false);
     } else {
         inputObject = document.getElementById("standardInput").content;
         var input = inputObject.querySelector('[data-controltype="text"]');
@@ -275,10 +274,6 @@ function initImg(el) {
         document.getElementById('icon_preview').setAttribute('src', data);
         document.getElementById('icon_preview-md').setAttribute('src', data);
         document.getElementById('icon_preview-sm').setAttribute('src', data);
-        // var prop = "#f3f3f3 url('" + img_Store + "') no-repeat right top"
-        // currentImageTarget.style.backgroundSize = 'contain';
-        // console.log(currentImageTarget.style.backgroundSize);
-        // currentImageTarget.style.background = prop;
     }
 
 };
@@ -300,6 +295,5 @@ function saveImage() {
     img.style.position = "absolute";
     var mask = currentImageTarget.querySelector('[data-controltype="imgMask"]')
     currentImageTarget.insertBefore(img, mask);
-
     //3. Binding related information to system
 }
