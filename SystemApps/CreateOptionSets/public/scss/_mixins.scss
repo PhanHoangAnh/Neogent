@@ -160,6 +160,9 @@
 //mob: down - 767px
 //large mob: fix width: 566px;
 
+$w-tablet: 768px;
+$w-base: 992px;
+
 //media queries
 @mixin mobile {
   @media only screen and (max-width: $w-tablet - 1) {@content;}
