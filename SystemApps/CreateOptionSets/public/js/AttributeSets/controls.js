@@ -57,6 +57,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Text Input"
             },
+            "placeholder": {
+                "label": "Placeholder",
+                "Input Type": "text",
+                "value": "placeholder"
+            },
             "describe": {
                 "label": "More info",
                 "Input Type": "text",
