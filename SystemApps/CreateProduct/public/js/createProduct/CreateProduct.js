@@ -155,6 +155,7 @@ function createInputObject(node, cType, attributes, origin) {
         rMark.addEventListener('click', openModal, false);
         rMark.customRatio = rRatio;
         rMark.customImg = img.id;
+        rMark["DATASTORE"] = origin;
         return;
     } else if (cType == 'textarea') {
         inputObject = document.getElementById("textAreaInput").content;
@@ -194,7 +195,6 @@ function createInputObject(node, cType, attributes, origin) {
 function getInputData(evt) {
     this.setAttribute("app-datastore", true);
     this["DATASTORE"]["InputValue"] = evt.target.value;
-    console.log("from getInputData: ", this.parentNode["DATASTORE"], this);
 }
 
 function getInputFromOption(evt) {
@@ -284,16 +284,17 @@ function saveImage() {
     }
     // console.log("okie", !!img_Store, currentImageTarget, currentImageTarget.parentNode);
     //1. Remove current element
-    var currentImgs = currentImageTarget.querySelectorAll('[app-datastore="true"]');
+    var currentImgs = currentImageTarget.querySelectorAll('[app-img="true"]');
     for (var i = 0; i < currentImgs.length; i++) {
         currentImgs[i].parentNode.removeChild(currentImgs[i]);
     }
     //2. Create image instead of removed element
     var img = document.createElement('img');
-    img.setAttribute('app-datastore', true);
+    img.setAttribute('app-img', true);
     img.setAttribute('src', img_Store);
     img.style.position = "absolute";
     var mask = currentImageTarget.querySelector('[data-controltype="imgMask"]')
     currentImageTarget.insertBefore(img, mask);
-    //3. Binding related information to system
+    mask["DATASTORE"]["InputValue"] = img_Store;
+    mask.setAttribute("app-datastore", true);
 }
