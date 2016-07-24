@@ -66,11 +66,17 @@ function createOptionSetPanel(optSet) {
     }
 };
 
-function create_productAttributes(prop) {
+function create_productAttributes(prop, destination) {
     // console.log("component properties: ", prop);
+    var _root;
+    if (!destination) {
+        _root = document.getElementById("productAttributes");
+    } else {
+        _root = document.getElementById("systemAttributes");
+    }
+
     for (var i in prop) {
         newId++;
-        var _root = document.getElementById("productAttributes");
         // create template
         var controlTemplate = document.getElementById("controlTemplate").content
         controlTemplate.querySelector('[data-controltype="label"]').innerHTML = prop[i]["attributes"]["label"];
@@ -109,6 +115,44 @@ function createInputObject(node, cType, attributes, origin) {
         for (var i = 0; i < rInputs.length; i++) {
             rInputs[i].addEventListener("click", getInputFromOption, false);
         }
+    } else if (cType == "select_tags") {
+        inputObject = document.getElementById("selectInputTags").content;
+        var select = inputObject.querySelector('[data-controltype="select"]');
+        var opts = attributes["options"].split('\n');
+        opts = opts.filter(function(n) {
+            return n != "";
+        });
+        for (var i in opts) {
+            var opt = document.createElement('option');
+            // opt.value = i;
+            opt.innerHTML = opts[i];
+            select.appendChild(opt);
+        }
+        var rObject = document.importNode(inputObject, true);
+        select.id = attributes.id;
+        var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+        node.insertBefore(document.importNode(inputObject, true), describe);
+        // clear select after import
+        while (select.firstChild) {
+            select.removeChild(select.firstChild);
+        }
+        var rInput = node.querySelector('[data-controltype="select"]');
+        rInput["DATASTORE"] = origin;
+        // rInput.addEventListener("change", getInputData, false);
+        $(rInput).select2({
+                tags: true
+            })
+            .on("change", function(e) {
+                // http://stackoverflow.com/questions/15102000/jquery-select2-how-to-access-ajax-data-at-onchange-function
+                data = $(this).select2('data');
+                // console.log(data)
+                var inputValues = [];
+                for (var i = 0; i < data.length; i++) {
+                    inputValues.push(data[i].text);
+                }
+                rInput.parentNode.setAttribute("app-datastore", true);
+                rInput["DATASTORE"]["InputValue"] = inputValues;
+            });
     } else if (cType == "select") {
         inputObject = document.getElementById("selectInput").content;
         var select = inputObject.querySelector('[data-controltype="select"]');

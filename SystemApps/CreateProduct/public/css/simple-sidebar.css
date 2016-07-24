@@ -67,3 +67,6 @@
     padding-top: 10px;
     padding-bottom: 30px;*/
 }
+.select2-selection--multiple{
+    border-radius: 0px;
+}

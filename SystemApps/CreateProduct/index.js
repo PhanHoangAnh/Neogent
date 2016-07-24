@@ -5,6 +5,7 @@ var app = express();
 var router = express.Router();
 var path = require("path");
 var mongoose = require("mongoose");
+var systemAttribute = require("./systemAttribute.js");
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
@@ -36,7 +37,8 @@ router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
     res.render('index', {
         title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting
+        data: setting,
+        system: systemAttribute
     });
 });
 //  Global variables for Business functions
