@@ -224,7 +224,6 @@ function getInputFromOption(evt) {
 }
 
 var currentImageTarget;
-var currentHeight
 
 function openModal(evt) {
     // console.log(this.customRatio, this.customImg);
@@ -239,7 +238,7 @@ function openModal(evt) {
     var top = -height / 2;
     thumbIcon.style.height = height + "px";
     thumbIcon.style.marginTop = top + "px";
-    imageBox.style.height = currentHeight = height + 30 + "px";
+    imageBox.style.height = height + 30 + "px";
     $(cropImageModal).modal("show");
     currentImageTarget = document.getElementById(this.customImg);
 
@@ -288,13 +287,12 @@ function saveImage() {
     if (!img_Store) {
         return;
     }
-    console.log("okie", !!img_Store, currentImageTarget, currentImageTarget.parentNode);
+    // console.log("okie", !!img_Store, currentImageTarget, currentImageTarget.parentNode);
     //1. Remove current element
     var currentImgs = currentImageTarget.querySelectorAll('[app-datastore="true"]');
     for (var i = 0; i < currentImgs.length; i++) {
         currentImgs[i].parentNode.removeChild(currentImgs[i]);
     }
-
     //2. Create image instead of removed element
     var img = document.createElement('img');
     img.setAttribute('app-datastore', true);

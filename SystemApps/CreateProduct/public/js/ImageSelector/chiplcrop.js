@@ -89,19 +89,16 @@ var cropbox = function(options, fn_cb) {
             // var ph = (el.clientHeight - h) / 2;
             el = document.querySelector(options.imageBox);
 
-            el.setAttribute('style',
-                'background-image: url(' + obj.image.src + '); ' +
-                'background-size: ' + w + 'px ' + h + 'px; ' +
-                'background-position: ' + obj.bgX + 'px ' + obj.bgY + 'px; ' +
-                'background-repeat: no-repeat');
-            el.style.height = currentHeight;
-            // //"url('img_tree.png')";
-            // el.style.backgroundImage = "url('" + obj.image.src + "')";
-            // el.style.
-            // el.style.
-            // el.style.
-            // el.style.
-
+            // el.setAttribute('style',
+            // 'background-image: url(' + obj.image.src + '); ' +
+            // 'background-size: ' + w + 'px ' + h + 'px; ' +
+            // 'background-position: ' + obj.bgX + 'px ' + obj.bgY + 'px; ' +
+            // 'background-repeat: no-repeat');
+            // el.style.height = currentHeight;
+            el.style.backgroundImage = "url('" + obj.image.src + "')";
+            el.style.backgroundSize = w + 'px ' + h + 'px';
+            el.style.backgroundPosition = obj.bgX + 'px ' + obj.bgY + 'px';
+            el.style.backgroundRepeat = 'no-repeat';
             fn_cb(obj.getDataURL());
         },
         imgMouseDown = function(e) {
@@ -115,6 +112,7 @@ var cropbox = function(options, fn_cb) {
             stopEvent(e);
 
             if (obj.state.dragable) {
+
                 var x = e.clientX - obj.state.mouseX;
                 var y = e.clientY - obj.state.mouseY;
 
@@ -133,7 +131,6 @@ var cropbox = function(options, fn_cb) {
             }
         },
         imgMouseUp = function(e) {
-            console.log(e.target);
             stopEvent(e);
             obj.state.dragable = false;
         },
@@ -148,7 +145,6 @@ var cropbox = function(options, fn_cb) {
     obj.image.onload = function() {
         obj.spinner.style.display = 'none';
         setBackground();
-
         attachEvent(el, 'mousedown', imgMouseDown);
         attachEvent(el, 'mousemove', imgMouseMove);
         attachEvent(el, 'mouseup', imgMouseUp);
