@@ -333,21 +333,20 @@ function createSingleControlGroup(template, isReload) {
             container_div.setAttribute("data-controlType", "time");
             break;
         case ("image"):
-            // input = document.createElement("img");
-            // // input.setAttribute("src","./materials/sample.jpg");
-            // // https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg
-            // input.setAttribute("src", "https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg");
-            // input.style.height = "auto";
-            // input.classList.add("col-md-12");
-            // input.classList.add("col-lg-12");
-            // input.classList.add("form-control");
-            // input_cover.appendChild(input);
             input = document.createElement('div');
             input.style.backgroundImage = "url('https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg')";
             input.style.backgroundSize = 'cover';
             input.style.backgroundRepeat = 'no-repeat';
             var mask = document.createElement('div');
-            mask.style = "position: relative; z-index: 5; padding-top: 56.25%;"
+            var height = template["fields"]['height']['value'];
+            var width = template["fields"]['width']['value'];
+            var paddingTop = height / width * 100;
+            if (isNaN(paddingTop)) {
+                mask.style = "position: relative; z-index: 5; padding-top: 56.25%;"
+            } else {
+                mask.style = "position: relative; z-index: 5;"
+                mask.style.paddingTop = paddingTop + '%';
+            };
             mask.setAttribute("app-role", "mask");
             input.appendChild(mask);
             input_cover.appendChild(input);
@@ -527,13 +526,11 @@ function createAttributePanel(nodeCopy, title) {
             }
             // exception for width and height fields
             if (ctrType == "width" || ctrType == "height") {
-                if (!htmlNodeCopy["CUST"]['height']) {
-                    htmlNodeCopy["CUST"]['height'] = 1;
-                }
-                if (!htmlNodeCopy["CUST"]['width']) {
+                var paddingTop = htmlNodeCopy["CUST"]['height'] / htmlNodeCopy["CUST"]['width'] * 100;
+                if (isNaN(paddingTop)) {
                     htmlNodeCopy["CUST"]['width'] = 10;
+                    htmlNodeCopy["CUST"]['height'] = 10;
                 }
-                var paddingTop = htmlNodeCopy["CUST"]['height'] / htmlNodeCopy["CUST"]['width'] * 100
                 var mask = htmlNodeCopy.querySelector('[app-role="mask"]');
                 mask.style.paddingTop = paddingTop + '%';
             }
