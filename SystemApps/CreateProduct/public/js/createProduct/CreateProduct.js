@@ -162,6 +162,11 @@ function createInputObject(node, cType, attributes, origin) {
         inputObject = document.getElementById("selectInput").content;
         var select = inputObject.querySelector('[data-controltype="select"]');
         var opts = attributes["options"].split('\n');
+        // Exeption for currency select box
+        // if (attributes['id'] == "sysCurrency") {
+            
+        //     opts = currency;
+        // };
         opts = opts.filter(function(n) {
             return n != "";
         });

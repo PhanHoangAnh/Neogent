@@ -296,6 +296,7 @@ $(document).ready(function() {
     var data = <%- JSON.stringify(data) %>
     LoadRelatedApp();
     requestOptionSets();
+    var currency =<%-JSON.stringify(currency)%>;
 
     document.querySelector('#imgSource').addEventListener('change', function(el) {
         initImg(this);
@@ -342,10 +343,10 @@ $(document).ready(function() {
             $('.mini-submenu').hide();
         })
     });
-    var data =<%-JSON.stringify(system)%>;
-    create_productAttributes(data, true);
-    var currency =<%-JSON.stringify(currency)%>;
+    var data =<%-JSON.stringify(system)%>;    
+    currency =<%-JSON.stringify(currency)%>;
     // console.log("currency: ", currency);
+    create_productAttributes(data, true);
 
 });
 </script>
