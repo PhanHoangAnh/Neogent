@@ -554,12 +554,12 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
-            "height": {
-                "label": "Height ratio",
-                "Input Type": "number"
-            },
             "width": {
                 "label": "Width ratio",
+                "Input Type": "number"
+            },
+            "height": {
+                "label": "Height ratio",
                 "Input Type": "number"
             },
             "imageGroup": {

@@ -115,8 +115,13 @@ function createInputObject(node, cType, attributes, origin) {
         for (var i = 0; i < rInputs.length; i++) {
             rInputs[i].addEventListener("click", getInputFromOption, false);
         }
-    } else if (cType == "select_tags") {
-        inputObject = document.getElementById("selectInputTags").content;
+    } else if (cType == "select_tags" || cType == "select_tag_single") {
+        if (cType == "select_tags") {
+            inputObject = document.getElementById("selectInputTags").content;
+        } else {
+            inputObject = document.getElementById("selectInputSingle").content
+        }
+
         var select = inputObject.querySelector('[data-controltype="select"]');
         var opts = attributes["options"].split('\n');
         opts = opts.filter(function(n) {

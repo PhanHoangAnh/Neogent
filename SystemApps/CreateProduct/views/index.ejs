@@ -136,6 +136,10 @@ img {
         <select class="col-md-12 col-lg-12 form-control" data-controltype="select" multiple="multiple">
         </select>
     </template>
+    <template id="selectInputSingle">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select"">
+        </select>
+    </template>
     <template id="imgInput">
         <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover; position:relative" data-controltype="img">
             <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
@@ -338,8 +342,10 @@ $(document).ready(function() {
             $('.mini-submenu').hide();
         })
     });
-    var data =<%-JSON.stringify(system)%>
+    var data =<%-JSON.stringify(system)%>;
     create_productAttributes(data, true);
+    var currency =<%-JSON.stringify(currency)%>;
+    // console.log("currency: ", currency);
 
 });
 </script>

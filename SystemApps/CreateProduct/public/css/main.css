@@ -645,3 +645,7 @@ em {
   font-size: 18px;
   z-index: 2;
 }
+
+#systemAttributes .col-md-6.col-lg-6.control:nth-of-type(2n+1) {
+  clear: left;
+}

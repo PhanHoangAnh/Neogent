@@ -22,6 +22,14 @@ var resendObj = {};
 resendObj.status = 0;
 resendObj.message = "Okie";
 
+var currency = [];
+for (var i in systemAttribute.currency) {
+    var obj = {};
+    obj.i = i;
+    obj.name = systemAttribute.currency[i].name;
+    currency.push(obj);
+}
+
 router.use(function(req, res, next) {
     setting = requireUncached("./setting");
     next();
@@ -38,7 +46,8 @@ router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'Hello, this is template Application of : ' + req.shopname,
         data: setting,
-        system: systemAttribute
+        system: systemAttribute.system,
+        currency: currency
     });
 });
 //  Global variables for Business functions
