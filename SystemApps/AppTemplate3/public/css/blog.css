@@ -1,0 +1,144 @@
+.blog-excerpt li {
+    list-style: none;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.blog-excerpt li .block {
+    border-left: 3px solid #e8e8e8;
+    padding: 2em 0 1em 1em;
+    margin-left: 7.5em;
+    min-height: 150px;
+}
+
+@media screen and (max-width:480px) {
+    .blog-excerpt li .block {
+        border-left: 3px solid #e8e8e8;
+        padding: 2em 0 1em 1em;
+        margin-left: 0px;
+        min-height: 150px;
+    }
+}
+
+.blog-excerpt img {
+    height: auto;
+    width: 100%;
+}
+
+.blog-excerpt .post-title {
+    position: relative;
+    font-size: 18px;
+    overflow: hidden;
+    clear: both;
+    height: 45px;
+}
+
+.blog-excerpt .post-title:before {
+    content: "";
+    position: absolute;
+    left: -43px;
+    top: 3px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #d2d3d2;
+    border-radius: 14px;
+    background: #f9f9f9;
+}
+
+.blog-excerpt .post-title:after {
+    content: "...";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: calc(45px/2);
+    background: rgba(0.0.0.0);
+    font-size: 18px;
+}
+
+.blog-excerpt .excerpt {
+    margin-bottom: 14px;
+}
+
+.blog-excerpt .timestamp {
+    position: absolute;
+    left: -20px;
+    left: -120px;
+    top: 2px;
+    background: #e8e8e8;
+    color: #3e433e;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 80%;
+    font-style: oblique;
+}
+
+.blog-excerpt .timestamp:after {
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 0;
+    pointer-events: none;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 11px solid #e8e8e8;
+}
+
+.blog-excerpt .desc {
+    overflow: hidden;
+    clear: both;
+    position: relative;
+    height: 5.712em ;
+    /* exactly 4 lines */
+}
+
+.blog-excerpt .desc:after {
+    content: "...";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 1.2em;
+    background: rgba(0.0.0.0);
+}
+
+.controlPanel {
+    transition: all 1s ease;
+    /*margin-top: 15px;   */
+    width: 100%;
+    height: 0px;
+    background-color: rgba(0, 0, 0, 0);
+    clear: both;
+}
+
+.controlPanel.show {
+    /*position: absolute;*/
+    transition: all 1s ease;
+    /*margin-top: 15px;    */
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    clear: both;
+}
+
+.controlPanel.gonne {
+    height: 0px;
+    transition: height 1s ease;
+}
+
+.controlPanel button.sh {
+    transition: all 1s ease;
+    color: #333;
+}
+
+.controlPanel button.go {
+    transition: all 1s ease;
+    color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
+}
