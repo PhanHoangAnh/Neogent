@@ -16,7 +16,7 @@ var setting = [{
 }, {
     name: "Artbackground",
     url: "arttemp",
-    path: "../ArtTemplate3/",
+    path: "../ArtTemplate/",
     logo: "template/imgs/LogoSamples/1.png"
 }, {
     name: "Template",
@@ -26,7 +26,7 @@ var setting = [{
 }, {
     name: "Template",
     url: "arttemp",
-    path: "../ArtTemplate3/",
+    path: "../ArtTemplate/",
     logo: "template/imgs/LogoSamples/3.png"
 }, {
     name: "Template",

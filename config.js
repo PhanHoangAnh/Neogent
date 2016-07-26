@@ -13,6 +13,7 @@ global['checkToken'] = SSOServices.checkToken;
 // Mapping independent Applications
 global["appTemplate"] = require('./SystemApps/AppTemplate/index');
 global["appManager"] = require("./SystemApps/AppManager/index");
+global["shopRegister"] = require("./SystemApps/ShopRegistration/index");
 
 // Database section
 global["database"] = 'mongodb://localhost/Neogento';

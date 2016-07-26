@@ -32,9 +32,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //     next();
 // })
 
+// start here
 app.get('/', function(req, res, next) {
     res.send("Main Point");
 });
+app.use('/register', shopRegister);
 app.use("/:shopname/app", function(req, res, next) {
     req.shopname = req.params.shopname;
     next();

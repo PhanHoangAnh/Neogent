@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // // From : http://stackoverflow.com/questions/9210542/node-js-require-cache-possible-to-invalidate
 var setting = requireUncached("./setting");
 router.use(function(req, res, next) {
-	setting = requireUncached("./setting");
+    setting = requireUncached("./setting");
     next();
 });
 
@@ -26,16 +26,12 @@ router.get('/', function(req, res, next) {
 });
 
 // dynamic mapping here for appropriated applications
-var url = "/abc";
-router.use(url, appTemplate);
-// router.use("/manager", app);
-router.use("/opt", require('../CreateOptionSets/index'));
 
 for (var i in setting) {
     if (setting[i].url == 'appManager') {
         router.use(path.join('/', setting[i].url), app);
     } else {
-       router.use('/'+ setting[i].url, require(path.join(setting[i].path, "index")));
+        router.use('/' + setting[i].url, require(path.join(setting[i].path, "index")));
     }
 }
 app.use(router);

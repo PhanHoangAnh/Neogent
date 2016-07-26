@@ -14,8 +14,8 @@ var setting = [
     logo: "template/imgs/icon.png"
 },
 {
-    name: "Template",
-    url: "template",
+    name: "ArtTemplate",
+    url: "arttemp",
     logo: "template/imgs/LogoSamples/1.png"
 }]
 
