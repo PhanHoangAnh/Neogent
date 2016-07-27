@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Facebook Login JavaScript Example</title>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="public/js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <button class="btn btn-facebook" id="bntFbLogin"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+    <img id="fbImg">
+    <div id="status">
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var bntFbLogin = document.getElementById('bntFbLogin');
+        var fb = new fbHandler(getStatus, bntFbLogin);
+        function getStatus(objFb) {
+            console.log(objFb);
+            document.getElementById('fbImg').setAttribute("src", objFb.fbAvatar);
+        }
+    });
+    </script>
+</body>
+
+</html>
