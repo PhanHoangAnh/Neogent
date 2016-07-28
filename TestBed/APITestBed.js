@@ -12,7 +12,7 @@ var keyPair = JSON.parse(fs.readFileSync('../temp', 'utf8'));
 var RSAPublicKey = keyPair.public;
 
 var myFb_uid = '1835134196';
-var fb_Token = 'EAAC4yL1bZA7IBAN1YxTbZC4o076ZBtquZA1Gy7P3jtIXbPqnWPAYIJ7ZAprzZAagvjnXNYfC1zoyLbD3HRUEesxO8QCHpRxQudJuLeZC1dn0r5rw4e2eIKpS5IfUy1pmCBkMN2Tzt0poRnXPnvzvXNFb6atLxf0FVbZCNrosFr6rVAZDZD';
+var fb_Token = 'EAAC4yL1bZA7IBAGZCFHNsbF4kihHcFZCu45Xg0qPWBAbyRgtRrYaimDZClU3KAONn6XHpMwDVytgpQcgtyfqZBZBjZCnEwWHrqqVI4nlrPas0Od1T7JsjnX2TQcsIRBWP3kIOWU7Yd90Gu2DMw70VbhcBkqXXvKtVbiZA9sQoPf3KAZDZD';
 
 function ping() {
     // create mock object
@@ -47,7 +47,7 @@ function checkToken(access_Token) {
         password: access_Token
     };
 
-    aes_key = cryptoUtil.generateAESKey();   
+    aes_key = cryptoUtil.generateAESKey();
 
     requestify.post('http://localhost.io:3000/abcd/checkToken', {
             data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
@@ -72,7 +72,8 @@ function getToken() {
         })
         .then(function(response) {
             // Get the response body (JSON parsed or jQuery object for XMLs)
-            resObject = JSON.parse(response.getBody());
+            // resObject = JSON.parse(response.getBody());
+            resObject = response.getBody();
             console.log(resObject);
             if (resObject.encrypted_app_token) {
                 // decrypt encrypted app_token

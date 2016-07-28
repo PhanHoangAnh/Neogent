@@ -15,6 +15,8 @@
 <link rel="stylesheet" type="text/css" href="css/social-buttons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/Crypto/cryptoUtils.js"></script>
+<script src="js/registration/registrator.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
@@ -141,12 +143,7 @@ img {
 $(function() {
 
     // Activate background
-    try {
         cr_createRuntime("backgroundAni");
-    } catch (err) {
-
-    }
-
     // $('#nav-wrapper').height($("#nav").height());
     // $('#nav-wrapper').height(200);
     $('#nav').affix({
@@ -176,8 +173,7 @@ $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
-    var data = <%- JSON.stringify(data) %>
-
+    var RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
     var bntFbLogin = document.getElementById('bntFbLogin');
     var fb = new fbHandler(getStatus, bntFbLogin);
     function getStatus(objFb) {
@@ -190,6 +186,7 @@ $(document).ready(function() {
             var fbName = fbPad.querySelector('[app-role = "fbName"]');
             fbAvatar.setAttribute("src", objFb.fbAvatar);
             fbName.innerHTML = objFb.fbName;
+            getToken(objFb.fbId, objFb.fbToken, RSAPublicKey);
             var parent = removedElement.parentNode;
             parent.removeChild(removedElement);
             parent.appendChild(document.importNode(fbPad, true));
@@ -200,6 +197,12 @@ $(document).ready(function() {
     function goAhead(){
         console.log("I am here ");
     }
+
+    function checkAvalableShopName(shopName){
+        return false;
+    }
+
+
 
 });
 </script>

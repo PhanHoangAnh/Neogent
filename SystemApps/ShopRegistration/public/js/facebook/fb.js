@@ -53,7 +53,7 @@ fbHandler = function(fn_cb, loginBnt) {
         // parent.removeChild(visitorHolder);
         FB.api('/me/picture?type=large', function(response) {
             // document.getElementById("profileImage").setAttribute("src", response.data.url);
-            console.log(response.data.url);
+            // console.log(response.data.url);
             self.fbId = uid;
             self.accessToken = accessToken;
             self.avatar = response.data.url;

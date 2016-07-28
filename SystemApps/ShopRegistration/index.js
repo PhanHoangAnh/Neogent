@@ -34,9 +34,10 @@ function requireUncached(module) {
 
 router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
+    console.log("shopname: ", req.shopname);
     res.render('index', {
         title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting
+        RSApublicKey: keyPair.public
     });
 });
 //  Global variables for Business functions

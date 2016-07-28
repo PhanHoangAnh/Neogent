@@ -21,7 +21,7 @@ function decryptRequest(req, res, next) {
     if (!encrypt_Request) {
         errObj.errNum = 1;
         errObj.errMessage = "Missing Encrypted Object"
-        res.send(JSON.stringify(errObj));
+        res.send(errObj);
         res.end()
         return;
     }
@@ -37,12 +37,13 @@ function decryptRequest(req, res, next) {
         req.body.uid = userName;
         req.body.token = password;
         req.body.key = aes_key;
+        req.body.payload = DecryptRSA;
         next();
     } catch (err) {
         console.log('here', err);
         errObj.errNum = 2;
         errObj.errMessage = "Invalid Encrypted Object";
-        res.send(JSON.stringify(errObj));
+        res.send(errObj);
         res.end();
     }
 }
@@ -53,7 +54,7 @@ function checkToken(req, res, next) {
 
     if (map.has(fb_uid)) {
         var checkObject = map.get(fb_uid);
-        if (checkObject.app_token == app_token) {            
+        if (checkObject.app_token == app_token) {
             next();
         }
     } else {
@@ -69,7 +70,7 @@ function checkToken(req, res, next) {
         } else {
             errObj.errNum = 3;
             errObj.errMessage = "Invalid Token";
-            res.send(JSON.stringify(errObj));
+            res.send(errObj);
             res.end();
         }
 
@@ -106,7 +107,7 @@ function getToken(req, res, next) {
         } else {
             errObj.errNum = 4;
             errObj.errMessage = "fb_shortToken is invalid or expired";
-            res.send(JSON.stringify(errObj));
+            res.send(errObj);
             res.end();
         }
 
@@ -151,7 +152,7 @@ function extendFbAccessToken(req, res, next) {
         var send_obj = {};
         send_obj.status = "ok";
         send_obj.encrypted_app_token = encryptObject;
-        res.send(JSON.stringify(send_obj));
+        res.send(send_obj);
         res.end();
 
     });
