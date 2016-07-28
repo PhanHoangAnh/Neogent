@@ -30,8 +30,11 @@ function decryptRequest(req, res, next) {
         var DecryptRSA = JSON.parse(DecryptionResult.plaintext);
 
         var aes_key = DecryptRSA.key;
+        delete DecryptRSA.key;
         var aes_userName = DecryptRSA.userName;
+        delete DecryptRSA.userName;
         var aes_password = DecryptRSA.password;
+        delete DecryptRSA.password;
         var userName = cryptico.decryptAESCBC(aes_userName, aes_key);
         var password = cryptico.decryptAESCBC(aes_password, aes_key);
         req.body.uid = userName;
@@ -63,7 +66,7 @@ function checkToken(req, res, next) {
     }
 
     function decodeJwt(err, decoded) {
-        console.log("decoded: ", decoded);
+        // console.log("decoded: ", decoded);
 
         if (!err) {
             next();

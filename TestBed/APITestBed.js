@@ -12,7 +12,7 @@ var keyPair = JSON.parse(fs.readFileSync('../temp', 'utf8'));
 var RSAPublicKey = keyPair.public;
 
 var myFb_uid = '1835134196';
-var fb_Token = 'EAAC4yL1bZA7IBAGZCFHNsbF4kihHcFZCu45Xg0qPWBAbyRgtRrYaimDZClU3KAONn6XHpMwDVytgpQcgtyfqZBZBjZCnEwWHrqqVI4nlrPas0Od1T7JsjnX2TQcsIRBWP3kIOWU7Yd90Gu2DMw70VbhcBkqXXvKtVbiZA9sQoPf3KAZDZD';
+var fb_Token = 'EAAC4yL1bZA7IBAEHquvBZB9RKwbFmlDyiRTXitxhGMpca250V6mxl9aq38gZB4zdDzK00QpmdZC0ZAl5ZA5Tz082HL1kUuEm8VO9bQiX1G9c4ivdbDpQPbSsRjzII2SIjPtjJtAvITyDtHHjugebD9sGJVNildLmFwuW3SCfjfNQZDZD';
 
 function ping() {
     // create mock object
