@@ -47,83 +47,12 @@ objResult.status = 0
 objResult.err = null;
 objResult.return_id = null;
 //
-router.post("/updateOptionSets", function(req, res, next) {
-    // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
-
-    //var optionSets = dbEngine.OptionSets();
-    var optionSets = mongoose.model('OptionSets');
-    var _id = req.body.objId;
-    console.log("Not id ?", !_id);
-    if (!_id) {
-        var doc = new optionSets();
-        doc._id = _id = mongoose.Types.ObjectId();
-        doc.setName = req.body.setName;
-        doc.scope = "Global";
-        doc.components = req.body.components;
-        doc.shopName = req.shopname;
-        doc.save(function(err) {
-            objResult.status = 1;
-            objResult.err = err;
-            objResult.return_id = _id;
-            res.send(objResult);
-        });
-    } else {
-        optionSets.findById(_id, function(err, doc) {
-            if (err) {
-                objResult.status = 2;
-                objResult.err = err;
-                res.send(objResult);
-            } else {
-                doc.setName = req.body.setName;
-                doc.scope = "Global";
-                doc.components = req.body.components;
-                doc.shopName = req.shopname;
-                doc.save(function(error) {
-                    objResult.status = 3;
-                    objResult.err = error;
-                    objResult.return_id = _id;
-                    res.send(objResult);
-                })
-            }
-        });
-    }
+router.get('/checkShopName', checkToken, function(req, res, next) {
+    //1. CheckShopName from list (k,v) if shop is existed return invalid, else, create new shop and return valid
+    //2. Return objResult to browser
 });
 
-router.get("/getOptionSets", function(req, res, next) {
-    // console.log("from /getOptionSets");
-    var optionSets = mongoose.model('OptionSets');
-    var query = { shopName: req.shopname };
-    optionSets.find(query, function(err, doc) {
-        if (err) {
-            objResult.status = 4;
-            objResult.err = err;
-            res.send(objResult);
-            return;
-        }
-        objResult.status = 0
-        objResult.err = null;
-        objResult.doc = doc;
-        res.send(objResult);
-        objResult.doc = null;
-        // res.end(JSON.stringify(doc));
-    })
 
-});
-
-router.get("/deleteOptionSets/:id", function(req, res, next) {
-    var _id = req.params.id;
-    // console.log("remove id: ", _id);
-    var optionSets = mongoose.model('OptionSets');
-    optionSets.findByIdAndRemove(_id, function(err) {
-        objResult.status = 0
-        objResult.err = null;
-        if (err) {
-            objResult.status = 5;
-            objResult.err = err;
-        }
-        res.send(objResult);
-    })
-});
 
 app.use(router);
 module.exports = app;

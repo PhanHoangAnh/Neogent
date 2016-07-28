@@ -55,3 +55,31 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
         }
     });
 }
+
+function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: token,
+        payload: payload
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+    };
+    var currentUrl = window.location.href + endpoint;
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        cache: false,
+        method: 'POST',
+        headers: { "cache-control": "no-cache" },
+        data: json_data,
+        // contentType:'application/json',
+        complete: function(data, status, jqXHR) {
+            if (fn_cb) {
+                fn_cb(data.responseJSON);
+            }
+
+        }
+    });
+}
