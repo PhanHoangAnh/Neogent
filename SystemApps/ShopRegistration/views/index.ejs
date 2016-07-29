@@ -112,7 +112,7 @@ img {
                             <div class="col-md-8 col-lg-8">
                                 <div class="form-group">
                                     <label for="txt_shopName">Choose Shop Name:</label>
-                                    <input type="text" class="form-control" id="txt_shopName" data-toggle="popover" title="Info" data-content="Your Shop Name has been taken by someone..">
+                                    <input type="text" class="form-control" id="txt_shopName" data-toggle="popover" title="Info" >
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-4" style="padding-left: 0px;">
@@ -162,11 +162,12 @@ var systoken;
 var fbId;
 var fbToken;
 var conBnt;
+var RSAPublicKey;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
-    var RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
+    RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
     var bntFbLogin = document.getElementById('bntFbLogin');
     var fb = new fbHandler(getStatus, bntFbLogin);
     document.getElementById('txt_shopName').addEventListener('input',function(evt){
@@ -202,8 +203,20 @@ $(document).ready(function() {
         console.log("I am here ");
         var inputShopName = document.getElementById('txt_shopName');
         //  placement : 'top'
-        $(inputShopName).popover({ placement : 'top'});
-        $(inputShopName).popover('show');
+       
+        
+        var endpoint = window.location.href + 'checkShopName';
+        var payload = inputShopName.value;
+        var fn_cb = function(obj){
+            if (obj.status !=0){
+                $(inputShopName).popover({ placement : 'top', content: obj.err});
+                $(inputShopName).popover('show');
+            }
+            if(obj.status ==2){
+                inputShopName.value = obj.return;
+            }
+        };
+        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, payload, fn_cb)
     }
 
     function checkAvalableShopName(shopName){

@@ -60,16 +60,16 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
     var _data = {
         userName: uid,
         password: token,
-        payload: payload
+        data: payload
     };
     aes_key = cryptoUtil.generateAESKey();
     var json_data = {
         data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
     };
-    var currentUrl = window.location.href + endpoint;
+    
     $.ajax({
         // url: './userToken',
-        url: currentUrl,
+        url: endpoint,
         cache: false,
         method: 'POST',
         headers: { "cache-control": "no-cache" },
