@@ -12,6 +12,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -23,16 +24,16 @@ var shopOwnerManagerInvert = new hashmap();
 // Read data from file:
 var file = "shopownerdata.json";
 
-// jsonfile.writeFile(file, manager, function(err) {
-//     console.error(err)
-// })
-
 jsonfile.readFile(file, function(err, obj) {
-    // console.log("From Shop Registration:", obj)
-    for (var i in obj) {
-        shopOwnerManager.set(i, obj[i]);
-        shopOwnerManagerInvert.set(obj[i], i);        
+    if (err) {
+        return
     }
+    shopOwnerManager.copy(obj);
+    shopOwnerManager.forEach(function(v, k) {
+        shopOwnerManagerInvert.set(v, k);
+    });
+    // console.log(shopOwnerManager);
+    // console.log(shopOwnerManagerInvert);
 
 })
 
@@ -72,9 +73,6 @@ router.post('/checkShopName', checkToken, function(req, res, next) {
     objResult.return = null;
     var shopName = req.body.payload.data;
     var fbId = req.body.uid;
-    var saveObj = {};
-    saveObj.shopName = shopName;
-    saveObj.fbId = fbId;
 
     if (shopName.length < 5) {
         objResult.status = 1
@@ -92,9 +90,10 @@ router.post('/checkShopName', checkToken, function(req, res, next) {
         objResult.err = "Shop has been taken";
     } else {
         shopOwnerManager.set(shopName, fbId);
+        console.log("from shopOwnerManager: ", shopOwnerManager.get(shopName));
         shopOwnerManagerInvert.set(fbId, shopName);
         objResult.return = shopName;
-        jsonfile.writeFile(file, shopOwnerManager._data, function(err) {
+        jsonfile.writeFile(file, shopOwnerManager, function(err) {
             console.error(err)
         })
     }
