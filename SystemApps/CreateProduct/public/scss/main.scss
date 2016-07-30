@@ -205,166 +205,203 @@ em {
     font-size: 80%;
 }
 
-
-/*attribute sets*/
 .mini-broad {
-    float: left;
-    margin: 6px 15px 0;
-    font-size: 18px; color: #000;
-    @include single-transition(all,0.3s);
-    padding-top: 5px; padding-bottom: 5px;
-    &:hover {
-      background-color: #FFF;
-      padding-left: 12px; padding-right: 12px;
-      border-radius: 2px;
-      color: inherit; text-decoration: none;
-    }
-    img {width: auto; height: 38px; vertical-align: middle;}
-    span {padding-left: 5px;}
+  float: left;
+  margin: 6px 15px 0;
+  font-size: 18px;
+  color: #000;
+  padding-top: 5px; padding-bottom: 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #FFF;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 2px;
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    width: auto;
+    height: 38px;
+    vertical-align: middle;
+  }
+  span {
+     padding-left: 5px;
+  }
 }
 
 .navbar.affix {
   .mini-broad {
     color: #FFF;
-    &:hover {background: transparent;}
+    &:hover {
+      background: transparent;
+    }
   }
 }
 
-.attribute-sets, .dashboard-management  {
-    min-height: 100%;
-}
-.attribute-sets {
-    background-color: rgba(0, 0, 0, 0.65);
-    padding-top: 15px;
-    fieldset.scheduler-border {
-        border: 1px groove #ddd;
-        padding: 0 1.4em 1.4em 1.4em;
-        margin: 0 0 1.5em 0;
-        -webkit-box-shadow: 0px 0px 0px 0px #000;
-        box-shadow: 0px 0px 0px 0px #000;
-    }
-    
-    legend.scheduler-border {
-        font-size: 1.5em;
-        text-transform: uppercase;
-        text-align: left;
-        width: auto;
-        padding: 0 10px;
-        border-bottom: none;
-    }
-    
-    .popover {
-        min-width: 400px;
-        border-radius: 2px;
-        .popover-title {
-            border-radius: 1px 1px 0 0;
-        }
-    }
+/*create product*/
+.create-products {
+  position: relative;
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding-top: 15px; padding-bottom: 15px;
 
-    .btn {border-radius: 2px;}
-    
-    .control {
-        padding: 10px;
-    }
-    
-    .ui-sortable-placeholder {
-        border: 1px dashed #aaa;
-        height: 45px;
-        width: 100%;
-        background: #fafafa;
-    }
-
-    main_panel label {
-        color: inherit;
-        padding-left: 0;
-        &, & + input[type="checkbox"], & + input[type="radio"] {
-            width: auto;
-        }       
-    }
-    
-    main_panel >label {
-        margin-top: 7px;
-    }
-    
+  fieldset.scheduler-border {
+    border: 1px groove #ffff99;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+  }
+  legend.scheduler-border {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-align: left;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+  }
+  legend[app-role="setsName"] {
+    color: #FFF;
+    border-bottom: #FFF solid 1px;
+  }
+  .popover {
+    min-width: 400px;
+    border-radius: 2px;
     .popover-title {
-        background: #00A600;
-        text-transform: capitalize;
-        color: #FFF;
+      border-radius: 1px 1px 0 0;
     }
-    
-    .help-block {
-        padding-left: 0;
+  }
+  .btn {
+    border-radius: 2px;
+  }
+  .control {
+     padding: 10px;
+  }
+  .ui-sortable-placeholder {
+    border: 1px dashed #aaa;
+    height: 45px;
+    width: 100%;
+    background: #fafafa;
+  }
+  main_panel {
+    label {
+      color: inherit;
+      padding-left: 0;
     }
-    
-    legend, label, .help-block, a , span {
-        color: #FFF; 
-        font-weight: normal;
+    label, label + input[type="checkbox"], label + input[type="radio"] {
+      width: auto;
     }
-    
-    .nav-tabs > li > a:hover {color: inherit;}
-    
-    .tab-content {
-        padding-top: 20px;
+    > label {
+      margin-top: 7px;
     }
-    #div1, #div2 {
-        min-height: 50px;
-        padding: 30px 20px 50px;
+  }
+  .popover-title {
+    background: #00A600;
+    text-transform: capitalize;
+    color: #FFF;
+  }
+  .help-block {
+    padding-left: 0;
+  }
+  legend, label, .help-block, a, span {
+    color: #555;
+    font-weight: normal;
+  }
+  .nav-tabs > li > a:hover {
+    color: inherit;
+  }
+  .tab-content {
+    padding-top: 20px;
+  }
+  #div1, #div2 {
+    min-height: 50px;
+    padding: 30px 20px 50px;
+  }
+  .c-left {
+     float: left;
+     clear: left;
+  }
+  .row.control {
+    position: relative;
+    cursor: pointer;
+    zoom: 1;
+    &:after {
+      content: '.';
+      display: block;
+      clear: both;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      font-size: 0;
+      line-height: 0;
     }
-    .c-left {
-        float: left;
-        clear: left;
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
     }
-    .row.control {
-        position: relative;
-        cursor: pointer;
-        @include clearer;
-        &:before {
-            content: "";
-            position: absolute; display: block;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 2;
-        }
-    }
-}//end .attribute-sets
+  }
+}
 
 .modal-content, .btn {
-    border-radius: 2px;
+  border-radius: 2px;
 }
-
 .preview + .preview-md, .preview-md + .preview-sm {
   display: none;
 }
-    
 
-/*metro style*/
 .heading-page {
-    padding-top: 140px;
-    h1, .h1 {
-        color: #FFF;
-    }
+  padding-top: 140px;
+  h1, .h1 {color: #FFF;}
 }
-.flat-item {
-    position: relative;
-    margin-bottom: 20px;
-    width: 100%; height: 185px; overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.65);
-    color: #FFF;
-    img {
-        position: absolute; 
-        max-height: 100%;
-        @include center-pos;
-        &.avatar {
-            right: 0; left: auto;
-            @include translate(0, -50%);
-        }
+fieldset {
+  .form-control {
+    box-shadow: none;
+    &, &:focus {
+      border-color: #CCC;
+      //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6)
     }
-    .fa, .text-title {position: absolute;}
-    .fa {
-        font-size: 4.5em;
-        @include center-pos;
-    }
-    .text-title {
-        left: 20px; right: 20px; bottom: 15px;
-        font-size: 18px; z-index: 2;
-    }
+  }
+}
+fieldset .form-control:focus,
+.select2.select2-container.select2-container--default.select2-container--focus {
+  box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-selection--single {
+  border-radius: 0; padding-top: 1px; padding-bottom: 1px;
+  border-color: #CCC;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border-radius: 2px; background: #00A600; border: none;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice,
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #FFF;
+}
+.select2-container .select2-selection--single {
+  height: 34px; padding-top: 0; padding-bottom: 0;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #555;
+  line-height: 32px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 4px;
+}
+
+#systemAttributes .col-md-6.col-lg-6.control:nth-of-type(2n+1) {
+  clear: left;
 }
