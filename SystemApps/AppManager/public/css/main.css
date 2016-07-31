@@ -455,10 +455,12 @@ em {
   height: auto;
 }
 /* line 250, ../scss/main.scss */
-.flat-item .fa {
+.flat-item .fa, .flat-item .glyphicon {
   position: absolute;
   z-index: 3;
   font-size: 4.5em;
+  top: 50%;
+  left: 50%;
   top: 50%;
   left: 50%;
   -moz-transform: translate(-50%, -50%);
@@ -493,16 +495,23 @@ em {
   background-color: rgba(0, 0, 0, 0.25);
   height: 100%;
 }
+/* line 278, ../scss/main.scss */
+.flat-item:hover .caption-text {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 
 /*search box*/
-/* line 282, ../scss/main.scss */
+/* line 285, ../scss/main.scss */
 .search-box {
   position: relative;
   background-color: rgba(0, 0, 0, 0.65);
   padding: 20px;
   overflow: hidden;
 }
-/* line 287, ../scss/main.scss */
+/* line 290, ../scss/main.scss */
 .search-box i {
   position: absolute;
   top: 50%;
@@ -515,7 +524,7 @@ em {
   color: #555;
   font-size: 20px;
 }
-/* line 295, ../scss/main.scss */
+/* line 298, ../scss/main.scss */
 .search-box .form-control {
   background-color: transparent;
   border: #8f29b3 solid 1px;
@@ -530,7 +539,7 @@ em {
 }
 
 /*user account*/
-/* line 307, ../scss/main.scss */
+/* line 310, ../scss/main.scss */
 .user-account {
   position: absolute;
   z-index: 5;
@@ -540,11 +549,11 @@ em {
   overflow: hidden;
   cursor: pointer;
 }
-/* line 315, ../scss/main.scss */
+/* line 318, ../scss/main.scss */
 .user-account .avatar-img, .user-account .username-text {
   float: left;
 }
-/* line 318, ../scss/main.scss */
+/* line 321, ../scss/main.scss */
 .user-account .avatar-img {
   position: relative;
   overflow: hidden;
@@ -552,7 +561,7 @@ em {
   height: 60px;
   border-radius: 100% 100%;
 }
-/* line 324, ../scss/main.scss */
+/* line 327, ../scss/main.scss */
 .user-account .avatar-img img {
   max-height: 100%;
   position: absolute;
@@ -565,7 +574,7 @@ em {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 332, ../scss/main.scss */
+/* line 335, ../scss/main.scss */
 .user-account .username-text {
   position: absolute;
   top: 50%;
@@ -583,19 +592,19 @@ em {
 
 /*grid system responsive*/
 @media only screen and (max-width: 767px) {
-  /* line 346, ../scss/main.scss */
+  /* line 349, ../scss/main.scss */
   .col-xs-12 .col-xs-6:nth-of-type(2n+1), .col-sm-12 .col-xs-6:nth-of-type(2n+1), .col-md-12 .col-xs-6:nth-of-type(2n+1), .col-lg-12 .col-xs-6:nth-of-type(2n+1) {
     clear: left;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* line 352, ../scss/main.scss */
+  /* line 355, ../scss/main.scss */
   .col-xs-12 .col-sm-3:nth-of-type(4n+1), .col-sm-12 .col-sm-3:nth-of-type(4n+1), .col-md-12 .col-sm-3:nth-of-type(4n+1), .col-lg-12 .col-sm-3:nth-of-type(4n+1) {
     clear: left;
   }
 }
 @media only screen and (min-width: 992px) {
-  /* line 358, ../scss/main.scss */
+  /* line 361, ../scss/main.scss */
   .col-xs-12 .col-md-2:nth-of-type(6n+1), .col-sm-12 .col-md-2:nth-of-type(6n+1), .col-md-12 .col-md-2:nth-of-type(6n+1), .col-lg-12 .col-md-2:nth-of-type(6n+1) {
     clear: left;
   }

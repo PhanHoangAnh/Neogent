@@ -337,6 +337,9 @@ function createSingleControlGroup(template, isReload) {
             input.style.backgroundImage = "url('https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg')";
             input.style.backgroundSize = 'cover';
             input.style.backgroundRepeat = 'no-repeat';
+            input.style.outlineColor = 'rgba(255,255,255,.2)';
+            input.style.outlineStyle = 'solid';
+            input.style.outlineWidth = '3px';
             var mask = document.createElement('div');
             var height = template["fields"]['height']['value'];
             var width = template["fields"]['width']['value'];

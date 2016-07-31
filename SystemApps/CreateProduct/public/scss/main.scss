@@ -245,7 +245,7 @@ em {
 /*create product*/
 .create-products {
   position: relative;
-  min-height: 100%;
+  min-height: 100%; overflow: hidden;
   background-color: rgba(0, 0, 0, 0.65);
   padding-top: 15px; padding-bottom: 15px;
 
@@ -374,7 +374,9 @@ fieldset {
   }
 }
 fieldset .form-control:focus,
-.select2.select2-container.select2-container--default.select2-container--focus {
+.select2.select2-container--focus,
+.select2.select2-container--open,
+.select2.select2-container--below:focus {
   box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
@@ -404,4 +406,17 @@ fieldset .form-control:focus,
 
 #systemAttributes .col-md-6.col-lg-6.control:nth-of-type(2n+1) {
   clear: left;
+}
+
+.modal-content {
+  padding: 1px;
+}
+.modal-header {
+  background-color: #00A600;
+  border-radius: 1px 1px 0 0;
+  h4, button {
+    color: #FFF; opacity: 1;
+    filter: alpha(opacity=100);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
 }
