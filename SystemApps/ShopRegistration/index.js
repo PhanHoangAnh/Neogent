@@ -103,6 +103,5 @@ router.post('/checkShopName', checkToken, function(req, res, next) {
 });
 
 
-
 app.use(router);
 module.exports = app;
