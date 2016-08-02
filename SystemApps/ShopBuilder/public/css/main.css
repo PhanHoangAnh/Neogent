@@ -709,3 +709,15 @@ em {
 .navbar.affix .user-account .avatar-img {
   width: 40px; height: 40px;
 }
+.heading-page .shop-name {
+    font-size: 55px;
+    color: #AAC;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .8);
+    margin-left: 8.333333%;
+}
+
+@media screen and (min-width: 768px) {  
+  .heading-page .shop-name {
+      font-size: 100px;
+  }
+}
