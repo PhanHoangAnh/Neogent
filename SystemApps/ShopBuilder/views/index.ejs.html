@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Shop Builder</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/shop.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
+<link rel="stylesheet" type="text/css" href="css/social-buttons.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/Shopbuilder/shopbuilder.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
+<!--script type="text/javascript" src='js/navbar.js'></script-->
+<style type="text/css">
+#masthead.start {
+    transition: all 3s ease-in-out;
+    background-size: 100% auto;
+    top: 0;
+    left: 0;
+    padding-top: 15%;
+}
+
+.br-response {
+    min-height: 220px;
+}
+
+.controls {
+    margin-top: 15px;
+    /*vertical-align: middle;*/
+}
+
+@media (min-width: 979px) {
+    .br-response {
+        min-height: 160px;
+        padding-left: 15px;
+    }
+    #sidebar.affix-bottom {
+        position: absolute;
+    }
+    #sidebar.affix-top {
+        position: static;
+        /*margin-top: 30px;*/
+        /*width: 300px;*/
+    }
+    #sidebar.affix {
+        position: fixed;
+        top: 70px;
+        /*width: 300px;*/
+    }
+}
+
+.introduction .label {
+    background-color: #5CB85C;
+}
+
+.form-control {
+    border-radius: 0px;
+    background-color: #fff;
+}
+
+img {
+    width: 100%;
+    /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+}
+</style>
+
+<body>
+    <!-- Dont touch this section -->
+    <!-- NavBar -->
+    <template id="FbPad">
+        <div style="height: 25px; overflow: hidden;">
+            <div class="fb-avatar">
+                <span app-role="fbName"></span>
+                <span class="img-avatar"><img app-role = "fbAvatar" style="width: 25px; height: auto; border: 0px;">
+            </span>
+            </div>
+        </div>
+    </template>
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <img src="img/CatLogo.png" class="logo">
+                    </div>
+                    <div class='site-name hidden-xs'>
+                        AbcJSC
+                    </div>
+                    <div id="AppManagerBoard">
+                    </div>
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right" id="visitor">
+                        <li class="navbar-right">
+                            <div app-role='removeAfterLogin'>
+                                <!-- <label for="usr">Login with facebook</label> -->
+                                <button class="btn btn-facebook" id="bntFbLogin"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="AppTemp">
+        <a class='mini-broad' app-role="link">
+            <img app-role="AppIcon">
+        </a>
+    </template>
+    <!-- /NavBar -->
+    <section class='heading-page' style="position: relative; background:url('img/Civil-engineering-Banner.jpg') no-repeat top center; background-size: cover; height: 100vh; opacity: 1">
+        <div class="container-fluid">
+            <!-- Breadcrumb stay here -->
+            <div class="col-md-12 col-lg-12 " style="position: absolute; bottom: 20vh;">
+                <h1 class="col-md-6 col-lg-6"> Shop Builder</h1>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Metro style -->
+    <div class="container-fluid attribute-sets" id="start-offset">
+    </div>
+    <!-- /Right Sidebar -->
+    <!-- /Metro style -->
+    <div id="end-offset"></div>
+    <section class="divider">
+        <div style="padding: 70px 0; text-align: center;">
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
+            <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
+            <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
+            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button>
+        </div>
+    </section>
+    <footer>
+        <div style=" width: 100%; background-color: rgba(0,0,0,.85); height: 90px;">
+            @Copyright:abcd@abc.jsc
+        </div>
+    </footer>
+    </div>
+    <div id="phasebeam">
+        <canvas id="backgroundAni" width="120%" height="100%">
+        </canvas>
+    </div>
+    <!--  -->
+    <!--  -->
+    <script type="text/javascript" src="js/c2runtime.js"></script>
+    <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+</body>
+<script type="text/javascript">
+$(function() {
+
+    // Activate background
+    cr_createRuntime("backgroundAni");
+    // $('#nav-wrapper').height($("#nav").height());
+    // $('#nav-wrapper').height(200);
+    $('#nav').affix({
+        offset: {
+            top: function() {
+                // Do other stuff here-- chipl
+                return $('#start-offset').offset().top / 2;
+            }
+        }
+    });
+    // Sidebar affix
+    $('#sidebar').affix({
+        offset: {
+            top: $('#start-offset').offset().top + 0,
+            bottom: $('#end-offset').outerHeight() - 20
+        }
+    }).on('affix.bs.affix', function() { // before affix
+        $(this).css({
+            /*'top': headerHeight,*/ // for fixed height
+            'width': $(this).outerWidth() // variable widths
+        });
+    }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+        // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+    });;
+});
+$(document).ready(function() {
+    /** code inside **/
+    var masthead = $("#masthead");
+    masthead.addClass('start');
+    var data = <%- JSON.stringify(data) %>
+
+
+    LoadApp();
+
+    function LoadApp() {
+        var root = document.getElementById("AppManagerBoard");
+        var AppTemplate = document.getElementById('AppTemp').content;
+        var pathArray = window.location.pathname.split('/');
+        remove = pathArray.splice(pathArray.length - 2, 2);
+        var newPathname = "";
+        for (i = 0; i < pathArray.length; i++) {
+            newPathname += pathArray[i];
+            newPathname += "/";
+        }
+        for (var i in data) {
+            var link = AppTemplate.querySelector('[app-role = "link"]')
+            var icon = AppTemplate.querySelector('[app-role = "AppIcon"]');
+            var caption = AppTemplate.querySelector('[app-role = "Caption"]');
+            link.setAttribute('href', window.location.protocol + '//' + window.location.host + newPathname + data[i].url);
+            icon.setAttribute('src', window.location.protocol + '//' + window.location.host + newPathname + data[i].logo);
+            // caption.innerHTML = data[i].name;
+            root.appendChild(document.importNode(AppTemplate, true));
+        }
+    };
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+
+    function getStatus(objFb) {
+        console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            // if(!systoken){
+            //     systoken = localStorage.getItem("app_token");
+            //     checkToken(objFb.fbId, systoken,RSAPublicKey, afterCheckToken);
+            // }            
+            // fbId = objFb.fbId;
+            // fbToken = objFb.fbToken;
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));
+            // btn-primary
+            conBnt = document.getElementById('bntCon');
+            conBnt.classList.add('btn-info');
+            conBnt.innerHTML = "Get system Token";
+
+        }
+    }
+
+});
+</script>
+
+</html>

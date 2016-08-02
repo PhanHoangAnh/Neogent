@@ -14,6 +14,11 @@ var setting = [{
     path: "../CreateProduct/",
     logo: "template/imgs/icon.png"
 }, {
+    name: "ShopBuilder",
+    url: "shopbuilder",
+    path: "../ShopBuilder/",
+    logo: "shopbuilder/img/logoicon.png"
+}, {
     name: "Artbackground",
     url: "arttemp",
     path: "../ArtTemplate/",
