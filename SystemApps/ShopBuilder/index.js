@@ -36,7 +36,8 @@ router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
     res.render('index', {
         title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting
+        data: setting,
+        RSApublicKey: keyPair.public
     });
 });
 //  Global variables for Business functions

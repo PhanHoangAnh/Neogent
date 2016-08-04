@@ -16,6 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="js/Crypto/cryptoUtils.js"></script>
 <script src="js/Shopbuilder/shopbuilder.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
@@ -136,8 +137,9 @@ img {
         </div>
     </section>
     <hr>
-    <!-- Metro style -->
+    <!-- Main part -->
     <div class="container-fluid attribute-sets" id="start-offset">
+        
     </div>
     <!-- /Right Sidebar -->
     <!-- /Metro style -->
@@ -195,13 +197,18 @@ $(function() {
         // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
     });;
 });
+var systoken;
+var fbId;
+var fbToken;
+var conBnt;
+var RSAPublicKey;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
-
-
+    RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
+    // console.log("PublicKey: ", RSAPublicKey);
     LoadApp();
 
     function LoadApp() {
@@ -228,7 +235,7 @@ $(document).ready(function() {
     var fb = new fbHandler(getStatus, bntFbLogin);
 
     function getStatus(objFb) {
-        console.log(objFb);
+        // console.log(objFb);
         if (objFb.loginStatus == "connected") {
             removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
             var fbPad = document.getElementById("FbPad").content;
@@ -236,23 +243,35 @@ $(document).ready(function() {
             var fbName = fbPad.querySelector('[app-role = "fbName"]');
             fbAvatar.setAttribute("src", objFb.fbAvatar);
             fbName.innerHTML = objFb.fbName;
-            // if(!systoken){
-            //     systoken = localStorage.getItem("app_token");
-            //     checkToken(objFb.fbId, systoken,RSAPublicKey, afterCheckToken);
-            // }            
-            // fbId = objFb.fbId;
-            // fbToken = objFb.fbToken;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            if(!systoken){
+                systoken = localStorage.getItem("app_token");
+                checkToken(objFb.fbId, systoken,RSAPublicKey, afterCheckToken);
+            }else{
+                getToken(fbId, fbToken, RSAPublicKey,afterGetToken);
+            }         
+            
             var parent = removedElement.parentNode;
             parent.removeChild(removedElement);
             parent.appendChild(document.importNode(fbPad, true));
             // btn-primary
-            conBnt = document.getElementById('bntCon');
-            conBnt.classList.add('btn-info');
-            conBnt.innerHTML = "Get system Token";
+            // conBnt = document.getElementById('bntCon');
+            // conBnt.classList.add('btn-info');
+            // conBnt.innerHTML = "Get system Token";
 
         }
     }
-
+    function afterGetToken(token){
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+    function afterCheckToken(result){
+        if(result.errNum != 0){
+            getToken(fbId, fbToken, RSAPublicKey,afterGetToken);
+            return;
+        }
+    }
 });
 </script>
 

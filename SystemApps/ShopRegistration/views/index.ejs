@@ -183,12 +183,15 @@ $(document).ready(function() {
             var fbName = fbPad.querySelector('[app-role = "fbName"]');
             fbAvatar.setAttribute("src", objFb.fbAvatar);
             fbName.innerHTML = objFb.fbName;
-            if(!systoken){
-                systoken = localStorage.getItem("app_token");
-                checkToken(objFb.fbId, systoken,RSAPublicKey, afterCheckToken);
-            }            
             fbId = objFb.fbId;
             fbToken = objFb.fbToken;
+            if(systoken){
+                systoken = localStorage.getItem("app_token");
+                checkToken(objFb.fbId, systoken,RSAPublicKey, afterCheckToken);
+            }else{
+                getToken(fbId, fbToken, RSAPublicKey,afterGetToken);
+            }            
+            
             var parent = removedElement.parentNode;
             parent.removeChild(removedElement);
             parent.appendChild(document.importNode(fbPad, true));
