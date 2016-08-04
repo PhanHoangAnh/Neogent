@@ -103,7 +103,7 @@
     background: transparent;
 }
 
-.mini-broad, .hambugger .icon-bar {
+.mini-broad, .hambugger .icon-bar, .glyphicon, .caption-text {
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -119,9 +119,10 @@
     float: left;
     margin: 3px 15px 0;
     font-size: 18px;
-    color: #000;
+    color: #FFF;
     padding-top: 5px;
     padding-bottom: 5px;
+    text-align: center;
 }
 .mini-broad:hover {
     /*background-color: rgba(0, 0, 0, 0.3);*/
@@ -141,6 +142,13 @@
 }
 .mini-broad span {
     padding-left: 5px;
+}
+.mini-broad .glyphicon {
+    padding-left: 0; color: #FFF;
+}
+.mini-broad .caption-text {
+    font-family: "RobotoCondensed-Light";
+    font-size: 10px;
 }
 .menu-board {
     position: relative;
@@ -223,8 +231,4 @@
     .site-name {
         font-size: 28px;
     }
-}
-
-@media only screen and (min-width: 767px) {
-
 }
