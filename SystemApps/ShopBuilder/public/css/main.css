@@ -450,17 +450,17 @@ em {
 }
 
 /* line 232, ../scss/main.scss */
-.attribute-sets, .dashboard-management {
+.shop-buider, .dashboard-management {
   min-height: 100%;
 }
 
 /* line 235, ../scss/main.scss */
-.attribute-sets {
+.shop-buider {
   background-color: rgba(0, 0, 0, 0.65);
   padding-top: 15px;
 }
 /* line 238, ../scss/main.scss */
-.attribute-sets fieldset.scheduler-border {
+.shop-buider fieldset.scheduler-border {
   border: 1px groove #ddd;
   padding: 0 1.4em 1.4em 1.4em;
   margin: 0 0 1.5em 0;
@@ -468,7 +468,7 @@ em {
   box-shadow: 0px 0px 0px 0px #000;
 }
 /* line 246, ../scss/main.scss */
-.attribute-sets legend.scheduler-border {
+.shop-buider legend.scheduler-border {
   font-size: 1.5em;
   text-transform: uppercase;
   text-align: left;
@@ -477,83 +477,82 @@ em {
   border-bottom: none;
 }
 /* line 255, ../scss/main.scss */
-.attribute-sets .popover {
+.shop-buider .popover {
   min-width: 400px;
   border-radius: 2px;
 }
 /* line 258, ../scss/main.scss */
-.attribute-sets .popover .popover-title {
+.shop-buider .popover .popover-title {
   border-radius: 1px 1px 0 0;
 }
 /* line 263, ../scss/main.scss */
-.attribute-sets .btn {
+.shop-buider .btn {
   border-radius: 2px;
 }
 /* line 265, ../scss/main.scss */
-.attribute-sets .control {
+.shop-buider .control {
   padding: 10px;
 }
 /* line 269, ../scss/main.scss */
-.attribute-sets .ui-sortable-placeholder {
+.shop-buider .ui-sortable-placeholder {
   border: 1px dashed #aaa;
   height: 45px;
   width: 100%;
   background: #fafafa;
 }
 /* line 276, ../scss/main.scss */
-.attribute-sets main_panel label {
+.shop-buider main_panel label {
   color: inherit;
   padding-left: 0;
 }
 /* line 279, ../scss/main.scss */
-.attribute-sets main_panel label, .attribute-sets main_panel label + input[type="checkbox"], .attribute-sets main_panel label + input[type="radio"] {
+.shop-buider main_panel label, .shop-buider main_panel label + input[type="checkbox"], .shop-buider main_panel label + input[type="radio"] {
   width: auto;
 }
 /* line 284, ../scss/main.scss */
-.attribute-sets main_panel > label {
+.shop-buider main_panel > label {
   margin-top: 7px;
 }
 /* line 288, ../scss/main.scss */
-.attribute-sets .popover-title {
+.shop-buider .popover-title {
   background: #00A600;
   text-transform: capitalize;
   color: #FFF;
 }
 /* line 294, ../scss/main.scss */
-.attribute-sets .help-block {
+.shop-buider .help-block {
   padding-left: 0;
 }
 /* line 298, ../scss/main.scss */
-.attribute-sets legend, .attribute-sets label, .attribute-sets .help-block, .attribute-sets a, .attribute-sets span {
+.shop-buider legend, .shop-buider label, .shop-buider .help-block, .shop-buider a, .shop-buider span {
   color: #FFF;
   font-weight: normal;
 }
 /* line 303, ../scss/main.scss */
-.attribute-sets .nav-tabs > li > a:hover {
+.shop-buider .nav-tabs > li > a:hover {
   color: inherit;
 }
 /* line 305, ../scss/main.scss */
-.attribute-sets .tab-content {
+.shop-buider .tab-content {
   padding-top: 20px;
 }
 /* line 308, ../scss/main.scss */
-.attribute-sets #div1, .attribute-sets #div2 {
+.shop-buider #div1, .attribute-sets #div2 {
   min-height: 50px;
   padding: 30px 20px 50px;
 }
 /* line 312, ../scss/main.scss */
-.attribute-sets .c-left {
+.shop-buider .c-left {
   float: left;
   clear: left;
 }
 /* line 316, ../scss/main.scss */
-.attribute-sets .row.control {
+.shop-buider .row.control {
   position: relative;
-  cursor: pointer;
   zoom: 1;
 }
 /* line 145, ../scss/_mixins.scss */
-.attribute-sets .row.control:after {
+.shop-buider .row.control:after {
   content: '.';
   display: block;
   clear: both;
@@ -565,17 +564,6 @@ em {
   line-height: 0;
 }
 /* line 320, ../scss/main.scss */
-.attribute-sets .row.control:before {
-  content: "";
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-}
-
 .modal-content, .btn {
     border-radius: 2px;
 }
