@@ -18,6 +18,7 @@ global["shopRegister"] = require("./SystemApps/ShopRegistration/index");
 // Database section
 global["database"] = 'mongodb://localhost/Neogento';
 global["dbEngine"] = require("./middlewares/databases/dbEngine");
+// global["dbManager"] = require("./middlewares/databases/dbManager");
 // End of Database
 
 module.exports = {
