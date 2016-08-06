@@ -11,6 +11,7 @@ global['jwtsecret'] = 'convitbuocloai1';
 global['getToken'] = SSOServices.getToken;
 global['checkToken'] = SSOServices.checkToken;
 global['checkAuth'] = require("./middlewares/SSOServices/AuthoriserUtils").checkAuth;
+
 // Mapping independent Applications
 global["appTemplate"] = require('./SystemApps/AppTemplate/index');
 global["appManager"] = require("./SystemApps/AppManager/index");
