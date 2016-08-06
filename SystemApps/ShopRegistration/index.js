@@ -95,7 +95,11 @@ router.post('/checkShopName', checkToken, function(req, res, next) {
         objResult.return = shopName;
         jsonfile.writeFile(file, shopOwnerManager, function(err) {
             console.error(err)
-        })
+        });
+        //1. Create shop folder
+        
+        //2. Send shop to database
+
     }
     //2. Return objResult to browser
     res.send(objResult);
