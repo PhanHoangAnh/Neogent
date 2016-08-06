@@ -15,7 +15,7 @@ router.post("/checkToken", checkToken, function(req, res, next) {
     var sendObj = {};
     sendObj.errNum = 0;
     sendObj.errMessage = "Valid Token";
-    console.log("payload data", req.body.payload);
+    console.log("payload data", req.body.payload, req.body.uid);
     res.send(sendObj);
     res.end();
 });
