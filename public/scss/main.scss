@@ -1,0 +1,35 @@
+//
+// Import Compass
+//
+@import 'compass';
+@import 'compass/css3/user-interface';
+
+//
+// Variables & Mixins
+//
+@import 'fonts';
+@import 'animates';
+
+html, body {   
+    height: 100%; min-height: 100%;
+}
+body {background-color: #000;}
+* , img, a {
+	&:hover, &:active, &:focus {
+		outline: none;
+	}	
+}
+img {border: none; vertical-align: middle;}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $mainFont;
+	font-weight: normal;
+}
+strong, b {
+	font-family: $boldFont;
+	font-weight: normal;
+}
+em {
+	font-family: $italicFont;
+	font-style: normal;
+}
