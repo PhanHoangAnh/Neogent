@@ -10,6 +10,7 @@ var jsonfile = require('jsonfile');
 var hashmap = require('hashmap');
 var ncp = require('ncp').ncp;
 var fs = require('fs');
+var rmdir = require('rimraf');
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
@@ -129,6 +130,7 @@ router.post('/checkAndRegisterShopName', checkToken, function(req, res, next) {
             });
             //2. Send shop's registration to database
             var shop = new Shop();
+            shop._id = _id = mongoose.Types.ObjectId();
             shop.fb_uid = fbId;
             shop.shopname = shopName;
             var members = [];
@@ -140,6 +142,18 @@ router.post('/checkAndRegisterShopName', checkToken, function(req, res, next) {
             shop.save(function(err) {
                 // Log Errors for later
                 console.log("from shop registration :", err);
+                if (err) {
+                    // rollback
+                    // taken from http://stackoverflow.com/questions/12627586/is-node-js-rmdir-recursive-will-it-work-on-non-empty-directories
+                    setTimeout(function(err) {
+                        rmdir(destPath, function(error) {})
+                    }, 3000);
+                    shopOwnerManager.remove(shopName);
+                    shopOwnerManagerInvert.remove(fbId);
+                    jsonfile.writeFile(file, shopOwnerManager, function(err) {
+                        // console.error(err)
+                    });
+                }
             })
 
         } else {

@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Shop_schema = new Schema({
-    // _id: Schema.Types.ObjectId,
+    _id: Schema.Types.ObjectId,
     fb_uid: { type: String, unique: true, required: true, dropDups: true, index: true },
     members: [Schema.Types.Mixed],
     avatars: { type: String },
