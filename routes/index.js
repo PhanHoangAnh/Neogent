@@ -9,7 +9,6 @@ router.get('/', function(req, res, next) {
     // console.log("current path: ", shopPath);
     // res.render('index', { title: 'Express' });
     var nextPath = path.join("../Shops", req.shopname);
-    console.log("next require", nextPath);
     var shopHandler = require(nextPath);
     shopHandler(req, res, next);
 
