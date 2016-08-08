@@ -13,48 +13,17 @@
     <link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!--script type="text/javascript" src='js/navbar.js'></script-->
-    <style type="text/css">
-    .br-response {
-    min-height: 220px;
-    }
-    .controls {
-    margin-top: 15px;
-    /*vertical-align: middle;*/
-    }
-    @media (min-width: 979px) {
-    .br-response {
-    min-height: 160px;
-    padding-left: 15px;
-    }
-    #sidebar.affix-bottom {
-    position: absolute;
-    }
-    #sidebar.affix-top {
-    position: static;
-    /*margin-top: 30px;*/
-    /*width: 300px;*/
-    }
-    #sidebar.affix {
-    position: fixed;
-    top: 70px;
-    /*width: 300px;*/
-    }
-    }
-    .introduction .label {
-    background-color: #5CB85C;
-    }
-    </style>
     <body>
+        <!-- User -->
         <div class="user-account">
             <span class="username-text">Admin</span>
-            <span class="avatar-img"><img src="img/background/beauty_01.jpg"></span>
+            <span class="avatar-img"><img src="img/background/avatar.jpg"></span>
         </div>
         <!-- /User -->
         
         <!-- Search box -->
         <div class="search-box">
-            <div class="col-xs-9 col-sm-9 col-md-9">
+            <div class="col-xs-12 col-sm-9 col-md-9">
                 <form role="search">
                     <i class="fa fa-search"></i>
                     <input type="text" name="q" placeholder="Search" class="form-control" style = "border-color: #8f29b3;">
@@ -64,15 +33,14 @@
         <!-- /Search box -->
         
         <!-- Heading page -->
-        <!-- <section class="heading-page" style="padding-top: 100px;"> -->
-        <div class="container-fluid">
-            <div class="col-md-12 col-lg-12">
-                <!-- <img src="img/AppManager.png" style = "width: 70px"> -->
-                <h1 style = "color:#fff">Application Manager</h1>
+        <section class="heading-page">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <h1>Application Manager</h1>
+                </div>
             </div>
-            <!-- </section>  -->
-            <!-- /Heading page -->
-            <hr>
+        </section>
+        <!-- /Heading page -->
             <template id = "AppTemp">
             <div class="col-xs-6 col-sm-3 col-md-2">
                 <div class="flat-item">

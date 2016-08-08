@@ -1,0 +1,86 @@
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#topNav {
+    z-index: -1;
+}
+#nav {
+    position: fixed;
+    width: 100%;
+    top: -50px;
+    transition: top 1.2s;
+    -webkit-transition: top 1.2s;
+}
+#nav.affix-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 80px;
+    background-color: transparent;
+    border: 0;
+    background-color: rgba(124, 124, 124, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
+    box-shadow: 0px 5px 7px 1px rgba(0, 0, 0, 0.1);
+    /*border-radius: 8px;*/
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    margin-left: 30px;
+    right: 30px;
+    width: calc(100% - 60px);
+    /*width: 90%;*/
+    margin-bottom: 93px;
+    /*box-sizing: border-box;*/
+}
+
+#nav li {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+#nav li>a:hover {
+    transition: all 1s;
+    background-color: rgb(255, 51, 51);
+}
+#nav li:first-child {
+    border-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#nav li:last-child {
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+/*#nav.affix-top li>:last-child>a {
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}*/
+
+@media only screen and (min-width: 768px) {
+    #nav.affix-top li {
+        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    #nav.affix-top li>a:hover {
+        color: #FFF;
+        background-color: rgba(0, 0, 0, .2);
+    }
+    #nav li {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    #nav.affix .site-name {
+        font-size: 24px;
+    }
+
+}
+#nav.affix {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    opacity: 0.8;
+    -webkit-transition: all 1.2s ease-in-out;
+    height: 50px;
+}
