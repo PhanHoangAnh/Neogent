@@ -185,7 +185,7 @@ $(document).ready(function() {
             fbName.innerHTML = objFb.fbName;
             fbId = objFb.fbId;
             fbToken = objFb.fbToken;
-            if(systoken){
+            if(!systoken){
                 systoken = localStorage.getItem("app_token");
                 checkToken(objFb.fbId, systoken,RSAPublicKey, afterCheckToken);
             }else{
@@ -203,7 +203,6 @@ $(document).ready(function() {
         }
     }
     function goAhead(){
-        console.log("I am here ");
         var inputShopName = document.getElementById('txt_shopName');
         //  placement : 'top'      
         
@@ -217,6 +216,9 @@ $(document).ready(function() {
             }
             if(obj.status ==2){
                 inputShopName.value = obj.return;
+                // Redirect in to shop/app
+                var nextPage = window.location.origin +"/" + obj.return + "/app";
+                window.location = nextPage;
             }
         };
         postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, payload, fn_cb)
@@ -229,6 +231,7 @@ $(document).ready(function() {
         systoken = token;
         // console.log("from afterGetToken: ", token);
         enableConBnt();
+        goAhead();
     }
     function afterCheckToken(result){
         if(result.errNum != 0){
@@ -237,6 +240,7 @@ $(document).ready(function() {
         }
         // console.log("afterGetToken: ", result);
         enableConBnt();
+        goAhead();
     }
     function enableConBnt(){
         conBnt.classList.toggle("disabled", "btn-info", "btn-primary");

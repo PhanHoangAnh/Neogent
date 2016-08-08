@@ -4,8 +4,7 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var path = require("path");
-var mongoose = require("mongoose"),
-    Mongoose;
+var mongoose = require("mongoose");
 var jsonfile = require('jsonfile');
 var hashmap = require('hashmap');
 var ncp = require('ncp').ncp;
@@ -36,11 +35,9 @@ jsonfile.readFile(file, function(err, obj) {
     }
     shopOwnerManager.copy(obj);
     shopOwnerManager.forEach(function(v, k) {
+        
         shopOwnerManagerInvert.set(v, k);
-    });
-    // console.log(shopOwnerManager);
-    // console.log(shopOwnerManagerInvert);
-
+    });   
 });
 // Utility function to check whether folder is existed take from https://groups.google.com/forum/#!topic/nodejs/h2h7dIKtP9E
 // function dirExists(d, cb) {
@@ -95,12 +92,7 @@ router.post('/checkAndRegisterShopName', checkToken, function(req, res, next) {
     console.log(shopName);
     var fbId = req.body.uid;
     var Shop = mongoose.model('Shops');
-    if (shopName.length < 5) {
-        objResult.status = 1
-        objResult.err = "Name to short";
-        res.send(objResult);
-        return;
-    }
+
     if (shopOwnerManagerInvert.has(fbId)) {
         shopName = shopOwnerManagerInvert.get(fbId);
         objResult.status = 2
@@ -110,6 +102,12 @@ router.post('/checkAndRegisterShopName', checkToken, function(req, res, next) {
         objResult.status = 3
         objResult.err = "Shop has been taken";
     } else {
+        if (shopName.length < 5) {
+            objResult.status = 1
+            objResult.err = "Name to short";
+            res.send(objResult);
+            return;
+        }
         shopOwnerManager.set(shopName, fbId);
         // console.log("from shopOwnerManager: ", shopOwnerManager.get(shopName));
         shopOwnerManagerInvert.set(fbId, shopName);
@@ -125,7 +123,8 @@ router.post('/checkAndRegisterShopName', checkToken, function(req, res, next) {
         if (!folderIsExisted) {
             ncp(srcPath, destPath, function(err) {
                 if (err) {
-                    return console.error(err);
+                    // log later
+                    console.error(err);
                 }
             });
             //2. Send shop's registration to database
