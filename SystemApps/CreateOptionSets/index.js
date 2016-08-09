@@ -47,11 +47,18 @@ objResult.status = 0
 objResult.err = null;
 objResult.return_id = null;
 //
-router.post("/updateOptionSets", checkToken,checkAuth, function(req, res, next) {
+router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next) {
     // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
 
     //var optionSets = dbEngine.OptionSets();
     // console.log("payload data: ", req.body.payload.data);
+    if (!req.auth) {
+        objResult.status = 4;
+        objResult.err = "Unauthorized";
+        objResult.return_id = null;
+        res.status(401).send(objResult);
+        return;
+    }
     var postData = req.body.payload.data;
     var optionSets = mongoose.model('OptionSets');
     var _id = postData.objId;

@@ -59,7 +59,7 @@ $(document).ready(function() {
             data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
         };
         // Make post request to getToken Endpoint
-        var currentUrl = '/api/getToken';
+        var currentUrl = '../getToken';
         $.ajax({
             // url: './userToken',
             url: currentUrl,
@@ -89,7 +89,7 @@ $(document).ready(function() {
         var json_data = {
             data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
         };
-        var currentUrl = '/api/checkToken';
+        var currentUrl = '../checkToken';
         $.ajax({
             // url: './userToken',
             url: currentUrl,
@@ -99,7 +99,10 @@ $(document).ready(function() {
             data: json_data,
             // contentType:'application/json',
             complete: function(data, status, jqXHR) {
-                console.log(data.responseJSON);
+
+                if (data.status == 401) {
+                    window.location = "/";
+                }
                 if (fn_cb) {
 
                     fn_cb(data.responseJSON);
