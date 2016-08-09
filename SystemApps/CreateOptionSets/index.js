@@ -119,7 +119,7 @@ router.get("/getOptionSets", function(req, res, next) {
 
 });
 
-router.get("/deleteOptionSets/:id", function(req, res, next) {
+router.get("/deleteOptionSets/:id", checkToken, function(req, res, next) {
     var _id = req.params.id;
     // console.log("remove id: ", _id);
     var optionSets = mongoose.model('OptionSets');

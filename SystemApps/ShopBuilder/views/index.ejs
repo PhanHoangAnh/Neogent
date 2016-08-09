@@ -436,8 +436,8 @@ $(document).ready(function() {
             fbName.innerHTML = objFb.fbName;
             fbId = objFb.fbId;
             fbToken = objFb.fbToken;
-            if (!systoken) {
-                systoken = localStorage.getItem("app_token");
+            systoken = localStorage.getItem("app_token");
+            if (systoken) {                
                 checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
             } else {
                 getToken(fbId, fbToken, RSAPublicKey, afterGetToken);

@@ -604,6 +604,9 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
         // contentType:'application/json',
         complete: function(data, status, jqXHR) {
             console.log(data.responseJSON);
+            if (data.status == 401 || !data.responseJSON.auth) {
+                window.location = "/";
+            }
             if (fn_cb) {
 
                 fn_cb(data.responseJSON);

@@ -21,6 +21,7 @@ function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
                 var _app_token = cryptoUtil.aesDecryptor(encrypted_app_token, aes_key);
                 app_token = JSON.parse(_app_token).app_token;
                 localStorage.setItem("app_token", app_token);
+                //for testing only                
                 if (fn_cb) {
                     fn_cb(app_token);
                 }
@@ -48,11 +49,11 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
         data: json_data,
         // contentType:'application/json',
         complete: function(data, status, jqXHR) {
-            if (data.status == 401) {
+            console.log(data);
+            if (data.status == 401 || !data.responseJSON.auth) {
                 window.location = "/";
             }
             if (fn_cb) {
-
                 fn_cb(data.responseJSON);
             }
 

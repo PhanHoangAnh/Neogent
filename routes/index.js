@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post("/checkToken", checkToken, checkAuth, function(req, res, next) {
+router.use("/checkToken", checkToken, checkAuth, function(req, res, next) {
     var sendObj = {};
     sendObj.errNum = 0;
     sendObj.errMessage = "Valid Token";

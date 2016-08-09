@@ -22,6 +22,7 @@ function requireUncached(module) {
 };
 
 router.get('/', function(req, res, next) {
+    
     res.render('index', { data: setting, RSApublicKey: keyPair.public });
 });
 

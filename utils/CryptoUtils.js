@@ -17,7 +17,8 @@ var errObj = {
 
 function decryptRequest(req, res, next) {
     var RSAKey = cryptico.RSAKey.parse(JSON.stringify(keyPair.private));
-    var encrypt_Request = req.body.data;
+    // https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+    var encrypt_Request = req.body.data || req.query.token || req.headers['x-access-token'];
     if (!encrypt_Request) {
         errObj.errNum = 1;
         errObj.errMessage = "Missing Encrypted Object"
@@ -54,7 +55,6 @@ function decryptRequest(req, res, next) {
 function checkToken(req, res, next) {
     var fb_uid = req.body.uid;
     var app_token = req.body.token;
-
     if (map.has(fb_uid)) {
         var checkObject = map.get(fb_uid);
         if (checkObject.app_token == app_token) {
@@ -66,8 +66,6 @@ function checkToken(req, res, next) {
     }
 
     function decodeJwt(err, decoded) {
-        // console.log("decoded: ", decoded);
-
         if (!err) {
             next();
         } else {

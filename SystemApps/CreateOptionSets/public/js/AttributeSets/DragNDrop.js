@@ -843,6 +843,14 @@ function deleteSet() {
             // url: './userToken',
             url: currentUrl,
             method: 'GET',
+            beforeSend: function(request) {
+                var _data = {
+                    userName: fbId,
+                    password: systoken
+                };
+                aes_key = cryptoUtil.generateAESKey();
+                request.setRequestHeader("x-access-token", cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key));
+            },
             // data: compObj,
             complete: function(data, status, jqXHR) {
 
