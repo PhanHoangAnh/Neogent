@@ -98,8 +98,15 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
     }
 });
 
-router.get("/getOptionSets", function(req, res, next) {
+router.get("/getOptionSets", checkToken, checkAuth, function(req, res, next) {
     // console.log("from /getOptionSets");
+    if (!req.auth) {
+        objResult.status = 4;
+        objResult.err = "Unauthorized";
+        objResult.return_id = null;
+        res.status(401).send(objResult);
+        return;
+    }
     var optionSets = mongoose.model('OptionSets');
     var query = { shopName: req.shopname };
     optionSets.find(query, function(err, doc) {
@@ -119,7 +126,14 @@ router.get("/getOptionSets", function(req, res, next) {
 
 });
 
-router.get("/deleteOptionSets/:id", checkToken, function(req, res, next) {
+router.get("/deleteOptionSets/:id", checkToken, checkAuth, function(req, res, next) {
+    if (!req.auth) {
+        objResult.status = 4;
+        objResult.err = "Unauthorized";
+        objResult.return_id = null;
+        res.status(401).send(objResult);
+        return;
+    }
     var _id = req.params.id;
     // console.log("remove id: ", _id);
     var optionSets = mongoose.model('OptionSets');

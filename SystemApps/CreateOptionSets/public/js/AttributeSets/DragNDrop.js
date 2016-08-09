@@ -766,6 +766,7 @@ function saveAttributeSets() {
 
     function fn_cb(result) {
         console.log(result);
+        requestOptionSets();
     };
 
     // $.ajax({
@@ -792,6 +793,14 @@ function requestOptionSets() {
     $.ajax({
         // url: './userToken',
         url: currentUrl,
+        beforeSend: function(request) {
+            var _data = {
+                userName: fbId,
+                password: systoken
+            };
+            aes_key = cryptoUtil.generateAESKey();
+            request.setRequestHeader("x-access-token", cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key));
+        },
         method: 'GET',
         // data: compObj,
         complete: function(data, status, jqXHR) {

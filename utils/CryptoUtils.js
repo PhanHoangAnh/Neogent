@@ -29,7 +29,6 @@ function decryptRequest(req, res, next) {
     try {
         var DecryptionResult = cryptico.decrypt(encrypt_Request, RSAKey);
         var DecryptRSA = JSON.parse(DecryptionResult.plaintext);
-
         var aes_key = DecryptRSA.key;
         delete DecryptRSA.key;
         var aes_userName = DecryptRSA.userName;
