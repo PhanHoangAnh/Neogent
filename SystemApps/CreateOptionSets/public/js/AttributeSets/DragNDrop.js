@@ -762,20 +762,27 @@ function saveAttributeSets() {
     compObj.components = printedList
         // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
-    $.ajax({
-        // url: './userToken',
-        url: currentUrl,
-        method: 'POST',
-        data: compObj,
-        complete: function(data, status, jqXHR) {
-            if (!data.responseJSON.err) {
-                compObj.objId = data.responseJSON.return_id
-                requestOptionSets();
-            } else {
-                console.log(data.responseJSON.err);
-            }
-        }
-    });
+    postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb)
+
+    function fn_cb(result) {
+        console.log(result);
+    };
+
+    // $.ajax({
+    //     // url: './userToken',
+    //     url: currentUrl,
+    //     method: 'POST',
+    //     data: compObj,
+    //     complete: function(data, status, jqXHR) {
+    //         if (!data.responseJSON.err) {
+    //             compObj.objId = data.responseJSON.return_id
+    //             requestOptionSets();
+    //         } else {
+    //             console.log(data.responseJSON.err);
+    //         }
+    //     }
+    // });
+
     // end of Post Attributes List
 }
 

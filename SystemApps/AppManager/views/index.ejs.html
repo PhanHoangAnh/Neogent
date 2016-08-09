@@ -16,11 +16,13 @@
 
 <body>
     <template id="FbPad">
+        <div class="user-account">
             <div class="fb-avatar">
                 <span class="username-text" app-role="fbName"></span>
                 <span class="avatar-img"><img app-role = "fbAvatar">
                 </span>
             </div>
+        </div>
     </template>
     <!-- User -->
     <div class="user-account">
@@ -75,17 +77,13 @@
     <div id="phasebeam">
         <canvas width="700" height="650"></canvas>
         <canvas width="700" height="650"></canvas>
-        <canvas width="700" height="650"></canvas>us
+        <canvas width="700" height="650"></canvas>
     </div>
     <script type="text/javascript" src="js/phasebeam.js"></script>
-    <script type="text/javascript" src="js/Crypto/cryptoUtils.js"></script>
-    <script type="text/javascript" src="js/facebook/fb.js"></script>
-    <script type="text/javascript" src="js/AppManager/appManager.js"></script>
 </body>
 <script type="text/javascript">
 var data = <%- JSON.stringify(data) %>
 LoadApp();
-RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
 
 function LoadApp() {
     var root = document.getElementById("AppManagerBoard");
@@ -103,9 +101,6 @@ function LoadApp() {
         root.appendChild(document.importNode(AppTemplate, true));
     }
 }
-
-
-
 </script>
 
 </html>

@@ -68,6 +68,15 @@ img {
 </style>
 
 <body>
+    <template id="FbPad">
+        <div class="user-account">
+            <div class="fb-avatar">
+                <span class="username-text" app-role="fbName"></span>
+                <span class="avatar-img"><img app-role = "fbAvatar">
+            </span>
+            </div>
+        </div>
+    </template>
     <!-- Dont touch this section -->
     <!-- NavBar -->
     <div id="nav-wrapper">
@@ -82,6 +91,7 @@ img {
                     </div>
                     <div id="AppManagerBoard">
                     </div>
+
                     <div class="navbar-header">
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
@@ -90,6 +100,13 @@ img {
                             <span class="icon-bar"></span>
                         </button>
                     </div>
+                    <!--  -->
+                        <div app-role = 'removeAfterLogin'>
+                            <button class="btn btn-facebook" id="bntFbLogin" style="float: right; margin: 10px 0 0 10px;">
+                                    <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                            </button>
+                        </div>
+                    <!--  -->
                 </div>
             </div>
         </div>
@@ -262,6 +279,8 @@ img {
 <!--  -->
     <script type="text/javascript" src="js/phasebeam3.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+    <script type="text/javascript" src="js/Crypto/cryptoUtils.js"></script>
+    <script type="text/javascript" src="js/facebook/fb.js"></script>
 </body>
 <script type="text/javascript">
 $(function() {
@@ -290,6 +309,12 @@ $(function() {
         // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
     });;
 });
+
+var systoken;
+var fbId;
+var fbToken;
+var conBnt;
+var RSAPublicKey;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
@@ -298,7 +323,9 @@ $(document).ready(function() {
     LoadRelatedApp();
     requestOptionSets();
     var currency =<%-JSON.stringify(currency)%>;
-
+    RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
+    var data =<%-JSON.stringify(system)%>;    
+    
     document.querySelector('#imgSource').addEventListener('change', function(el) {
         initImg(this);
     }, false);
@@ -344,10 +371,55 @@ $(document).ready(function() {
             $('.mini-submenu').hide();
         })
     });
-    var data =<%-JSON.stringify(system)%>;    
-    currency =<%-JSON.stringify(currency)%>;
+
     // console.log("currency: ", currency);
     create_productAttributes(data, true);
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+
+    function getStatus(objFb) {
+        // console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            if (!systoken) {
+                systoken = localStorage.getItem("app_token");
+                checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
+            } else {
+                getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            }
+
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));
+            // btn-primary
+            // conBnt = document.getElementById('bntCon');
+            // conBnt.classList.add('btn-info');
+            // conBnt.innerHTML = "Get system Token";
+
+        }
+    }
+
+    function afterGetToken(token) {
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+
+    function afterCheckToken(result) {
+        if (result.errNum != 0) {
+            getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            return;
+        }
+    }
+
+
+
 
 });
 </script>

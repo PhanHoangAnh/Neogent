@@ -36,7 +36,8 @@ router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
     res.render('index', {
         title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting
+        data: setting,
+        RSApublicKey: keyPair.public
     });
 });
 //  Global variables for Business functions
@@ -46,19 +47,21 @@ objResult.status = 0
 objResult.err = null;
 objResult.return_id = null;
 //
-router.post("/updateOptionSets", function(req, res, next) {
+router.post("/updateOptionSets", checkToken,checkAuth, function(req, res, next) {
     // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
 
     //var optionSets = dbEngine.OptionSets();
+    // console.log("payload data: ", req.body.payload.data);
+    var postData = req.body.payload.data;
     var optionSets = mongoose.model('OptionSets');
-    var _id = req.body.objId;
+    var _id = postData.objId;
     console.log("Not id ?", !_id);
     if (!_id) {
         var doc = new optionSets();
         doc._id = _id = mongoose.Types.ObjectId();
-        doc.setName = req.body.setName;
+        doc.setName = postData.setName;
         doc.scope = "Global";
-        doc.components = req.body.components;
+        doc.components = postData.components;
         doc.shopName = req.shopname;
         doc.save(function(err) {
             objResult.status = 1;
@@ -73,9 +76,9 @@ router.post("/updateOptionSets", function(req, res, next) {
                 objResult.err = err;
                 res.send(objResult);
             } else {
-                doc.setName = req.body.setName;
+                doc.setName = postData.setName;
                 doc.scope = "Global";
-                doc.components = req.body.components;
+                doc.components = postData.components;
                 doc.shopName = req.shopname;
                 doc.save(function(error) {
                     objResult.status = 3;

@@ -47,7 +47,8 @@ router.get('/', function(req, res, next) {
         title: 'Hello, this is template Application of : ' + req.shopname,
         data: setting,
         system: systemAttribute.system,
-        currency: currency
+        currency: currency,
+        RSApublicKey: keyPair.public
     });
 });
 //  Global variables for Business functions

@@ -20,6 +20,15 @@
     <!--script type="text/javascript" src='js/navbar.js'></script-->
     <body>
         <!-- Dont touch this section -->
+        <template id="FbPad">
+            <div class="user-account">
+                <div class="fb-avatar">
+                    <span class="username-text" app-role="fbName"></span>
+                    <span class="avatar-img"><img app-role = "fbAvatar">
+                </span>
+                </div>
+            </div>
+        </template>
         <!-- NavBar -->
         <div id="nav-wrapper">
             <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
@@ -31,6 +40,13 @@
                         <div class='site-name hidden-xs'>
                             AbcJSC
                         </div>
+                            <div>
+                                <div app-role = 'removeAfterLogin'>
+                                    <button class="btn btn-facebook" id="bntFbLogin" style="float: right; margin: 10px 0 0 10px;">
+                                            <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                                    </button>
+                                </div> 
+                            </div>
                         <span class="hambugger" onclick="toggleMenu()">
                            <span class="icon-bar"></span>
                            <span class="icon-bar"></span>
@@ -220,6 +236,9 @@
 <!--  -->
 <script type="text/javascript" src="js/phasebeam3.js"></script>
 <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+<script type="text/javascript" src="js/Crypto/cryptoUtils.js"></script>
+<script type="text/javascript" src="js/facebook/fb.js"></script>
+<script src="js/AttributeSets/optionSets.js" type="text/javascript" charset="utf-8"></script>
 </body>
 <script type="text/javascript">
 $(function() {
@@ -248,6 +267,12 @@ $(function() {
         // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
     });;
 });
+
+var systoken;
+var fbId;
+var fbToken;
+var conBnt;
+var RSAPublicKey;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
@@ -257,6 +282,8 @@ $(document).ready(function() {
     document.querySelector('#iconFile').addEventListener('change', function(el) {
         initIcon(this);
     }, false);
+
+    RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
 
     LoadApp();
 
@@ -280,6 +307,44 @@ $(document).ready(function() {
             root.appendChild(document.importNode(AppTemplate, true));
         }
     };
+    // Chipl code more here
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+    function getStatus(objFb) {
+        // console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            if (!systoken) {
+                systoken = localStorage.getItem("app_token");
+                checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
+            } else {
+                getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            }
+
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));
+        }
+    }
+
+    function afterGetToken(token) {
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+
+    function afterCheckToken(result) {
+        if (result.errNum != 0) {
+            getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            return;
+        }
+    }
 
 });
 
