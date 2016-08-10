@@ -37,7 +37,8 @@ var db = mongoose.connection;
 
 db.on('error', console.error);
 db.once('open', function() {
-    // Create your schemas and models here.    
+    // Create your schemas and models here.
+    console.log("Database connected..ready to use");
 });
 
 mongoose.connect(database);
