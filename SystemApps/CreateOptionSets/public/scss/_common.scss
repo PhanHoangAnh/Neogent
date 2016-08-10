@@ -46,9 +46,11 @@ em {
 
 .btn {position: relative;}
 .form-control, .btn {@include border-radius(2px);}
+label {font-weight: normal;}
 
 @media only screen and (max-width: $w-lmobile - 1) {
   h1, .h1 {font-size: 30px;}
+  h4, .h4 {font-size: 16px;}
 }
 
 //masthead
@@ -155,16 +157,30 @@ em {
       opacity: .1; margin-left: 7px;
     }
   }
-  em {
-    font-family: $lightFont;
-    opacity: .5;
-    padding: 0 5px;
-  }
 }
 
 //tabs
 .nav-tabs>li>a {
   > li {
     > a {@include border-radius(2px 2px 0 0);}
+  }
+}
+
+//footer
+footer {
+  .footer-inner {
+    padding-top: 5px; padding-bottom: 5px;
+    background-color: rgba(0,0,0,.85);
+    font-family: $lightFont; color: #FAFAFA;
+    @include clearfix;
+  }
+}
+
+//clearfix
+.clearfix {@include clearfix;}
+
+@include mobile {
+  .hide-mobile {
+    display: none;
   }
 }

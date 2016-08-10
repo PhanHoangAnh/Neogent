@@ -5,14 +5,11 @@
 <title>Shop Registration</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/social-buttons.css">
 <link rel="stylesheet" type="text/css" href="css/shop.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
-<link rel="stylesheet" type="text/css" href="css/social-buttons.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="js/Crypto/cryptoUtils.js"></script>
@@ -20,137 +17,72 @@
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
-<style type="text/css">
-.br-response {
-    min-height: 220px;
-}
-
-.controls {
-    margin-top: 15px;
-    /*vertical-align: middle;*/
-}
-
-@media (min-width: 979px) {
-    .br-response {
-        min-height: 160px;
-        padding-left: 15px;
-    }
-    #sidebar.affix-bottom {
-        position: absolute;
-    }
-    #sidebar.affix-top {
-        position: static;
-        /*margin-top: 30px;*/
-        /*width: 300px;*/
-    }
-    #sidebar.affix {
-        position: fixed;
-        top: 70px;
-        /*width: 300px;*/
-    }
-}
-
-.introduction .label {
-    background-color: #5CB85C;
-}
-
-.form-control {
-    border-radius: 0px;
-    background-color: #fff;
-}
-
-img {
-    width: 100%;
-    /* or any custom size */
-    height: 100%;
-    object-fit: contain;
-}
-.popover-title {
-    padding: 8px 14px;
-    margin: 0;
-    font-size: 14px;
-    background-color: #13415d;
-    border-bottom: 1px solid #ebebeb;
-    border-radius: 5px 5px 0 0;
-}
-.popover-content {
-    padding: 9px 14px;
-    color: #555;
-}
-</style>
-
 <body>
-    <template id = "FbPad">
-        <div class="fb-avatar">
-            <span class="img-avatar"><img app-role = "fbAvatar"></span>
-            <span app-role = "fbName"></span>
-        </div>        
-    </template>
-    <section class='heading-page' style="opacity: 1">
-        <div class="container-fluid">
-            <div class="col-md-12 col-lg-12 " style="text-align:center">
-                <h1> Sign up - Shop registration</h1>
+    <div class="shop-registration">
+        <template id = "FbPad">
+            <div class="fb-avatar">
+                <span class="img-avatar"><img app-role = "fbAvatar"></span>
+                <span app-role = "fbName"></span>
             </div>
-        </div>
-    </section>
-    <!-- <hr> -->
-    <!-- Metro style -->
-    <div class="container-fluid " id="start-offset" style="min-height: 70%;">
-        <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3"></div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h2 class="panel-title">
-                             OPEN YOUR FREE SHOP
-                        </h2>
-                    </div>
-                    <div class="panel-body">
-                        <h4>Start with your facebook account</h4>
-                        <br>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="col-md-8 col-lg-8">
-                                <div class="form-group">
-                                    <label for="txt_shopName">Choose Shop Name:</label>
-                                    <input type="text" class="form-control" id="txt_shopName" data-toggle="popover" title="Info" >
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-lg-4" style="padding-left: 0px;">
-                                <div app-role = 'removeAfterLogin'>
-                                    <label for="usr">Login with facebook</label>
-                                    <button class="btn btn-facebook" id="bntFbLogin"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
-                                </div>                                
-                            </div>
+        </template>
+        <section class="heading-page">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <h1> Sign up - Shop registration</h1>
+                </div>
+            </div>
+        </section>
+
+        <div class="container-fluid" id="start-offset">
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3"></div>
+            <div class="col-xs-10 col-sm-8 col-md-8 col-lg-6">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                 OPEN YOUR FREE SHOP
+                            </h2>
                         </div>
-                        <div class="col-md-12 col-lg-12">
-                            <div class="row form-group" style="padding:15px;">
-                                <div class="col-xs- col-sm- col-md- col-lg-">
-                                    <!-- btn-primary -->
-                                    <button type="button" class="btn col-xs-12 col-sm-1 col-md-12 col-lg-12 disabled" id="bntCon">Waiting for your Login</button>
+                        <div class="panel-body col-md-12">
+                            <h4>Start with your facebook account</h4>
+                            <br>
+                            <div class="clearfix">
+                                <div class="col-sm-7 col-md-8">
+                                    <div class="form-group">
+                                        <label for="txt_shopName">Choose Shop Name:</label>
+                                        <input type="text" class="form-control" id="txt_shopName" data-toggle="popover" title="Info" >
+                                    </div>
                                 </div>
+                                <div class="col-sm-5 col-md-4">
+                                    <div app-role = 'removeAfterLogin'>
+                                        <label for="usr" class="hide-mobile">Login with facebook</label>
+                                        <button class="btn btn-facebook" id="bntFbLogin"><i class="fa fa-facebook"></i> Login with Facebook</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <!-- btn-primary -->
+                                <button type="button" class="btn disabled" id="bntCon">Waiting for your Login</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-xs-1 col-sm-2 col-md-2 col-lg-3"></div>
         </div>
-        <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3"></div>
+        <div id="end-offset"></div>
     </div>
-    <div id="end-offset"></div>
     <footer>
-        <div style=" width: 100%; background-color: rgba(0,0,0,.85); height: 90px;">
+        <div class="col-md-12 footer-inner">
             @Copyright:abcd@abc.jsc
         </div>
     </footer>
-    </div>
     <div id="phasebeam">
-        <canvas id="backgroundAni" width="120%" height="100%">
-        </canvas>
+        <canvas id="backgroundAni" width="120%" height="100%"></canvas>
     </div>
-    <!--  -->
-    <!--  -->
     <script type="text/javascript" src="js/c2runtime.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+
 </body>
 <script type="text/javascript">
 $(function() {

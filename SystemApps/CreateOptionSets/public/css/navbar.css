@@ -327,8 +327,31 @@
     font-size: 28px;
   }
 }
-@media only screen and (max-width: 991px) {
+@media (min-width: 992px) {
   /* line 232, ../scss/navbar.scss */
+  .br-response {
+    min-height: 160px;
+    padding-left: 15px;
+  }
+
+  /* line 236, ../scss/navbar.scss */
+  #sidebar.affix-bottom {
+    position: absolute;
+  }
+
+  /* line 239, ../scss/navbar.scss */
+  #sidebar.affix-top {
+    position: static;
+  }
+
+  /* line 242, ../scss/navbar.scss */
+  #sidebar.affix {
+    position: fixed;
+    top: 70px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  /* line 249, ../scss/navbar.scss */
   .menu-board {
     top: -15px;
     height: 50px;
@@ -336,28 +359,28 @@
     float: none;
   }
 
-  /* line 238, ../scss/navbar.scss */
+  /* line 255, ../scss/navbar.scss */
   .mini-broad-cover {
     right: -150%;
   }
 
-  /* line 239, ../scss/navbar.scss */
+  /* line 256, ../scss/navbar.scss */
   .mini-broad {
     margin-bottom: 3px;
   }
-  /* line 241, ../scss/navbar.scss */
+  /* line 258, ../scss/navbar.scss */
   .mini-broad img {
     height: 32px;
   }
 }
 @media only screen and (max-width: 565px) {
-  /* line 247, ../scss/navbar.scss */
+  /* line 264, ../scss/navbar.scss */
   #nav.affix-top {
     width: 100%;
     right: 0;
     margin-left: 0;
   }
-  /* line 251, ../scss/navbar.scss */
+  /* line 268, ../scss/navbar.scss */
   #nav .btn-facebook {
     font-size: 11px;
     margin: 12px 0 0;
