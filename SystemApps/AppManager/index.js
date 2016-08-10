@@ -22,8 +22,12 @@ function requireUncached(module) {
 };
 
 router.get('/', function(req, res, next) {
-    
-    res.render('index', { data: setting, RSApublicKey: keyPair.public });
+    // loading localApp here
+    // then generate template
+    res.render('index', {
+        data: setting,
+        RSApublicKey: keyPair.public
+    });
 });
 
 // dynamic mapping here for appropriated applications

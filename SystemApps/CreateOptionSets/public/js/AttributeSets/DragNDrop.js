@@ -785,6 +785,7 @@ function saveAttributeSets() {
     // });
 
     // end of Post Attributes List
+
 }
 
 function requestOptionSets() {
