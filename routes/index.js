@@ -14,7 +14,16 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.use("/checkToken", checkToken, checkAuth, function(req, res, next) {
+router.use("/checkToken", checkToken, function(req, res, next) {
+    var sendObj = {};
+    sendObj.errNum = 0;
+    sendObj.errMessage = "Valid Token";
+    // console.log("payload data", req.body.payload, req.body.uid);
+    res.send(sendObj);
+    res.end();
+});
+
+router.use("/checkAuth", checkToken, checkAuth, function(req, res, next) {
     var sendObj = {};
     sendObj.errNum = 0;
     sendObj.errMessage = "Valid Token";
@@ -22,7 +31,7 @@ router.use("/checkToken", checkToken, checkAuth, function(req, res, next) {
     // console.log("payload data", req.body.payload, req.body.uid);
     res.send(sendObj);
     res.end();
-});
+})
 
 // var url = "template";
 router.post("/getToken", getToken);

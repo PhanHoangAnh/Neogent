@@ -48,9 +48,9 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
         data: json_data,
         // contentType:'application/json',
         complete: function(data, status, jqXHR) {
-            if (data.status == 401 || !data.responseJSON.auth) {
-                window.location = "/";
-            }
+            // if (data.status == 401 || !data.responseJSON.auth) {
+            //     window.location = "/";
+            // }
             console.log(data);
             if (fn_cb) {
 

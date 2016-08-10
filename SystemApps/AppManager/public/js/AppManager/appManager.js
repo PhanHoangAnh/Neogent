@@ -99,9 +99,9 @@ $(document).ready(function() {
             data: json_data,
             // contentType:'application/json',
             complete: function(data, status, jqXHR) {
-                if (data.status == 401) {
-                    window.location = "/";
-                }
+                // if (data.status == 401) {
+                //     window.location = "/";
+                // }
                 if (fn_cb) {
                     fn_cb(data.responseJSON);
                 }
