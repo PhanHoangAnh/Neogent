@@ -1335,6 +1335,24 @@ footer .footer-inner:after {
     display: none;
   }
 }
+/* line 197, ../scss/_common.scss */
+.modal-content {
+  padding: 1px;
+}
+
+/* line 200, ../scss/_common.scss */
+.modal-header {
+  background-color: #00A600;
+  border-radius: 1px 1px 0 0;
+}
+/* line 203, ../scss/_common.scss */
+.modal-header h4, .modal-header button {
+  color: #FFF;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
 /* line 16, ../scss/main.scss */
 img {
   width: 100%;
@@ -1490,22 +1508,4 @@ img {
 /* line 127, ../scss/main.scss */
 .preview + .preview-md, .preview-md + .preview-sm {
   display: none;
-}
-
-/* line 131, ../scss/main.scss */
-.modal-content {
-  padding: 1px;
-}
-
-/* line 134, ../scss/main.scss */
-.modal-header {
-  background-color: #00A600;
-  border-radius: 1px 1px 0 0;
-}
-/* line 137, ../scss/main.scss */
-.modal-header h4, .modal-header button {
-  color: #FFF;
-  opacity: 1;
-  filter: alpha(opacity=100);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
