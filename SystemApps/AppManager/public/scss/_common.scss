@@ -139,11 +139,17 @@ label {font-weight: normal;}
     text-align: right;
   }
 }
-.navbar.affix .user-account {
-  margin-top: 4px;
-}
-.navbar.affix .user-account .avatar-img {
-  width: 40px; height: 40px;
+.navbar {
+  .user-account {float: right;}
+  &.affix {
+    .user-account {
+      margin-top: 4px; width: 140px;
+      .avatar-img {
+        width: 40px; height: 40px;
+      }
+      .username-text {font-size: 11px;}
+    }
+  }
 }
 
 //facebook button

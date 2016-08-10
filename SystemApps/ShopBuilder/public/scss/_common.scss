@@ -113,6 +113,7 @@ label {font-weight: normal;}
   padding-left: 100px;
   overflow: hidden;
   cursor: pointer;
+  width: 150px;
   &, * {
     @include single-transition(all,0.5s);
   }
@@ -125,7 +126,8 @@ label {font-weight: normal;}
     img {
       position: absolute;
       @include center-pos;
-      height: auto;
+      width: 100%; height: 100%;
+      object-fit: contain;
     }
   }
   .username-text {
@@ -137,11 +139,17 @@ label {font-weight: normal;}
     text-align: right;
   }
 }
-.navbar.affix .user-account {
-  margin-top: 4px;
-}
-.navbar.affix .user-account .avatar-img {
-  width: 40px; height: 40px;
+.navbar {
+  .user-account {float: right;}
+  &.affix {
+    .user-account {
+      margin-top: 4px; width: 140px;
+      .avatar-img {
+        width: 40px; height: 40px;
+      }
+      .username-text {font-size: 11px;}
+    }
+  }
 }
 
 //facebook button

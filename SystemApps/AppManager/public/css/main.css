@@ -1623,23 +1623,41 @@ footer .footer-inner:after {
   }
 }
 
-/* line 190, ../scss/main.scss */
+/*user account*/
+@media only screen and (max-width: 767px) {
+  /* line 191, ../scss/main.scss */
+  .user-account {
+    margin-top: -5px;
+    width: 140px;
+  }
+  /* line 195, ../scss/main.scss */
+  .user-account .avatar-img {
+    width: 40px;
+    height: 40px;
+  }
+  /* line 198, ../scss/main.scss */
+  .user-account .username-text {
+    font-size: 11px;
+  }
+}
+
+/* line 202, ../scss/main.scss */
 .login-block {
   position: absolute;
   z-index: 5;
   top: 20px;
   right: 15px;
 }
-/* line 194, ../scss/main.scss */
+/* line 206, ../scss/main.scss */
 .login-block .btn-facebook {
   margin-top: 3px;
 }
 @media only screen and (max-width: 767px) {
-  /* line 190, ../scss/main.scss */
+  /* line 202, ../scss/main.scss */
   .login-block {
     top: 11px;
   }
-  /* line 197, ../scss/main.scss */
+  /* line 209, ../scss/main.scss */
   .login-block .btn-facebook {
     margin-top: 0;
     font-size: 11px;
@@ -1648,7 +1666,7 @@ footer .footer-inner:after {
 
 /*grid system responsive*/
 @media only screen and (max-width: 767px) {
-  /* line 208, ../scss/main.scss */
+  /* line 220, ../scss/main.scss */
   .col-xs-12 .col-xs-6:nth-of-type(2n+1),
   .col-sm-12 .col-xs-6:nth-of-type(2n+1),
   .col-md-12 .col-xs-6:nth-of-type(2n+1),
@@ -1657,21 +1675,21 @@ footer .footer-inner:after {
   }
 }
 @media only screen and (min-width: 566px) and (max-width: 767px) {
-  /* line 214, ../scss/main.scss */
+  /* line 226, ../scss/main.scss */
   .dashboard-management .col-xs-6 {
     width: 33.33333333%;
   }
-  /* line 216, ../scss/main.scss */
+  /* line 228, ../scss/main.scss */
   .dashboard-management .col-xs-6:nth-of-type(2n+1) {
     clear: none;
   }
-  /* line 217, ../scss/main.scss */
+  /* line 229, ../scss/main.scss */
   .dashboard-management .col-xs-6:nth-of-type(3n+1) {
     clear: left;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* line 227, ../scss/main.scss */
+  /* line 239, ../scss/main.scss */
   .col-xs-12 .col-sm-3:nth-of-type(4n+1),
   .col-sm-12 .col-sm-3:nth-of-type(4n+1),
   .col-md-12 .col-sm-3:nth-of-type(4n+1),
@@ -1680,7 +1698,7 @@ footer .footer-inner:after {
   }
 }
 @media only screen and (min-width: 992px) {
-  /* line 236, ../scss/main.scss */
+  /* line 248, ../scss/main.scss */
   .col-xs-12 .col-md-2:nth-of-type(6n+1),
   .col-sm-12 .col-md-2:nth-of-type(6n+1),
   .col-md-12 .col-md-2:nth-of-type(6n+1),
