@@ -5,44 +5,48 @@
 <title>Application Manager</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/navbar.css">
-<link rel="stylesheet" type="text/css" href="css/shop.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/social-buttons.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <body>
-    <template id="FbPad">
-            <div class="fb-avatar">
-                <span class="username-text" app-role="fbName"></span>
-                <span class="avatar-img"><img app-role = "fbAvatar">
-                </span>
+    <!-- Header -->
+    <header>
+        <template id="FbPad">
+                <div class="user-account">
+                    <div class="fb-avatar">
+                        <span class="username-text" app-role="fbName"></span>
+                        <span class="avatar-img"><img app-role = "fbAvatar">
+                        </span>
+                    </div>
+                </div>
+            </template>
+            <!-- User -->
+            <div class="login-block">
+               <div app-role='removeAfterLogin'>
+                    <button class="btn btn-facebook" id="bntFbLogin">
+                        <i class="fa fa-facebook"></i><span>Login with Facebook</span>
+                    </button>
+               </div>
             </div>
-    </template>
-    <!-- User -->
-    <div class="user-account">
-        <div>
-            <div app-role='removeAfterLogin'>
-                <button class="btn btn-facebook" id="bntFbLogin" style="float: right; margin: 10px 0 0 10px;">
-                    <i class="fa fa-facebook"></i><span> Login with Facebook</span>
-                </button>
+            <!-- /User -->
+            <!-- Search box -->
+            <div id="searchBox" class="search-box">
+                <div class="col-xs-12 col-sm-9 col-md-9">
+                    <span class="search-mode lnr" onclick="toggleSearch()"></span>
+                    <form role="search" class="search-inner">
+                        <i class="lnr lnr-magnifier"></i>
+                        <input type="text" name="q" placeholder="Search" class="form-control" style="border-color: #8f29b3;">
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
-    <!-- /User -->
-    <!-- Search box -->
-    <div class="search-box">
-        <div class="col-xs-12 col-sm-9 col-md-9">
-            <form role="search">
-                <i class="fa fa-search"></i>
-                <input type="text" name="q" placeholder="Search" class="form-control" style="border-color: #8f29b3;">
-            </form>
-        </div>
-    </div>
-    <!-- /Search box -->
+            <!-- /Search box -->
+    </header>
+    <!-- /Header -->
+
     <!-- Heading page -->
     <section class="heading-page">
         <div class="container-fluid">
@@ -67,7 +71,7 @@
     <!-- Metro style -->
     <div class="container-fluid dashboard-management" id="start-offset">
         <!--center-->
-        <div class="col-md-12" id="AppManagerBoard">
+        <div id="AppManagerBoard">
         </div>
         <!--/center-->
     </div>
@@ -103,6 +107,11 @@ function LoadApp() {
         root.appendChild(document.importNode(AppTemplate, true));
     }
 }
+
+    /** Huyen Anh added code here **/
+    function toggleSearch() {
+        document.getElementById('searchBox').classList.toggle('search-active');
+    }
 
 
 

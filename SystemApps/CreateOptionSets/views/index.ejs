@@ -5,13 +5,12 @@
     <title>Attribute Sets</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="css/shop.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/imagePreview.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/social-buttons.css">
+    <link rel="stylesheet" type="text/css" href="css/imagePreview.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -42,15 +41,16 @@
                         </div>
                             <div>
                                 <div app-role = 'removeAfterLogin'>
-                                    <button class="btn btn-facebook" id="bntFbLogin" style="float: right; margin: 10px 0 0 10px;">
+                                    <button class="btn btn-facebook" id="bntFbLogin">
                                             <i class="fa fa-facebook"></i><span> Login with Facebook</span>
                                     </button>
                                 </div> 
                             </div>
                         <span class="hambugger" onclick="toggleMenu()">
+                           <span class="menu-bar"></span>
+                           <!--span class="icon-bar"></span>
                            <span class="icon-bar"></span>
-                           <span class="icon-bar"></span>
-                           <span class="icon-bar"></span>
+                           <span class="icon-bar"></span-->
                         </span>
                         <div id="menuBroad" class="menu-board">
                             <div id = "AppManagerBoard" class="mini-broad-cover">
@@ -85,11 +85,10 @@
             </div>
         </template>
         <!-- /NavBar -->
-        <section class='heading-page' style="background:url('img/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto;">
+        <section class="heading-page" style="background:url('img/gamebanner_02.jpg') no-repeat top center;">
             <div class="container-fluid">
-                <!-- Breadcrumb stay here -->
-                <div class="col-md-12 col-lg-12 ">
-                    <h1 class="col-md-6 col-lg-6"> Create Options Set</h1>
+                <div class="col-md-12">
+                    <h1>Create Options Set</h1>
                 </div>
             </div>
         </section>

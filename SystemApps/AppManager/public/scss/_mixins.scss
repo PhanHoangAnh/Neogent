@@ -61,8 +61,23 @@
 //ellipsis
 @mixin ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
+//icon fonts
+@mixin icon-font {
+  font-family: 'Linearicons-Free';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 //clearfix
-@mixin clearer {
+@mixin clearfix {
   zoom: 1;
   &:after {
     content: '.';
@@ -78,7 +93,7 @@
 }
 
 //media queries
-$w-lmobile:566px;
+$w-lmobile: 566px;
 $w-tablet: 768px;
 $w-desktop: 992px;
 $w-large: 1200px;
