@@ -1,0 +1,105 @@
+//common style
+html, body {
+  min-height: 100%;
+}
+body, header {
+  background-color: #000;
+}
+* , img, a {
+  &:hover, &:active, &:focus {
+    outline: none;
+  }
+}
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $mainFont;
+  font-weight: normal;
+}
+strong, b {
+  font-family: $boldFont;
+  font-weight: normal;
+}
+em {
+  font-family: $italicFont;
+  font-style: normal;
+}
+
+*, .form-control {
+  &::-webkit-input-placeholder {color: inherit; opacity: 1;}
+}
+*, .form-control {
+  &:-moz-placeholder {/*Firefox 18-*/color: inherit; opacity: 1;}
+}
+*, .form-control {
+  &::-moz-placeholder {/*Firefox 19+*/color: inherit; opacity: 1;}
+}
+*, .form-control {
+  &:-ms-input-placeholder {color: inherit; opacity: 1;}
+}
+*, .form-control {
+  &::-moz-focus-inner {outline: none; border: 0; padding: 0;}/*FF Fix*/
+}
+
+.btn {position: relative;}
+
+//user account
+.user-account {
+  position: relative;
+  margin-top: 2px;
+  padding-left: 100px;
+  overflow: hidden;
+  cursor: pointer;
+  &, * {
+    @include single-transition(all,0.5s);
+  }
+  .avatar-img, .username-text {float: left;}
+  .avatar-img {
+    position: relative;
+    overflow: hidden;
+    width: 50px; height: 50px;
+    @include border-radius(100%);
+    img {
+      position: absolute;
+      @include center-pos;
+      height: auto;
+    }
+  }
+  .username-text {
+    position: absolute;
+    @include ver-pos;
+    left: 0;
+    width: 90px;
+    color: #FFF;line-height: normal;
+    text-align: right;
+  }
+}
+.navbar.affix .user-account {
+  margin-top: 4px;
+}
+.navbar.affix .user-account .avatar-img {
+  width: 40px; height: 40px;
+}
+
+//facebook button
+.btn-facebook {
+  @include border-radius(2px);
+  .fa {
+    padding-right: 15px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 4px; bottom: 4px;
+      width: 1px; background: #FFF;
+      opacity: .1; margin-left: 7px;
+    }
+  }
+  em {
+    font-family: $lightFont;
+    opacity: .5;
+    padding: 0 5px;
+  }
+}
