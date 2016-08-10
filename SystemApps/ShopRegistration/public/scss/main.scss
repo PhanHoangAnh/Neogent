@@ -26,6 +26,7 @@
   .panel-body {
     .col-sm-5.col-md-4 {padding-left: 0; padding-right: 15px;}
   }
+  .user-account {margin-top: 10px;}
 }
 .panel-default {@include clearfix;}
 footer {
@@ -42,6 +43,7 @@ footer {
     .panel-body {
       .col-sm-5.col-md-4 {padding-left: 15px;}
     }
+    .user-account {margin: 10px auto 15px;}
   }
 }
 

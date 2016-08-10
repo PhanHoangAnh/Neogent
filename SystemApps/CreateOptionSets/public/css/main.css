@@ -1191,19 +1191,20 @@ label {
   padding-left: 100px;
   overflow: hidden;
   cursor: pointer;
+  width: 150px;
 }
-/* line 116, ../scss/_common.scss */
+/* line 117, ../scss/_common.scss */
 .user-account, .user-account * {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-/* line 119, ../scss/_common.scss */
+/* line 120, ../scss/_common.scss */
 .user-account .avatar-img, .user-account .username-text {
   float: left;
 }
-/* line 120, ../scss/_common.scss */
+/* line 121, ../scss/_common.scss */
 .user-account .avatar-img {
   position: relative;
   overflow: hidden;
@@ -1213,7 +1214,7 @@ label {
   -moz-border-radius: 100%;
   border-radius: 100%;
 }
-/* line 125, ../scss/_common.scss */
+/* line 126, ../scss/_common.scss */
 .user-account .avatar-img img {
   position: absolute;
   top: 50%;
@@ -1222,9 +1223,11 @@ label {
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-/* line 131, ../scss/_common.scss */
+/* line 133, ../scss/_common.scss */
 .user-account .username-text {
   position: absolute;
   top: 50%;
@@ -1239,28 +1242,28 @@ label {
   text-align: right;
 }
 
-/* line 140, ../scss/_common.scss */
+/* line 142, ../scss/_common.scss */
 .navbar.affix .user-account {
   margin-top: 4px;
 }
 
-/* line 143, ../scss/_common.scss */
+/* line 145, ../scss/_common.scss */
 .navbar.affix .user-account .avatar-img {
   width: 40px;
   height: 40px;
 }
 
-/* line 148, ../scss/_common.scss */
+/* line 150, ../scss/_common.scss */
 .btn-facebook {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 150, ../scss/_common.scss */
+/* line 152, ../scss/_common.scss */
 .btn-facebook .fa {
   padding-right: 15px;
 }
-/* line 152, ../scss/_common.scss */
+/* line 154, ../scss/_common.scss */
 .btn-facebook .fa:after {
   content: "";
   position: absolute;
@@ -1272,14 +1275,14 @@ label {
   margin-left: 7px;
 }
 
-/* line 165, ../scss/_common.scss */
+/* line 167, ../scss/_common.scss */
 .nav-tabs > li > a > li > a {
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
 }
 
-/* line 171, ../scss/_common.scss */
+/* line 173, ../scss/_common.scss */
 footer .footer-inner {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1301,7 +1304,7 @@ footer .footer-inner:after {
   line-height: 0;
 }
 
-/* line 180, ../scss/_common.scss */
+/* line 182, ../scss/_common.scss */
 .clearfix {
   zoom: 1;
 }
@@ -1319,7 +1322,7 @@ footer .footer-inner:after {
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 183, ../scss/_common.scss */
+  /* line 185, ../scss/_common.scss */
   .hide-mobile {
     display: none;
   }
