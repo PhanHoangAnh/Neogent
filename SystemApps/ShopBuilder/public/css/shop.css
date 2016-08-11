@@ -26,13 +26,13 @@
     color: rgba(0.0.0., 6);
     border-bottom: #ddd dotted 1px;
 }
-.panel-default >.panel-heading:before {
+.panel-default >.panel-heading .panel-title:before {    
     color: #A55454;
-    margin-right: 10px;
+    margin-right: 20px;
     font-size: 28px;
     content: "\f05a";
     font-family: FontAwesome;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 }
 .productLabel {
     position: absolute;

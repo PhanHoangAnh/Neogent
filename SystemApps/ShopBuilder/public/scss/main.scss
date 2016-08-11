@@ -317,7 +317,7 @@ em {
     .row.control {
         position: relative;
         cursor: pointer;
-        @include clearer;
+        @include clearfix;
         &:before {
             content: "";
             position: absolute; display: block;

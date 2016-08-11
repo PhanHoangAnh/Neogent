@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Create Product</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/shop.css">
+<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="js/createProduct/CreateProduct.js" type="text/javascript" charset="utf-8"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<!--script type="text/javascript" src='js/navbar.js'></script-->
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<style type="text/css">
+.br-response {
+    min-height: 220px;
+}
+
+.controls {
+    margin-top: 15px;
+    /*vertical-align: middle;*/
+}
+
+@media (min-width: 979px) {
+    .br-response {
+        min-height: 160px;
+        padding-left: 15px;
+    }
+    #sidebar.affix-bottom {
+        position: absolute;
+    }
+    #sidebar.affix-top {
+        position: static;
+        /*margin-top: 30px;*/
+        /*width: 300px;*/
+    }
+    #sidebar.affix {
+        position: fixed;
+        top: 70px;
+        /*width: 300px;*/
+    }
+}
+
+.introduction .label {
+    background-color: #5CB85C;
+}
+
+.form-control {
+    border-radius: 0px;
+    background-color: #fff;
+}
+
+img {
+    width: 100%;
+    /* or any custom size */
+    height: 100%;
+    object-fit: contain;
+}
+</style>
+
+<body>
+    <template id="FbPad">
+        <div class="user-account">
+            <div class="fb-avatar">
+                <span class="username-text" app-role="fbName"></span>
+                <span class="avatar-img"><img app-role = "fbAvatar">
+            </span>
+            </div>
+        </div>
+    </template>
+    <!-- Dont touch this section -->
+    <!-- NavBar -->
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <img src="img/CatLogo.png" class="logo">
+                    </div>
+                    <div class='site-name hidden-xs'>
+                        AbcJSC
+                    </div>
+                    <div id="AppManagerBoard">
+                    </div>
+
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--  -->
+                        <div app-role = 'removeAfterLogin'>
+                            <button class="btn btn-facebook" id="bntFbLogin" style="float: right; margin: 10px 0 0 10px;">
+                                    <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                            </button>
+                        </div>
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="AppTemp">
+        <a class='mini-broad' app-role="link">
+            <img app-role="AppIcon">
+        </a>
+    </template>
+    <template id="optionSet">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;" app-role="optionSet">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <img src='../img/logo.png' id="iconHolder" app-role="icon" >
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <legend app-role="setsName">Set's Name</legend>
+            </div>
+        </div>
+    </template>
+    <template id="controlTemplate">
+        <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
+            <div class="col-md-3 col-lg-3">
+                <label data-controltype="label"></label>
+            </div>
+            <div class="col-md-9 col-lg-9" app-role="inputHandler">
+                <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
+            </div>
+        </div>
+    </template>
+    <template id="optionInput">
+        <input type="" name="" class="c-left" value="0" app-role="option"><span class="col-md-11 col-lg-11" app-role="displayValue"></span>
+    </template>
+    <template id="standardInput">
+        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
+    </template>
+    <template id="textAreaInput">
+        <textarea class="col-md-12 col-lg-12 form-control" data-controltype="textarea"></textarea>
+    </template>
+    <template id="selectInput">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
+        </select>
+    </template>
+    <template id="selectInputTags">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select" multiple="multiple">
+        </select>
+    </template>
+    <template id="selectInputSingle">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select"">
+        </select>
+    </template>
+    <template id="imgInput">
+        <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover; position:relative" data-controltype="img">
+            <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
+            <div data-controltype="imgMask" style="position:relative; z-index:5;" >
+            </div>
+        </div>
+        <span ><i data-controltype="collection">Collection</i></span>
+    </template>
+    <!-- /NavBar -->
+    <section class='heading-page' style="background:url('img/createProduct.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
+        <div class="container-fluid">
+            <!-- Breadcrumb stay here -->
+            <div class="col-md-12 col-lg-12 ">
+                <h1 class="col-md-6 col-lg-6"> Create Product</h1>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Metro style -->
+    <div class="container-fluid create-products page-wrap" id="start-offset">
+        <div class="contentCollasing content" id="content">
+            <div class="row" style="position: relative; min-height: 32px">
+                <div id="showPanel">
+                    <!--i class="fa fa-wrench" aria-hidden="true"></i-->
+                    <i class="fa" aria-hidden="true"></i>
+                </div>
+            </div>
+            <fieldset class="scheduler-border" style="margin: 10px">
+                <legend class="scheduler-border">System Attribute</legend>
+                <!-- Displayed Name -->
+                <div id="systemAttributes" style="min-height:100px;">
+                    
+                </div>
+            </fieldset>
+            <fieldset class="scheduler-border" style="margin: 10px">
+                <legend class="scheduler-border">Custom Attribute</legend>
+                <div class="connectedSortable" id="productAttributes" style="min-height:100px;">
+                    <p>Drop Attribute Set here</p>
+                </div>
+            </fieldset>
+        </div>
+        <div class="controlExpanding" id="panel">
+            <div class="panel panel-default">
+                <div class="panel-body">List of Attributes Sets</div>
+            </div>
+            <div class="connectedSortable" id="LoadOptionSets">
+            </div>
+        </div>
+    </div>
+    <!-- /Right Sidebar -->
+    <!-- /Metro style -->
+    <div id="end-offset"></div>
+    <section class="divider">
+        <div style="padding: 70px 0; text-align: center;">
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
+            <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
+            <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
+            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button>
+        </div>
+    </section>
+    <footer>
+        <div style=" width: 100%; background-color: rgba(0,0,0,.85); height: 90px;">
+            @Copyright:abcd@abc.jsc
+        </div>
+    </footer>
+    </div>
+    <div id="phasebeam">
+        <canvas width="700" height="650"></canvas>
+        <canvas width="700" height="650"></canvas>
+        <canvas width="700" height="650"></canvas>
+    </div>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+<div class="modal fade" id="cropImageModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Select Icon for this Option Sets.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Drag and zoom the image to make an icon</p>
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="imageBox" id='iconImg' style="height: 400px;" app-role = "imageBox">
+                            <div class="thumbBox" id = "thumbIcon"></div>
+                            <div class="spinner" style="display: none" id = "spinnerIcon" >Loading...</div>
+                        </div>
+                        <div class="action">
+                            <span class="file-input btn btn-primary btn-file">
+                                Browse&hellip;
+                                <input type="file" multiple id='imgSource'>
+                            </span>
+                            <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
+                            <input type="button" id="icon_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                            <input type="button" id="icon_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="preview">
+                            <img id='icon_preview' src="">
+                        </div>
+                        <div class="preview-md">
+                            <img id='icon_preview-md' src="">
+                        </div>
+                        <div class="preview-sm">
+                            <img id='icon_preview-sm' src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick = 'saveImage()'>Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+    <script type="text/javascript" src="js/phasebeam3.js"></script>
+    <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+    <script type="text/javascript" src="js/Crypto/cryptoUtils.js"></script>
+    <script type="text/javascript" src="js/facebook/fb.js"></script>
+</body>
+<script type="text/javascript">
+$(function() {
+    // $('#nav-wrapper').height($("#nav").height());
+    // $('#nav-wrapper').height(200);
+    $('#nav').affix({
+        offset: {
+            top: function() {
+                // Do other stuff here-- chipl
+                return $('#start-offset').offset().top / 2;
+            }
+        }
+    });
+    // Sidebar affix
+    $('#sidebar').affix({
+        offset: {
+            top: $('#start-offset').offset().top + 0,
+            bottom: $('#end-offset').outerHeight() - 20
+        }
+    }).on('affix.bs.affix', function() { // before affix
+        $(this).css({
+            /*'top': headerHeight,*/ // for fixed height
+            'width': $(this).outerWidth() // variable widths
+        });
+    }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+        // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+    });;
+});
+
+var systoken;
+var fbId;
+var fbToken;
+var conBnt;
+var RSAPublicKey;
+$(document).ready(function() {
+    /** code inside **/
+    var masthead = $("#masthead");
+    masthead.addClass('start');
+    var data = <%- JSON.stringify(data) %>
+    LoadRelatedApp();
+    requestOptionSets();
+    var currency =<%-JSON.stringify(currency)%>;
+    RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
+    var data =<%-JSON.stringify(system)%>;    
+    
+    document.querySelector('#imgSource').addEventListener('change', function(el) {
+        initImg(this);
+    }, false);
+
+    var showPanel = document.getElementById("showPanel");
+    showPanel.addEventListener("click", function(evt) {
+        var content = document.getElementById("content");
+        var panel = document.getElementById("panel");
+        content.classList.toggle("contentExpanding");
+        content.classList.toggle("contentCollasing");
+        panel.classList.toggle("controlCollasing");
+        panel.classList.toggle("controlExpanding");
+    }, false);
+
+    function LoadRelatedApp() {
+        var root = document.getElementById("AppManagerBoard");
+        var AppTemplate = document.getElementById('AppTemp').content;
+        var pathArray = window.location.pathname.split('/');
+        remove = pathArray.splice(pathArray.length - 2, 2);
+        var newPathname = "";
+        for (i = 0; i < pathArray.length; i++) {
+            newPathname += pathArray[i];
+            newPathname += "/";
+        }
+        for (var i in data) {
+            var link = AppTemplate.querySelector('[app-role = "link"]')
+            var icon = AppTemplate.querySelector('[app-role = "AppIcon"]');
+            var caption = AppTemplate.querySelector('[app-role = "Caption"]');
+            link.setAttribute('href', window.location.protocol + '//' + window.location.host + newPathname + data[i].url);
+            icon.setAttribute('src', window.location.protocol + '//' + window.location.host + newPathname + data[i].logo);
+            // caption.innerHTML = data[i].name;
+            root.appendChild(document.importNode(AppTemplate, true));
+        }
+    };
+    $(function() {
+        $('#slide-submenu').on('click', function() {
+            $(this).closest('.list-group').fadeOut('slide', function() {
+                $('.mini-submenu').fadeIn();
+            });
+        });
+        $('.mini-submenu').on('click', function() {
+            $(this).next('.list-group').toggle('slide');
+            $('.mini-submenu').hide();
+        })
+    });
+
+    // console.log("currency: ", currency);
+    create_productAttributes(data, true);
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+
+    function getStatus(objFb) {
+        // console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            systoken = localStorage.getItem("app_token");
+            if (systoken) {                
+                checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
+            } else {
+                getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            }
+
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));
+            // btn-primary
+            // conBnt = document.getElementById('bntCon');
+            // conBnt.classList.add('btn-info');
+            // conBnt.innerHTML = "Get system Token";
+
+        }
+    }
+
+    function afterGetToken(token) {
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+
+    function afterCheckToken(result) {
+        if (result.errNum != 0) {
+            getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            return;
+        }
+    }
+
+
+
+
+});
+</script>
+
+</html>
