@@ -132,6 +132,7 @@ function initIcon(el) {
 
     function iconPreview(data) {
         //console.log('imgdata: ', data);
+        shopInfo.avatars = data;
         img_Icon = data;
         document.getElementById('icon_preview').setAttribute('src', data);
         document.getElementById('icon_preview-md').setAttribute('src', data);
@@ -188,7 +189,7 @@ function initWall(el) {
     });
 
     function wallPreview(data) {
-
+        shopInfo.walls = data;
         img_Wall = data;
         document.getElementById('wall_preview').setAttribute('src', data);
         document.getElementById('wall_preview-md').setAttribute('src', data);
@@ -198,3 +199,67 @@ function initWall(el) {
     }
 
 };
+// Update post object section
+var shopInfo = {}
+$(document).ready(function() {
+    var inputs = document.querySelectorAll('[app-input]');
+    // console.log("available input: ", inputs);
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener("change", updateShopInfo, false);
+        inputs[i].parentNode.classList.add("missing");
+    }
+});
+
+function updateShopInfo(evt) {
+    var att = this.getAttribute("app-input");
+    this.parentNode.classList.remove("missing");
+    shopInfo[att] = this.value;
+}
+
+function saveShopInfo() {
+    //     var Shop_schema = new Schema({
+    //     _id: Schema.Types.ObjectId,
+    //     fb_uid: { type: String, unique: true, required: true, dropDups: true, index: true },
+    //     members: [Schema.Types.Mixed],
+    //     avatars: { type: String },
+    //     walls: { type: String },
+    //     longitude: { type: String },
+    //     latitude: { type: String },
+    //     shopname: { type: String, unique: true, required: true, dropDups: true, index: true },
+    //     showName: { type: String },
+    //     slogan: { type: String },
+    //     companyName: { type: String },
+    //     shop_description: { type: String },
+    //     contact_phone: { type: Number },
+    //     contact_email: { type: String },
+    //     address: { type: String },
+    //     updated: { type: Date, default: Date.now },
+    //     items: [Schema.Types.Mixed],
+    //     categories: [Schema.Types.Mixed],
+    //     extends: [Schema.Types.Mixed],
+    // });
+    shopInfo.walls = document.getElementById('wallHolder').getAttribute('src');
+    shopInfo.avatars = document.getElementById('iconHolder').getAttribute('src');
+    var atts = document.querySelectorAll("[app-input]");
+    var pendding = false;
+    for (var i = 0; i < atts.length; i++) {
+        if (!atts[i].value) {
+            pendding = true;
+            // add class that indicate require fields
+            atts[i].parentNode.classList.add("missing");
+            console.log(atts[i]);
+        }
+    }
+    console.log("shopInfo: ", shopInfo);
+    console.log(pendding);
+    if (!pendding) {
+        // sending shopInfo to server
+        var endpoint = window.location.href + 'updateShop';
+        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
+
+        function fn_cb(returnObj) {
+            console.log(returnObj)
+        }
+    }
+
+}

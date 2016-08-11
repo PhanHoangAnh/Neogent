@@ -48,46 +48,46 @@ objResult.status = 0
 objResult.err = null;
 objResult.return_id = null;
 //
-router.post("/updateShop", checkToken, function(req, res, next) {
-    // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
+router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
+    console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body.payload.data);
 
     //var optionSets = dbEngine.OptionSets();
     var Shop = mongoose.model('Shops');
-    var _id = req.body.objId;
-    console.log("Not id ?", !_id);
-    if (!_id) {
-        var doc = new Shop();
-        doc._id = _id = mongoose.Types.ObjectId();
-        doc.setName = req.body.setName;
-        doc.scope = "Global";
-        doc.components = req.body.components;
-        doc.shopName = req.shopname;
-        doc.save(function(err) {
-            objResult.status = 1;
-            objResult.err = err;
-            objResult.return_id = _id;
-            res.send(objResult);
-        });
-    } else {
-        Shop.findById(_id, function(err, doc) {
-            if (err) {
-                objResult.status = 2;
-                objResult.err = err;
-                res.send(objResult);
-            } else {
-                doc.setName = req.body.setName;
-                doc.scope = "Global";
-                doc.components = req.body.components;
-                doc.shopName = req.shopname;
-                doc.save(function(error) {
-                    objResult.status = 3;
-                    objResult.err = error;
-                    objResult.return_id = _id;
-                    res.send(objResult);
-                })
-            }
-        });
-    }
+    // var _id = req.body.objId;
+    // console.log("Not id ?", !_id);
+    // if (!_id) {
+    //     var doc = new Shop();
+    //     doc._id = _id = mongoose.Types.ObjectId();
+    //     doc.setName = req.body.setName;
+    //     doc.scope = "Global";
+    //     doc.components = req.body.components;
+    //     doc.shopName = req.shopname;
+    //     doc.save(function(err) {
+    //         objResult.status = 1;
+    //         objResult.err = err;
+    //         objResult.return_id = _id;
+    //         res.send(objResult);
+    //     });
+    // } else {
+    //     Shop.findById(_id, function(err, doc) {
+    //         if (err) {
+    //             objResult.status = 2;
+    //             objResult.err = err;
+    //             res.send(objResult);
+    //         } else {
+    //             doc.setName = req.body.setName;
+    //             doc.scope = "Global";
+    //             doc.components = req.body.components;
+    //             doc.shopName = req.shopname;
+    //             doc.save(function(error) {
+    //                 objResult.status = 3;
+    //                 objResult.err = error;
+    //                 objResult.return_id = _id;
+    //                 res.send(objResult);
+    //             })
+    //         }
+    //     });
+    // }
 });
 
 router.get("/getShop", function(req, res, next) {

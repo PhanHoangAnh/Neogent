@@ -78,8 +78,15 @@ img {
     width: 100%!important;
     margin: 0!important;
 }
-</style>
 
+.missing:after {
+    content: "";
+    position: absolute; right: 0; top:0px;
+    width: 5px; height: 5px;
+    border-radius: 100%;
+    background: red;
+}
+</style>
 <body>
     <!-- Dont touch this section -->
     <!-- NavBar -->
@@ -146,36 +153,43 @@ img {
     <div class="container-fluid shop-buider" id="start-offset">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelLeft">
-                <div class="row control" id="17" data-controltype="text">
+                <div class="row control" id="17" >
                     <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Shop's Name</label>
+                        <label >Shop's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="shopname" data-controltype="text"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Display Name of Shop</span>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" app-input = "showName"><span class="help-block col-md-12 col-lg-12" >Display Name of Shop</span>
                     </div>
                 </div>
-                <div class="row control" id="18" data-controltype="text">
+                <div class="row control" id="18" >
                     <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Shop's Slogan</label>
+                        <label >Shop's Slogan</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" data-controltype="text"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Emphasize your message to customers</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" app-input = "slogan"><span class="help-block col-md-12 col-lg-12" >Emphasize your message to customers</span></div>
                 </div>
                 <div class="row control" id="19" data-controltype="text">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Company's Name or Group's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" data-controltype="text"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Display Company or Group's Name</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" app-input = "companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                 </div>
-                <div class="row control" id="24" data-controltype="textarea">
+                <div class="row control" id="24" >
                     <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Shop's Introduction</label>
+                        <label >Shop's Introduction</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <textarea class="col-md-12 col-lg-12 form-control" data-controltype="textarea" rows="12"></textarea>
+                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input = "shop_description"></textarea>
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
                     </div>
+                </div>
+                <div class="row control" id="29" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Contact Email</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <input class="col-md-12 col-lg-12 form-control"  type="email" placeholder="Contact Email" app-input = "contact_email"><span class="help-block col-md-12 col-lg-12" >Contact Email</span></div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelRight">
@@ -190,31 +204,28 @@ img {
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select shop's icon</span>
                     </div>
                 </div>
-                <div class="row control" id="23" data-controltype="image">
-                    <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Shop's background</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <!-- <div style="outline: rgba(255, 255, 255, 0.2) solid 3px; background-image: url(&quot;https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg&quot;); background-size: cover; background-repeat: no-repeat;">
-                            <div app-role="mask" style="position: relative; z-index: 5; padding-top: 56.25%;" id="backgroundHolder" app-type="background"></div>
-                        </div> -->
-                        <img id = "wallHolder" src = "https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg">
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
-                    </div>
-                </div>
                 <div class="row control" id="26" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Contact Phone Number</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" data-controltype="number" type="number" placeholder="Contact Phone Number"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
+                        <input class="col-md-12 col-lg-12 form-control"  type="number" placeholder="Contact Phone Number" app-input = "contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
+                </div>                
+                <div class="row control" id="23" data-controltype="image">
+                    <div class="col-md-3 col-lg-3">
+                        <label data-controltype="label">Shop's background</label>
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <img id = "wallHolder" src = "https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg">
+                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
+                    </div>
                 </div>
                 <div class="row control" id="27" data-controltype="text" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Shop Address</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Provide Shop address by typing input or drag on map bellow</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12" >Provide Shop address by typing input or drag on map bellow</span></div>
                 </div>
             </div>
         </div>
@@ -240,10 +251,10 @@ img {
     <div id="end-offset"></div>
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
-            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
-            <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo()">Save</button>
+<!--             <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
             <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
-            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button>
+            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button> -->
         </div>
     </section>
     <footer>
