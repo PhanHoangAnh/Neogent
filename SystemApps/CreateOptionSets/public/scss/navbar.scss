@@ -228,6 +228,23 @@
   }
 }
 
+@media (min-width: $w-desktop) {
+  .br-response {
+    min-height: 160px;
+    padding-left: 15px;
+  }
+  #sidebar.affix-bottom {
+    position: absolute;
+  }
+  #sidebar.affix-top {
+    position: static;
+  }
+  #sidebar.affix {
+    position: fixed;
+    top: 70px;
+  }
+}
+
 @media only screen and (max-width: $w-desktop - 1) {
   .menu-board {
     top: -15px;

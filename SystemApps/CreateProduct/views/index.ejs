@@ -5,67 +5,20 @@
 <title>Create Product</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/navbar.css">
-<link rel="stylesheet" type="text/css" href="css/shop.css">
-<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
+<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
+<link rel="stylesheet" type="text/css" href="css/social-buttons.css">
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="js/createProduct/CreateProduct.js" type="text/javascript" charset="utf-8"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<style type="text/css">
-.br-response {
-    min-height: 220px;
-}
-
-.controls {
-    margin-top: 15px;
-    /*vertical-align: middle;*/
-}
-
-@media (min-width: 979px) {
-    .br-response {
-        min-height: 160px;
-        padding-left: 15px;
-    }
-    #sidebar.affix-bottom {
-        position: absolute;
-    }
-    #sidebar.affix-top {
-        position: static;
-        /*margin-top: 30px;*/
-        /*width: 300px;*/
-    }
-    #sidebar.affix {
-        position: fixed;
-        top: 70px;
-        /*width: 300px;*/
-    }
-}
-
-.introduction .label {
-    background-color: #5CB85C;
-}
-
-.form-control {
-    border-radius: 0px;
-    background-color: #fff;
-}
-
-img {
-    width: 100%;
-    /* or any custom size */
-    height: 100%;
-    object-fit: contain;
-}
-</style>
 
 <body>
     <template id="FbPad">
@@ -89,24 +42,24 @@ img {
                     <div class='site-name hidden-xs'>
                         AbcJSC
                     </div>
-                    <div id="AppManagerBoard">
-                    </div>
-
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <!--  -->
+                    <div>
                         <div app-role = 'removeAfterLogin'>
-                            <button class="btn btn-facebook" id="bntFbLogin" style="float: right; margin: 10px 0 0 10px;">
-                                    <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                            <button class="btn btn-facebook" id="bntFbLogin">
+                                 <i class="fa fa-facebook"></i><span> Login with Facebook</span>
                             </button>
                         </div>
-                    <!--  -->
+                    </div>
+                    <span class="hambugger" onclick="toggleMenu()">
+                         <span class="menu-bar"></span>
+                         <!--span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                         <span class="icon-bar"></span-->
+                    </span>
+                    <div id="menuBroad" class="menu-board">
+                         <div id = "AppManagerBoard" class="mini-broad-cover">
+
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -422,6 +375,16 @@ $(document).ready(function() {
 
 
 });
+
+    /** Huyen Anh added code here **/
+    window.onload = function()
+    {
+        var offsetWidth = document.getElementById('AppManagerBoard').offsetWidth;
+        document.getElementById('AppManagerBoard').style.right = "-" + offsetWidth + "px";
+    }
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('menu-active');
+    }
 </script>
 
 </html>

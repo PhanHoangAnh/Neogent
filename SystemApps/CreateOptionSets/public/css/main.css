@@ -1088,13 +1088,23 @@ em {
   border-radius: 2px;
 }
 
+/* line 49, ../scss/_common.scss */
+label {
+  font-weight: normal;
+}
+
 @media only screen and (max-width: 565px) {
-  /* line 51, ../scss/_common.scss */
+  /* line 52, ../scss/_common.scss */
   h1, .h1 {
     font-size: 30px;
   }
+
+  /* line 53, ../scss/_common.scss */
+  h4, .h4 {
+    font-size: 16px;
+  }
 }
-/* line 55, ../scss/_common.scss */
+/* line 57, ../scss/_common.scss */
 #masthead {
   min-height: 100%;
   background: url(../img/background/beauty_01.jpg) center center no-repeat;
@@ -1103,7 +1113,7 @@ em {
   color: #AAC;
 }
 
-/* line 62, ../scss/_common.scss */
+/* line 64, ../scss/_common.scss */
 #masthead h1 {
   font-size: 55px;
   line-height: 1;
@@ -1111,12 +1121,12 @@ em {
   margin-top: 80px;
 }
 
-/* line 68, ../scss/_common.scss */
+/* line 70, ../scss/_common.scss */
 #masthead .cover {
   padding-top: 10%;
 }
 
-/* line 71, ../scss/_common.scss */
+/* line 73, ../scss/_common.scss */
 #masthead .well {
   margin-top: 13%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -1124,13 +1134,13 @@ em {
   border-color: #000033;
 }
 
-/* line 77, ../scss/_common.scss */
+/* line 79, ../scss/_common.scss */
 #masthead .row {
   margin-right: -15px;
   margin-left: -15px;
 }
 
-/* line 81, ../scss/_common.scss */
+/* line 83, ../scss/_common.scss */
 #avatar {
   border: 4px solid #fff;
   border-radius: 2px;
@@ -1138,62 +1148,63 @@ em {
   width: 160px;
 }
 
-/* line 87, ../scss/_common.scss */
+/* line 89, ../scss/_common.scss */
 .icon-bar {
   background-color: #fff;
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 91, ../scss/_common.scss */
+  /* line 93, ../scss/_common.scss */
   #masthead h1 {
     font-size: 100px;
   }
 }
-/* line 95, ../scss/_common.scss */
+/* line 97, ../scss/_common.scss */
 .navbar-bright {
   color: #FFF;
 }
 
-/* line 96, ../scss/_common.scss */
+/* line 98, ../scss/_common.scss */
 .navbar-bright a, #masthead a, #masthead .lead {
   color: #AAC;
 }
 
-/* line 97, ../scss/_common.scss */
+/* line 99, ../scss/_common.scss */
 .navbar-bright li > a:hover {
   background-color: #000033;
 }
 
-/* line 99, ../scss/_common.scss */
+/* line 101, ../scss/_common.scss */
 .heading-page {
   background-size: cover;
 }
-/* line 101, ../scss/_common.scss */
+/* line 103, ../scss/_common.scss */
 .heading-page h1, .heading-page .h1 {
   color: #FFF;
   text-shadow: 2px 2px 4px #000;
 }
 
-/* line 108, ../scss/_common.scss */
+/* line 110, ../scss/_common.scss */
 .user-account {
   position: relative;
   margin-top: 2px;
   padding-left: 100px;
   overflow: hidden;
   cursor: pointer;
+  width: 150px;
 }
-/* line 114, ../scss/_common.scss */
+/* line 117, ../scss/_common.scss */
 .user-account, .user-account * {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-/* line 117, ../scss/_common.scss */
+/* line 120, ../scss/_common.scss */
 .user-account .avatar-img, .user-account .username-text {
   float: left;
 }
-/* line 118, ../scss/_common.scss */
+/* line 121, ../scss/_common.scss */
 .user-account .avatar-img {
   position: relative;
   overflow: hidden;
@@ -1203,7 +1214,7 @@ em {
   -moz-border-radius: 100%;
   border-radius: 100%;
 }
-/* line 123, ../scss/_common.scss */
+/* line 126, ../scss/_common.scss */
 .user-account .avatar-img img {
   position: absolute;
   top: 50%;
@@ -1212,9 +1223,11 @@ em {
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-/* line 129, ../scss/_common.scss */
+/* line 133, ../scss/_common.scss */
 .user-account .username-text {
   position: absolute;
   top: 50%;
@@ -1229,28 +1242,36 @@ em {
   text-align: right;
 }
 
-/* line 138, ../scss/_common.scss */
+/* line 143, ../scss/_common.scss */
+.navbar .user-account {
+  float: right;
+}
+/* line 145, ../scss/_common.scss */
 .navbar.affix .user-account {
   margin-top: 4px;
+  width: 140px;
 }
-
-/* line 141, ../scss/_common.scss */
+/* line 147, ../scss/_common.scss */
 .navbar.affix .user-account .avatar-img {
   width: 40px;
   height: 40px;
 }
+/* line 150, ../scss/_common.scss */
+.navbar.affix .user-account .username-text {
+  font-size: 11px;
+}
 
-/* line 146, ../scss/_common.scss */
+/* line 156, ../scss/_common.scss */
 .btn-facebook {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 148, ../scss/_common.scss */
+/* line 158, ../scss/_common.scss */
 .btn-facebook .fa {
   padding-right: 15px;
 }
-/* line 150, ../scss/_common.scss */
+/* line 160, ../scss/_common.scss */
 .btn-facebook .fa:after {
   content: "";
   position: absolute;
@@ -1261,18 +1282,75 @@ em {
   opacity: .1;
   margin-left: 7px;
 }
-/* line 158, ../scss/_common.scss */
-.btn-facebook em {
-  font-family: "RobotoCondensed-Light", sans-serif;
-  opacity: .5;
-  padding: 0 5px;
-}
 
-/* line 168, ../scss/_common.scss */
+/* line 173, ../scss/_common.scss */
 .nav-tabs > li > a > li > a {
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
+}
+
+/* line 179, ../scss/_common.scss */
+footer .footer-inner {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.85);
+  font-family: "RobotoCondensed-Light", sans-serif;
+  color: #FAFAFA;
+  zoom: 1;
+}
+/* line 82, ../scss/_mixins.scss */
+footer .footer-inner:after {
+  content: '.';
+  display: block;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* line 188, ../scss/_common.scss */
+.clearfix {
+  zoom: 1;
+}
+/* line 82, ../scss/_mixins.scss */
+.clearfix:after {
+  content: '.';
+  display: block;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  /* line 191, ../scss/_common.scss */
+  .hide-mobile {
+    display: none;
+  }
+}
+/* line 197, ../scss/_common.scss */
+.modal-content {
+  padding: 1px;
+}
+
+/* line 200, ../scss/_common.scss */
+.modal-header {
+  background-color: #00A600;
+  border-radius: 1px 1px 0 0;
+}
+/* line 203, ../scss/_common.scss */
+.modal-header h4, .modal-header button {
+  color: #FFF;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
 /* line 16, ../scss/main.scss */
@@ -1430,22 +1508,4 @@ img {
 /* line 127, ../scss/main.scss */
 .preview + .preview-md, .preview-md + .preview-sm {
   display: none;
-}
-
-/* line 131, ../scss/main.scss */
-.modal-content {
-  padding: 1px;
-}
-
-/* line 134, ../scss/main.scss */
-.modal-header {
-  background-color: #00A600;
-  border-radius: 1px 1px 0 0;
-}
-/* line 137, ../scss/main.scss */
-.modal-header h4, .modal-header button {
-  color: #FFF;
-  opacity: 1;
-  filter: alpha(opacity=100);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }

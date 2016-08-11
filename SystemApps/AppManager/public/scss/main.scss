@@ -187,6 +187,18 @@
   }
 }
 
+/*user account*/
+.user-account {
+  @include mobile {
+    margin-top: -5px;
+    width: 140px;
+    .avatar-img {
+      width: 40px; height: 40px;
+    }
+    .username-text {font-size: 11px;}
+  }
+}
+
 .login-block {
   position: absolute;
   z-index: 5;

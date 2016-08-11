@@ -127,16 +127,3 @@ img {
 .preview + .preview-md, .preview-md + .preview-sm {
   display: none;
 }
-
-.modal-content {
-  padding: 1px;
-}
-.modal-header {
-  background-color: #00A600;
-  border-radius: 1px 1px 0 0;
-  h4, button {
-    color: #FFF; opacity: 1;
-    filter: alpha(opacity=100);
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  }
-}
