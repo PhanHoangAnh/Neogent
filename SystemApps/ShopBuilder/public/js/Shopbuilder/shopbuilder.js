@@ -62,6 +62,7 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
 }
 
 function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
+    console.log("Type of Payload: ", payload.constructor);
     var _data = {
         userName: uid,
         password: token,

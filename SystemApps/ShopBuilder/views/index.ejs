@@ -471,6 +471,7 @@ $(document).ready(function() {
     }
 
     function afterCheckToken(result) {
+        console.log(result)
         if (result.errNum != 0) {
             getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
             return;
