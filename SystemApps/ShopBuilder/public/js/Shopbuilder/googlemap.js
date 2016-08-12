@@ -52,6 +52,8 @@ $(document).ready(function() {
         document.getElementById('textAddress').value = str;
         document.getElementById('textAddress').parentNode.classList.remove("missing");
         shopInfo.address = encodeURIComponent(str);
+        //innerText
+        //shopInfo.address = document.getElementById('textAddress').innerText;
     }
 
 
