@@ -5,14 +5,13 @@
 <title>Shop Builder</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/navbar.css">
-<link rel="stylesheet" type="text/css" href="css/shop.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="css/imagePreview.css">
 <link rel="stylesheet" type="text/css" href="css/social-buttons.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/breadcrumb.css">
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -20,73 +19,6 @@
 <script src="js/Shopbuilder/shopbuilder.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
-<style type="text/css">
-#masthead.start {
-    transition: all 3s ease-in-out;
-    background-size: 100% auto;
-    top: 0;
-    left: 0;
-    padding-top: 15%;
-}
-
-.br-response {
-    min-height: 220px;
-}
-
-.controls {
-    margin-top: 15px;
-    /*vertical-align: middle;*/
-}
-
-@media (min-width: 979px) {
-    .br-response {
-        min-height: 160px;
-        padding-left: 15px;
-    }
-    #sidebar.affix-bottom {
-        position: absolute;
-    }
-    #sidebar.affix-top {
-        position: static;
-        /*margin-top: 30px;*/
-        /*width: 300px;*/
-    }
-    #sidebar.affix {
-        position: fixed;
-        top: 70px;
-        /*width: 300px;*/
-    }
-}
-
-.introduction .label {
-    background-color: #5CB85C;
-}
-
-.form-control {
-    border-radius: 0px;
-    background-color: #fff;
-}
-
-img {
-    width: 100%;
-    /* or any custom size */
-    height: 100%;
-    object-fit: contain;
-}
-
-.fullWidth {
-    width: 100%!important;
-    margin: 0!important;
-}
-
-.missing:after {
-    content: "";
-    position: absolute; right: 0; top:0px;
-    width: 5px; height: 5px;
-    border-radius: 100%;
-    background: red;
-}
-</style>
 <body>
     <!-- Dont touch this section -->
     <!-- NavBar -->
@@ -99,43 +31,93 @@ img {
             </div>
         </div>
     </template>
-    <div id="nav-wrapper">
-        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
-            <div class="container">
-                <div class="row">
-                    <div>
-                        <img src="img/CatLogo.png" class="logo" id = "logo">
-                    </div>
-                    <div class='site-name hidden-xs'>
-                        AbcJSC
-                    </div>
-                    <div id="AppManagerBoard">
-                    </div>
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right" id="visitor">
-                        <li class="navbar-right">
-                            <div app-role='removeAfterLogin'>
-                                <!-- <label for="usr">Login with facebook</label> -->
-                                <button class="btn btn-facebook" id="bntFbLogin"><i class="fa fa-facebook"></i> | Login with Facebook</button>
+    <!-- NavBar -->
+        <div id="nav-wrapper">
+            <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <img src="img/CatLogo.png" class="logo">
+                        </div>
+                        <div class='site-name hidden-xs'>
+                            AbcJSC
+                        </div>
+                        <div>
+                            <div app-role = 'removeAfterLogin'>
+                                <button class="btn btn-facebook" id="bntFbLogin">
+                                     <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                                </button>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                        <span class="hambugger" onclick="toggleMenu()">
+                             <span class="menu-bar"></span>
+                             <!--span class="icon-bar"></span>
+                             <span class="icon-bar"></span>
+                             <span class="icon-bar"></span-->
+                        </span>
+                        <div id="menuBroad" class="menu-board">
+                             <div id = "AppManagerBoard" class="mini-broad-cover">
+
+                             </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <template id="AppTemp">
-        <a class='mini-broad' app-role="link">
-            <img app-role="AppIcon">
-        </a>
-    </template>
+        <template id="AppTemp">
+            <a class='mini-broad' app-role="link">
+                <img app-role="AppIcon">
+            </a>
+        </template>
+        <template id="optionSet">
+            <div class="row" style="margin-top: 5px;margin-bottom: 5px;" app-role="optionSet">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <img src='../img/logo.png' id="iconHolder" app-role="icon" >
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <legend app-role="setsName">Set's Name</legend>
+                </div>
+            </div>
+        </template>
+        <template id="controlTemplate">
+            <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
+                <div class="col-md-3 col-lg-3">
+                    <label data-controltype="label"></label>
+                </div>
+                <div class="col-md-9 col-lg-9" app-role="inputHandler">
+                    <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
+                </div>
+            </div>
+        </template>
+        <template id="optionInput">
+            <input type="" name="" class="c-left" value="0" app-role="option"><span class="col-md-11 col-lg-11" app-role="displayValue"></span>
+        </template>
+        <template id="standardInput">
+            <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
+        </template>
+        <template id="textAreaInput">
+            <textarea class="col-md-12 col-lg-12 form-control" data-controltype="textarea"></textarea>
+        </template>
+        <template id="selectInput">
+            <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
+            </select>
+        </template>
+        <template id="selectInputTags">
+            <select class="col-md-12 col-lg-12 form-control" data-controltype="select" multiple="multiple">
+            </select>
+        </template>
+        <template id="selectInputSingle">
+            <select class="col-md-12 col-lg-12 form-control" data-controltype="select"">
+            </select>
+        </template>
+        <template id="imgInput">
+            <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover; position:relative" data-controltype="img">
+                <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
+                <div data-controltype="imgMask" style="position:relative; z-index:5;" >
+                </div>
+            </div>
+            <span ><i data-controltype="collection">Collection</i></span>
+        </template>
     <!-- /NavBar -->
     <section class='heading-page' style="position: relative; background:url('img/Civil-engineering-Banner.jpg') no-repeat top center; background-size: cover; height: 100vh; opacity: 1" id = 'masthead' >
         <div class="container-fluid">
@@ -258,8 +240,8 @@ img {
         </div>
     </section>
     <footer>
-        <div style=" width: 100%; background-color: rgba(0,0,0,.85); height: 90px;">
-            @Copyright:abcd@abc.jsc
+        <div class="col-md-12 footer-inner">
+           @Copyright:abcd@abc.jsc
         </div>
     </footer>
     </div>
@@ -487,6 +469,16 @@ $(document).ready(function() {
         initWall(this);
     }, false);
 });
+
+        /** Huyen Anh added code here **/
+        window.onload = function()
+        {
+            var offsetWidth = document.getElementById('AppManagerBoard').offsetWidth;
+            document.getElementById('AppManagerBoard').style.right = "-" + offsetWidth + "px";
+        }
+        function toggleMenu() {
+            document.getElementById('nav').classList.toggle('menu-active');
+        }
 </script>
 
 </html>

@@ -160,24 +160,31 @@
     background-color: #000;
     .search-inner {
       position: absolute;
-      top: 41px; left: -100%;
+      //top: 41px; left: -100%;
+      top: 41px; left: 0;
       width: 100%;
       padding: 0 15px;
       background-color: #000;
       z-index: 5;
+      height: 0; overflow: hidden;
       .form-control {
         font-size: 18px; padding-left: 35px;
         &, &:focus {border: none; box-shadow: none;}
       }
-      i {left: 25px;}
+      i {
+        @include no-pos;
+        top: 10px; left: 25px;
+      }
     }
     .search-mode {
       display: inline-block;
     }
 
     &.search-active {
+      margin-bottom: 40px;
       .search-inner {
-        top: 41px; left: 0;
+        //top: 41px; left: 0;
+        height: 40px;
       }
       .search-mode {
         &:before {left: 30px; opacity: 0;}
@@ -189,13 +196,9 @@
 
 /*user account*/
 .user-account {
+  margin-top: 0;
   @include mobile {
     margin-top: -5px;
-    width: 140px;
-    .avatar-img {
-      width: 40px; height: 40px;
-    }
-    .username-text {font-size: 11px;}
   }
 }
 

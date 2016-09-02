@@ -25,6 +25,20 @@
     width: calc(100% - 60px);
     margin-bottom: 93px;
   }
+  > .container {
+    width: auto;
+    @include mobile {
+      text-align: center;
+      .hambugger {
+        display: inline-block;
+        float: none; margin-left: 37.5px;
+      }
+    }
+    @include large-mobile {
+      text-align: left;
+      .hambugger {float: right;}
+    }
+  }
   li {
     background-color: rgba(0, 0, 0, 0.85);
     > a {
@@ -225,6 +239,23 @@
 
   .site-name {
     font-size: 28px;
+  }
+}
+
+@media (min-width: $w-desktop) {
+  .br-response {
+    min-height: 160px;
+    padding-left: 15px;
+  }
+  #sidebar.affix-bottom {
+    position: absolute;
+  }
+  #sidebar.affix-top {
+    position: static;
+  }
+  #sidebar.affix {
+    position: fixed;
+    top: 70px;
   }
 }
 
