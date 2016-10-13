@@ -229,6 +229,27 @@ function createSingleControlGroup(template, isReload) {
             }
             container_div.setAttribute("data-controlType", "radio");
             break;
+        case ("radioExtra"):
+            // Update for configurable attributes
+            input.type = "radio";
+            input.name = template["value"];
+            if (template["fields"]["configOptions"]) {
+                for (item in template["fields"]["configOptions"]) {
+                    input.classList.add("c-left");
+                    //input.classList.add("col-lg-6");
+                    input.value = item;
+                    var copy_radio = input.cloneNode(true);
+                    input_cover.appendChild(copy_radio);
+                    var span = document.createElement("span")
+                    span.innerHTML = template["fields"]["configOptions"][item];
+                    span.classList.add("col-md-11");
+                    span.classList.add("col-lg-11");
+                    input_cover.appendChild(span);
+                }
+                input_cover.setAttribute("data-controlType", "radioExtra");
+            }
+            container_div.setAttribute("data-controlType", "radioExtra");
+            break;
         case ("checkbox"):
             input.type = "checkbox";
             input.name = template["value"];
@@ -412,7 +433,7 @@ function createAttributePanel(nodeCopy, title) {
         label.classList.add("col-lg-12");
         label.classList.add("col-md-12");
         main_panel.appendChild(label);
-        if (item != "options" && item != "min" && item != "max") {
+        if (item != "options" && item != "min" && item != "max" && item != "configOptions") {
             label.innerHTML = fields[item]["label"];
             var input = document.createElement("input");
             input.classList.add("col-md-12");
@@ -476,6 +497,10 @@ function createAttributePanel(nodeCopy, title) {
             input.setAttribute("data-controlType", item);
             input.addEventListener("change", changeControlAttribute, false);
             main_panel.appendChild(input);
+        }
+        if (item == "configOptions") {
+            // Update for configurable attributes
+            console.log("configOptions here");
         }
 
     }

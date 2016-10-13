@@ -267,6 +267,48 @@ var data = [{
         }
     }, {
         "container": "standardElement",
+        "label": "CheckboxExtra",
+        "Input Type": "radioExtra",
+        "value": "Option",
+        "fields": {
+            "id": {
+                "label": "ID / Name",
+                "Input Type": "text",
+                "value": "checkbox Name"
+            },
+            "label": {
+                "label": "Label",
+                "Input Type": "text",
+                "value": "Radio"
+            },
+            "describe": {
+                "label": "More info",
+                "Input Type": "text",
+                "value": "Describe attribute"
+            },
+            "configOptions": {
+                "1": "value 1",
+                "2": "value 2",
+                "3": "value 3",
+            },
+            "displayGroup": {
+                "label": "Assign Dipsplay Group",
+                "Input Type": "text",
+                "value": "Assign Dipsplay Group"
+            },
+            "required": {
+                "label": "Required",
+                "Input Type": "checkbox",
+                "value": false
+            },
+            "invisible": {
+                "label": "invisible",
+                "Input Type": "checkbox",
+                "value": false
+            }
+        }
+    },{
+        "container": "standardElement",
         "label": "Number Input",
         "Input Type": "number",
         "value": "number",
