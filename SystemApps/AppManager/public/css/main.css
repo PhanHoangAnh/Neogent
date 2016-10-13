@@ -1112,35 +1112,38 @@ label {
   background-size: 115% auto;
   color: #AAC;
 }
-
-/* line 64, ../scss/_common.scss */
+/* line 63, ../scss/_common.scss */
 #masthead h1 {
   font-size: 55px;
   line-height: 1;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   margin-top: 80px;
 }
-
-/* line 70, ../scss/_common.scss */
+@media only screen and (min-width: 992px) {
+  /* line 63, ../scss/_common.scss */
+  #masthead h1 {
+    font-size: 100px;
+  }
+}
+/* line 72, ../scss/_common.scss */
 #masthead .cover {
   padding-top: 10%;
 }
-
-/* line 73, ../scss/_common.scss */
+/* line 75, ../scss/_common.scss */
 #masthead .well {
   margin-top: 13%;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0;
   border-color: #000033;
 }
-
-/* line 79, ../scss/_common.scss */
+/* line 81, ../scss/_common.scss */
 #masthead .row {
   margin-right: -15px;
   margin-left: -15px;
 }
 
-/* line 83, ../scss/_common.scss */
+/* line 85, ../scss/_common.scss */
+s
 #avatar {
   border: 4px solid #fff;
   border-radius: 2px;
@@ -1148,43 +1151,37 @@ label {
   width: 160px;
 }
 
-/* line 89, ../scss/_common.scss */
+/* line 92, ../scss/_common.scss */
 .icon-bar {
   background-color: #fff;
 }
 
-@media only screen and (max-width: 767px) {
-  /* line 93, ../scss/_common.scss */
-  #masthead h1 {
-    font-size: 100px;
-  }
-}
-/* line 97, ../scss/_common.scss */
+/* line 95, ../scss/_common.scss */
 .navbar-bright {
   color: #FFF;
 }
 
-/* line 98, ../scss/_common.scss */
+/* line 96, ../scss/_common.scss */
 .navbar-bright a, #masthead a, #masthead .lead {
   color: #AAC;
 }
 
-/* line 99, ../scss/_common.scss */
+/* line 97, ../scss/_common.scss */
 .navbar-bright li > a:hover {
   background-color: #000033;
 }
 
-/* line 101, ../scss/_common.scss */
+/* line 99, ../scss/_common.scss */
 .heading-page {
   background-size: cover;
 }
-/* line 103, ../scss/_common.scss */
+/* line 101, ../scss/_common.scss */
 .heading-page h1, .heading-page .h1 {
   color: #FFF;
   text-shadow: 2px 2px 4px #000;
 }
 
-/* line 110, ../scss/_common.scss */
+/* line 108, ../scss/_common.scss */
 .user-account {
   position: relative;
   margin-top: 2px;
@@ -1193,18 +1190,18 @@ label {
   cursor: pointer;
   width: 150px;
 }
-/* line 117, ../scss/_common.scss */
+/* line 115, ../scss/_common.scss */
 .user-account, .user-account * {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-/* line 120, ../scss/_common.scss */
+/* line 118, ../scss/_common.scss */
 .user-account .avatar-img, .user-account .username-text {
   float: left;
 }
-/* line 121, ../scss/_common.scss */
+/* line 119, ../scss/_common.scss */
 .user-account .avatar-img {
   position: relative;
   overflow: hidden;
@@ -1214,7 +1211,7 @@ label {
   -moz-border-radius: 100%;
   border-radius: 100%;
 }
-/* line 126, ../scss/_common.scss */
+/* line 124, ../scss/_common.scss */
 .user-account .avatar-img img {
   position: absolute;
   top: 50%;
@@ -1225,9 +1222,9 @@ label {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
-/* line 133, ../scss/_common.scss */
+/* line 131, ../scss/_common.scss */
 .user-account .username-text {
   position: absolute;
   top: 50%;
@@ -1241,37 +1238,58 @@ label {
   line-height: normal;
   text-align: right;
 }
+@media only screen and (max-width: 767px) {
+  /* line 108, ../scss/_common.scss */
+  .user-account {
+    margin-top: 7px;
+    width: 120px;
+    padding-left: 80px;
+  }
+  /* line 142, ../scss/_common.scss */
+  .user-account .avatar-img {
+    width: 40px;
+    height: 40px;
+  }
+  /* line 145, ../scss/_common.scss */
+  .user-account .username-text {
+    width: 70px;
+    font-size: 11px;
+    line-height: 12px;
+    max-height: 38px;
+    overflow: hidden;
+  }
+}
 
-/* line 143, ../scss/_common.scss */
+/* line 153, ../scss/_common.scss */
 .navbar .user-account {
   float: right;
 }
-/* line 145, ../scss/_common.scss */
+/* line 155, ../scss/_common.scss */
 .navbar.affix .user-account {
   margin-top: 4px;
-  width: 140px;
+  width: 120px;
 }
-/* line 147, ../scss/_common.scss */
+/* line 157, ../scss/_common.scss */
 .navbar.affix .user-account .avatar-img {
   width: 40px;
   height: 40px;
 }
-/* line 150, ../scss/_common.scss */
+/* line 160, ../scss/_common.scss */
 .navbar.affix .user-account .username-text {
   font-size: 11px;
 }
 
-/* line 156, ../scss/_common.scss */
+/* line 166, ../scss/_common.scss */
 .btn-facebook {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 158, ../scss/_common.scss */
+/* line 168, ../scss/_common.scss */
 .btn-facebook .fa {
   padding-right: 15px;
 }
-/* line 160, ../scss/_common.scss */
+/* line 170, ../scss/_common.scss */
 .btn-facebook .fa:after {
   content: "";
   position: absolute;
@@ -1283,14 +1301,14 @@ label {
   margin-left: 7px;
 }
 
-/* line 173, ../scss/_common.scss */
+/* line 183, ../scss/_common.scss */
 .nav-tabs > li > a > li > a {
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
 }
 
-/* line 179, ../scss/_common.scss */
+/* line 189, ../scss/_common.scss */
 footer .footer-inner {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1312,7 +1330,7 @@ footer .footer-inner:after {
   line-height: 0;
 }
 
-/* line 188, ../scss/_common.scss */
+/* line 198, ../scss/_common.scss */
 .clearfix {
   zoom: 1;
 }
@@ -1330,27 +1348,32 @@ footer .footer-inner:after {
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 191, ../scss/_common.scss */
+  /* line 201, ../scss/_common.scss */
   .hide-mobile {
     display: none;
   }
 }
-/* line 197, ../scss/_common.scss */
+/* line 207, ../scss/_common.scss */
 .modal-content {
   padding: 1px;
 }
 
-/* line 200, ../scss/_common.scss */
+/* line 210, ../scss/_common.scss */
 .modal-header {
   background-color: #00A600;
   border-radius: 1px 1px 0 0;
 }
-/* line 203, ../scss/_common.scss */
+/* line 213, ../scss/_common.scss */
 .modal-header h4, .modal-header button {
   color: #FFF;
   opacity: 1;
   filter: alpha(opacity=100);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* line 219, ../scss/_common.scss */
+.modal-content, .btn {
+  border-radius: 2px;
 }
 
 /*metro style*/
@@ -1608,41 +1631,53 @@ footer .footer-inner:after {
   .search-box .search-inner {
     position: absolute;
     top: 41px;
-    left: -100%;
+    left: 0;
     width: 100%;
     padding: 0 15px;
     background-color: #000;
     z-index: 5;
+    height: 0;
+    overflow: hidden;
   }
-  /* line 168, ../scss/main.scss */
+  /* line 170, ../scss/main.scss */
   .search-box .search-inner .form-control {
     font-size: 18px;
     padding-left: 35px;
   }
-  /* line 170, ../scss/main.scss */
+  /* line 172, ../scss/main.scss */
   .search-box .search-inner .form-control, .search-box .search-inner .form-control:focus {
     border: none;
     box-shadow: none;
   }
-  /* line 172, ../scss/main.scss */
+  /* line 174, ../scss/main.scss */
   .search-box .search-inner i {
+    top: auto;
+    left: auto;
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    top: 10px;
     left: 25px;
   }
-  /* line 174, ../scss/main.scss */
+  /* line 179, ../scss/main.scss */
   .search-box .search-mode {
     display: inline-block;
   }
-  /* line 179, ../scss/main.scss */
-  .search-box.search-active .search-inner {
-    top: 41px;
-    left: 0;
-  }
   /* line 183, ../scss/main.scss */
+  .search-box.search-active {
+    margin-bottom: 40px;
+  }
+  /* line 185, ../scss/main.scss */
+  .search-box.search-active .search-inner {
+    height: 40px;
+  }
+  /* line 190, ../scss/main.scss */
   .search-box.search-active .search-mode:before {
     left: 30px;
     opacity: 0;
   }
-  /* line 184, ../scss/main.scss */
+  /* line 191, ../scss/main.scss */
   .search-box.search-active .search-mode:after {
     left: 2px;
     opacity: 1;
@@ -1650,40 +1685,34 @@ footer .footer-inner:after {
 }
 
 /*user account*/
+/* line 198, ../scss/main.scss */
+.user-account {
+  margin-top: 0;
+}
 @media only screen and (max-width: 767px) {
-  /* line 191, ../scss/main.scss */
+  /* line 198, ../scss/main.scss */
   .user-account {
     margin-top: -5px;
-    width: 140px;
-  }
-  /* line 195, ../scss/main.scss */
-  .user-account .avatar-img {
-    width: 40px;
-    height: 40px;
-  }
-  /* line 198, ../scss/main.scss */
-  .user-account .username-text {
-    font-size: 11px;
   }
 }
 
-/* line 202, ../scss/main.scss */
+/* line 205, ../scss/main.scss */
 .login-block {
   position: absolute;
   z-index: 5;
   top: 20px;
   right: 15px;
 }
-/* line 206, ../scss/main.scss */
+/* line 209, ../scss/main.scss */
 .login-block .btn-facebook {
   margin-top: 3px;
 }
 @media only screen and (max-width: 767px) {
-  /* line 202, ../scss/main.scss */
+  /* line 205, ../scss/main.scss */
   .login-block {
     top: 11px;
   }
-  /* line 209, ../scss/main.scss */
+  /* line 212, ../scss/main.scss */
   .login-block .btn-facebook {
     margin-top: 0;
     font-size: 11px;
@@ -1692,7 +1721,7 @@ footer .footer-inner:after {
 
 /*grid system responsive*/
 @media only screen and (max-width: 767px) {
-  /* line 220, ../scss/main.scss */
+  /* line 223, ../scss/main.scss */
   .col-xs-12 .col-xs-6:nth-of-type(2n+1),
   .col-sm-12 .col-xs-6:nth-of-type(2n+1),
   .col-md-12 .col-xs-6:nth-of-type(2n+1),
@@ -1701,21 +1730,21 @@ footer .footer-inner:after {
   }
 }
 @media only screen and (min-width: 566px) and (max-width: 767px) {
-  /* line 226, ../scss/main.scss */
+  /* line 229, ../scss/main.scss */
   .dashboard-management .col-xs-6 {
     width: 33.33333333%;
   }
-  /* line 228, ../scss/main.scss */
+  /* line 231, ../scss/main.scss */
   .dashboard-management .col-xs-6:nth-of-type(2n+1) {
     clear: none;
   }
-  /* line 229, ../scss/main.scss */
+  /* line 232, ../scss/main.scss */
   .dashboard-management .col-xs-6:nth-of-type(3n+1) {
     clear: left;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  /* line 239, ../scss/main.scss */
+  /* line 242, ../scss/main.scss */
   .col-xs-12 .col-sm-3:nth-of-type(4n+1),
   .col-sm-12 .col-sm-3:nth-of-type(4n+1),
   .col-md-12 .col-sm-3:nth-of-type(4n+1),
@@ -1724,7 +1753,7 @@ footer .footer-inner:after {
   }
 }
 @media only screen and (min-width: 992px) {
-  /* line 248, ../scss/main.scss */
+  /* line 251, ../scss/main.scss */
   .col-xs-12 .col-md-2:nth-of-type(6n+1),
   .col-sm-12 .col-md-2:nth-of-type(6n+1),
   .col-md-12 .col-md-2:nth-of-type(6n+1),

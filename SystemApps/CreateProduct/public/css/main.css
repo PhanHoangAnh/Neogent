@@ -1153,38 +1153,32 @@ label {
   background-color: #fff;
 }
 
-@media only screen and (max-width: 767px) {
-  /* line 93, ../scss/_common.scss */
-  #masthead h1 {
-    font-size: 100px;
-  }
-}
-/* line 97, ../scss/_common.scss */
+/* line 92, ../scss/_common.scss */
 .navbar-bright {
   color: #FFF;
 }
 
-/* line 98, ../scss/_common.scss */
+/* line 93, ../scss/_common.scss */
 .navbar-bright a, #masthead a, #masthead .lead {
   color: #AAC;
 }
 
-/* line 99, ../scss/_common.scss */
+/* line 94, ../scss/_common.scss */
 .navbar-bright li > a:hover {
   background-color: #000033;
 }
 
-/* line 101, ../scss/_common.scss */
+/* line 96, ../scss/_common.scss */
 .heading-page {
   background-size: cover;
 }
-/* line 103, ../scss/_common.scss */
+/* line 98, ../scss/_common.scss */
 .heading-page h1, .heading-page .h1 {
   color: #FFF;
   text-shadow: 2px 2px 4px #000;
 }
 
-/* line 110, ../scss/_common.scss */
+/* line 105, ../scss/_common.scss */
 .user-account {
   position: relative;
   margin-top: 2px;
@@ -1193,18 +1187,18 @@ label {
   cursor: pointer;
   width: 150px;
 }
-/* line 117, ../scss/_common.scss */
+/* line 112, ../scss/_common.scss */
 .user-account, .user-account * {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-/* line 120, ../scss/_common.scss */
+/* line 115, ../scss/_common.scss */
 .user-account .avatar-img, .user-account .username-text {
   float: left;
 }
-/* line 121, ../scss/_common.scss */
+/* line 116, ../scss/_common.scss */
 .user-account .avatar-img {
   position: relative;
   overflow: hidden;
@@ -1214,7 +1208,7 @@ label {
   -moz-border-radius: 100%;
   border-radius: 100%;
 }
-/* line 126, ../scss/_common.scss */
+/* line 121, ../scss/_common.scss */
 .user-account .avatar-img img {
   position: absolute;
   top: 50%;
@@ -1225,9 +1219,9 @@ label {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
-/* line 133, ../scss/_common.scss */
+/* line 128, ../scss/_common.scss */
 .user-account .username-text {
   position: absolute;
   top: 50%;
@@ -1241,37 +1235,58 @@ label {
   line-height: normal;
   text-align: right;
 }
+@media only screen and (max-width: 767px) {
+  /* line 105, ../scss/_common.scss */
+  .user-account {
+    margin-top: 7px;
+    width: 120px;
+    padding-left: 80px;
+  }
+  /* line 139, ../scss/_common.scss */
+  .user-account .avatar-img {
+    width: 40px;
+    height: 40px;
+  }
+  /* line 142, ../scss/_common.scss */
+  .user-account .username-text {
+    width: 70px;
+    font-size: 11px;
+    line-height: 12px;
+    max-height: 38px;
+    overflow: hidden;
+  }
+}
 
-/* line 143, ../scss/_common.scss */
+/* line 150, ../scss/_common.scss */
 .navbar .user-account {
   float: right;
 }
-/* line 145, ../scss/_common.scss */
+/* line 152, ../scss/_common.scss */
 .navbar.affix .user-account {
   margin-top: 4px;
-  width: 140px;
+  width: 120px;
 }
-/* line 147, ../scss/_common.scss */
+/* line 154, ../scss/_common.scss */
 .navbar.affix .user-account .avatar-img {
   width: 40px;
   height: 40px;
 }
-/* line 150, ../scss/_common.scss */
+/* line 157, ../scss/_common.scss */
 .navbar.affix .user-account .username-text {
   font-size: 11px;
 }
 
-/* line 156, ../scss/_common.scss */
+/* line 163, ../scss/_common.scss */
 .btn-facebook {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 158, ../scss/_common.scss */
+/* line 165, ../scss/_common.scss */
 .btn-facebook .fa {
   padding-right: 15px;
 }
-/* line 160, ../scss/_common.scss */
+/* line 167, ../scss/_common.scss */
 .btn-facebook .fa:after {
   content: "";
   position: absolute;
@@ -1283,14 +1298,14 @@ label {
   margin-left: 7px;
 }
 
-/* line 173, ../scss/_common.scss */
+/* line 180, ../scss/_common.scss */
 .nav-tabs > li > a > li > a {
   -webkit-border-radius: 2px 2px 0 0;
   -moz-border-radius: 2px 2px 0 0;
   border-radius: 2px 2px 0 0;
 }
 
-/* line 179, ../scss/_common.scss */
+/* line 186, ../scss/_common.scss */
 footer .footer-inner {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1312,7 +1327,7 @@ footer .footer-inner:after {
   line-height: 0;
 }
 
-/* line 188, ../scss/_common.scss */
+/* line 195, ../scss/_common.scss */
 .clearfix {
   zoom: 1;
 }
@@ -1330,27 +1345,32 @@ footer .footer-inner:after {
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 191, ../scss/_common.scss */
+  /* line 198, ../scss/_common.scss */
   .hide-mobile {
     display: none;
   }
 }
-/* line 197, ../scss/_common.scss */
+/* line 204, ../scss/_common.scss */
 .modal-content {
   padding: 1px;
 }
 
-/* line 200, ../scss/_common.scss */
+/* line 207, ../scss/_common.scss */
 .modal-header {
   background-color: #00A600;
   border-radius: 1px 1px 0 0;
 }
-/* line 203, ../scss/_common.scss */
+/* line 210, ../scss/_common.scss */
 .modal-header h4, .modal-header button {
   color: #FFF;
   opacity: 1;
   filter: alpha(opacity=100);
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+/* line 216, ../scss/_common.scss */
+.modal-content, .btn {
+  border-radius: 2px;
 }
 
 /* line 16, ../scss/main.scss */
@@ -1501,34 +1521,29 @@ img {
 }
 
 /* line 138, ../scss/main.scss */
-.modal-content, .btn {
-  border-radius: 2px;
-}
-
-/* line 141, ../scss/main.scss */
 .preview + .preview-md, .preview-md + .preview-sm {
   display: none;
 }
 
-/* line 145, ../scss/main.scss */
+/* line 142, ../scss/main.scss */
 .heading-page {
   padding-top: 140px;
 }
-/* line 147, ../scss/main.scss */
+/* line 144, ../scss/main.scss */
 .heading-page h1, .heading-page .h1 {
   color: #FFF;
 }
 
-/* line 150, ../scss/main.scss */
+/* line 147, ../scss/main.scss */
 fieldset .form-control {
   box-shadow: none;
 }
-/* line 152, ../scss/main.scss */
+/* line 149, ../scss/main.scss */
 fieldset .form-control, fieldset .form-control:focus {
   border-color: #CCC;
 }
 
-/* line 158, ../scss/main.scss */
+/* line 155, ../scss/main.scss */
 fieldset .form-control:focus,
 .select2.select2-container--focus,
 .select2.select2-container--open,
@@ -1536,7 +1551,7 @@ fieldset .form-control:focus,
   box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
-/* line 165, ../scss/main.scss */
+/* line 162, ../scss/main.scss */
 .select2-container--default.select2-container--focus .select2-selection--multiple,
 .select2-container--default .select2-selection--multiple,
 .select2-container--default .select2-selection--single {
@@ -1546,45 +1561,45 @@ fieldset .form-control:focus,
   border-color: #CCC;
 }
 
-/* line 171, ../scss/main.scss */
+/* line 168, ../scss/main.scss */
 .select2-container--default .select2-selection--multiple {
   border-color: #CCC;
 }
-/* line 173, ../scss/main.scss */
+/* line 170, ../scss/main.scss */
 .select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--multiple .select2-selection__choice {
   border-radius: 2px;
 }
-/* line 174, ../scss/main.scss */
+/* line 171, ../scss/main.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background: #00A600;
   border: none;
 }
 
-/* line 178, ../scss/main.scss */
+/* line 175, ../scss/main.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice,
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
   color: #FFF;
 }
 
-/* line 182, ../scss/main.scss */
+/* line 179, ../scss/main.scss */
 .select2-container .select2-selection--single {
   height: 34px;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* line 185, ../scss/main.scss */
+/* line 182, ../scss/main.scss */
 .select2-container--default .select2-selection--single .select2-selection__rendered {
   color: #555;
   line-height: 32px;
 }
 
-/* line 189, ../scss/main.scss */
+/* line 186, ../scss/main.scss */
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   top: 4px;
 }
 
-/* line 193, ../scss/main.scss */
+/* line 190, ../scss/main.scss */
 #systemAttributes .col-md-6.col-lg-6.control:nth-of-type(2n+1) {
   clear: left;
 }
