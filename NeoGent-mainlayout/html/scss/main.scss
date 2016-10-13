@@ -233,7 +233,26 @@ body,
 
 footer {
 	background: #333;
-	&, a, a:hover {color: #FFF; text-decoration: none;}
+	&, a, a:hover {color: #FFF; text-decoration: none;}	
+	@include non-mobile {
+		a {
+			position: relative;
+			&:after {		
+				content: "";
+				display: block;
+				position: absolute;
+				width: 0; height: 1px;
+				background: #FFF;
+				bottom: 0; left: 0; 
+				@include single-transition(all,0.3s);
+			}
+			&:hover {
+				&:after {
+					width: 100%;
+				}
+			}
+		}
+	}
 	font-size: 14px;
 	h4 {
 		text-transform: uppercase;
@@ -292,9 +311,6 @@ footer {
 	.copy-right {letter-spacing: 1px; margin: 0;}
 }
 .subscribe-form {
-	input, .btn {
-		border: #FFF solid 1px;
-	}
 	input[type='text'],
     input[type='email'] {
 		font-family: $lightFont; color: #818181;
@@ -304,7 +320,8 @@ footer {
 	}
 	
 	.btn {
-		&, &:hover {
+		border: #FFF solid 1px;
+		&, &:hover, &:focus {
 			color: #111; opacity: 1;
 			padding: 0 20px;
 			font-weight: normal;

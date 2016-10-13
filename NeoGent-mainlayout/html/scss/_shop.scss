@@ -747,7 +747,10 @@ $starUniO: "\2606";
       .text {float: left; width: 38%;}
       .value {float: right; width: 58%; clear: right; padding-right: 22px;}
       .total {font-family: $boldFont; text-align: right;}
-      .grand {font-size: 20px;}
+      .grand {
+		font-size: 20px;
+		//@include non-mobile {font-size: 20px;}		
+	  }
       &:last-child {border-bottom: none;}
     }
   }
@@ -826,7 +829,10 @@ $starUniO: "\2606";
   .item-row {
     font-size: 14px;
     .price,
-    .name {font-size: 16px;}
+    .name {
+		font-size: 14px;
+		@include desktop {font-size: 16px;}
+	}
     @media only screen and (min-width: 556px) {
       .product-detail {padding-left: 20px;}
     }
@@ -846,7 +852,8 @@ $starUniO: "\2606";
     .item {
       @include clearer;
       margin: 7px 0;
-      .value, .text {font-family: $boldFont; font-size: 16px;}
+	  .grand {font-family: $boldFont;}
+      .value, .text {font-size: 16px;}
       .value {text-align: right;}
     }
   }
