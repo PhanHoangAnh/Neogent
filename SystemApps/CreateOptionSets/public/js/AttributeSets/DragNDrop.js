@@ -229,27 +229,15 @@ function createSingleControlGroup(template, isReload) {
             }
             container_div.setAttribute("data-controlType", "radio");
             break;
-        case ("radioExtra"):
+        case ("ImageOptions"):
             // Update for configurable attributes
             // input.type = "radio";
-            // input.name = template["value"];
-            // if (template["fields"]["configOptions"]) {
-            //     for (item in template["fields"]["configOptions"]) {
-            //         input.classList.add("c-left");
-            //         //input.classList.add("col-lg-6");
-            //         input.value = item;
-            //         var copy_radio = input.cloneNode(true);
-            //         input_cover.appendChild(copy_radio);
-            //         var span = document.createElement("span")
-            //         span.innerHTML = template["fields"]["configOptions"][item];
-            //         span.classList.add("col-md-11");
-            //         span.classList.add("col-lg-11");
-            //         input_cover.appendChild(span);
-            //     }
-            //     input_cover.setAttribute("data-controlType", "radioExtra");
-            // }
-            // container_div.setAttribute("data-controlType", "radioExtra");
-            
+
+            newId++;
+            var input = document.importNode(document.getElementById('extraOptionImgHandler').content, true);
+            input_cover.appendChild(input);
+            input.id = newId;
+            container_div.setAttribute("data-controlType", "ImageOptions");
             break;
         case ("checkbox"):
             input.type = "checkbox";
@@ -434,7 +422,7 @@ function createAttributePanel(nodeCopy, title) {
         label.classList.add("col-lg-12");
         label.classList.add("col-md-12");
         main_panel.appendChild(label);
-        if (item != "options" && item != "min" && item != "max" && item != "configOptions") {
+        if (item != "options" && item != "min" && item != "max" && item != "ImageOptions") {
             label.innerHTML = fields[item]["label"];
             var input = document.createElement("input");
             input.classList.add("col-md-12");
@@ -499,9 +487,28 @@ function createAttributePanel(nodeCopy, title) {
             input.addEventListener("change", changeControlAttribute, false);
             main_panel.appendChild(input);
         }
-        if (item == "configOptions") {
+        if (item == "ImageOptions") {
             // Update for configurable attributes
-            console.log("configOptions here");
+            // console.log("ImageOptions here");
+            label.innerHTML = item;
+            var input_cover = document.createElement("div");
+            input_cover.classList.add("col-md-12");
+            input_cover.style.padding = '0';
+            var input = document.importNode(document.getElementById('extraOptionImgHandler').content, true);
+            input_cover.appendChild(input);
+            main_panel.appendChild(input_cover);
+            var dropPad = input_cover.querySelector('[app-role="droppad"]');
+            // console.log("dropPad: ", dropPad);
+            //http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+            for (var opt in fields['ImageOptions']) {
+                var item = document.getElementById('extraOptionImgItem').content;
+                var label = item.querySelector('[app-role="attName"]');
+                label.innerHTML = fields["ImageOptions"][opt]['label'];
+                var img = item.querySelector('[app-role = "attImg"]');
+                img.setAttribute('src', fields["ImageOptions"][opt].img);
+                dropPad.appendChild(document.importNode(item, true));
+            }
+            console.log('dropPad', dropPad);
         }
 
     }

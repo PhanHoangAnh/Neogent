@@ -88,7 +88,7 @@
     var selectItems = document.querySelectorAll('[app-role = "selectItem"]');
     for (var i = 0; i < selectItems.length; i++) {
         selectItems[i].addEventListener("click", function(evt) {
-            toggleShow();
+
             var selectHandler = getHandler(this);
 
             function getHandler(elem) {
@@ -101,6 +101,7 @@
                 }
             }
             var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
+            toggleShow(selectbox);
             // remove all childs
             while (selectbox.firstChild) {
                 selectbox.removeChild(selectbox.firstChild);
@@ -119,11 +120,16 @@
         }, false);
     }
 
-    function toggleShow() {
-        var selectbox = document.querySelector('[app-role="selectbox"]');
-        var dropdown = document.querySelector('[app-role="dropdown"]');
-        selectbox.classList.toggle("active");
-        dropdown.classList.toggle("open");
+    function toggleShow(elem) {
+        console.log(elem);
+        if (elem) {
+            elem.classList.toggle("active");
+            var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
+            dropdown.classList.toggle("open");
+        }
+        //var selectbox = elem.querySelector('[app-role="selectbox"]');
+
+
     }
     </script>
 </body>

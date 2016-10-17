@@ -267,9 +267,9 @@ var data = [{
         }
     }, {
         "container": "standardElement",
-        "label": "CheckboxExtra",
-        "Input Type": "radioExtra",
-        "value": "Option",
+        "label": "Image Options ",
+        "Input Type": "ImageOptions",
+        "value": "ImageOptions",
         "fields": {
             "id": {
                 "label": "ID / Name",
@@ -286,10 +286,10 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
-            "configOptions": {
-                "1": "value 1",
-                "2": "value 2",
-                "3": "value 3",
+            "ImageOptions": {
+                "1": { img: "", label: "something1" },
+                "2": { img: "", label: "something2" },
+                "3": { img: "", label: "something3" }
             },
             "displayGroup": {
                 "label": "Assign Dipsplay Group",
@@ -307,7 +307,7 @@ var data = [{
                 "value": false
             }
         }
-    },{
+    }, {
         "container": "standardElement",
         "label": "Number Input",
         "Input Type": "number",
