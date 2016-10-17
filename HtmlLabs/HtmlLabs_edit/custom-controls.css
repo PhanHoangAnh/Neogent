@@ -1,0 +1,118 @@
+.ctr-select-box,
+.ctr-select-value {
+    position: relative;
+}
+
+.ctr-select-box,
+.ctr-select-box * {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ctr-select-box a.btn {
+    padding-left: 0;
+    border-radius: 0;
+}
+
+.ctr-select-box a.btn:active {
+    box-shadow: none;
+}
+
+.ctr-select-value {
+    cursor: pointer;
+    min-height: 38px;
+}
+
+.ctr-select-value,
+.ctr-select-down .s-bottom,
+.ctr-select-option {
+    padding: 8px 30px 8px 20px;
+}
+
+.ctr-select-value,
+.ctr-select-down,
+.ctr-select-option,
+.ctr-select-option .s-content {
+    overflow: hidden;
+}
+
+.ctr-select-value,
+.ctr-select-down {
+    border: #CCC solid 1px;
+    background: #FFF;
+}
+
+.ctr-select-value:before,
+.ctr-select-option:hover {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.ctr-select-value:before {
+    content: "\f107";
+    font-family: FontAwesome;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.ctr-select-value.active:before {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.ctr-select-value .ctr-select-option {
+    padding: 0;
+}
+
+.ctr-select-value .ctr-select-option:hover {
+    background: transparent;
+}
+
+.ctr-select-value label {
+    margin: 0;
+}
+
+.ctr-select-down {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    border-top: none;
+    z-index: 5;
+    display: none;
+}
+
+.ctr-select-down.open {
+    max-height: 7000px;
+    display: block;
+}
+
+.ctr-select-option:hover,
+.ctr-select-option.curr {
+    background-color: #EEE;
+}
+
+.ctr-select-option .s-img {
+    float: left;
+    margin-right: 10px;
+    width: 32px;
+}
+
+.ctr-select-option .s-img img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.ctr-select-down .s-bottom {
+    background: #EEE;
+    border-top: #CCC solid 1px;
+}

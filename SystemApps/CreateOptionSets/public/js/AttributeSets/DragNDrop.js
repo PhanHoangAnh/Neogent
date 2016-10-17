@@ -231,24 +231,25 @@ function createSingleControlGroup(template, isReload) {
             break;
         case ("radioExtra"):
             // Update for configurable attributes
-            input.type = "radio";
-            input.name = template["value"];
-            if (template["fields"]["configOptions"]) {
-                for (item in template["fields"]["configOptions"]) {
-                    input.classList.add("c-left");
-                    //input.classList.add("col-lg-6");
-                    input.value = item;
-                    var copy_radio = input.cloneNode(true);
-                    input_cover.appendChild(copy_radio);
-                    var span = document.createElement("span")
-                    span.innerHTML = template["fields"]["configOptions"][item];
-                    span.classList.add("col-md-11");
-                    span.classList.add("col-lg-11");
-                    input_cover.appendChild(span);
-                }
-                input_cover.setAttribute("data-controlType", "radioExtra");
-            }
-            container_div.setAttribute("data-controlType", "radioExtra");
+            // input.type = "radio";
+            // input.name = template["value"];
+            // if (template["fields"]["configOptions"]) {
+            //     for (item in template["fields"]["configOptions"]) {
+            //         input.classList.add("c-left");
+            //         //input.classList.add("col-lg-6");
+            //         input.value = item;
+            //         var copy_radio = input.cloneNode(true);
+            //         input_cover.appendChild(copy_radio);
+            //         var span = document.createElement("span")
+            //         span.innerHTML = template["fields"]["configOptions"][item];
+            //         span.classList.add("col-md-11");
+            //         span.classList.add("col-lg-11");
+            //         input_cover.appendChild(span);
+            //     }
+            //     input_cover.setAttribute("data-controlType", "radioExtra");
+            // }
+            // container_div.setAttribute("data-controlType", "radioExtra");
+            
             break;
         case ("checkbox"):
             input.type = "checkbox";

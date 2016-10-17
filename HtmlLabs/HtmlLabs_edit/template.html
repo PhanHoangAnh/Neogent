@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="generator" content="" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="custom-controls.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+        <!--selectbox with image-->
+        <div class="ctr-select-box" app-role="selectHandler">
+            <div app-role="selectbox" class="ctr-select-value" onclick="toggleShow(this)">
+                <div class="ctr-select-option">
+                    <div class="s-img"><img src="flags/united-kingdom.png" class="img-flag"></div>
+                    <div class="s-content">
+                        <label>Attribute Name</label>
+                    </div>
+                </div>
+            </div>
+            <div app-role="dropdown" class="ctr-select-down">
+                <div app-role="droppad">
+                    <div class="ctr-select-option" app-role="selectItem">
+                        <div class="s-img"><img src="flags/germany.png" class="img-flag"></div>
+                        <div class="s-content">
+                            <label>Attribute Name</label>
+                            <div class="s-button">
+                                <a class="btn"><i class="fa fa-times"></i> Delete</a>
+                                <a class="btn"><i class="fa fa-pencil"></i> Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ctr-select-option" app-role="selectItem">
+                        <div class="s-img"><img src="flags/france.png" class="img-flag"></div>
+                        <div class="s-content">
+                            <label>Attribute Name</label>
+                            <div class="s-button">
+                                <a class="btn"><i class="fa fa-times"></i> Delete</a>
+                                <a class="btn"><i class="fa fa-pencil"></i> Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ctr-select-option curr" app-role="selectItem">
+                        <div class="s-img"><img src="flags/united-kingdom.png" class="img-flag"></div>
+                        <div class="s-content">
+                            <label>Attribute Name</label>
+                            <div class="s-button">
+                                <a class="btn"><i class="fa fa-times"></i> Delete</a>
+                                <a class="btn"><i class="fa fa-pencil"></i> Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ctr-select-option" app-role="selectItem">
+                        <div class="s-img"><img src="flags/usa.png" class="img-flag"></div>
+                        <div class="s-content">
+                            <label>Attribute Name</label>
+                            <div class="s-button">
+                                <a class="btn"><i class="fa fa-times"></i> Delete</a>
+                                <a class="btn"><i class="fa fa-pencil"></i> Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="s-bottom">
+                    <a class="btn"><i class="fa fa-plus"></i> Add More</a>
+                </div>
+            </div>
+        </div>
+        <!--/end selectbox with image-->
+    </div>
+    <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+        gfshsghgh
+    </div>
+    <!--css for select box-->
+    <style type="text/css">
+
+    </style>
+    <!--/end css for select box-->
+    <script type="text/javascript">
+    var selectItems = document.querySelectorAll('[app-role = "selectItem"]');
+    for (var i = 0; i < selectItems.length; i++) {
+        selectItems[i].addEventListener("click", function(evt) {
+            toggleShow();
+            var selectHandler = getHandler(this);
+
+            function getHandler(elem) {
+                // console.log(elem);
+                if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+                    // console.log("finish : ", elem, elem.parentNode)
+                    return elem.parentNode
+                } else {
+                    return getHandler(elem.parentNode);
+                }
+            }
+            var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
+            // remove all childs
+            while (selectbox.firstChild) {
+                selectbox.removeChild(selectbox.firstChild);
+            }
+            // clone this node
+            var cln = this.cloneNode(true);
+            selectbox.appendChild(cln);
+            var bntBox = cln.querySelector('.s-button');
+            bntBox.parentNode.removeChild(bntBox);
+            // change the css indicate selectedItem.
+            // remove current css of selected item
+            var curr = selectHandler.querySelector('.curr');
+            curr.classList.remove('curr');
+            // ad this css for new element
+            this.classList.add('curr');
+        }, false);
+    }
+
+    function toggleShow() {
+        var selectbox = document.querySelector('[app-role="selectbox"]');
+        var dropdown = document.querySelector('[app-role="dropdown"]');
+        selectbox.classList.toggle("active");
+        dropdown.classList.toggle("open");
+    }
+    </script>
+</body>
+
+</html>
