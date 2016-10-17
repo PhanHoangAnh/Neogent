@@ -908,3 +908,44 @@ function deleteSet() {
         });
     }
 }
+
+function toggleShow(elem) {
+    console.log(elem);
+    if (elem) {
+        elem.classList.toggle("active");
+        var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
+        dropdown.classList.toggle("open");
+    }
+}
+
+function getOptionImage(evt) {
+    console.log("getOptionImage: ", evt);
+    var selectHandler = getHandler(evt);
+
+    function getHandler(elem) {
+        // console.log(elem);
+        if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+            // console.log("finish : ", elem, elem.parentNode)
+            return elem.parentNode
+        } else {
+            return getHandler(elem.parentNode);
+        }
+    }
+    var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
+    toggleShow(selectbox);
+    // remove all childs
+    while (selectbox.firstChild) {
+        selectbox.removeChild(selectbox.firstChild);
+    }
+    // clone this node
+    var cln = evt.cloneNode(true);
+    selectbox.appendChild(cln);
+    var bntBox = cln.querySelector('.s-button');
+    bntBox.parentNode.removeChild(bntBox);
+    // change the css indicate selectedItem.
+    // remove current css of selected item
+    var curr = selectHandler.querySelector('.curr');
+    curr.classList.remove('curr');
+    // ad this css for new element
+    evt.classList.add('curr');
+}
