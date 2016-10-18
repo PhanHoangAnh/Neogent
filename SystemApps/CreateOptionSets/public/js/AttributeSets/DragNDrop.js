@@ -921,6 +921,7 @@ function toggleShow(elem) {
 function getOptionImage(evt) {
     console.log("getOptionImage: ", evt);
     var selectHandler = getHandler(evt);
+    // evt.stopPropagation();
 
     function getHandler(elem) {
         // console.log(elem);
@@ -939,13 +940,19 @@ function getOptionImage(evt) {
     }
     // clone this node
     var cln = evt.cloneNode(true);
+    // remove action Listener
+    cln.onclick = null;
     selectbox.appendChild(cln);
     var bntBox = cln.querySelector('.s-button');
-    bntBox.parentNode.removeChild(bntBox);
+    if (bntBox) {
+        bntBox.parentNode.removeChild(bntBox);
+    };
     // change the css indicate selectedItem.
     // remove current css of selected item
     var curr = selectHandler.querySelector('.curr');
-    curr.classList.remove('curr');
+    if (curr) {
+        curr.classList.remove('curr');
+    };
     // ad this css for new element
     evt.classList.add('curr');
 }

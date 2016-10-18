@@ -287,9 +287,9 @@ var data = [{
                 "value": "Describe attribute"
             },
             "ImageOptions": {
-                "1": { img: "", label: "something1" },
-                "2": { img: "", label: "something2" },
-                "3": { img: "", label: "something3" }
+                "1": { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", label: "something1" },
+                "2": { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", label: "something2" },
+                "3": { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", label: "something3" }
             },
             "displayGroup": {
                 "label": "Assign Dipsplay Group",
