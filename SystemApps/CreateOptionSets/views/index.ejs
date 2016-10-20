@@ -258,16 +258,56 @@
     </div>
     <!--  -->
     <!-- Modal -->
-    <div id="imgOptionsModal" class="modal fade" role="dialog" style = "z-index: 2000;">
+    <div id="imgOptionsModal" class="modal fade" role="dialog" style="z-index: 2000;">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <h4 class="modal-title">Image Options</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row" style = "padding-bottom: 15px">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <input type="text" name="Attribute Name" placeholder="Attribute Name" style = "width:80%">
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <input type="number" name="x-ratio" placeholder="X ratio">
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <input type="number" name="y-ratio" placeholder="Y ratio">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="imageBox" id='' style="height: 400px;" app-role="imageBox">
+                                <div class="thumbBox" id=""></div>
+                                <div class="spinner" style="display: none" id="spinnerIcon">Loading...</div>
+                            </div>
+                            <div class="action">
+                                <span class="file-input btn btn-primary btn-file">
+                                Browse&hellip;
+                                <input type="file" multiple id='imgSource'>
+                            </span>
+                                <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
+                                <input type="button" id="icon_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                                <input type="button" id="icon_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="preview">
+                                <img id='att_preview' src="">
+                            </div>
+                            <div class="preview-md">
+                                <img id='att_preview-md' src="">
+                            </div>
+                            <div class="preview-sm">
+                                <img id='att_preview-sm' src="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
