@@ -508,7 +508,7 @@ function createAttributePanel(nodeCopy, title) {
                 img.setAttribute('src', fields["ImageOptions"][opt].img);
                 dropPad.appendChild(document.importNode(item, true));
             }
-            console.log('dropPad', dropPad);
+            // console.log('dropPad', dropPad);
         }
 
     }
@@ -680,22 +680,22 @@ function setAttributeName() {
 
 var compObj = {}
 
-function saveElement() {
-    // update entire sortable
-    var sortableDiv = document.querySelector("#div2");
-    var elementLists = sortableDiv.querySelectorAll("[id]");
-    var printedList = [];
-    for (var elem in elementLists) {
-        if (elementLists[elem]["CUST"]) {
-            var jsonObj = {}
-            jsonObj["data-controlType"] = elementLists[elem].getAttribute("data-controlType");
-            jsonObj["attributes"] = elementLists[elem]["CUST"];
-            printedList.push(jsonObj);
-        }
-    }
-    compObj.components = printedList
-        // document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
-}
+// function saveElement() {
+//     // update entire sortable
+//     var sortableDiv = document.querySelector("#div2");
+//     var elementLists = sortableDiv.querySelectorAll("[id]");
+//     var printedList = [];
+//     for (var elem in elementLists) {
+//         if (elementLists[elem]["CUST"]) {
+//             var jsonObj = {}
+//             jsonObj["data-controlType"] = elementLists[elem].getAttribute("data-controlType");
+//             jsonObj["attributes"] = elementLists[elem]["CUST"];
+//             printedList.push(jsonObj);
+//         }
+//     }
+//     compObj.components = printedList
+//         // document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
+// }
 
 function initIcon(el) {
     options = {
@@ -795,7 +795,8 @@ function saveAttributeSets() {
     compObj.components = printedList
         // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
-    postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb)
+    console.log(compObj);
+    //postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb)
 
     function fn_cb(result) {
         console.log(result);
@@ -910,7 +911,7 @@ function deleteSet() {
 }
 
 function toggleShow(elem) {
-    console.log(elem);
+    // console.log(elem);
     if (elem) {
         elem.classList.toggle("active");
         var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
@@ -919,7 +920,7 @@ function toggleShow(elem) {
 }
 
 function getOptionImage(evt) {
-    console.log("getOptionImage: ", evt);
+    // console.log("getOptionImage: ", evt);
     var selectHandler = getHandler(evt);
     // evt.stopPropagation();
 
@@ -955,4 +956,27 @@ function getOptionImage(evt) {
     };
     // ad this css for new element
     evt.classList.add('curr');
+}
+
+function addMoreImageOptions(elem) {
+    var selectHandler = getHandler(elem);
+    // evt.stopPropagation();
+
+    function getHandler(elem) {
+        // console.log(elem);
+        if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+            // console.log("finish : ", elem, elem.parentNode)
+            return elem.parentNode
+        } else {
+            return getHandler(elem.parentNode);
+        }
+    }
+    console.log("addMoreImageOptions", selectHandler);
+
+    $(imgOptionsModal).modal("show");
+
+    // $('[data-toggle=popover]').each(function() {
+    //     // hide any open popovers                
+    //     $(this).popover('hide');
+    // });
 }

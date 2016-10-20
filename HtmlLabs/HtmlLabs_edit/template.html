@@ -70,37 +70,38 @@
                     </div>
                 </div>
                 <div class="s-bottom">
-                    <a class="btn"><i class="fa fa-plus"></i> Add More</a>
+                    <!-- <a class="btn" onclick="addMore(event, this)"><i class=" fa fa-plus "></i> Add More</a> -->
+                    <a class="btn" id="addMore"><i class=" fa fa-plus "></i> Add More</a>
                 </div>
             </div>
         </div>
         <!--/end selectbox with image-->
     </div>
-    <div class="container" style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="container " style="margin-top: 10px; margin-bottom: 10px; ">
         gfshsghgh
     </div>
     <!--css for select box-->
-    <style type="text/css">
+    <style type="text/css ">
 
     </style>
     <!--/end css for select box-->
-    <script type="text/javascript">
-    var selectItems = document.querySelectorAll('[app-role = "selectItem"]');
+    <script type="text/javascript ">
+    var selectItems = document.querySelectorAll('[app-role = "selectItem "]');
     for (var i = 0; i < selectItems.length; i++) {
-        selectItems[i].addEventListener("click", function(evt) {
+        selectItems[i].addEventListener("click ", function(evt) {
 
             var selectHandler = getHandler(this);
 
             function getHandler(elem) {
                 // console.log(elem);
-                if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+                if (elem.parentNode.getAttribute('app-role') == "selectHandler ") {
                     // console.log("finish : ", elem, elem.parentNode)
                     return elem.parentNode
                 } else {
                     return getHandler(elem.parentNode);
                 }
             }
-            var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
+            var selectbox = selectHandler.querySelector('[app-role="selectbox "]');
             toggleShow(selectbox);
             // remove all childs
             while (selectbox.firstChild) {
@@ -121,12 +122,19 @@
     }
 
     function toggleShow(elem) {
-        console.log(elem);
+        // console.log(elem);
         if (elem) {
             elem.classList.toggle("active");
             var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
             dropdown.classList.toggle("open");
         }
+    }
+
+    var am = document.getElementById("addMore");
+    am.addEventListener("click",addMore,false);
+
+    function addMore(event) {
+        console.log("addMore: ", event, this);
     }
     </script>
 </body>

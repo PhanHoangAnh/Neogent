@@ -85,20 +85,20 @@
     </template>
     <template id='extraOptionImgHandler'>
         <div class="ctr-select-box" app-role="selectHandler">
-            <div app-role="selectbox" class="ctr-select-value" onclick="toggleShow(this)">
+            <div app-role="selectbox" class="ctr-select-value" onclick="toggleShow(this)"> Select here
             </div>
             <div app-role="dropdown" class="ctr-select-down">
                 <div app-role="droppad">
                 </div>
                 <div class="s-bottom">
-                    <a class="btn"><i class="fa fa-plus"></i> Add More</a>
+                    <a class="btn" onclick="addMoreImageOptions(this)"><i class="fa fa-plus"></i> Add More</a>
                 </div>
             </div>
         </div>
     </template>
     <template id='extraOptionImgItem'>
-        <div class="ctr-select-option" app-role="selectItem">
-            <div class="s-img"><img src="flags/germany.png" class="img-flag"></div>
+        <div class="ctr-select-option" app-role="selectItem" onclick='getOptionImage(this)'>
+            <div class="s-img"><img app-role="attImg" src="" class="img-flag"></div>
             <div class="s-content">
                 <label app-role="attName"></label>
                 <div class="s-button">
@@ -252,6 +252,25 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
