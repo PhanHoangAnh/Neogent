@@ -272,18 +272,18 @@
                             <div class="row" style = "padding-bottom: 15px">
                                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <input type="text" name="Attribute Name" placeholder="Attribute Name" style = "width:80%">
+                                    <input type="text" app-role="attImgName" onchange="attImgRatio_change(event,this)" name="Attribute Name" placeholder="Option Name" style = "width:80%">
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <input type="number" name="x-ratio" placeholder="X ratio">
+                                    <input type="number" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)" >
                                 </div>
                                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <input type="number" name="y-ratio" placeholder="Y ratio">
+                                    <input type="number" app-role="attImgYRatio" name="y-ratio" placeholder="Y ratio" onchange="attImgRatio_change(event,this)">
                                 </div>
                             </div>
                             </div>
                             <div class="imageBox" id='' style="height: 400px;" app-role="imageBox">
-                                <div class="thumbBox" id=""></div>
+                                <div class="thumbBox" id="" app-role="thumbBox"></div>
                                 <div class="spinner" style="display: none" id="spinnerIcon">Loading...</div>
                             </div>
                             <div class="action">

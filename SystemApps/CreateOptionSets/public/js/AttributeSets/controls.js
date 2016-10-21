@@ -286,11 +286,11 @@ var data = [{
                 "Input Type": "text",
                 "value": "Describe attribute"
             },
-            "ImageOptions": {
-                "1": { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", label: "something1" },
-                "2": { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", label: "something2" },
-                "3": { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", label: "something3" }
-            },
+            "ImageOptions": [
+                { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something1" },
+                { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something2" },
+                { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something3" }
+            ],
             "displayGroup": {
                 "label": "Assign Dipsplay Group",
                 "Input Type": "text",

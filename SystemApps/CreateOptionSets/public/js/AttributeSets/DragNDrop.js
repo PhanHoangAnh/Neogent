@@ -492,6 +492,8 @@ function createAttributePanel(nodeCopy, title) {
             // console.log("ImageOptions here");
             label.innerHTML = item;
             var input_cover = document.createElement("div");
+            input_cover.setAttribute("app-role", "imgOptionHandler");
+            input_cover.referParentElem = nodeCopy.get(0);
             input_cover.classList.add("col-md-12");
             input_cover.style.padding = '0';
             var input = document.importNode(document.getElementById('extraOptionImgHandler').content, true);
@@ -503,7 +505,7 @@ function createAttributePanel(nodeCopy, title) {
             for (var opt in fields['ImageOptions']) {
                 var item = document.getElementById('extraOptionImgItem').content;
                 var label = item.querySelector('[app-role="attName"]');
-                label.innerHTML = fields["ImageOptions"][opt]['label'];
+                label.innerHTML = fields["ImageOptions"][opt]['optName'];
                 var img = item.querySelector('[app-role = "attImg"]');
                 img.setAttribute('src', fields["ImageOptions"][opt].img);
                 dropPad.appendChild(document.importNode(item, true));
@@ -550,6 +552,7 @@ function createAttributePanel(nodeCopy, title) {
             controls = nodeCopy.get(0).querySelectorAll("[data-controlType]");
             htmlNodeCopy = nodeCopy.get(0);
         }
+        // console.log("changeControlAttribute: line 553: ", htmlNodeCopy);
         if (!htmlNodeCopy["CUST"]) {
             htmlNodeCopy["CUST"] = {};
         }
@@ -909,7 +912,7 @@ function deleteSet() {
         });
     }
 }
-
+//
 function toggleShow(elem) {
     // console.log(elem);
     if (elem) {
@@ -917,22 +920,28 @@ function toggleShow(elem) {
         var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
         dropdown.classList.toggle("open");
     }
+    // detect current htmlNodeCopy for this exception
+    // console.log(elem);
 }
 
 function getOptionImage(evt) {
-    // console.log("getOptionImage: ", evt);
-    var selectHandler = getHandler(evt);
+    var selectHandler = getHandler(evt, "selectHandler");
     // evt.stopPropagation();
+    var imgOptionHandler = getHandler(evt, "imgOptionHandler").querySelector('[app-role="imgOptionHandler"]').referParentElem
 
-    function getHandler(elem) {
+    function getHandler(elem, att) {
         // console.log(elem);
-        if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+        // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+        if (elem.parentNode.getAttribute('app-role') == att) {
             // console.log("finish : ", elem, elem.parentNode)
             return elem.parentNode
         } else {
             return getHandler(elem.parentNode);
         }
     }
+
+    console.log("imgOptionHandler parent: ", imgOptionHandler)
+
     var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
     toggleShow(selectbox);
     // remove all childs
@@ -971,12 +980,16 @@ function addMoreImageOptions(elem) {
             return getHandler(elem.parentNode);
         }
     }
-    console.log("addMoreImageOptions", selectHandler);
+    // console.log("addMoreImageOptions", selectHandler);
 
     $(imgOptionsModal).modal("show");
 
-    // $('[data-toggle=popover]').each(function() {
-    //     // hide any open popovers                
-    //     $(this).popover('hide');
-    // });
+}
+
+function attImgRatio_change(evt, elem) {
+    console.log("attImgRatio_change: ", elem);
+}
+
+function changeImgOptAtt(evt) {
+
 }
