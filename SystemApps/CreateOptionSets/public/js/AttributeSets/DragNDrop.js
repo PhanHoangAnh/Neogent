@@ -940,8 +940,7 @@ function getOptionImage(evt) {
         }
     }
 
-    console.log("imgOptionHandler parent: ", imgOptionHandler)
-
+    // console.log("imgOptionHandler parent: ", imgOptionHandler)
     var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
     toggleShow(selectbox);
     // remove all childs
@@ -967,27 +966,30 @@ function getOptionImage(evt) {
     evt.classList.add('curr');
 }
 
-function addMoreImageOptions(elem) {
-    var selectHandler = getHandler(elem);
-    // evt.stopPropagation();
+var imgOptionHandler;
 
-    function getHandler(elem) {
+function addMoreImageOptions(elem) {
+
+    imgOptionHandler = getHandler(elem, "imgOptionHandler").querySelector('[app-role="imgOptionHandler"]').referParentElem;
+
+
+    function getHandler(elem, att) {
         // console.log(elem);
-        if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+        // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+        if (elem.parentNode.getAttribute('app-role') == att) {
             // console.log("finish : ", elem, elem.parentNode)
             return elem.parentNode
         } else {
             return getHandler(elem.parentNode);
         }
     }
-    // console.log("addMoreImageOptions", selectHandler);
-
+    // console.log('imgOptionHandler: ', imgOptionHandler);
     $(imgOptionsModal).modal("show");
 
 }
 
-function attImgRatio_change(evt, elem) {
-    console.log("attImgRatio_change: ", elem);
+attImgRatio_change = function(evt, elem) {
+    console.log("attImgRatio_change: ", imgOptionHandler);
 }
 
 function changeImgOptAtt(evt) {
