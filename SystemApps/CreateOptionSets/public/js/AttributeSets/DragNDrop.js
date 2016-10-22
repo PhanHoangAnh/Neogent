@@ -968,19 +968,19 @@ function getOptionImage(evt) {
 
 var imgOptionHandler;
 
-function addMoreImageOptions(elem) {
-
-    imgOptionHandler = getHandler(elem, "imgOptionHandler").querySelector('[app-role="imgOptionHandler"]').referParentElem;
+function addMoreOrEditImageOptions(elem) {
 
 
-    function getHandler(elem, att) {
+    imgOptionHandler = getHandler(elem).referParentElem;
+
+    function getHandler(el) {
         // console.log(elem);
         // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
-        if (elem.parentNode.getAttribute('app-role') == att) {
-            // console.log("finish : ", elem, elem.parentNode)
-            return elem.parentNode
+        if (el.parentNode.getAttribute('app-role') == "imgOptionHandler") {
+            console.log("finish : ", el.parentNode, el.parentNode.getAttribute('app-role'));
+            return el.parentNode
         } else {
-            return getHandler(elem.parentNode);
+            return getHandler(el.parentNode);
         }
     }
     // console.log('imgOptionHandler: ', imgOptionHandler);
@@ -988,10 +988,12 @@ function addMoreImageOptions(elem) {
 
 }
 
-attImgRatio_change = function(evt, elem) {
-    console.log("attImgRatio_change: ", imgOptionHandler);
-}
-
-function changeImgOptAtt(evt) {
+function attImgRatio_change(evt, elem) {
+    console.log("attImgRatio_change: ", elem);
+    if (!imgOptionHandler.CUST) {
+        imgOptionHandler.CUST = {};
+    }
+    var CUST = imgOptionHandler.CUST;
+    CUST.ImageOptions = [];
 
 }
