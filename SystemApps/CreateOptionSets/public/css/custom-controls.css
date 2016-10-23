@@ -14,6 +14,8 @@
 .ctr-select-box a.btn {
     padding-left: 0;
     border-radius: 0;
+	color: inherit;
+	font-size: 13px;
 }
 
 .ctr-select-box a.btn:active {
@@ -22,13 +24,14 @@
 
 .ctr-select-value {
     cursor: pointer;
-    min-height: 38px;
+    min-height: 34px;
+	border-radius: 2px;
 }
 
 .ctr-select-value,
 .ctr-select-down .s-bottom,
 .ctr-select-option {
-    padding: 8px 30px 8px 20px;
+    padding: 6px 30px 6px 12px;
 }
 
 .ctr-select-value,
@@ -112,7 +115,10 @@
     height: auto;
 }
 
+.ctr-select-down .ctr-select-option:last-child {	
+    border-bottom: #CCC solid 1px;
+}
+
 .ctr-select-down .s-bottom {
     background: #EEE;
-    border-top: #CCC solid 1px;
 }
