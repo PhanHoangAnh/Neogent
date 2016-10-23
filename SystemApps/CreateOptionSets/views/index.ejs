@@ -152,7 +152,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#otherElements" role="tab" data-toggle="tab" onclick="saveElement()">
+                        <!-- <a href="#otherElements" role="tab" data-toggle="tab" onclick="saveElement()">
+                            <i class="fa fa-circle-thin"></i> Other Elements
+                        </a> -->
+                        <a href="#otherElements" role="tab" data-toggle="tab">
                             <i class="fa fa-circle-thin"></i> Other Elements
                         </a>
                     </li>
@@ -282,29 +285,29 @@
                                 </div>
                             </div>
                             </div>
-                            <div class="imageBox" id='' style="height: 400px;" app-role="imageBox">
-                                <div class="thumbBox" id="" app-role="thumbBox"></div>
-                                <div class="spinner" style="display: none" id="spinnerIcon">Loading...</div>
+                            <div class="imageBox" id='attImageBox' style="height: 400px;" app-role="imageBox">
+                                <div class="thumbBox" id="attImageThumb" app-role="thumbBox"></div>
+                                <div class="spinner" id = "attSpinner" style="display: none" id="spinnerIcon">Loading...</div>
                             </div>
                             <div class="action">
                                 <span class="file-input btn btn-primary btn-file">
                                 Browse&hellip;
-                                <input type="file" multiple id='imgSource'>
+                                <input type="file" multiple id='attImgSource'>
                             </span>
                                 <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
-                                <input type="button" id="icon_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
-                                <input type="button" id="icon_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                                <input type="button" id="att_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                                <input type="button" id="att_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="preview">
-                                <img id='att_preview' src="">
+                                <img id='attPreview' src="">
                             </div>
                             <div class="preview-md">
-                                <img id='att_preview-md' src="">
+                                <img id='attPreviewMd' src="">
                             </div>
                             <div class="preview-sm">
-                                <img id='att_preview-sm' src="">
+                                <img id='attPreviewSm' src="">
                             </div>
                         </div>
                     </div>
@@ -425,6 +428,9 @@ $(document).ready(function() {
         }
     }
 });
+document.getElementById('attImgSource').addEventListener('change', function (el){
+    iniAttImgOptItem(this);
+},false);
 /** Huyen Anh added code here **/
 window.onload = function() {
     var offsetWidth = document.getElementById('AppManagerBoard').offsetWidth;

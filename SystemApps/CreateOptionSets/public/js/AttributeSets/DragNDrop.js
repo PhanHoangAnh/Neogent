@@ -967,20 +967,37 @@ function getOptionImage(evt) {
 }
 
 var imgOptionHandler;
+var currentImgOptItem;
+var isAddNewImgOptItem = false;
 
 function addMoreOrEditImageOptions(elem) {
 
+    var appRole = elem.getAttribute('app-role');
+    switch (appRole) {
+        case "addMoreImgOption":
+            console.log('1');
+            currentImgOptItem = {};
+            isAddNewImgOptItem = true;
+            break;
+        case "editImgOption":
+            console.log('2');
+            isAddNewImgOptItem = false;
+            break;
+        case "deleteImgOption":
+            console.log('3');
+            break;
+    }
 
-    imgOptionHandler = getHandler(elem).referParentElem;
+    imgOptionHandler = getHandler(elem, 'imgOptionHandler').referParentElem;
 
-    function getHandler(el) {
+    function getHandler(el, att) {
         // console.log(elem);
         // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
-        if (el.parentNode.getAttribute('app-role') == "imgOptionHandler") {
-            console.log("finish : ", el.parentNode, el.parentNode.getAttribute('app-role'));
+        if (el.parentNode.getAttribute('app-role') == att) {
+            //console.log("finish : ", el.parentNode, el.parentNode.getAttribute('app-role'));
             return el.parentNode
         } else {
-            return getHandler(el.parentNode);
+            return getHandler(el.parentNode, att);
         }
     }
     // console.log('imgOptionHandler: ', imgOptionHandler);
@@ -989,11 +1006,61 @@ function addMoreOrEditImageOptions(elem) {
 }
 
 function attImgRatio_change(evt, elem) {
-    console.log("attImgRatio_change: ", elem);
+
     if (!imgOptionHandler.CUST) {
         imgOptionHandler.CUST = {};
     }
     var CUST = imgOptionHandler.CUST;
-    CUST.ImageOptions = [];
+    if (!CUST.ImageOptions) {
+        CUST.ImageOptions = [];
+    }
+    var appRole = elem.getAttribute("app-role");
+    currentImgOptItem[appRole] = elem.value;
+    changeAttImgOptionRatio(currentImgOptItem['attImgXRatio'], currentImgOptItem['attImgYRatio'])
+    console.log(currentImgOptItem);
 
+    function changeAttImgOptionRatio(attWidth, attHeight) {
+        var thumbBox = document.getElementById("attImageThumb");
+        if (!attWidth || attWidth == 0) {
+            attWidth = 10;
+        }
+        if (!attHeight || attHeight == 0) {
+            attHeight = 10;
+        }
+        var ratio = attWidth / attHeight;
+        var w = 200 * ratio;
+        thumbBox.style.width = w + "px";
+        thumbBox.style.marginLeft = -w / 2 + 'px';
+    }
+}
+
+function iniAttImgOptItem(el) {
+    options = {
+        imageBox: '#attImageBox',
+        thumbBox: '#attImageThumb',
+        spinner: '#attSpinner',
+        imgSrc: ''
+    }
+    var reader = new FileReader();
+    cropper = new cropbox(options, iconPreview);
+    reader.onload = function(e) {
+        options.imgSrc = e.target.result;
+        cropper.resetOption(options);
+    }
+
+    reader.readAsDataURL(el.files[0]);
+    // el.files = [];
+    document.querySelector('#att_btnZoomIn').addEventListener('click', function() {
+        cropper.zoomIn();
+    })
+    document.querySelector('#att_btnZoomOut').addEventListener('click', function() {
+        cropper.zoomOut();
+    });
+
+    function iconPreview(data) {
+        img_Store = data;
+        document.getElementById('attPreview').setAttribute('src', data);
+        document.getElementById('attPreviewMd').setAttribute('src', data);
+        document.getElementById('attPreviewSm').setAttribute('src', data);
+    }
 }
