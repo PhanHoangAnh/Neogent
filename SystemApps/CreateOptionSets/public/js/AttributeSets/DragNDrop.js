@@ -1031,6 +1031,8 @@ function attImgRatio_change(evt, elem) {
         var w = 200 * ratio;
         thumbBox.style.width = w + "px";
         thumbBox.style.marginLeft = -w / 2 + 'px';
+        var attImgSource = document.getElementById('attImgSource');
+        iniAttImgOptItem(attImgSource);
     }
 }
 
