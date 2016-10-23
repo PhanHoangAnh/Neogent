@@ -731,7 +731,7 @@ function initIcon(el) {
     }).modal('show');
 
     function iconPreview(data) {
-        img_Icon = data;
+        // img_Icon = data;
         document.getElementById('icon_preview').setAttribute('src', data);
         document.getElementById('icon_preview-md').setAttribute('src', data);
         document.getElementById('icon_preview-sm').setAttribute('src', data);
@@ -969,6 +969,7 @@ function getOptionImage(evt) {
 var imgOptionHandler;
 var currentImgOptItem;
 var isAddNewImgOptItem = false;
+var currentDropPad;
 
 function addMoreOrEditImageOptions(elem) {
 
@@ -988,7 +989,11 @@ function addMoreOrEditImageOptions(elem) {
             break;
     }
 
-    imgOptionHandler = getHandler(elem, 'imgOptionHandler').referParentElem;
+    var rootElem = getHandler(elem, 'imgOptionHandler')
+    imgOptionHandler = rootElem.referParentElem;
+    //input_cover.querySelector('[app-role="droppad"]')
+    currentDropPad = rootElem.querySelector('[app-role="droppad"]')
+    console.log("DropPad: ", currentDropPad);
 
     function getHandler(el, att) {
         // console.log(elem);
@@ -1015,6 +1020,9 @@ function attImgRatio_change(evt, elem) {
         CUST.ImageOptions = [];
     }
     var appRole = elem.getAttribute("app-role");
+    if (appRole == "attImgName") {
+        appRole = "optName";
+    }
     currentImgOptItem[appRole] = elem.value;
     changeAttImgOptionRatio(currentImgOptItem['attImgXRatio'], currentImgOptItem['attImgYRatio'])
     console.log(currentImgOptItem);
@@ -1035,6 +1043,7 @@ function attImgRatio_change(evt, elem) {
         iniAttImgOptItem(attImgSource);
     }
 }
+var img_Store;
 
 function iniAttImgOptItem(el) {
     options = {
@@ -1064,5 +1073,16 @@ function iniAttImgOptItem(el) {
         document.getElementById('attPreview').setAttribute('src', data);
         document.getElementById('attPreviewMd').setAttribute('src', data);
         document.getElementById('attPreviewSm').setAttribute('src', data);
+        currentImgOptItem['img'] = data;
     }
 }
+document.getElementById("attImgOptSave").addEventListener('click', function(el) {
+    // console.log("Iam here", currentImgOptItem);
+    var item = document.getElementById('extraOptionImgItem').content;
+    var label = item.querySelector('[app-role="attName"]');
+    label.innerHTML = currentImgOptItem['optName'];
+    var img = item.querySelector('[app-role = "attImg"]');
+    img.setAttribute('src', img_Store);
+    currentDropPad.appendChild(document.importNode(item, true));
+
+}, false);
