@@ -502,6 +502,13 @@ function createAttributePanel(nodeCopy, title) {
             var dropPad = input_cover.querySelector('[app-role="droppad"]');
             // console.log("dropPad: ", dropPad);
             //http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
+            if (!nodeCopy.get(0).CUST) {
+                nodeCopy.get(0).CUST = {};
+            }
+            var CUST = nodeCopy.get(0).CUST;
+            if (!CUST.ImageOptions) {
+                CUST.ImageOptions = fields['ImageOptions'];
+            }
             for (var opt in fields['ImageOptions']) {
                 var item = document.getElementById('extraOptionImgItem').content;
                 var label = item.querySelector('[app-role="attName"]');
@@ -1006,19 +1013,13 @@ function addMoreOrEditImageOptions(elem) {
         }
     }
     // console.log('imgOptionHandler: ', imgOptionHandler);
+
     $(imgOptionsModal).modal("show");
 
 }
 
 function attImgRatio_change(evt, elem) {
 
-    if (!imgOptionHandler.CUST) {
-        imgOptionHandler.CUST = {};
-    }
-    var CUST = imgOptionHandler.CUST;
-    if (!CUST.ImageOptions) {
-        CUST.ImageOptions = [];
-    }
     var appRole = elem.getAttribute("app-role");
     if (appRole == "attImgName") {
         appRole = "optName";
@@ -1065,6 +1066,8 @@ function iniAttImgOptItem(el) {
         cropper.zoomIn();
     })
     document.querySelector('#att_btnZoomOut').addEventListener('click', function() {
+        consoconsole.log("Iam here", currentImgOptItem);
+        le.log("Iam here", currentImgOptItem);
         cropper.zoomOut();
     });
 
