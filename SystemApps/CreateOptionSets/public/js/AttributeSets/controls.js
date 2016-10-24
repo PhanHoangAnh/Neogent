@@ -287,9 +287,9 @@ var data = [{
                 "value": "Describe attribute"
             },
             "ImageOptions": [
-                { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something1" },
-                { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something2" },
-                { img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something3" }
+                { value: 1, img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something1" },
+                { value: 2, img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something2" },
+                { value: 3, img: "https://raw.githubusercontent.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg", optName: "something3" }
             ],
             "displayGroup": {
                 "label": "Assign Dipsplay Group",

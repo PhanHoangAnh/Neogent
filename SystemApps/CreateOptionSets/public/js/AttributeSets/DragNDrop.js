@@ -515,7 +515,10 @@ function createAttributePanel(nodeCopy, title) {
                 label.innerHTML = fields["ImageOptions"][opt]['optName'];
                 var img = item.querySelector('[app-role = "attImg"]');
                 img.setAttribute('src', fields["ImageOptions"][opt].img);
-                dropPad.appendChild(document.importNode(item, true));
+                var temp = document.importNode(item, true);
+                var currentNode = dropPad.appendChild(temp);
+                dropPad.lastElementChild.setAttribute('app-value', fields['ImageOptions'][opt].value);
+
             }
             // console.log('dropPad', dropPad);
         }
@@ -1066,8 +1069,7 @@ function iniAttImgOptItem(el) {
         cropper.zoomIn();
     })
     document.querySelector('#att_btnZoomOut').addEventListener('click', function() {
-        consoconsole.log("Iam here", currentImgOptItem);
-        le.log("Iam here", currentImgOptItem);
+        console.log("Iam here", currentImgOptItem);
         cropper.zoomOut();
     });
 
