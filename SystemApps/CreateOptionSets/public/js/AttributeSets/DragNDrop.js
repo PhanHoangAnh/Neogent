@@ -1089,5 +1089,13 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
     var img = item.querySelector('[app-role = "attImg"]');
     img.setAttribute('src', img_Store);
     currentDropPad.appendChild(document.importNode(item, true));
+    var currentItem = currentDropPad.lastElementChild;
+    var ImageOptions = imgOptionHandler.CUST.ImageOptions;
+    var max = Math.max.apply(null, ImageOptions.map(function(o) {
+        return o.value
+    }));
+    max++;
+    currentImgOptItem.value = max;
+    currentItem.setAttribute('app-value', max);
 
 }, false);
