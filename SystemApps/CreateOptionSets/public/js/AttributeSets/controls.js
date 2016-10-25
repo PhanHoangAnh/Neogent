@@ -274,7 +274,7 @@ var data = [{
             "id": {
                 "label": "ID / Name",
                 "Input Type": "text",
-                "value": "checkbox Name"
+                "value": "Image Options Name"
             },
             "label": {
                 "label": "Label",

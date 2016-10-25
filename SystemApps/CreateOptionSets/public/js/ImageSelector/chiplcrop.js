@@ -55,13 +55,14 @@ var cropbox = function(options, fn_cb) {
                 setBackground();
             },
             resetOption: function(opt) {
-                el.style.backgroundImage = "none";
-                obj.options = opt;
-                obj.bgX = 0;
-                obj.bgY = 0;
-                obj.ratio = 1;
+                // el.style.backgroundImage = "none";
+                // obj.options = opt;
+                // obj.bgX = 0;
+                // obj.bgY = 0;
+                // obj.ratio = 1;
                 obj.image.src = options.imgSrc;
                 // this.getDataURL();
+                fn_cb(obj.getDataURL());
             }
         },
         attachEvent = function(node, event, cb) {

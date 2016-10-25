@@ -711,7 +711,7 @@ var compObj = {}
 // }
 
 function initIcon(el) {
-    options = {
+    var options = {
         imageBox: '#iconImg',
         thumbBox: '#thumbIcon',
         spinner: '#spinnerIcon',
@@ -1043,44 +1043,61 @@ function attImgRatio_change(evt, elem) {
         var w = 200 * ratio;
         thumbBox.style.width = w + "px";
         thumbBox.style.marginLeft = -w / 2 + 'px';
-        var attImgSource = document.getElementById('attImgSource');
-        iniAttImgOptItem(attImgSource);
+        // var attImgSource = document.getElementById('attImgSource');
+        // iniAttImgOptItem(attImgSource, 1);
+        neo_cropper.resetOption(ngOpt);
     }
 }
 var img_Store;
 
+var ngOpt = {
+    imageBox: '#attImageBox',
+    thumbBox: '#attImageThumb',
+    spinner: '#attSpinner',
+    imgSrc: ''
+}
+neo_cropper = new cropbox(ngOpt, optionPreview);
+
 function iniAttImgOptItem(el) {
-    options = {
-        imageBox: '#attImageBox',
-        thumbBox: '#attImageThumb',
-        spinner: '#attSpinner',
-        imgSrc: ''
-    }
+
+    // document.getElementById('attImageBox').style.backgroundImage = 'none';
+    // //  neo_cropper.resetOption(ngOpt);
+    // ngOpt.imgSrc = '';
+    // neo_cropper.resetOption(ngOpt);
     var reader = new FileReader();
-    cropper = new cropbox(options, iconPreview);
+
     reader.onload = function(e) {
-        options.imgSrc = e.target.result;
-        cropper.resetOption(options);
+        ngOpt.imgSrc = e.target.result;
+        neo_cropper.resetOption(ngOpt);
     }
 
     reader.readAsDataURL(el.files[0]);
+
+
     // el.files = [];
     document.querySelector('#att_btnZoomIn').addEventListener('click', function() {
-        cropper.zoomIn();
+        neo_cropper.zoomIn();
     })
     document.querySelector('#att_btnZoomOut').addEventListener('click', function() {
         console.log("Iam here", currentImgOptItem);
-        cropper.zoomOut();
+        neo_cropper.zoomOut();
     });
 
-    function iconPreview(data) {
-        img_Store = data;
-        document.getElementById('attPreview').setAttribute('src', data);
-        document.getElementById('attPreviewMd').setAttribute('src', data);
-        document.getElementById('attPreviewSm').setAttribute('src', data);
+}
+
+function optionPreview(data) {
+    img_Store = data;
+    document.getElementById('attPreview').setAttribute('src', data);
+    document.getElementById('attPreviewMd').setAttribute('src', data);
+    document.getElementById('attPreviewSm').setAttribute('src', data);
+    if (currentImgOptItem) {
         currentImgOptItem['img'] = data;
     }
+
 }
+
+
+
 document.getElementById("attImgOptSave").addEventListener('click', function(el) {
     // console.log("Iam here", currentImgOptItem);
     var item = document.getElementById('extraOptionImgItem').content;
