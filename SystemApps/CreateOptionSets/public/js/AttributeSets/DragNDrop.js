@@ -502,24 +502,25 @@ function createAttributePanel(nodeCopy, title) {
             var dropPad = input_cover.querySelector('[app-role="droppad"]');
             // console.log("dropPad: ", dropPad);
             //http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-            if (!nodeCopy.get(0).CUST) {
-                nodeCopy.get(0).CUST = {};
-            }
-            var CUST = nodeCopy.get(0).CUST;
-            if (!CUST.ImageOptions) {
-                CUST.ImageOptions = fields['ImageOptions'];
-            }
-            for (var opt in fields['ImageOptions']) {
-                var item = document.getElementById('extraOptionImgItem').content;
-                var label = item.querySelector('[app-role="attName"]');
-                label.innerHTML = fields["ImageOptions"][opt]['optName'];
-                var img = item.querySelector('[app-role = "attImg"]');
-                img.setAttribute('src', fields["ImageOptions"][opt].img);
-                var temp = document.importNode(item, true);
-                var currentNode = dropPad.appendChild(temp);
-                dropPad.lastElementChild.setAttribute('app-value', fields['ImageOptions'][opt].value);
+            // if (!nodeCopy.get(0).CUST) {
+            //     nodeCopy.get(0).CUST = {};
+            // }
+            // var CUST = nodeCopy.get(0).CUST;
+            // if (!CUST.ImageOptions) {
+            //     CUST.ImageOptions = fields['ImageOptions'];
+            // }
+            // // console.log("from create createAttributePanel: ", nodeCopy.get(0), CUST.ImageOptions);
+            // for (var opt in fields['ImageOptions']) {
+            //     var item = document.getElementById('extraOptionImgItem').content;
+            //     var label = item.querySelector('[app-role="attName"]');
+            //     label.innerHTML = fields["ImageOptions"][opt]['optName'];
+            //     var img = item.querySelector('[app-role = "attImg"]');
+            //     img.setAttribute('src', fields["ImageOptions"][opt].img);
+            //     var temp = document.importNode(item, true);
+            //     var currentNode = dropPad.appendChild(temp);
+            //     dropPad.lastElementChild.setAttribute('app-value', fields['ImageOptions'][opt].value);
 
-            }
+            // }
             // console.log('dropPad', dropPad);
         }
 
@@ -934,10 +935,16 @@ function toggleShow(elem) {
     // console.log(elem);
 }
 
+var imgOptionHandler;
+var currentImgOptItem;
+var isAddNewImgOptItem = false;
+var currentDropPad;
+
+
 function getOptionImage(evt) {
     var selectHandler = getHandler(evt, "selectHandler");
     // evt.stopPropagation();
-    var imgOptionHandler = getHandler(evt, "imgOptionHandler").querySelector('[app-role="imgOptionHandler"]').referParentElem
+    imgOptionHandler = getHandler(evt, "imgOptionHandler").referParentElem
 
     function getHandler(elem, att) {
         // console.log(elem);
@@ -946,7 +953,7 @@ function getOptionImage(evt) {
             // console.log("finish : ", elem, elem.parentNode)
             return elem.parentNode
         } else {
-            return getHandler(elem.parentNode);
+            return getHandler(elem.parentNode, att);
         }
     }
 
@@ -976,10 +983,6 @@ function getOptionImage(evt) {
     evt.classList.add('curr');
 }
 
-var imgOptionHandler;
-var currentImgOptItem;
-var isAddNewImgOptItem = false;
-var currentDropPad;
 
 function addMoreOrEditImageOptions(elem) {
 
@@ -1006,9 +1009,9 @@ function addMoreOrEditImageOptions(elem) {
 
     var rootElem = getHandler(elem, 'imgOptionHandler')
     imgOptionHandler = rootElem.referParentElem;
+    console.log("CUST: ", imgOptionHandler.CUST);
     //input_cover.querySelector('[app-role="droppad"]')
     currentDropPad = rootElem.querySelector('[app-role="droppad"]')
-    console.log("DropPad: ", currentDropPad);
 
     function getHandler(el, att) {
         // console.log(elem);
@@ -1034,7 +1037,7 @@ function attImgRatio_change(evt, elem) {
     }
     currentImgOptItem[appRole] = elem.value;
     changeAttImgOptionRatio(currentImgOptItem['attImgXRatio'], currentImgOptItem['attImgYRatio'])
-    console.log(currentImgOptItem);
+        // console.log(currentImgOptItem);
 
     function changeAttImgOptionRatio(attWidth, attHeight) {
         var thumbBox = document.getElementById("attImageThumb");
@@ -1078,7 +1081,7 @@ function iniAttImgOptItem(el) {
         neo_cropper.zoomIn();
     })
     document.querySelector('#att_btnZoomOut').addEventListener('click', function() {
-        console.log("Iam here", currentImgOptItem);
+        //console.log("Iam here", currentImgOptItem);
         neo_cropper.zoomOut();
     });
 
@@ -1106,12 +1109,23 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
     img.setAttribute('src', img_Store);
     currentDropPad.appendChild(document.importNode(item, true));
     var currentItem = currentDropPad.lastElementChild;
-    var ImageOptions = imgOptionHandler.CUST.ImageOptions;
-    var max = Math.max.apply(null, ImageOptions.map(function(o) {
-        return o.value
-    }));
+    var ImageOptions = null;
+    ImageOptions = imgOptionHandler.CUST['ImageOptions'];
+    var max;
+    if (ImageOptions) {
+        max = Math.max.apply(null, ImageOptions.map(function(o) {
+            return o.value
+        }));
+    } else {
+        imgOptionHandler.CUST['ImageOptions'] = [];
+        max = 0;
+    }
+
     max++;
     currentImgOptItem.value = max;
     currentItem.setAttribute('app-value', max);
+    // Update current list of currentItem
+    imgOptionHandler.CUST.ImageOptions.push(currentImgOptItem);
+    console.log(ImageOptions);
 
 }, false);
