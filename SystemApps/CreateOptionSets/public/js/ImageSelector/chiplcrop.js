@@ -54,12 +54,15 @@ var cropbox = function(options, fn_cb) {
                 this.ratio *= 0.9;
                 setBackground();
             },
-            resetOption: function(opt) {
-                // el.style.backgroundImage = "none";
-                // obj.options = opt;
-                // obj.bgX = 0;
-                // obj.bgY = 0;
-                // obj.ratio = 1;
+            resetOption: function(opt, isFull) {
+                if (isFull) {
+                    el.style.backgroundImage = "none";
+                    obj.options = opt;
+                    obj.bgX = 0;
+                    obj.bgY = 0;
+                    obj.ratio = 1;
+                }
+
                 obj.image.src = options.imgSrc;
                 // this.getDataURL();
                 fn_cb(obj.getDataURL());

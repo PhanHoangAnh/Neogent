@@ -987,6 +987,8 @@ function addMoreOrEditImageOptions(elem) {
     switch (appRole) {
         case "addMoreImgOption":
             console.log('1');
+            ngOpt.imgSrc = '';
+            neo_cropper.resetOption(ngOpt, 1);
             currentImgOptItem = {};
             isAddNewImgOptItem = true;
             break;
@@ -1065,10 +1067,13 @@ function iniAttImgOptItem(el) {
     // ngOpt.imgSrc = '';
     // neo_cropper.resetOption(ngOpt);
     var reader = new FileReader();
+    // el.files = null;
+    // ngOpt.imgSrc = null;
+    // neo_cropper.resetOption(ngOpt);
 
     reader.onload = function(e) {
         ngOpt.imgSrc = e.target.result;
-        neo_cropper.resetOption(ngOpt);
+        neo_cropper.resetOption(ngOpt, 1);
     }
 
     reader.readAsDataURL(el.files[0]);
