@@ -987,6 +987,9 @@ function addMoreOrEditImageOptions(elem) {
     switch (appRole) {
         case "addMoreImgOption":
             console.log('1');
+            document.querySelector('[app-role="attImgName"]').value = null;
+            document.querySelector('[app-role="attImgXRatio"]').value = null;
+            document.querySelector('[app-role="attImgYRatio"]').value = null;
             ngOpt.imgSrc = '';
             neo_cropper.resetOption(ngOpt, 1);
             currentImgOptItem = {};
@@ -1045,8 +1048,6 @@ function attImgRatio_change(evt, elem) {
         var w = 200 * ratio;
         thumbBox.style.width = w + "px";
         thumbBox.style.marginLeft = -w / 2 + 'px';
-        // var attImgSource = document.getElementById('attImgSource');
-        // iniAttImgOptItem(attImgSource, 1);
         neo_cropper.resetOption(ngOpt);
     }
 }
@@ -1062,14 +1063,7 @@ neo_cropper = new cropbox(ngOpt, optionPreview);
 
 function iniAttImgOptItem(el) {
 
-    // document.getElementById('attImageBox').style.backgroundImage = 'none';
-    // //  neo_cropper.resetOption(ngOpt);
-    // ngOpt.imgSrc = '';
-    // neo_cropper.resetOption(ngOpt);
     var reader = new FileReader();
-    // el.files = null;
-    // ngOpt.imgSrc = null;
-    // neo_cropper.resetOption(ngOpt);
 
     reader.onload = function(e) {
         ngOpt.imgSrc = e.target.result;
