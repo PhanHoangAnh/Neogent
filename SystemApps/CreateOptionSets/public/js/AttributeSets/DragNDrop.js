@@ -73,10 +73,12 @@ $(function() {
                 //
                 nodeCopy.controlType = nodeCopy.attr("data-controlType");
                 nodeCopy.attribute = {};
-                for (var i in data) {
-                    if (data[i]["Input Type"] == nodeCopy.controlType) {
-                        for (var att in data[i]["fields"]) {
-                            nodeCopy.attribute[att] = data[i]["fields"][att];
+                var copyData = getData();
+                for (var i in copyData) {
+                    if (copyData[i]["Input Type"] == nodeCopy.controlType) {
+                        for (var att in copyData[i]["fields"]) {
+                            nodeCopy.attribute[att] = copyData[i]["fields"][att];
+                            //console.log("for Debug: ", nodeCopy.attribute[att]);
                         }
                     }
                 }
@@ -114,8 +116,9 @@ $(function() {
     // Create controls from JSON definition
 $(function CreateControlsTemplate() {
     // body...
-    for (i in data) {
-        createSingleControlGroup(data[i]);
+    var obj = getData()
+    for (i in obj) {
+        createSingleControlGroup(obj[i]);
     }
     setAttributeName();
 })
@@ -501,26 +504,27 @@ function createAttributePanel(nodeCopy, title) {
             main_panel.appendChild(input_cover);
             var dropPad = input_cover.querySelector('[app-role="droppad"]');
             // console.log("dropPad: ", dropPad);
-            //http://stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
-            // if (!nodeCopy.get(0).CUST) {
-            //     nodeCopy.get(0).CUST = {};
-            // }
-            // var CUST = nodeCopy.get(0).CUST;
-            // if (!CUST.ImageOptions) {
-            //     CUST.ImageOptions = fields['ImageOptions'];
-            // }
-            // // console.log("from create createAttributePanel: ", nodeCopy.get(0), CUST.ImageOptions);
-            // for (var opt in fields['ImageOptions']) {
-            //     var item = document.getElementById('extraOptionImgItem').content;
-            //     var label = item.querySelector('[app-role="attName"]');
-            //     label.innerHTML = fields["ImageOptions"][opt]['optName'];
-            //     var img = item.querySelector('[app-role = "attImg"]');
-            //     img.setAttribute('src', fields["ImageOptions"][opt].img);
-            //     var temp = document.importNode(item, true);
-            //     var currentNode = dropPad.appendChild(temp);
-            //     dropPad.lastElementChild.setAttribute('app-value', fields['ImageOptions'][opt].value);
+            //http: //stackoverflow.com/questions/750486/javascript-closure-inside-loops-simple-practical-example
 
-            // }
+            if (!nodeCopy.get(0).CUST) {
+                nodeCopy.get(0).CUST = {};
+            }
+            // var CUST = nodeCopy.get(0).CUST;
+            if (!nodeCopy.get(0).CUST['ImageOptions']) {
+                nodeCopy.get(0).CUST['ImageOptions'] = fields['ImageOptions'];
+            }
+            
+            for (var opt in fields['ImageOptions']) {
+                var item = document.getElementById('extraOptionImgItem').content;
+                var label = item.querySelector('[app-role="attName"]');
+                label.innerHTML = fields["ImageOptions"][opt]['optName'];
+                var img = item.querySelector('[app-role = "attImg"]');
+                img.setAttribute('src', fields["ImageOptions"][opt].img);
+                var temp = document.importNode(item, true);
+                var currentNode = dropPad.appendChild(temp);
+                dropPad.lastElementChild.setAttribute('app-value', fields['ImageOptions'][opt].value);
+
+            }
             // console.log('dropPad', dropPad);
         }
 
@@ -762,11 +766,12 @@ function loadOptionSets(optSet) {
         airField.removeChild(airField.firstChild);
     }
     //
+    var _data = getData();
     for (var i in optSet.components) {
         var mockObj = {};
-        for (var k in data) {
-            if (data[k]["Input Type"] == optSet.components[i]["data-controlType"]) {
-                mockObj.fields = data[k]["fields"];
+        for (var k in _data) {
+            if (_data[k]["Input Type"] == optSet.components[i]["data-controlType"]) {
+                mockObj.fields = _data[k]["fields"];
                 break;
             }
         }
@@ -1009,7 +1014,7 @@ function addMoreOrEditImageOptions(elem) {
 
     var rootElem = getHandler(elem, 'imgOptionHandler')
     imgOptionHandler = rootElem.referParentElem;
-    console.log("CUST: ", imgOptionHandler.CUST);
+    
     //input_cover.querySelector('[app-role="droppad"]')
     currentDropPad = rootElem.querySelector('[app-role="droppad"]')
 
@@ -1126,6 +1131,6 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
     currentItem.setAttribute('app-value', max);
     // Update current list of currentItem
     imgOptionHandler.CUST.ImageOptions.push(currentImgOptItem);
-    console.log(ImageOptions);
+    // console.log(ImageOptions);
 
 }, false);

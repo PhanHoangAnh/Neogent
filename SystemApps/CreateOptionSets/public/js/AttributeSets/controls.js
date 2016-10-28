@@ -1,4 +1,5 @@
-var data = [{
+var getData = function() {
+    return [{
         "container": "standardElement",
         "label": "Text Input",
         "Input Type": "text",
@@ -713,7 +714,5 @@ var data = [{
                 "value": false
             }
         }
-    }
-
-
-]
+    }];
+}
