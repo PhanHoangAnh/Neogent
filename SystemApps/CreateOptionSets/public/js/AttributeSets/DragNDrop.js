@@ -419,14 +419,6 @@ function createAttributePanel(nodeCopy, title) {
 
     var controlType = nodeCopy.controlType;
     var fields = nodeCopy.attribute;
-    // Exeption for ImageOptions
-    // if (nodeCopy["CUST"] && controlType == "ImageOptions") {
-    //     console.log("here");
-    // }
-
-
-    console.log(fields);
-
     var main_panel = document.createElement('main_panel');
     main_panel.classList.add("col-md-12");
     main_panel.classList.add("col-lg-12");
@@ -510,8 +502,6 @@ function createAttributePanel(nodeCopy, title) {
                 nodeCopy = $(nodeCopy);
             }
             input_cover.referParentElem = nodeCopy.get(0);
-
-            console.log(nodeCopy.get(0)['CUST']);
 
             input_cover.classList.add("col-md-12");
             input_cover.style.padding = '0';
@@ -812,10 +802,6 @@ function loadOptionSets(optSet) {
         // copy object to avoid the refer
         var CUST = Object.assign({}, optSet["components"][i]["attributes"])
         mockObj["CUST"] = CUST;
-        if (CUST["ImageOptions"]) {
-            console.log("mockObj: ", mockObj);
-        }
-
         createSingleControlGroup(mockObj, true);
     }
 }
