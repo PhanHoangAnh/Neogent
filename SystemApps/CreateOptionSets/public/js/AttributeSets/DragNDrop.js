@@ -25,6 +25,10 @@ $(function() {
             receive: function(e, ui) {
                 if (ui.item[0].getAttribute("app-role") == "optionSet") {
                     loadOptionSets(ui.item[0]["CUST"]);
+
+                }
+                if (ui.item[0]["CUST"]["ImageOptions"]) {
+                    console.log("from line 29: ", ui.item[0]["CUST"]["ImageOptions"]);
                 }
                 ui.sender.sortable("cancel");
             },
@@ -416,6 +420,10 @@ function createAttributePanel(nodeCopy, title) {
 
     var controlType = nodeCopy.controlType;
     var fields = nodeCopy.attribute;
+    if (fields["ImageOptions"]) {
+        console.log("From :", arguments.callee.caller.name, " value : ", fields);
+    }
+
     var main_panel = document.createElement('main_panel');
     main_panel.classList.add("col-md-12");
     main_panel.classList.add("col-lg-12");
@@ -491,8 +499,7 @@ function createAttributePanel(nodeCopy, title) {
             main_panel.appendChild(input);
         }
         if (item == "ImageOptions") {
-            // Update for configurable attributes
-            console.log("ImageOptions here: from : ", arguments.callee.caller);
+            // Update for configurable attributes           
             label.innerHTML = item;
             var input_cover = document.createElement("div");
             input_cover.setAttribute("app-role", "imgOptionHandler");
@@ -518,6 +525,7 @@ function createAttributePanel(nodeCopy, title) {
             }
 
             for (var opt in fields['ImageOptions']) {
+                //console.log(" Test: ", fields["ImageOptions"][opt]);
                 var item = document.getElementById('extraOptionImgItem').content;
                 var label = item.querySelector('[app-role="attName"]');
                 label.innerHTML = fields["ImageOptions"][opt]['optName'];
@@ -780,14 +788,14 @@ function loadOptionSets(optSet) {
         }
         for (var k in mockObj.fields) {
             var compareItem = optSet.components[i].attributes[k];
-
+            // Must be updated here Chipl
             if (k == "options") {
                 var optArr = compareItem.split('\n');
                 optArr = optArr.filter(function(n) {
                     return n != "";
                 });
                 mockObj.fields[k] = optArr;
-            } else {
+            } else if(k != "ImageOptions") {
                 mockObj.fields[k].value = compareItem;
             }
         }
@@ -797,6 +805,10 @@ function loadOptionSets(optSet) {
         // copy object to avoid the refer
         var CUST = Object.assign({}, optSet["components"][i]["attributes"])
         mockObj["CUST"] = CUST;
+        if (CUST["ImageOptions"]) {
+            console.log("mockObj: ", mockObj);
+        }
+
         createSingleControlGroup(mockObj, true);
     }
 }
