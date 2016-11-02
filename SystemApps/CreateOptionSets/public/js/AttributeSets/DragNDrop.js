@@ -238,8 +238,6 @@ function createSingleControlGroup(template, isReload) {
             break;
         case ("ImageOptions"):
             // Update for configurable attributes
-            // input.type = "radio";
-
             newId++;
             var input = document.importNode(document.getElementById('extraOptionImgHandler').content, true);
             input_cover.appendChild(input);
@@ -392,7 +390,10 @@ function createSingleControlGroup(template, isReload) {
         $(container_div).attr("data-placement", "right");
         container_div.attribute = template["fields"];
         container_div.controlType = template["Input Type"];
+
+        container_div["CUST"] = template["CUST"];
         var popoverContent = createAttributePanel(container_div);
+        // 2. add CUST properties for container_div
         // 2. Create popover
         $(container_div).popover({
             html: true,
@@ -408,8 +409,6 @@ function createSingleControlGroup(template, isReload) {
                 return popoverContent;
             }
         });
-        // 2. add CUST properties for container_div
-        container_div["CUST"] = template["CUST"];
     } else {
         var container = template["container"];
     }
@@ -420,9 +419,13 @@ function createAttributePanel(nodeCopy, title) {
 
     var controlType = nodeCopy.controlType;
     var fields = nodeCopy.attribute;
-    if (fields["ImageOptions"]) {
-        console.log("From :", arguments.callee.caller.name, " value : ", fields);
-    }
+    // Exeption for ImageOptions
+    // if (nodeCopy["CUST"] && controlType == "ImageOptions") {
+    //     console.log("here");
+    // }
+
+
+    console.log(fields);
 
     var main_panel = document.createElement('main_panel');
     main_panel.classList.add("col-md-12");
@@ -507,6 +510,9 @@ function createAttributePanel(nodeCopy, title) {
                 nodeCopy = $(nodeCopy);
             }
             input_cover.referParentElem = nodeCopy.get(0);
+
+            console.log(nodeCopy.get(0)['CUST']);
+
             input_cover.classList.add("col-md-12");
             input_cover.style.padding = '0';
             var input = document.importNode(document.getElementById('extraOptionImgHandler').content, true);
@@ -524,16 +530,17 @@ function createAttributePanel(nodeCopy, title) {
                 nodeCopy.get(0).CUST['ImageOptions'] = fields['ImageOptions'];
             }
 
-            for (var opt in fields['ImageOptions']) {
+            var imgDataOptions = nodeCopy.get(0).CUST['ImageOptions'];
+            for (var opt in imgDataOptions) {
                 //console.log(" Test: ", fields["ImageOptions"][opt]);
                 var item = document.getElementById('extraOptionImgItem').content;
                 var label = item.querySelector('[app-role="attName"]');
-                label.innerHTML = fields["ImageOptions"][opt]['optName'];
+                label.innerHTML = imgDataOptions[opt]['optName'];
                 var img = item.querySelector('[app-role = "attImg"]');
-                img.setAttribute('src', fields["ImageOptions"][opt].img);
+                img.setAttribute('src', imgDataOptions[opt].img);
                 var temp = document.importNode(item, true);
                 var currentNode = dropPad.appendChild(temp);
-                dropPad.lastElementChild.setAttribute('app-value', fields['ImageOptions'][opt].value);
+                dropPad.lastElementChild.setAttribute('app-value', imgDataOptions[opt].value);
 
             }
             // console.log('dropPad', dropPad);
@@ -795,7 +802,7 @@ function loadOptionSets(optSet) {
                     return n != "";
                 });
                 mockObj.fields[k] = optArr;
-            } else if(k != "ImageOptions") {
+            } else if (k != "ImageOptions") {
                 mockObj.fields[k].value = compareItem;
             }
         }
