@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>NeoGent | Product Detail Page</title>
+    <meta name="generator" content="Bootply" />
+    
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"-->
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<script type="text/javascript">
+//Huyen Anh added code here
+    function toggleSearch() {
+        document.getElementById('search-box').classList.toggle('open');
+    }
+     /*window.onclick = function() {
+        var x = document.getElementById('search-box');
+        if (x.classList.contains('open')) {
+            x.classList.remove('open');
+        } else {
+            x.classList.add('open');
+        }
+    }*/
+
+
+</script>
+
+<body class="category-detail-page">
+    <!-- product name -->
+    <div class="product-name-title">
+		<div class="container">
+			<h1 class="title">Lorem ipsum dolor sit amet</h1>
+		</div>
+    </div>
+    <!-- /product name -->
+    <!-- NavBar -->
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <!--top nav-->
+            <div class="navbar-top">
+				<div class="container">
+					<div class="login">
+						<span>login with</span><a href="#" title="facebook"><i class="fa fa-facebook"></i></a><a href="login.html" title="Neo"><i class="fa fa-neogent"></i></a>
+						<!--span>Anh Tran</span><a><img src="img/avatar/ava.jpg"></a><a href="#">log out</a-->
+					</div>
+				</div>
+			</div>
+            <!--/top nav-->
+            <div class="container">
+                <div class="row">
+                    <div class="logo"><a href="home-page.html"><img src="img/logo.png" alt="NeoGent"></a></div>
+                    <!--menu btn for mobile-->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--/menu button for mobile-->
+                    <!--menu-->
+                    <nav class="collapse navbar-collapse " role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#" id="women" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Women</a>
+                                <ul class="dropmenu" aria-labelledby="women">
+                                    <li><a href="product-page.html">Dresses</a></li>
+                                    <li><a href="product-page.html">Skirts</a></li>
+                                    <li><a href="product-page.html">Outerwear</a></li>
+                                    <li><a href="product-page.html">Tops</a></li>
+                                    <li><a href="product-page.html">Bottom</a></li>
+                                    <li><a href="product-page.html">Lingerie</a></li>
+                                    <li><a href="product-page.html">Shoes</a></li>
+                                    <li><a href="product-page.html">Bags</a></li>
+                                    <li><a href="product-page.html">Sunglasses</a></li>
+                                    <li><a href="product-page.html">Accessories</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Men</a>
+                            </li>
+                            <li>
+                                <a href="#">Kid</a>
+                            </li>
+                            <li>
+                                <a href="#">Sale</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--/menu-->
+                    <!--right navbar-->
+					<div class="navbar-rightside">
+						<div class="minicart-wrapper dropdown">
+							<a href="#" class="cart" id="minicart-wrap" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-shopping-cart"></i>
+								<span class="count">3</span>
+							</a>
+							<div class="minicart-dropdown" aria-labelledby="minicart-wrap">
+								<!--empty minicart-->
+								<!--div class="minicart-empty">
+									<p>Your shopping bag is currently empty.</p>
+									<a href="product-page.html" class="btn">Continue Shopping</a>
+								</div-->
+								<!--/empty minicart-->
+								<!--full minicart-->
+								<div class="minicart-full">
+									<ul class="minicart-total">
+										<li><span class="num">3</span> items</li>
+										<li class="total">
+											<span>Subtotal</span>
+											<span>1,500.00 SGD</span>
+										</li>
+										<li><a href="checkout.html" class="btn">Checkout</a></li>
+									</ul>									
+									<ul class="minicart-list">
+										<li>
+											<a href="product-detail.html" class="product-img"><img src="img/products/p01.jpg"></a>
+											<div class="product-detail">
+												<p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+												<p class="price">6,00.00 SGD</p>
+												<p class="group">													
+													<span class="qty">Qty:</span><span class="value">1</span>
+												</p>
+											</div>
+											<span class="remove-button"></span>
+										</li>
+										<li>
+											<a href="product-detail.html" class="product-img"><img src="img/products/p03.jpg"></a>
+											<div class="product-detail">
+												<p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+												<p class="price">5,00.00 SGD</p>
+												<p class="group">													
+													<span class="qty">Qty:</span><span class="value">1</span>
+												</p>
+											</div>
+											<span class="remove-button"></span>
+										</li>
+										<li>
+											<a href="product-detail.html" class="product-img"><img src="img/products/p05.jpg"></a>
+											<div class="product-detail">
+												<p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+												<p class="price">4,00.00 SGD</p>
+												<p class="group">													
+													<span class="qty">Qty:</span><span class="value">1</span>
+												</p>
+											</div>
+											<span class="remove-button"></span>
+										</li>
+									</ul>									
+									<div class="minicart-bottom">
+										<a href="shopping-bag.html" class="btn">View bag</a>										
+									</div>									
+								</div>
+								<!--/full minicart-->
+							</div>
+						</div>
+						<div class="search-wrapper" onclick = "toggleSearch()">
+							<span class="search"><i class="fa fa-search"></i></span>							
+						</div>
+					</div>
+                    <!--/right navbar-->
+					<div class="search-inner" id="search-box">
+						<form>
+							<input type="text" placeholder="Search...">
+							<button type="button" class="btn"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /NavBar -->
+    <!--ProductDetail container-->
+    <div id="start-offset">
+        <!--breadcrumb-->
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="home-page.html">Home</a></li>
+                <li><a href="product-page.html">Women</a></li>
+                <li><a href="product-page.html">Subcategory</a></li>
+                <li class="active">Lorem ipsum dolor sit amet</li>
+            </ol>
+        </div>
+        <!--/breadcrumb-->
+        <div class="container">
+            <div class="row">
+                <!--product detail wrap-->
+                <div class="product-detail-wrap">
+                    <div class="col-sm-6 col-xs-12 product-media">
+                        <div class="main-image"><img src="img/products/dh01.jpg"></div>
+                        <ul class="thumb-image hidden-xs">
+                            <li><img src="img/products/p06.jpg"></li>
+                            <li><img src="img/products/p07.jpg"></li>
+                            <li><img src="img/products/p05.jpg"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-xs-12 product-info">
+                        <div class="product-top-info">
+                            <div class="clearfix">
+                                <div class="rating">
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span>☆</span>
+                                    <span class="rated" style="width: 80%;"></span>
+                                </div>
+                                <a href="#" class="add-wishlist" title="Save for late"><i class="fa fa-heart"></i></a>
+                            </div>
+                            <div class="price">6,00.00SGD <span class=""></span></div>
+                        </div>
+                        <div class="product-add-group">
+                            <div class="attribute color">
+                                <p class="swatch-name">Color</p>
+                                <ul class="swatch-list">
+                                    <li title="blanco"><img src="img/colors/blanco.png"></li>
+                                    <li title="cuoio"><img src="img/colors/cuoio.png"></li>
+                                    <li title="graphite suede"><img src="img/colors/graphite-suede.png"></li>
+                                    <li title="navy suede"><img src="img/colors/navy-suede.png"></li>
+                                    <li class="selected" title="farro suede"><img src="img/colors/farro-suede.png"></li>
+                                    <li title="leather cadet"><img src="img/colors/leather-cadet.png"></li>
+                                </ul>
+                            </div>
+                            <div class="attribute size">
+                                <p class="swatch-name">Size</p>
+                                <ul class="swatch-list">
+                                    <li class="selected"><a href="#">XS</a></li>
+                                    <li><a href="#">S</a></li>
+                                    <li><a href="#">M</a></li>
+                                    <li><a href="#">L</a></li>
+                                    <li><a href="#">XL</a></li>
+                                </ul>
+                                <!--p class="label-error">Please select a size!</p-->
+                            </div>
+                            <div class="add-cart-form">
+                                <input type="text" placeholder="1" value="1" />
+                                <button type="submit" class="btn add-to-cart">Add to cart</button>
+                            </div>
+                        </div>
+                        <div class="product-desc">
+                            <div class="accordion" id="productDesc">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#productDesc" href="#desc">
+                                        Description
+                                    </a>
+                                </div>
+                                <div id="desc" class="accordion-body collapse in">
+                                    <div class="inner">
+                                        <p><strong>Holdall</strong> by <strong>Jack &amp; Jones</strong></p>
+                                        <ul class="has-list">
+                                            <li>Fabric outer</li>
+                                            <li>Fully-lined</li>
+                                            <li>Twin handles</li>
+                                            <li>Zip top closure</li>
+                                            <li>Do not wash</li>
+                                            <li>100% Polyester</li>
+                                            <li>H: 55cm/ 22" W: 26cm/ 10" D: 26cm/ 10</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#productDesc" href="#info">
+                                        Info
+                                    </a>
+                                </div>
+                                <div id="info" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <p>Founded in 1989, Jack &amp; Jones is a Danish brand that offers cool, relaxed designs that express a strong visual style through their diffusion lines, Jack & Jones intelligence and Jack & Jones vintage. Using innovative treatments and cuts Jack & Jones place their signature laid back style on to a whole range of clothing from print t-shirts to jeans.</p>
+                                    </div>
+                                </div>
+
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#productDesc" href="#shipping">
+                                        Shipping
+                                    </a>
+                                </div>
+                                <div id="shipping" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <p>Free shipping worldwide</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-social-links">
+                            <span>Share:</span>
+                            <a href="#" title="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" title="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" title="email for friends"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!--/product detail wrap-->
+
+                <!--block: Customer Reviews-->
+                <div class="blk-customer-review">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="title">
+                            <h2>Customer Reviews</h2>
+                        </div>
+
+                        <!--review comment-->
+                        <div class="review-row">
+                            <div class="rating">
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span class="rated" style="width: 80%;"></span>
+                            </div>
+                            <h4>Most comfortable bag</h4>
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                            <p class="author">
+                                <span class="name">Jenifer DOE</span> -
+                                <span class="date">08/24/2016</span>
+                            </p>
+                        </div>
+                        <!--/review comment-->
+                        <!--review comment-->
+                        <div class="review-row">
+                            <div class="rating">
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span class="rated" style="width: 80%;"></span>
+                            </div>
+                            <h4>Love it</h4>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            <p class="author">
+                                <span class="name">Danny NGUYEN</span> -
+                                <span class="date">08/12/2016</span>
+                            </p>
+                        </div>
+                        <!--/review comment-->
+                        <!--review comment-->
+                        <div class="review-row">
+                            <div class="rating">
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span class="rated" style="width: 80%;"></span>
+                            </div>
+                            <h4>My favourite, I love it!</h4>
+                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                            <p class="author">
+                                <span class="name">Alaska</span> -
+                                <span class="date">06/18/2016</span>
+                            </p>
+                        </div>
+                        <!--/review comment-->
+
+                        <!--Review form-->
+                        <div class="review-form">
+                            <div class="col-sm-6 col-xs-12">
+                                <h3>Your rating</h3>
+                                <form>
+                                    <div class="control">
+                                        <label class="require"l>Rating</label>
+                                        <div class="review-control-vote">
+                                            <input type="radio" name="ratings" id="rating1" class="rating-1" value="16">
+                                            <label id="rating1_label"></label>
+                                            <input type="radio" name="ratings" id="rating2" class="rating-2" value="17">
+                                            <label id="rating2_label"></label>
+                                            <input type="radio" name="ratings" id="rating3" class="rating-3" value="18">
+                                            <label id="rating3_label"></label>
+                                            <input type="radio" name="ratings" id="rating4" class="rating-4" value="19">
+                                            <label id="rating4_label"></label>
+                                            <input type="radio" name="ratings" id="rating5" class="rating-5" value="20">
+                                            <label id="rating5_label"></label>
+                                        </div>
+                                    </div>
+                                    <div class="control">
+                                        <label class="require">Nickname</label>
+                                        <input type="text" value="" />
+                                        <!--p class="label-error">This field is required.</p-->
+                                    </div>
+                                    <div class="control">
+                                        <label class="require">Summary</label>
+                                        <input type="text" value="" />
+                                        <!--p class="label-error">This field is required.</p-->
+                                    </div>
+                                    <div class="control">
+                                        <label class="require">Review</label>
+                                        <textarea rows="10"></textarea>
+                                        <!--p class="label-error">This field is required.</p-->
+                                    </div>
+                                    <p class="label-require">required fields</p>
+                                    <div class="control">
+                                        <button class="btn" type="submit">Submit Review</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--/Review form-->
+                    </div>
+                </div>
+                <!--/block: Customer Reviews-->
+
+                <!--block: You may be interested in-->
+                <div class="product-wrap blk-related hidden-xs">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="title">
+                            <h2>You may be interested in</h2>
+                            <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="col-item">
+                                <span class="tag-label new">New</span>
+                                <div class="photo img-item">
+                                    <img src="img/products/p02.jpg">
+                                    <a href="product-detail.html"></a>
+                                    <div class='focus'></div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="rating">
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span class="rated" style="width: 0;"></span>
+                                    </div>
+                                    <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
+                                    <div class="price">Price: 6,00.00SGD</div>
+                                    <div class="action-item">
+                                        <div class="col-xs-6">
+                                            <div class="items">
+                                                <i class="fa fa-heart"></i> <br />Save for late
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="items">
+                                                <div style="border-left: dotted 1px; padding-left: 5px">
+                                                    <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="col-item">
+                                <div class="photo img-item">
+                                    <img src="img/products/p03.jpg">
+                                    <a href="product-detail.html"></a>
+                                    <div class='focus'></div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="rating">
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span class="rated" style="width: 70%;"></span>
+                                    </div>
+                                    <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
+                                    <div class="price">Price: 6,00.00SGD</div>
+                                    <div class="action-item">
+                                        <div class="col-xs-6">
+                                            <div class="items">
+                                                <i class="fa fa-heart"></i> <br />Save for late
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="items">
+                                                <div style="border-left: dotted 1px; padding-left: 5px">
+                                                    <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                       <div class="col-item">
+                                <div class="photo img-item">
+                                    <img src="img/products/p08.jpg">
+                                    <a href="product-detail.html"></a>
+                                    <div class='focus'></div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="rating">
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span>☆</span>
+                                        <span class="rated" style="width: 80%;"></span>
+                                    </div>
+                                    <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
+                                    <div class="price">Price: 6,00.00SGD</div>
+                                    <div class="action-item">
+                                        <div class="col-xs-6">
+                                            <div class="items">
+                                                <i class="fa fa-heart"></i> <br />Save for late
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="items">
+                                                <div style="border-left: dotted 1px; padding-left: 5px">
+                                                    <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                       </div>
+                    </div>
+                </div>
+                <!--/block: You may be interested in-->
+            </div>
+        </div>
+    </div>
+    <!--/ProductDetail container-->
+    <div id="end-offset">
+        <footer>
+            <div class="footer container">
+                <div class="row">
+					<!--col-->
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>About Us</h4>
+                        <ul>
+							<li><a href="cms-about-us.html">Corporate Profile</a></li>
+							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="cms-site-map.html">Site map</a></li>
+						</ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>Online Help</h4>
+                        <ul>
+							<li><a href="cms-shipping-returns.html">Shipping &amp; Returns</a></li>
+							<li><a href="cms-faq.html">FAQ</a></li>
+							<li><a href="cms-privacy-policy.html">Privacy Policy</a></li>
+							<li><a href="cms-term-conditions.html">Terms &amp; Conditions</a></li>
+						</ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+						<h4>Subscribe</h4>
+						<div class="subscribe-form">
+							<form>
+								<input type="email" placeholder="Your email address">
+                                <!--p class="label-error">Email: This field is required.</p-->
+								<button type="button" class="btn">Subscribe</button>							
+							</form>
+						</div>
+                    </div>
+					<!--/col-->
+                </div>
+            </div>
+            <div class="footer-bottom">
+				<div class="container">
+					<p class="copy-right">Copyright © 2016 NeoGent. All rights reserved.</p>				
+				</div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        /* Custom JS */
+        //--// Bootstrap component
+        $(function() {
+            // $('#nav-wrapper').height($("#nav").height());
+            // $('#nav-wrapper').height(200);
+            $('#nav').affix({
+                offset: {
+                    top: function() {
+                        // Do other stuff here-- chipl
+                        return $('#start-offset').offset().top / 2;
+                    }
+                }
+            });
+            // Sidebar affix
+            $('#sidebar').affix({
+                offset: {
+                    top: $('#start-offset').offset().top + 0,
+                    bottom: $('#end-offset').outerHeight() - 20
+                }
+            }).on('affix.bs.affix', function() { // before affix
+                $(this).css({
+                    /*'top': headerHeight,*/ // for fixed height
+                    'width': $(this).outerWidth() // variable widths
+                });
+            }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+                // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+            });;
+
+        });
+        $('.carousel').carousel({
+            interval: 2000 * 10
+        });
+    </script>
+</body>
+</html>

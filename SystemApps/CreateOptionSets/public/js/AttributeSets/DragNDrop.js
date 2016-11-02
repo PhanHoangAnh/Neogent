@@ -492,10 +492,13 @@ function createAttributePanel(nodeCopy, title) {
         }
         if (item == "ImageOptions") {
             // Update for configurable attributes
-            // console.log("ImageOptions here");
+            console.log("ImageOptions here: from : ", arguments.callee.caller);
             label.innerHTML = item;
             var input_cover = document.createElement("div");
             input_cover.setAttribute("app-role", "imgOptionHandler");
+            if (nodeCopy instanceof Element) {
+                nodeCopy = $(nodeCopy);
+            }
             input_cover.referParentElem = nodeCopy.get(0);
             input_cover.classList.add("col-md-12");
             input_cover.style.padding = '0';
@@ -513,7 +516,7 @@ function createAttributePanel(nodeCopy, title) {
             if (!nodeCopy.get(0).CUST['ImageOptions']) {
                 nodeCopy.get(0).CUST['ImageOptions'] = fields['ImageOptions'];
             }
-            
+
             for (var opt in fields['ImageOptions']) {
                 var item = document.getElementById('extraOptionImgItem').content;
                 var label = item.querySelector('[app-role="attName"]');
@@ -815,7 +818,7 @@ function saveAttributeSets() {
         // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
     console.log(compObj);
-    //postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb)
+    postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb)
 
     function fn_cb(result) {
         console.log(result);
@@ -1014,7 +1017,7 @@ function addMoreOrEditImageOptions(elem) {
 
     var rootElem = getHandler(elem, 'imgOptionHandler')
     imgOptionHandler = rootElem.referParentElem;
-    
+
     //input_cover.querySelector('[app-role="droppad"]')
     currentDropPad = rootElem.querySelector('[app-role="droppad"]')
 

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>NeoGent | Checkout Page</title>
+    <meta name="generator" content="Bootply" />
+    
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"-->
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+
+<script type="text/javascript">
+//Huyen Anh added code here
+    function toggleSearch() {
+        document.getElementById('search-box').classList.toggle('open');
+    }
+     /*window.onclick = function() {
+        var x = document.getElementById('search-box');
+        if (x.classList.contains('open')) {
+            x.classList.remove('open');
+        } else {
+            x.classList.add('open');
+        }
+    }*/
+
+
+</script>
+
+<body class="checkout-page">
+    <!-- page name -->
+    <div class="page-title">
+		<div class="container">
+			<h1 class="title">Checkout</h1>
+		</div>
+    </div>
+    <!-- /page name -->
+    <!-- NavBar -->
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <!--top nav-->
+            <div class="navbar-top">
+				<div class="container">
+					<div class="login">
+						<span>login with</span><a href="#" title="facebook"><i class="fa fa-facebook"></i></a><a href="login.html" title="Neo"><i class="fa fa-neogent"></i></a>
+						<!--span>Anh Tran</span><a><img src="img/avatar/ava.jpg"></a><a href="#">log out</a-->
+					</div>
+				</div>
+			</div>
+            <!--/top nav-->
+            <div class="container">
+                <div class="row">
+                    <div class="logo"><a href="home-page.html"><img src="img/logo.png" alt="NeoGent"></a></div>
+                    <!--menu btn for mobile-->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--/menu button for mobile-->
+                    <!--menu-->
+                    <nav class="collapse navbar-collapse " role="navigation">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#" id="women" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Women</a>
+                                <ul class="dropmenu" aria-labelledby="women">
+                                    <li><a href="product-page.html">Dresses</a></li>
+                                    <li><a href="product-page.html">Skirts</a></li>
+                                    <li><a href="product-page.html">Outerwear</a></li>
+                                    <li><a href="product-page.html">Tops</a></li>
+                                    <li><a href="product-page.html">Bottom</a></li>
+                                    <li><a href="product-page.html">Lingerie</a></li>
+                                    <li><a href="product-page.html">Shoes</a></li>
+                                    <li><a href="product-page.html">Bags</a></li>
+                                    <li><a href="product-page.html">Sunglasses</a></li>
+                                    <li><a href="product-page.html">Accessories</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Men</a>
+                            </li>
+                            <li>
+                                <a href="#">Kid</a>
+                            </li>
+                            <li>
+                                <a href="#">Sale</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!--/menu-->
+                    <!--right navbar-->
+					<div class="navbar-rightside">
+						<div class="minicart-wrapper dropdown">
+							<a href="#" class="cart" id="minicart-wrap" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-shopping-cart"></i>
+								<span class="count">3</span>
+							</a>
+							<div class="minicart-dropdown" aria-labelledby="minicart-wrap">
+								<!--empty minicart-->
+								<!--div class="minicart-empty">
+									<p>Your shopping bag is currently empty.</p>
+									<a href="product-page.html" class="btn">Continue Shopping</a>
+								</div-->
+								<!--/empty minicart-->
+								<!--full minicart-->
+								<div class="minicart-full">
+									<ul class="minicart-total">
+										<li><span class="num">3</span> items</li>
+										<li class="total">
+											<span>Subtotal</span>
+											<span>1,500.00 SGD</span>
+										</li>
+										<li><a href="checkout.html" class="btn">Checkout</a></li>
+									</ul>									
+									<ul class="minicart-list">
+										<li>
+											<a href="product-detail.html" class="product-img"><img src="img/products/p01.jpg"></a>
+											<div class="product-detail">
+												<p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+												<p class="price">6,00.00 SGD</p>
+												<p class="group">													
+													<span class="qty">Qty:</span><span class="value">1</span>
+												</p>
+											</div>
+											<span class="remove-button"></span>
+										</li>
+										<li>
+											<a href="product-detail.html" class="product-img"><img src="img/products/p03.jpg"></a>
+											<div class="product-detail">
+												<p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+												<p class="price">5,00.00 SGD</p>
+												<p class="group">													
+													<span class="qty">Qty:</span><span class="value">1</span>
+												</p>
+											</div>
+											<span class="remove-button"></span>
+										</li>
+										<li>
+											<a href="product-detail.html" class="product-img"><img src="img/products/p05.jpg"></a>
+											<div class="product-detail">
+												<p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+												<p class="price">4,00.00 SGD</p>
+												<p class="group">													
+													<span class="qty">Qty:</span><span class="value">1</span>
+												</p>
+											</div>
+											<span class="remove-button"></span>
+										</li>
+									</ul>									
+									<div class="minicart-bottom">
+										<a href="shopping-bag.html" class="btn">View bag</a>										
+									</div>									
+								</div>
+								<!--/full minicart-->
+							</div>
+						</div>
+						<div class="search-wrapper" onclick = "toggleSearch()">
+							<span class="search"><i class="fa fa-search"></i></span>							
+						</div>
+					</div>
+                    <!--/right navbar-->
+					<div class="search-inner" id="search-box">
+						<form>
+							<input type="text" placeholder="Search...">
+							<button type="button" class="btn"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /NavBar -->
+    <!--Checkout container-->
+    <div id="start-offset">
+        <div class="container">
+            <div class="row">
+                <!--checkout wrap-->
+                <div class="checkout-wrap">
+                    <div class="col-sm-4 col-xs-12">
+                        <h4 class="thead">Cart</h4>
+                        <!--cart container-->
+                        <div class="shopping-bag-wrap">
+                            <!--item row-->
+                            <div class="item-row">
+                                <a href="product-detail.html" class="product-img"><img src="img/products/p01.jpg"></a>
+                                <div class="product-detail">
+                                    <p class="name"><a href="product-detail.html">Sed ut perspiciatis unde omnis</a></p>
+                                    <div class="group">
+                                        <span class="size">Size:</span><span class="value">XS</span>
+                                        <span class="color">Color:</span><span class="value">Farro Suede</span>
+                                        <span class="qty">Qty:</span><span class="value">1</span>
+                                    </div>
+                                    <div class="price">SGD 6,00.00</div>
+                                </div>
+                                <span class="remove-button"></span>
+                            </div>
+                            <!--/item row-->
+                            <!--item row-->
+                            <div class="item-row">
+                                <a href="product-detail.html" class="product-img"><img src="img/products/p03.jpg"></a>
+                                <div class="product-detail">
+                                    <p class="name"><a href="product-detail.html">Sed ut perspiciatis unde omnis</a></p>
+                                    <div class="group">
+                                        <span class="size">Size:</span><span class="value">XS</span>
+                                        <span class="color">Color:</span><span class="value">Farro Suede</span>
+                                        <span class="qty">Qty:</span><span class="value">1</span>
+                                    </div>
+                                    <div class="price">SGD 5,00.00</div>
+                                </div>
+                                <span class="remove-button"></span>
+                            </div>
+                            <!--/item row-->
+                            <!--item row-->
+                            <div class="item-row">
+                                <a href="product-detail.html" class="product-img"><img src="img/products/p05.jpg"></a>
+                                <div class="product-detail">
+                                    <p class="name"><a href="product-detail.html">Sed ut perspiciatis unde omnis</a></p>
+                                    <div class="group">
+                                        <span class="size">Size:</span><span class="value">XS</span>
+                                        <span class="color">Color:</span><span class="value">Farro Suede</span>
+                                        <span class="qty">Qty:</span><span class="value">1</span>
+                                    </div>
+                                    <div class="price">SGD 4,00.00</div>
+                                </div>
+                                <span class="remove-button"></span>
+                            </div>
+                            <!--/item row-->
+
+                            <!--discount coupon code-->
+                            <div class="discount-form">
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        <form>
+                                            <input type="text" placeholder="Apply coupon code">
+                                            <button type="submit" class="btn">Apply</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/discount coupon code-->
+                        </div>
+                        <!--/cart container-->
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <h4 class="thead">Delivery</h4>
+                        <!--delivery container-->
+                        <form>
+                            <!--billing address-->
+                            <h5>Billing Address</h5>
+                            <div class="delivery-address billing">
+                                <div class="control">
+                                    <label class="require">First name</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Last name</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Email</label>
+                                    <input type="email" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <span class="checkwrap" data-toggle="collapse" data-target="#createAcc">Create an account to access order & tracking info</span>
+                                <div id="createAcc" class="collapse">
+                                    <div class="control">
+                                        <label class="require">Password</label>
+                                        <input type="password" value="" />
+                                        <!--p class="label-error">This field is required.</p-->
+                                    </div>
+                                </div>
+                                <div class="control">
+                                    <label class="require">Phone number</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Address</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Town/City</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Postcode</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Country</label>
+                                    <select>
+                                        <option value="Vietnam">Vietnam</option>
+                                    </select>
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                            </div>
+                            <!--/billing address-->
+                            <!--shipping address-->
+                            <span class="checkwrap checked" data-toggle="collapse" data-target="#shippingAdd">Deliver to my address above</span>
+                            <div id="shippingAdd" class="delivery-address billing collapse">
+                                <h5>Shipping Address</h5>
+                                <div class="control">
+                                    <label class="require">Address</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Town/City</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Postcode</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Country</label>
+                                    <select>
+                                        <option value="Vietnam">Vietnam</option>
+                                    </select>
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                            </div>
+                            <!--/shipping address-->
+                        </form>
+                        <!--/delivery container-->
+                        <!--shipping options-->
+                        <div class="shipping-option">
+                            <h5>Shipping Options</h5>
+                            <div class="col-sm-12 col-xs-12 inner">
+                                <div class="item">
+                                    <input type="radio" name="shipping" value="standard" checked>
+                                    <span></span>
+                                    <label>Standard SGD2,0.00</label>
+                                    <span class="detail">2-3 business days for standard shipping</span>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" name="shipping" value="priority">
+                                    <span></span>
+                                    <label>Priority Shipping SGD7,0.00</label>
+                                    <span class="detail">Overnight shipping if placed before 2pm Mon to Thurs only</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/shipping options-->
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <h4 class="thead">Payment</h4>
+                        <form>
+                            <!--payment container-->
+                            <div class="payment">
+                                <div class="control">
+                                    <label class="require">Name on card</label>
+                                    <input type="text" value="" />
+                                    <!--p class="label-error">This field is required.</p-->
+                                </div>
+                                <div class="control">
+                                    <label class="require">Card details</label>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="control">
+                                    <input type="text" value="" placeholder="4111..." />
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="control">
+                                            <select>
+                                                <option value="month">Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="control">
+                                            <select>
+                                                <option value="year">Year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="control">
+                                            <input type="text" value="" placeholder="CVC" />
+                                        </div>
+                                    </div>
+                                </div>								
+                                <p class="label-require">required fields</p>
+                                <!--p class="label-error">Invalid CVC Number. This is the 3 or 4 digit number on the back of the card</p-->
+                            </div>
+                            <!--/payment container-->
+
+                            <!--order summary-->
+                            <div class="order-summary-checkout">
+                                <h5>Your order</h5>
+                                <div class="inner">
+                                    <div class="item">
+                                        <div class="col-sm-6 col-xs-6">3 items</div>
+                                        <div class="col-sm-6 col-xs-6 value">SGD15,00.00</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-sm-6 col-xs-6">Delivery</div>
+                                        <div class="col-sm-6 col-xs-6 value">SGD2,00.00</div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-sm-6 col-xs-6 text grand">Total</div>
+                                        <div class="col-sm-6 col-xs-6 value grand">SGD17,00.00</div>
+                                    </div>
+                                </div>
+                                <div class="place-order">
+                                    <button class="btn proced-to-checkout">Place your Order</button>
+                                </div>
+                            </div>
+                            <!--/order summary-->
+                        </form>
+                    </div>
+                </div>
+                <!--/checkout wrap-->
+            </div>
+        </div>
+    </div>
+    <!--/Checkout container-->
+    <div id="end-offset">
+        <footer>
+            <div class="footer container">
+                <div class="row">
+					<!--col-->
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>About Us</h4>
+                        <ul>
+							<li><a href="cms-about-us.html">Corporate Profile</a></li>
+							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="cms-site-map.html">Site map</a></li>
+						</ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>Online Help</h4>
+                        <ul>
+							<li><a href="cms-shipping-returns.html">Shipping &amp; Returns</a></li>
+							<li><a href="cms-faq.html">FAQ</a></li>
+							<li><a href="cms-privacy-policy.html">Privacy Policy</a></li>
+							<li><a href="cms-term-conditions.html">Terms &amp; Conditions</a></li>
+						</ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+						<h4>Subscribe</h4>
+						<div class="subscribe-form">
+							<form>
+								<input type="email" placeholder="Your email address">
+                                <!--p class="label-error">Email: This field is required.</p-->
+								<button type="button" class="btn">Subscribe</button>							
+							</form>
+						</div>
+                    </div>
+					<!--/col-->
+                </div>
+            </div>
+            <div class="footer-bottom">
+				<div class="container">
+					<p class="copy-right">Copyright © 2016 NeoGent. All rights reserved.</p>				
+				</div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        /* Custom JS */
+        //--// Bootstrap component
+        $(function() {
+            // $('#nav-wrapper').height($("#nav").height());
+            // $('#nav-wrapper').height(200);
+            $('#nav').affix({
+                offset: {
+                    top: function() {
+                        // Do other stuff here-- chipl
+                        return $('#start-offset').offset().top / 2;
+                    }
+                }
+            });
+            // Sidebar affix
+            $('#sidebar').affix({
+                offset: {
+                    top: $('#start-offset').offset().top + 0,
+                    bottom: $('#end-offset').outerHeight() - 20
+                }
+            }).on('affix.bs.affix', function() { // before affix
+                $(this).css({
+                    /*'top': headerHeight,*/ // for fixed height
+                    'width': $(this).outerWidth() // variable widths
+                });
+            }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+                // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+            });;
+
+        });
+        $('.carousel').carousel({
+            interval: 2000 * 10
+        });
+    </script>
+</body>
+</html>

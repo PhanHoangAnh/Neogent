@@ -1,0 +1,129 @@
+//
+// Import Compass
+//
+@import 'compass';
+@import 'compass/css3/user-interface';
+
+//
+// Variables & Mixins
+//
+//@import 'variables';
+@import 'mixins';
+@import 'fonts';
+@import 'animates';
+@import 'common';
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/*attribute sets*/
+
+.attribute-sets, .dashboard-management {min-height: 100%;}
+.heading-page {padding-top: 140px;}
+.attribute-sets {
+    background-color: rgba(0, 0, 0, 0.65);
+    padding-top: 15px;
+    fieldset.scheduler-border {
+        border: 1px groove #ddd;
+        padding: 0 1.4em 1.4em 1.4em;
+        margin: 0 0 1.5em 0;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+    }
+    
+    legend.scheduler-border {
+        font-size: 1.5em;
+        text-transform: uppercase;
+        text-align: left;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+    
+    .popover {
+        min-width: 400px;
+        border-radius: 2px;
+        .popover-title {
+            border-radius: 1px 1px 0 0;
+        }
+    }
+
+    .btn {border-radius: 2px;}
+    
+    .control {
+        padding: 10px;
+    }
+    
+    .ui-sortable-placeholder {
+        border: 1px dashed #aaa;
+        height: 45px;
+        width: 100%;
+        background: #fafafa;
+    }
+
+    main_panel label {
+        color: inherit;
+        padding-left: 0;
+        &, & + input[type="checkbox"], & + input[type="radio"] {
+            width: auto;
+        }       
+    }
+    
+    main_panel >label {
+        margin-top: 7px;
+    }
+    
+    .popover-title {
+        background: #00A600;
+        text-transform: capitalize;
+        color: #FFF;
+    }
+    
+    .help-block {
+        padding-left: 0;
+    }
+    
+    legend, label, .help-block, a , span {
+        color: #FFF; 
+        font-weight: normal;
+    }
+    
+    .nav-tabs > li > a {
+      @include single-transition(all,0.3s);
+      &:hover {color: inherit;}
+    }
+    
+    .tab-content {
+        padding-top: 20px;
+    }
+    #div1, #div2 {
+        min-height: 50px;
+        padding: 30px 20px 50px;
+    }
+    .c-left {
+        float: left;
+        clear: left;
+    }
+    .row.control {
+        position: relative;
+        cursor: pointer;
+        @include clearfix;
+        &:before {
+            content: "";
+            position: absolute; display: block;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2;
+        }
+    }
+}
+
+.modal-content, .btn {
+    border-radius: 2px;
+}
+
+.preview + .preview-md, .preview-md + .preview-sm {
+  display: none;
+}

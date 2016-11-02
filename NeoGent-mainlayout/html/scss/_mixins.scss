@@ -1,0 +1,258 @@
+//position
+@mixin ver-pos {
+  top: 50%;
+  @include translateY (-50%);
+}
+@mixin hoz-pos {
+  left: 50%;
+  @include translateX (-50%);
+}
+@mixin center-pos {
+  top: 50%; left: 50%;
+  @include translate(-50%, -50%);
+}
+@mixin no-pos {
+  top: auto; left: auto;
+  @include translate(0, 0);
+}
+
+//box shadow
+@mixin box-shadow($box-value) {
+  -webkit-box-shadow: $box-value;
+  -moz-box-shadow: $box-value;
+  box-shadow: $box-value;
+}
+
+//box-sizing
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+  -moz-box-sizing: $box-model;
+  box-sizing: $box-model;
+}
+
+//border-radius
+@mixin border-radius($b-deg) {
+  -webkit-border-radius: $b-deg;
+  -moz-border-radius: $b-deg;
+  border-radius: $b-deg;
+}
+
+//transition
+@mixin single-transition($property,$duration){
+  -webkit-transition: $property $duration ease-in-out;
+  -moz-transition: $property $duration ease-in-out;
+  -o-transition: $property $duration ease-in-out;
+  transition: $property $duration ease-in-out;
+}
+
+//user selected
+@mixin user-select ($user-select) {
+  -moz-user-select: $user-select;
+  -webkit-user-select: $user-select;
+  -ms-user-select: $user-select;
+  user-select: $user-select;
+}
+
+//scroll-x
+@mixin scroll-x {overflow-x: auto; overflow-y: hidden;}
+//scroll-y
+@mixin scroll-y {overflow-x: hidden; overflow-y: auto;}
+
+//ellipsis
+@mixin ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+//scrollbar for -webkit
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 12px; @include border-radius(12px);
+    background-color: #F0F0F0; /*background track*/
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: #E6E6E6;
+  }
+  &::-webkit-scrollbar-thumb {
+    @include border-radius(12px);
+    border: 4px solid rgba(255,255,255,0);
+    background-clip: content-box;
+    background-color: #BFBFBF; /*background thumb*/
+  }
+}
+
+//image size of product
+@mixin img-size {
+	position: relative;
+	width: 100%;
+	background-color: #BBB;
+	&:before {
+		content: "";
+		display: block;	
+		padding-top: 62%;		
+	}
+}
+
+@mixin bkg-fix {
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+@mixin bkg-trans($pos,$r,$g,$b,$a) {
+	background-image: -moz-linear-gradient($pos, rgba($r, $g, $b, 0) 0%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, 0) 100%);
+    background-image: -webkit-linear-gradient($pos, rgba($r, $g, $b, 0) 0%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, 0) 100%);
+    background-image: -o-linear-gradient($pos, rgba($r, $g, $b, 0) 0%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, 0) 100%);
+    background-image: -ms-linear-gradient($pos, rgba($r, $g, $b, 0) 0%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, 0) 100%);
+    background-image: linear-gradient($pos, rgba($r, $g, $b, 0) 0%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, $a) 50%, rgba($r, $g, $b, 0) 100%);
+}//$pos: left, top
+
+@mixin accordion {
+  .accordion {
+    .heading {
+      a {
+        position: relative; display: block;
+        font-family: $boldFont; font-size: 18px;
+        text-transform: uppercase;
+        padding: 8px 20px 8px 0;
+        &, &:after {@include single-transition(all,0.3s);}
+        &.toggle {
+          &.collapsed {
+            &:after {
+              -ms-transform: rotate(0deg); /* IE 9 */
+              -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+              transform: rotate(0deg);
+            }
+          }
+          &:after {
+            font-family: FontAwesome;
+            font-size: 14px;
+            content: "\f067";
+            position: absolute;
+            top: 11px; right: 1px;
+            -ms-transform: rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+            transform: rotate(45deg);
+          }
+        }
+      }
+      border-bottom: #333 solid 1px;
+    }
+    .inner {
+      @include clearer;
+      padding: 15px 0 5px;
+      ul {margin-bottom: 10px;}
+    }
+  }
+}
+
+.input-type {
+  position: relative;
+  padding-left: 18px;
+  input[type='checkbox'],
+  input[type='radio'] {
+    top: 1px; z-index: 2; opacity: 0;
+    cursor: pointer;
+    &, & + span {position: absolute; left: 0; display: block;}
+    & + span {
+      top: 5px;
+      width: 12px; height: 12px;
+      border: #666 solid 1px;
+      @include border-radius(1px);
+      @include single-transition(all,0.3s);
+    }
+    &:checked + span {
+      background-color: #000;
+    }
+  }
+}
+
+//check box
+@mixin checkbox {
+  @extend .input-type;
+}
+//using:
+//<div>
+//  <input type="checkbox" name="" />
+//  <span></span>
+//  <label>Checkbox's lable</label>
+//</div>
+
+//radio
+
+@mixin radio {
+  @extend .input-type;
+  input[type='radio'] {
+    & + span {
+      @include border-radius(100%);
+    }
+  }
+}
+
+//arrow style
+@mixin arrow-left($color,$width,$lwidth) {
+  border: transparent solid $width;
+  border-right-width: 0;
+  border-left-color: $color;
+  border-left-width: $lwidth;
+  -webkit-transform: scale(.9999);
+}
+@mixin arrow-down ($color,$width,$twidth) {
+  border: transparent solid $width;
+  border-top-width: $twidth;
+  border-top-color: $color;
+  -webkit-transform: scale(.9999);
+}
+@mixin arrow-up ($color,$width,$bwidth) {
+  border: transparent solid $width;
+  border-bottom-width: $bwidth;
+  border-bottom-color: $color;
+  -webkit-transform: scale(.9999);
+}
+
+//clearfix
+@mixin clearer {
+  zoom: 1;
+  &:after {
+    content: '.';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+  }
+}
+
+
+//media queries
+
+//large desktop: 1200px;
+//desktop: 960px - up
+//tablet: 768px - 959px
+//mob: down - 767px
+//large mob: fix width: 566px;
+
+$w-smobile: 480px;
+$w-mobile: 555px;
+$w-tablet: 768px;
+$w-desktop: 992px;
+$w-ldesktop: 1200px;
+@mixin small-mobile {
+  @media only screen and (max-width: $w-smobile - 1) {@content;}
+}
+@mixin mobile {
+  @media only screen and (max-width: $w-tablet - 1) {@content;}
+}
+@mixin non-mobile {
+  @media only screen and (min-width: $w-tablet) {@content;}
+}
+@mixin tablet {
+  @media only screen and (min-width: $w-tablet) and (max-width: $w-desktop - 1) {@content;}
+}
+@mixin desktop {
+  @media only screen and (min-width: $w-desktop) {@content;}
+}
+@mixin large-desktop {
+  @media only screen and (min-width: $w-ldesktop) {@content;}
+}
