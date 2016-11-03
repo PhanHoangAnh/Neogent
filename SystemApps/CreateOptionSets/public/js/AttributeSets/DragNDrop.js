@@ -26,10 +26,7 @@ $(function() {
                 if (ui.item[0].getAttribute("app-role") == "optionSet") {
                     loadOptionSets(ui.item[0]["CUST"]);
 
-                }
-                if (ui.item[0]["CUST"]["ImageOptions"]) {
-                    console.log("from line 29: ", ui.item[0]["CUST"]["ImageOptions"]);
-                }
+                }                
                 ui.sender.sortable("cancel");
             },
             over: function(e, ui) {
