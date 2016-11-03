@@ -528,7 +528,6 @@ function createAttributePanel(nodeCopy, title) {
                 var temp = document.importNode(item, true);
                 var currentNode = dropPad.appendChild(temp);
                 dropPad.lastElementChild.setAttribute('app-value', imgDataOptions[opt].value);
-
             }
             // console.log('dropPad', dropPad);
         }
