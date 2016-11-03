@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/social-buttons.css">
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/custom-controls.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -117,6 +118,24 @@
             </div>
         </div>
         <span ><i data-controltype="collection">Collection</i></span>
+    </template>
+    <template id='extraOptionImgHandler'>
+        <div class="ctr-select-box" app-role="selectHandler">
+            <div app-role="selectbox" class="ctr-select-value" onclick="toggleShow(this)"> Select here
+            </div>
+            <div app-role="dropdown" class="ctr-select-down">
+                <div app-role="droppad">
+                </div>                
+            </div>
+        </div>
+    </template>
+    <template id='extraOptionImgItem'>
+        <div class="ctr-select-option" app-role="selectItem" onclick='getOptionImage(this)'>
+            <div class="s-img"><img app-role="attImg" src="" class="img-flag"></div>
+            <div class="s-content">
+                <label app-role="attName"></label>
+            </div>
+        </div>
     </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/createProduct.jpg') no-repeat top center;">

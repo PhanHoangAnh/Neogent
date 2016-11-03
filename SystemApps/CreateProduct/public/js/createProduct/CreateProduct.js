@@ -67,7 +67,6 @@ function createOptionSetPanel(optSet) {
 };
 
 function create_productAttributes(prop, destination) {
-    // console.log("component properties: ", prop);
     var _root;
     if (!destination) {
         _root = document.getElementById("productAttributes");
@@ -227,6 +226,31 @@ function createInputObject(node, cType, attributes, origin) {
         var rInput = node.querySelector('[data-controltype="textarea"]');
         rInput["DATASTORE"] = origin;
         rInput.addEventListener("change", getInputData, false);
+    } else if (cType == "ImageOptions") {
+        // Special case for ImageOptions
+        if (!attributes["ImageOptions"]) {
+            return;
+        }
+        var imgOpts = attributes["ImageOptions"];
+        inputObject = document.getElementById("extraOptionImgHandler").content;
+        var rObject = document.importNode(inputObject, true);
+        var describe = node.parentNode.querySelector('[data-controltype="describe"]');
+        node.insertBefore(rObject, describe);
+        var dropPad = node.querySelector('[app-role="droppad"]');
+        
+        for (var opt in imgOpts) {
+            //console.log(" Test: ", fields["ImageOptions"][opt]);
+            var item = document.getElementById('extraOptionImgItem').content;
+            var label = item.querySelector('[app-role="attName"]');
+            label.innerHTML = imgOpts[opt]['optName'];
+            var img = item.querySelector('[app-role = "attImg"]');
+            img.setAttribute('src', imgOpts[opt].img);
+            var temp = document.importNode(item, true);
+            var currentNode = dropPad.appendChild(temp);
+            dropPad.lastElementChild.setAttribute('app-value', imgOpts[opt].value);
+
+        }
+
     } else {
         inputObject = document.getElementById("standardInput").content;
         var input = inputObject.querySelector('[data-controltype="text"]');
@@ -274,6 +298,58 @@ function getInputFromOption(evt) {
         this.parentNode["DATASTORE"]["InputValue"] = inputValues;
     }
     // console.log(this.parentNode["DATASTORE"]["InputValue"])
+}
+
+function toggleShow(elem) {
+    // console.log(elem);
+    if (elem) {
+        elem.classList.toggle("active");
+        var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
+        dropdown.classList.toggle("open");
+    }
+    // detect current htmlNodeCopy for this exception
+    // console.log(elem);
+}
+
+function getOptionImage(evt) {
+    var selectHandler = getHandler(evt, "selectHandler");
+    // evt.stopPropagation();
+   
+    function getHandler(elem, att) {
+        // console.log(elem);
+        // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
+        if (elem.parentNode.getAttribute('app-role') == att) {
+            // console.log("finish : ", elem, elem.parentNode)
+            return elem.parentNode
+        } else {
+            return getHandler(elem.parentNode, att);
+        }
+    }
+
+    // console.log("imgOptionHandler parent: ", imgOptionHandler)
+    var selectbox = selectHandler.querySelector('[app-role="selectbox"]');
+    toggleShow(selectbox);
+    // remove all childs
+    while (selectbox.firstChild) {
+        selectbox.removeChild(selectbox.firstChild);
+    }
+    // clone this node
+    var cln = evt.cloneNode(true);
+    // remove action Listener
+    cln.onclick = null;
+    selectbox.appendChild(cln);
+    var bntBox = cln.querySelector('.s-button');
+    if (bntBox) {
+        bntBox.parentNode.removeChild(bntBox);
+    };
+    // change the css indicate selectedItem.
+    // remove current css of selected item
+    var curr = selectHandler.querySelector('.curr');
+    if (curr) {
+        curr.classList.remove('curr');
+    };
+    // ad this css for new element
+    evt.classList.add('curr');
 }
 
 var currentImageTarget;
@@ -404,207 +480,6 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
         // contentType:'application/json',
         complete: function(data, status, jqXHR) {
             // if (data.status == 401) {
-            //     window.location = "/";
-            // }
-            if (fn_cb) {
-
-                fn_cb(data.responseJSON);
-            }
-
-        }
-    });
-}
-
-function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
-    var _data = {
-        userName: uid,
-        password: token,
-        data: payload
-    };
-    aes_key = cryptoUtil.generateAESKey();
-    var json_data = {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
-    };
-
-    $.ajax({
-        // url: './userToken',
-        url: endpoint,
-        cache: false,
-        method: 'POST',
-        headers: { "cache-control": "no-cache" },
-        data: json_data,
-        // contentType:'application/json',
-        complete: function(data, status, jqXHR) {
-            if (fn_cb) {
-                fn_cb(data.responseJSON);
-            }
-
-        }
-    });
-}
-
-
-// function openIconModal(evt) {
-//     $(m_icon).modal("show");
-// }
-
-// function openBackgroundModal(evt) {
-//     $(m_wall).modal("show");
-// }
-
-// function initIcon(el) {
-//     options = {
-//         imageBox: '#iconImg',
-//         thumbBox: '#thumbIcon',
-//         spinner: '#spinnerIcon',
-//         imgSrc: ''
-//     }
-//     var reader = new FileReader();
-//     cropper = new cropbox(options, iconPreview);
-//     reader.onload = function(e) {
-//         options.imgSrc = e.target.result;
-//         cropper.resetOption(options);
-//     }
-//     reader.readAsDataURL(el.files[0]);
-//     //el.files = [];
-//     document.querySelector('#icon_btnZoomIn').addEventListener('click', function() {
-//         cropper.zoomIn();
-//     })
-//     document.querySelector('#icon_btnZoomOut').addEventListener('click', function() {
-//         cropper.zoomOut();
-//     })
-//     $('#m_icon').on('hidden.bs.modal', function() {
-//         // console.log('close modal:');
-//         document.getElementById('iconHolder').setAttribute('src', img_Icon);
-//         document.getElementById('logo').setAttribute('src', img_Icon);
-//         // upload icon
-//         // uploadImage("avatars");
-//     });
-//     $('#m_icon').on('shown.bs.modal', function() {
-//         cropper.resetOption(options);
-//     });
-
-//     function iconPreview(data) {
-//         //console.log('imgdata: ', data);
-//         img_Icon = data;
-//         document.getElementById('icon_preview').setAttribute('src', data);
-//         document.getElementById('icon_preview-md').setAttribute('src', data);
-//         document.getElementById('icon_preview-sm').setAttribute('src', data);
-//         //document.getElementById('Img_Avatar').setAttribute('src',data);
-//     }
-
-// };
-
-// var img_Icon;
-// var img_Wall;
-
-// function initWall(el) {
-//     // console.log("initWall..");    
-//     // document.getElementById("wallImg").style.height = screen.height + "px";
-//     // document.getElementById("thumbWall").style.height = screen.height + "px";
-//     options = {
-//         imageBox: '#wallImg',
-//         thumbBox: '#thumbWall',
-//         spinner: '#spinnerWall',
-//         imgSrc: ''
-//     }
-//     var reader = new FileReader();
-//     cropper = new cropbox(options, wallPreview);
-//     reader.onload = function(e) {
-//         options.imgSrc = e.target.result;
-//         cropper.resetOption(options);
-//     }
-//     reader.readAsDataURL(el.files[0]);
-//     //el.files = [];
-//     document.querySelector('#wall_btnZoomIn').addEventListener('click', function() {
-//         cropper.zoomIn();
-//     })
-//     document.querySelector('#wall_btnZoomOut').addEventListener('click', function() {
-//         cropper.zoomOut();
-//     })
-//     $('#m_wall').on('hidden.bs.modal', function() {
-
-//         var masthead = document.getElementById('masthead');
-//         var prop = "#f3f3f3 url('" + img_Wall + "') no-repeat right top"
-//         masthead.style.background = prop;
-
-//         masthead.classList.remove("hiddenElem");
-//         // masthead.addClass('start');
-//         setTimeout(function() {
-//             masthead.classList.add('start');
-//         }, 100);
-//         // upload wall
-//         // uploadImage("walls");
-
-//     });
-//     $('#m_wall').on('shown.bs.modal', function() {
-//         cropper.resetOption(options);
-//     });
-
-//     function wallPreview(data) {
-
-//         img_Wall = data;
-//         document.getElementById('wall_preview').setAttribute('src', data);
-//         document.getElementById('wall_preview-md').setAttribute('src', data);
-//         document.getElementById('wall_preview-sm').setAttribute('src', data);
-//         document.getElementById("openInput").classList.add("hiddenElem");
-//         document.getElementById('wallHolder').setAttribute('src', data);
-//     }
-
-// };
-
-function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
-    var _data = {
-        userName: uid,
-        password: fbToken
-    };
-    aes_key = cryptoUtil.generateAESKey();
-    var json_data = {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
-    };
-    // Make post request to getToken Endpoint
-    var currentUrl = '../../getToken';
-    $.ajax({
-        // url: './userToken',
-        url: currentUrl,
-        method: 'POST',
-        data: json_data,
-        // data: compObj,
-        complete: function(data, status, jqXHR) {
-            if (!data.responseJSON.errNum) {
-                var encrypted_app_token = data.responseJSON.encrypted_app_token;
-                var _app_token = cryptoUtil.aesDecryptor(encrypted_app_token, aes_key);
-                app_token = JSON.parse(_app_token).app_token;
-                localStorage.setItem("app_token", app_token);
-                if (fn_cb) {
-                    fn_cb(app_token);
-                }
-            }
-        }
-    });
-}
-
-function checkToken(uid, token, RSAPublicKey, fn_cb) {
-    var _data = {
-        userName: uid,
-        password: token
-    };
-    aes_key = cryptoUtil.generateAESKey();
-    var json_data = {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
-    };
-    var currentUrl = '../../checkToken';
-    $.ajax({
-        // url: './userToken',
-        url: currentUrl,
-        cache: false,
-        method: 'POST',
-        headers: { "cache-control": "no-cache" },
-        data: json_data,
-        // contentType:'application/json',
-        complete: function(data, status, jqXHR) {
-            console.log(data.responseJSON);
-            // if (data.status == 401 || !data.responseJSON.auth) {
             //     window.location = "/";
             // }
             if (fn_cb) {
