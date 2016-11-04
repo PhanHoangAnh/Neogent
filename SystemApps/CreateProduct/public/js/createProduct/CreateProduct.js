@@ -235,9 +235,9 @@ function createInputObject(node, cType, attributes, origin) {
         inputObject = document.getElementById("extraOptionImgHandler").content;
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
-        node.insertBefore(rObject, describe);
-        var dropPad = node.querySelector('[app-role="droppad"]');
-        
+        rObject = node.insertBefore(rObject, describe);
+        //rObject.focus();        
+        var dropPad = node.querySelector('[app-role="droppad"]');        
         for (var opt in imgOpts) {
             //console.log(" Test: ", fields["ImageOptions"][opt]);
             var item = document.getElementById('extraOptionImgItem').content;
@@ -248,7 +248,7 @@ function createInputObject(node, cType, attributes, origin) {
             var temp = document.importNode(item, true);
             var currentNode = dropPad.appendChild(temp);
             dropPad.lastElementChild.setAttribute('app-value', imgOpts[opt].value);
-
+            dropPad.lastElementChild.focus();
         }
 
     } else {
@@ -314,7 +314,7 @@ function toggleShow(elem) {
 function getOptionImage(evt) {
     var selectHandler = getHandler(evt, "selectHandler");
     // evt.stopPropagation();
-   
+
     function getHandler(elem, att) {
         // console.log(elem);
         // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {

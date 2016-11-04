@@ -39,7 +39,7 @@
 .ctr-select-option,
 .ctr-select-option .s-content {
     overflow: hidden;    
-    z-index: 10;
+    /*z-index: 10;*/
 }
 
 .ctr-select-value,

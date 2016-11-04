@@ -114,23 +114,26 @@
     <template id="imgInput">
         <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover; position:relative" data-controltype="img">
             <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
-            <div data-controltype="imgMask" style="position:relative;" >
+            <div data-controltype="imgMask" style="position:relative;" tabindex="0" >
             </div>
         </div>
         <span ><i data-controltype="collection">Collection</i></span>
     </template>
+    <!-- http://html.cita.illinois.edu/nav/form/text/index.php?example=11 -->
     <template id='extraOptionImgHandler'>
-        <div class="ctr-select-box" app-role="selectHandler">
-            <div app-role="selectbox" class="ctr-select-value" onclick="toggleShow(this)"> Select here
+        <span>
+            <div class="ctr-select-box" app-role="selectHandler" >
+                <div app-role="selectbox" class="ctr-select-value" onclick="toggleShow(this)" tabindex="0"> Select here
+                </div>
+                <div app-role="dropdown" class="ctr-select-down">
+                    <div app-role="droppad">
+                    </div>                
+                </div>
             </div>
-            <div app-role="dropdown" class="ctr-select-down">
-                <div app-role="droppad">
-                </div>                
-            </div>
-        </div>
+        </span>
     </template>
     <template id='extraOptionImgItem'>
-        <div class="ctr-select-option" app-role="selectItem" onclick='getOptionImage(this)'>
+        <div class="ctr-select-option" app-role="selectItem" onclick='getOptionImage(this)' tabindex="0">
             <div class="s-img"><img app-role="attImg" src="" class="img-flag"></div>
             <div class="s-content">
                 <label app-role="attName"></label>
