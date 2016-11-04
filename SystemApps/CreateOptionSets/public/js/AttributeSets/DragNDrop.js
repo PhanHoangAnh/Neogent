@@ -26,7 +26,7 @@ $(function() {
                 if (ui.item[0].getAttribute("app-role") == "optionSet") {
                     loadOptionSets(ui.item[0]["CUST"]);
 
-                }                
+                }
                 ui.sender.sortable("cancel");
             },
             over: function(e, ui) {
@@ -946,7 +946,6 @@ function toggleShow(elem) {
 
 var imgOptionHandler;
 var currentImgOptItem;
-var isAddNewImgOptItem = false;
 var currentDropPad;
 
 
@@ -993,9 +992,14 @@ function getOptionImage(evt) {
 }
 
 
-function addMoreOrEditImageOptions(elem) {
+function addMoreOrEditImageOptions(elem, event) {
 
+    event.stopPropagation();
+    
     var appRole = elem.getAttribute('app-role');
+    var rootElem = getHandler(elem, 'imgOptionHandler')
+    imgOptionHandler = rootElem.referParentElem;
+
     switch (appRole) {
         case "addMoreImgOption":
             console.log('1');
@@ -1005,19 +1009,32 @@ function addMoreOrEditImageOptions(elem) {
             ngOpt.imgSrc = '';
             neo_cropper.resetOption(ngOpt, 1);
             currentImgOptItem = {};
-            isAddNewImgOptItem = true;
             break;
         case "editImgOption":
-            console.log('2');
-            isAddNewImgOptItem = false;
-            break;
+            var itemHwd = getHandler(elem, "selectItem")
+            console.log('2 ', itemHwd);
+            return;
         case "deleteImgOption":
-            console.log('3');
-            break;
+            var itemHwd = getHandler(elem, "selectItem");
+            console.log('3 ', itemHwd);
+            // delete item in ImageOptions list of imgOptionHandler
+            var ImageOptions = null;
+            ImageOptions = imgOptionHandler.CUST['ImageOptions'];
+            var appValue = itemHwd.getAttribute("app-value");
+            // http://stackoverflow.com/questions/15287865/remove-array-element-based-on-object-property
+            if (appValue) {
+                ImageOptions = ImageOptions.filter(function(obj) {
+                    return obj.value.toString() !== appValue;
+                });
+            };
+            imgOptionHandler.CUST['ImageOptions'] = ImageOptions;
+            // console.log("After delete: ",appValue, imgOptionHandler.CUST['ImageOptions'], ImageOptions);
+            // remove itemHwd from it's parent
+            itemHwd.parentNode.removeChild(itemHwd);
+            return;
     }
 
-    var rootElem = getHandler(elem, 'imgOptionHandler')
-    imgOptionHandler = rootElem.referParentElem;
+
 
     //input_cover.querySelector('[app-role="droppad"]')
     currentDropPad = rootElem.querySelector('[app-role="droppad"]')
