@@ -774,13 +774,16 @@ function loadOptionSets(optSet) {
     for (var i in optSet.components) {
         var mockObj = {};
         for (var k in _data) {
-            if (_data[k]["Input Type"] == optSet.components[i]["data-controlType"]) {
+            if (optSet.components[i] && _data[k]["Input Type"] == optSet.components[i]["data-controlType"]) {
                 mockObj.fields = _data[k]["fields"];
                 break;
             }
         }
         for (var k in mockObj.fields) {
             var compareItem = optSet.components[i].attributes[k];
+            if (!compareItem) {
+                break;
+            }
             // Must be updated here Chipl
             if (k == "options") {
                 var optArr = compareItem.split('\n');
@@ -793,12 +796,15 @@ function loadOptionSets(optSet) {
             }
         }
         // mockObj.fields =
-        mockObj["Input Type"] = optSet.components[i]["data-controlType"];
-        mockObj["label"] = optSet.components[i]["attributes"]["label"];
-        // copy object to avoid the refer
-        var CUST = Object.assign({}, optSet["components"][i]["attributes"])
-        mockObj["CUST"] = CUST;
-        createSingleControlGroup(mockObj, true);
+        if (optSet.components[i]) {
+            mockObj["Input Type"] = optSet.components[i]["data-controlType"];
+            mockObj["label"] = optSet.components[i]["attributes"]["label"];
+            // copy object to avoid the refer
+            var CUST = Object.assign({}, optSet["components"][i]["attributes"])
+            mockObj["CUST"] = CUST;
+            createSingleControlGroup(mockObj, true);
+        }
+
     }
 }
 
@@ -807,19 +813,25 @@ function saveAttributeSets() {
     var sortableDiv = document.querySelector("#div2");
     var elementLists = sortableDiv.querySelectorAll("[id]");
     var printedList = [];
+    var exPayload = [];
     for (var elem in elementLists) {
-        if (elementLists[elem]["CUST"]) {
-            var jsonObj = {}
+        if (elementLists[elem]["CUST"] && elementLists[elem].getAttribute("data-controlType") != "ImageOptions") {
+            var jsonObj = {};
             jsonObj["data-controlType"] = elementLists[elem].getAttribute("data-controlType");
             jsonObj["attributes"] = elementLists[elem]["CUST"];
             printedList.push(jsonObj);
+        } else if (elementLists[elem]["CUST"] && elementLists[elem].getAttribute("data-controlType") == "ImageOptions") {
+            var jsonObj = {};
+            jsonObj["data-controlType"] = elementLists[elem].getAttribute("data-controlType");
+            jsonObj["attributes"] = elementLists[elem]["CUST"];
+            exPayload.push(jsonObj);
         }
     }
     compObj.components = printedList
         // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
     console.log(compObj);
-    postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb)
+    postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb, exPayload)
 
     function fn_cb(result) {
         console.log(result);
@@ -995,7 +1007,6 @@ function getOptionImage(evt) {
 function addMoreOrEditImageOptions(elem, event) {
 
     event.stopPropagation();
-    
     var appRole = elem.getAttribute('app-role');
     var rootElem = getHandler(elem, 'imgOptionHandler')
     imgOptionHandler = rootElem.referParentElem;

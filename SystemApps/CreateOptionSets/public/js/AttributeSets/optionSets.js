@@ -61,7 +61,8 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
     });
 }
 
-function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
+function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb, exPayload) {
+
     var _data = {
         userName: uid,
         password: token,
@@ -69,7 +70,8 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
     };
     aes_key = cryptoUtil.generateAESKey();
     var json_data = {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key),
+        exPayload: exPayload
     };
 
     $.ajax({

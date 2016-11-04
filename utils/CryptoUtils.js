@@ -16,6 +16,7 @@ var errObj = {
 }
 
 function decryptRequest(req, res, next) {
+
     var RSAKey = cryptico.RSAKey.parse(JSON.stringify(keyPair.private));
     // https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
     var encrypt_Request = req.body.data || req.query.token || req.headers['x-access-token'];
@@ -28,7 +29,7 @@ function decryptRequest(req, res, next) {
     }
     try {
         var DecryptionResult = cryptico.decrypt(encrypt_Request, RSAKey);
-        console.log("DecryptionResult: at /media/chipl/Storage/NodeJSRepository/Neogent/utils/CryptoUtils.js: line 31", DecryptionResult)
+        //console.log("DecryptionResult: at /media/chipl/Storage/NodeJSRepository/Neogent/utils/CryptoUtils.js: line 40", DecryptionResult);
         var DecryptRSA = JSON.parse(DecryptionResult.plaintext);
         var aes_key = DecryptRSA.key;
         delete DecryptRSA.key;
@@ -41,7 +42,9 @@ function decryptRequest(req, res, next) {
         req.body.uid = userName;
         req.body.token = password;
         req.body.key = aes_key;
+
         req.body.payload = DecryptRSA;
+        req.body.exPayload = req.body.exPayload
         next();
     } catch (err) {
         console.log('here', err);

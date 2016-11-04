@@ -50,8 +50,6 @@ objResult.return_id = null;
 router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next) {
     // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
 
-    //var optionSets = dbEngine.OptionSets();
-    // console.log("payload data: ", req.body.payload.data);
     if (!req.auth) {
         objResult.status = 4;
         objResult.err = "Unauthorized";
@@ -60,9 +58,14 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
         return;
     }
     var postData = req.body.payload.data;
+    var exPayload = req.body.exPayload
+    if (exPayload && exPayload instanceof Array) {
+        postData['components'].push.apply(postData['components'], req.body.exPayload)
+    }
     var optionSets = mongoose.model('OptionSets');
     var _id = postData.objId;
-    console.log("Not id ?", !_id);
+
+    //console.log("Not id ?", !_id);
     if (!_id) {
         var doc = new optionSets();
         doc._id = _id = mongoose.Types.ObjectId();
