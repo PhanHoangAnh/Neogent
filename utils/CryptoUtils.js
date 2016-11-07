@@ -44,7 +44,7 @@ function decryptRequest(req, res, next) {
         req.body.key = aes_key;
 
         req.body.payload = DecryptRSA;
-        req.body.exPayload = req.body.exPayload
+        //req.body.exPayload = req.body.exPayload
         next();
     } catch (err) {
         console.log('here', err);

@@ -945,16 +945,36 @@ function deleteSet() {
     }
 }
 //
-function toggleShow(elem) {
+function toggleShow(elem, event) {
     // console.log(elem);
     if (elem) {
         elem.classList.toggle("active");
         var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
         dropdown.classList.toggle("open");
     }
-    // detect current htmlNodeCopy for this exception
-    // console.log(elem);
 }
+
+function hideShow(elem) {
+    if (elem) {
+        elem.classList.remove("active");
+        var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
+        dropdown.classList.remove("open");
+    }
+}
+
+function activeShow(elem, event) {
+    if (elem) {
+        elem.classList.add("active");
+        var dropdown = elem.parentNode.querySelector('[app-role="dropdown"]');
+        dropdown.classList.add("open");
+    }
+}
+
+function itemFocuses(elem) {
+    console.log("Item focus: ", elem);
+}
+
+
 
 var imgOptionHandler;
 var currentImgOptItem;
