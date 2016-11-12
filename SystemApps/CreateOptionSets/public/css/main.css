@@ -1,1099 +1,1523 @@
 @font-face {
-  font-family: "RobotoCondensed-Regular";
-  src: url("../fonts/RobotoCondensed-Regular.eot");
-  src: url("../fonts/RobotoCondensed-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Regular.woff") format("woff"), url("../fonts/RobotoCondensed-Regular.ttf") format("truetype"), url("../fonts/RobotoCondensed-Regular.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "RobotoCondensed-Regular";
+    src: url("../fonts/RobotoCondensed-Regular.eot");
+    src: url("../fonts/RobotoCondensed-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Regular.woff") format("woff"), url("../fonts/RobotoCondensed-Regular.ttf") format("truetype"), url("../fonts/RobotoCondensed-Regular.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "RobotoCondensed-Bold";
-  src: url("../fonts/RobotoCondensed-Bold.eot");
-  src: url("../fonts/RobotoCondensed-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Bold.woff") format("woff"), url("../fonts/RobotoCondensed-Bold.ttf") format("truetype"), url("../fonts/RobotoCondensed-Bold.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "RobotoCondensed-Bold";
+    src: url("../fonts/RobotoCondensed-Bold.eot");
+    src: url("../fonts/RobotoCondensed-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Bold.woff") format("woff"), url("../fonts/RobotoCondensed-Bold.ttf") format("truetype"), url("../fonts/RobotoCondensed-Bold.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "RobotoCondensed-Light";
-  src: url("../fonts/RobotoCondensed-Light.eot");
-  src: url("../fonts/RobotoCondensed-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Light.woff") format("woff"), url("../fonts/RobotoCondensed-Light.ttf") format("truetype"), url("../fonts/RobotoCondensed-Light.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "RobotoCondensed-Light";
+    src: url("../fonts/RobotoCondensed-Light.eot");
+    src: url("../fonts/RobotoCondensed-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Light.woff") format("woff"), url("../fonts/RobotoCondensed-Light.ttf") format("truetype"), url("../fonts/RobotoCondensed-Light.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "RobotoCondensed-Italic";
-  src: url("../fonts/RobotoCondensed-Italic.eot");
-  src: url("../fonts/RobotoCondensed-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Italic.woff") format("woff"), url("../fonts/RobotoCondensed-Italic.ttf") format("truetype"), url("../fonts/RobotoCondensed-Italic.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "RobotoCondensed-Italic";
+    src: url("../fonts/RobotoCondensed-Italic.eot");
+    src: url("../fonts/RobotoCondensed-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-Italic.woff") format("woff"), url("../fonts/RobotoCondensed-Italic.ttf") format("truetype"), url("../fonts/RobotoCondensed-Italic.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "RobotoCondensed-BoldItalic";
-  src: url("../fonts/RobotoCondensed-BoldItalic.eot");
-  src: url("../fonts/RobotoCondensed-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-BoldItalic.woff") format("woff"), url("../fonts/RobotoCondensed-BoldItalic.ttf") format("truetype"), url("../fonts/RobotoCondensed-BoldItalic.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "RobotoCondensed-BoldItalic";
+    src: url("../fonts/RobotoCondensed-BoldItalic.eot");
+    src: url("../fonts/RobotoCondensed-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-BoldItalic.woff") format("woff"), url("../fonts/RobotoCondensed-BoldItalic.ttf") format("truetype"), url("../fonts/RobotoCondensed-BoldItalic.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "RobotoCondensed-LightItalic";
-  src: url("../fonts/RobotoCondensed-LightItalic.eot");
-  src: url("../fonts/RobotoCondensed-LightItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-LightItalic.woff") format("woff"), url("../fonts/RobotoCondensed-LightItalic.ttf") format("truetype"), url("../fonts/RobotoCondensed-LightItalic.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "RobotoCondensed-LightItalic";
+    src: url("../fonts/RobotoCondensed-LightItalic.eot");
+    src: url("../fonts/RobotoCondensed-LightItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoCondensed-LightItalic.woff") format("woff"), url("../fonts/RobotoCondensed-LightItalic.ttf") format("truetype"), url("../fonts/RobotoCondensed-LightItalic.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
 @font-face {
-  font-family: "Linearicons-Free";
-  src: url("../fonts/Linearicons-Free.eot");
-  src: url("../fonts/Linearicons-Free.eot?#iefix") format("embedded-opentype"), url("../fonts/Linearicons-Free.woff") format("woff"), url("../fonts/Linearicons-Free.ttf") format("truetype"), url("../fonts/Linearicons-Free.svg") format("svg");
-  font-weight: normal;
-  font-style: normal;
+    font-family: "Linearicons-Free";
+    src: url("../fonts/Linearicons-Free.eot");
+    src: url("../fonts/Linearicons-Free.eot?#iefix") format("embedded-opentype"), url("../fonts/Linearicons-Free.woff") format("woff"), url("../fonts/Linearicons-Free.ttf") format("truetype"), url("../fonts/Linearicons-Free.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
+
+
 /* line 32, ../scss/_fonts.scss */
+
 .lnr {
-  font-family: 'Linearicons-Free';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: 'Linearicons-Free';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
 
 /* line 36, ../scss/_fonts.scss */
+
 .lnr-home:before {
-  content: "\e800";
+    content: "\e800";
 }
+
 
 /* line 39, ../scss/_fonts.scss */
+
 .lnr-apartment:before {
-  content: "\e801";
+    content: "\e801";
 }
+
 
 /* line 42, ../scss/_fonts.scss */
+
 .lnr-pencil:before {
-  content: "\e802";
+    content: "\e802";
 }
+
 
 /* line 45, ../scss/_fonts.scss */
+
 .lnr-magic-wand:before {
-  content: "\e803";
+    content: "\e803";
 }
+
 
 /* line 48, ../scss/_fonts.scss */
+
 .lnr-drop:before {
-  content: "\e804";
+    content: "\e804";
 }
+
 
 /* line 51, ../scss/_fonts.scss */
+
 .lnr-lighter:before {
-  content: "\e805";
+    content: "\e805";
 }
+
 
 /* line 54, ../scss/_fonts.scss */
+
 .lnr-poop:before {
-  content: "\e806";
+    content: "\e806";
 }
+
 
 /* line 57, ../scss/_fonts.scss */
+
 .lnr-sun:before {
-  content: "\e807";
+    content: "\e807";
 }
+
 
 /* line 60, ../scss/_fonts.scss */
+
 .lnr-moon:before {
-  content: "\e808";
+    content: "\e808";
 }
+
 
 /* line 63, ../scss/_fonts.scss */
+
 .lnr-cloud:before {
-  content: "\e809";
+    content: "\e809";
 }
+
 
 /* line 66, ../scss/_fonts.scss */
+
 .lnr-cloud-upload:before {
-  content: "\e80a";
+    content: "\e80a";
 }
+
 
 /* line 69, ../scss/_fonts.scss */
+
 .lnr-cloud-download:before {
-  content: "\e80b";
+    content: "\e80b";
 }
+
 
 /* line 72, ../scss/_fonts.scss */
+
 .lnr-cloud-sync:before {
-  content: "\e80c";
+    content: "\e80c";
 }
+
 
 /* line 75, ../scss/_fonts.scss */
+
 .lnr-cloud-check:before {
-  content: "\e80d";
+    content: "\e80d";
 }
+
 
 /* line 78, ../scss/_fonts.scss */
+
 .lnr-database:before {
-  content: "\e80e";
+    content: "\e80e";
 }
+
 
 /* line 81, ../scss/_fonts.scss */
+
 .lnr-lock:before {
-  content: "\e80f";
+    content: "\e80f";
 }
+
 
 /* line 84, ../scss/_fonts.scss */
+
 .lnr-cog:before {
-  content: "\e810";
+    content: "\e810";
 }
+
 
 /* line 87, ../scss/_fonts.scss */
+
 .lnr-trash:before {
-  content: "\e811";
+    content: "\e811";
 }
+
 
 /* line 90, ../scss/_fonts.scss */
+
 .lnr-dice:before {
-  content: "\e812";
+    content: "\e812";
 }
+
 
 /* line 93, ../scss/_fonts.scss */
+
 .lnr-heart:before {
-  content: "\e813";
+    content: "\e813";
 }
+
 
 /* line 96, ../scss/_fonts.scss */
+
 .lnr-star:before {
-  content: "\e814";
+    content: "\e814";
 }
+
 
 /* line 99, ../scss/_fonts.scss */
+
 .lnr-star-half:before {
-  content: "\e815";
+    content: "\e815";
 }
+
 
 /* line 102, ../scss/_fonts.scss */
+
 .lnr-star-empty:before {
-  content: "\e816";
+    content: "\e816";
 }
+
 
 /* line 105, ../scss/_fonts.scss */
+
 .lnr-flag:before {
-  content: "\e817";
+    content: "\e817";
 }
+
 
 /* line 108, ../scss/_fonts.scss */
+
 .lnr-envelope:before {
-  content: "\e818";
+    content: "\e818";
 }
+
 
 /* line 111, ../scss/_fonts.scss */
+
 .lnr-paperclip:before {
-  content: "\e819";
+    content: "\e819";
 }
+
 
 /* line 114, ../scss/_fonts.scss */
+
 .lnr-inbox:before {
-  content: "\e81a";
+    content: "\e81a";
 }
+
 
 /* line 117, ../scss/_fonts.scss */
+
 .lnr-eye:before {
-  content: "\e81b";
+    content: "\e81b";
 }
+
 
 /* line 120, ../scss/_fonts.scss */
+
 .lnr-printer:before {
-  content: "\e81c";
+    content: "\e81c";
 }
+
 
 /* line 123, ../scss/_fonts.scss */
+
 .lnr-file-empty:before {
-  content: "\e81d";
+    content: "\e81d";
 }
+
 
 /* line 126, ../scss/_fonts.scss */
+
 .lnr-file-add:before {
-  content: "\e81e";
+    content: "\e81e";
 }
+
 
 /* line 129, ../scss/_fonts.scss */
+
 .lnr-enter:before {
-  content: "\e81f";
+    content: "\e81f";
 }
+
 
 /* line 132, ../scss/_fonts.scss */
+
 .lnr-exit:before {
-  content: "\e820";
+    content: "\e820";
 }
+
 
 /* line 135, ../scss/_fonts.scss */
+
 .lnr-graduation-hat:before {
-  content: "\e821";
+    content: "\e821";
 }
+
 
 /* line 138, ../scss/_fonts.scss */
+
 .lnr-license:before {
-  content: "\e822";
+    content: "\e822";
 }
+
 
 /* line 141, ../scss/_fonts.scss */
+
 .lnr-music-note:before {
-  content: "\e823";
+    content: "\e823";
 }
+
 
 /* line 144, ../scss/_fonts.scss */
+
 .lnr-film-play:before {
-  content: "\e824";
+    content: "\e824";
 }
+
 
 /* line 147, ../scss/_fonts.scss */
+
 .lnr-camera-video:before {
-  content: "\e825";
+    content: "\e825";
 }
+
 
 /* line 150, ../scss/_fonts.scss */
+
 .lnr-camera:before {
-  content: "\e826";
+    content: "\e826";
 }
+
 
 /* line 153, ../scss/_fonts.scss */
+
 .lnr-picture:before {
-  content: "\e827";
+    content: "\e827";
 }
+
 
 /* line 156, ../scss/_fonts.scss */
+
 .lnr-book:before {
-  content: "\e828";
+    content: "\e828";
 }
+
 
 /* line 159, ../scss/_fonts.scss */
+
 .lnr-bookmark:before {
-  content: "\e829";
+    content: "\e829";
 }
+
 
 /* line 162, ../scss/_fonts.scss */
+
 .lnr-user:before {
-  content: "\e82a";
+    content: "\e82a";
 }
+
 
 /* line 165, ../scss/_fonts.scss */
+
 .lnr-users:before {
-  content: "\e82b";
+    content: "\e82b";
 }
+
 
 /* line 168, ../scss/_fonts.scss */
+
 .lnr-shirt:before {
-  content: "\e82c";
+    content: "\e82c";
 }
+
 
 /* line 171, ../scss/_fonts.scss */
+
 .lnr-store:before {
-  content: "\e82d";
+    content: "\e82d";
 }
+
 
 /* line 174, ../scss/_fonts.scss */
+
 .lnr-cart:before {
-  content: "\e82e";
+    content: "\e82e";
 }
+
 
 /* line 177, ../scss/_fonts.scss */
+
 .lnr-tag:before {
-  content: "\e82f";
+    content: "\e82f";
 }
+
 
 /* line 180, ../scss/_fonts.scss */
+
 .lnr-phone-handset:before {
-  content: "\e830";
+    content: "\e830";
 }
+
 
 /* line 183, ../scss/_fonts.scss */
+
 .lnr-phone:before {
-  content: "\e831";
+    content: "\e831";
 }
+
 
 /* line 186, ../scss/_fonts.scss */
+
 .lnr-pushpin:before {
-  content: "\e832";
+    content: "\e832";
 }
+
 
 /* line 189, ../scss/_fonts.scss */
+
 .lnr-map-marker:before {
-  content: "\e833";
+    content: "\e833";
 }
+
 
 /* line 192, ../scss/_fonts.scss */
+
 .lnr-map:before {
-  content: "\e834";
+    content: "\e834";
 }
+
 
 /* line 195, ../scss/_fonts.scss */
+
 .lnr-location:before {
-  content: "\e835";
+    content: "\e835";
 }
+
 
 /* line 198, ../scss/_fonts.scss */
+
 .lnr-calendar-full:before {
-  content: "\e836";
+    content: "\e836";
 }
+
 
 /* line 201, ../scss/_fonts.scss */
+
 .lnr-keyboard:before {
-  content: "\e837";
+    content: "\e837";
 }
+
 
 /* line 204, ../scss/_fonts.scss */
+
 .lnr-spell-check:before {
-  content: "\e838";
+    content: "\e838";
 }
+
 
 /* line 207, ../scss/_fonts.scss */
+
 .lnr-screen:before {
-  content: "\e839";
+    content: "\e839";
 }
+
 
 /* line 210, ../scss/_fonts.scss */
+
 .lnr-smartphone:before {
-  content: "\e83a";
+    content: "\e83a";
 }
+
 
 /* line 213, ../scss/_fonts.scss */
+
 .lnr-tablet:before {
-  content: "\e83b";
+    content: "\e83b";
 }
+
 
 /* line 216, ../scss/_fonts.scss */
+
 .lnr-laptop:before {
-  content: "\e83c";
+    content: "\e83c";
 }
+
 
 /* line 219, ../scss/_fonts.scss */
+
 .lnr-laptop-phone:before {
-  content: "\e83d";
+    content: "\e83d";
 }
+
 
 /* line 222, ../scss/_fonts.scss */
+
 .lnr-power-switch:before {
-  content: "\e83e";
+    content: "\e83e";
 }
+
 
 /* line 225, ../scss/_fonts.scss */
+
 .lnr-bubble:before {
-  content: "\e83f";
+    content: "\e83f";
 }
+
 
 /* line 228, ../scss/_fonts.scss */
+
 .lnr-heart-pulse:before {
-  content: "\e840";
+    content: "\e840";
 }
+
 
 /* line 231, ../scss/_fonts.scss */
+
 .lnr-construction:before {
-  content: "\e841";
+    content: "\e841";
 }
+
 
 /* line 234, ../scss/_fonts.scss */
+
 .lnr-pie-chart:before {
-  content: "\e842";
+    content: "\e842";
 }
+
 
 /* line 237, ../scss/_fonts.scss */
+
 .lnr-chart-bars:before {
-  content: "\e843";
+    content: "\e843";
 }
+
 
 /* line 240, ../scss/_fonts.scss */
+
 .lnr-gift:before {
-  content: "\e844";
+    content: "\e844";
 }
+
 
 /* line 243, ../scss/_fonts.scss */
+
 .lnr-diamond:before {
-  content: "\e845";
+    content: "\e845";
 }
+
 
 /* line 246, ../scss/_fonts.scss */
+
 .lnr-linearicons:before {
-  content: "\e846";
+    content: "\e846";
 }
+
 
 /* line 249, ../scss/_fonts.scss */
+
 .lnr-dinner:before {
-  content: "\e847";
+    content: "\e847";
 }
+
 
 /* line 252, ../scss/_fonts.scss */
+
 .lnr-coffee-cup:before {
-  content: "\e848";
+    content: "\e848";
 }
+
 
 /* line 255, ../scss/_fonts.scss */
+
 .lnr-leaf:before {
-  content: "\e849";
+    content: "\e849";
 }
+
 
 /* line 258, ../scss/_fonts.scss */
+
 .lnr-paw:before {
-  content: "\e84a";
+    content: "\e84a";
 }
+
 
 /* line 261, ../scss/_fonts.scss */
+
 .lnr-rocket:before {
-  content: "\e84b";
+    content: "\e84b";
 }
+
 
 /* line 264, ../scss/_fonts.scss */
+
 .lnr-briefcase:before {
-  content: "\e84c";
+    content: "\e84c";
 }
+
 
 /* line 267, ../scss/_fonts.scss */
+
 .lnr-bus:before {
-  content: "\e84d";
+    content: "\e84d";
 }
+
 
 /* line 270, ../scss/_fonts.scss */
+
 .lnr-car:before {
-  content: "\e84e";
+    content: "\e84e";
 }
+
 
 /* line 273, ../scss/_fonts.scss */
+
 .lnr-train:before {
-  content: "\e84f";
+    content: "\e84f";
 }
+
 
 /* line 276, ../scss/_fonts.scss */
+
 .lnr-bicycle:before {
-  content: "\e850";
+    content: "\e850";
 }
+
 
 /* line 279, ../scss/_fonts.scss */
+
 .lnr-wheelchair:before {
-  content: "\e851";
+    content: "\e851";
 }
+
 
 /* line 282, ../scss/_fonts.scss */
+
 .lnr-select:before {
-  content: "\e852";
+    content: "\e852";
 }
+
 
 /* line 285, ../scss/_fonts.scss */
+
 .lnr-earth:before {
-  content: "\e853";
+    content: "\e853";
 }
+
 
 /* line 288, ../scss/_fonts.scss */
+
 .lnr-smile:before {
-  content: "\e854";
+    content: "\e854";
 }
+
 
 /* line 291, ../scss/_fonts.scss */
+
 .lnr-sad:before {
-  content: "\e855";
+    content: "\e855";
 }
+
 
 /* line 294, ../scss/_fonts.scss */
+
 .lnr-neutral:before {
-  content: "\e856";
+    content: "\e856";
 }
+
 
 /* line 297, ../scss/_fonts.scss */
+
 .lnr-mustache:before {
-  content: "\e857";
+    content: "\e857";
 }
+
 
 /* line 300, ../scss/_fonts.scss */
+
 .lnr-alarm:before {
-  content: "\e858";
+    content: "\e858";
 }
+
 
 /* line 303, ../scss/_fonts.scss */
+
 .lnr-bullhorn:before {
-  content: "\e859";
+    content: "\e859";
 }
+
 
 /* line 306, ../scss/_fonts.scss */
+
 .lnr-volume-high:before {
-  content: "\e85a";
+    content: "\e85a";
 }
+
 
 /* line 309, ../scss/_fonts.scss */
+
 .lnr-volume-medium:before {
-  content: "\e85b";
+    content: "\e85b";
 }
+
 
 /* line 312, ../scss/_fonts.scss */
+
 .lnr-volume-low:before {
-  content: "\e85c";
+    content: "\e85c";
 }
+
 
 /* line 315, ../scss/_fonts.scss */
+
 .lnr-volume:before {
-  content: "\e85d";
+    content: "\e85d";
 }
+
 
 /* line 318, ../scss/_fonts.scss */
+
 .lnr-mic:before {
-  content: "\e85e";
+    content: "\e85e";
 }
+
 
 /* line 321, ../scss/_fonts.scss */
+
 .lnr-hourglass:before {
-  content: "\e85f";
+    content: "\e85f";
 }
+
 
 /* line 324, ../scss/_fonts.scss */
+
 .lnr-undo:before {
-  content: "\e860";
+    content: "\e860";
 }
+
 
 /* line 327, ../scss/_fonts.scss */
+
 .lnr-redo:before {
-  content: "\e861";
+    content: "\e861";
 }
+
 
 /* line 330, ../scss/_fonts.scss */
+
 .lnr-sync:before {
-  content: "\e862";
+    content: "\e862";
 }
+
 
 /* line 333, ../scss/_fonts.scss */
+
 .lnr-history:before {
-  content: "\e863";
+    content: "\e863";
 }
+
 
 /* line 336, ../scss/_fonts.scss */
+
 .lnr-clock:before {
-  content: "\e864";
+    content: "\e864";
 }
+
 
 /* line 339, ../scss/_fonts.scss */
+
 .lnr-download:before {
-  content: "\e865";
+    content: "\e865";
 }
+
 
 /* line 342, ../scss/_fonts.scss */
+
 .lnr-upload:before {
-  content: "\e866";
+    content: "\e866";
 }
+
 
 /* line 345, ../scss/_fonts.scss */
+
 .lnr-enter-down:before {
-  content: "\e867";
+    content: "\e867";
 }
+
 
 /* line 348, ../scss/_fonts.scss */
+
 .lnr-exit-up:before {
-  content: "\e868";
+    content: "\e868";
 }
+
 
 /* line 351, ../scss/_fonts.scss */
+
 .lnr-bug:before {
-  content: "\e869";
+    content: "\e869";
 }
+
 
 /* line 354, ../scss/_fonts.scss */
+
 .lnr-code:before {
-  content: "\e86a";
+    content: "\e86a";
 }
+
 
 /* line 357, ../scss/_fonts.scss */
+
 .lnr-link:before {
-  content: "\e86b";
+    content: "\e86b";
 }
+
 
 /* line 360, ../scss/_fonts.scss */
+
 .lnr-unlink:before {
-  content: "\e86c";
+    content: "\e86c";
 }
+
 
 /* line 363, ../scss/_fonts.scss */
+
 .lnr-thumbs-up:before {
-  content: "\e86d";
+    content: "\e86d";
 }
+
 
 /* line 366, ../scss/_fonts.scss */
+
 .lnr-thumbs-down:before {
-  content: "\e86e";
+    content: "\e86e";
 }
+
 
 /* line 369, ../scss/_fonts.scss */
+
 .lnr-magnifier:before {
-  content: "\e86f";
+    content: "\e86f";
 }
+
 
 /* line 372, ../scss/_fonts.scss */
+
 .lnr-cross:before {
-  content: "\e870";
+    content: "\e870";
 }
+
 
 /* line 375, ../scss/_fonts.scss */
+
 .lnr-menu:before {
-  content: "\e871";
+    content: "\e871";
 }
+
 
 /* line 378, ../scss/_fonts.scss */
+
 .lnr-list:before {
-  content: "\e872";
+    content: "\e872";
 }
+
 
 /* line 381, ../scss/_fonts.scss */
+
 .lnr-chevron-up:before {
-  content: "\e873";
+    content: "\e873";
 }
+
 
 /* line 384, ../scss/_fonts.scss */
+
 .lnr-chevron-down:before {
-  content: "\e874";
+    content: "\e874";
 }
+
 
 /* line 387, ../scss/_fonts.scss */
+
 .lnr-chevron-left:before {
-  content: "\e875";
+    content: "\e875";
 }
+
 
 /* line 390, ../scss/_fonts.scss */
+
 .lnr-chevron-right:before {
-  content: "\e876";
+    content: "\e876";
 }
+
 
 /* line 393, ../scss/_fonts.scss */
+
 .lnr-arrow-up:before {
-  content: "\e877";
+    content: "\e877";
 }
+
 
 /* line 396, ../scss/_fonts.scss */
+
 .lnr-arrow-down:before {
-  content: "\e878";
+    content: "\e878";
 }
+
 
 /* line 399, ../scss/_fonts.scss */
+
 .lnr-arrow-left:before {
-  content: "\e879";
+    content: "\e879";
 }
+
 
 /* line 402, ../scss/_fonts.scss */
+
 .lnr-arrow-right:before {
-  content: "\e87a";
+    content: "\e87a";
 }
+
 
 /* line 405, ../scss/_fonts.scss */
+
 .lnr-move:before {
-  content: "\e87b";
+    content: "\e87b";
 }
+
 
 /* line 408, ../scss/_fonts.scss */
+
 .lnr-warning:before {
-  content: "\e87c";
+    content: "\e87c";
 }
+
 
 /* line 411, ../scss/_fonts.scss */
+
 .lnr-question-circle:before {
-  content: "\e87d";
+    content: "\e87d";
 }
+
 
 /* line 414, ../scss/_fonts.scss */
+
 .lnr-menu-circle:before {
-  content: "\e87e";
+    content: "\e87e";
 }
+
 
 /* line 417, ../scss/_fonts.scss */
+
 .lnr-checkmark-circle:before {
-  content: "\e87f";
+    content: "\e87f";
 }
+
 
 /* line 420, ../scss/_fonts.scss */
+
 .lnr-cross-circle:before {
-  content: "\e880";
+    content: "\e880";
 }
+
 
 /* line 423, ../scss/_fonts.scss */
+
 .lnr-plus-circle:before {
-  content: "\e881";
+    content: "\e881";
 }
+
 
 /* line 426, ../scss/_fonts.scss */
+
 .lnr-circle-minus:before {
-  content: "\e882";
+    content: "\e882";
 }
+
 
 /* line 429, ../scss/_fonts.scss */
+
 .lnr-arrow-up-circle:before {
-  content: "\e883";
+    content: "\e883";
 }
+
 
 /* line 432, ../scss/_fonts.scss */
+
 .lnr-arrow-down-circle:before {
-  content: "\e884";
+    content: "\e884";
 }
+
 
 /* line 435, ../scss/_fonts.scss */
+
 .lnr-arrow-left-circle:before {
-  content: "\e885";
+    content: "\e885";
 }
+
 
 /* line 438, ../scss/_fonts.scss */
+
 .lnr-arrow-right-circle:before {
-  content: "\e886";
+    content: "\e886";
 }
+
 
 /* line 441, ../scss/_fonts.scss */
+
 .lnr-chevron-up-circle:before {
-  content: "\e887";
+    content: "\e887";
 }
+
 
 /* line 444, ../scss/_fonts.scss */
+
 .lnr-chevron-down-circle:before {
-  content: "\e888";
+    content: "\e888";
 }
+
 
 /* line 447, ../scss/_fonts.scss */
+
 .lnr-chevron-left-circle:before {
-  content: "\e889";
+    content: "\e889";
 }
+
 
 /* line 450, ../scss/_fonts.scss */
+
 .lnr-chevron-right-circle:before {
-  content: "\e88a";
+    content: "\e88a";
 }
+
 
 /* line 453, ../scss/_fonts.scss */
+
 .lnr-crop:before {
-  content: "\e88b";
+    content: "\e88b";
 }
+
 
 /* line 456, ../scss/_fonts.scss */
+
 .lnr-frame-expand:before {
-  content: "\e88c";
+    content: "\e88c";
 }
+
 
 /* line 459, ../scss/_fonts.scss */
+
 .lnr-frame-contract:before {
-  content: "\e88d";
+    content: "\e88d";
 }
+
 
 /* line 462, ../scss/_fonts.scss */
+
 .lnr-layers:before {
-  content: "\e88e";
+    content: "\e88e";
 }
+
 
 /* line 465, ../scss/_fonts.scss */
+
 .lnr-funnel:before {
-  content: "\e88f";
+    content: "\e88f";
 }
+
 
 /* line 468, ../scss/_fonts.scss */
+
 .lnr-text-format:before {
-  content: "\e890";
+    content: "\e890";
 }
+
 
 /* line 471, ../scss/_fonts.scss */
+
 .lnr-text-format-remove:before {
-  content: "\e891";
+    content: "\e891";
 }
+
 
 /* line 474, ../scss/_fonts.scss */
+
 .lnr-text-size:before {
-  content: "\e892";
+    content: "\e892";
 }
+
 
 /* line 477, ../scss/_fonts.scss */
+
 .lnr-bold:before {
-  content: "\e893";
+    content: "\e893";
 }
+
 
 /* line 480, ../scss/_fonts.scss */
+
 .lnr-italic:before {
-  content: "\e894";
+    content: "\e894";
 }
+
 
 /* line 483, ../scss/_fonts.scss */
+
 .lnr-underline:before {
-  content: "\e895";
+    content: "\e895";
 }
+
 
 /* line 486, ../scss/_fonts.scss */
+
 .lnr-strikethrough:before {
-  content: "\e896";
+    content: "\e896";
 }
+
 
 /* line 489, ../scss/_fonts.scss */
+
 .lnr-highlight:before {
-  content: "\e897";
+    content: "\e897";
 }
+
 
 /* line 492, ../scss/_fonts.scss */
+
 .lnr-text-align-left:before {
-  content: "\e898";
+    content: "\e898";
 }
+
 
 /* line 495, ../scss/_fonts.scss */
+
 .lnr-text-align-center:before {
-  content: "\e899";
+    content: "\e899";
 }
+
 
 /* line 498, ../scss/_fonts.scss */
+
 .lnr-text-align-right:before {
-  content: "\e89a";
+    content: "\e89a";
 }
+
 
 /* line 501, ../scss/_fonts.scss */
+
 .lnr-text-align-justify:before {
-  content: "\e89b";
+    content: "\e89b";
 }
+
 
 /* line 504, ../scss/_fonts.scss */
+
 .lnr-line-spacing:before {
-  content: "\e89c";
+    content: "\e89c";
 }
+
 
 /* line 507, ../scss/_fonts.scss */
+
 .lnr-indent-increase:before {
-  content: "\e89d";
+    content: "\e89d";
 }
+
 
 /* line 510, ../scss/_fonts.scss */
+
 .lnr-indent-decrease:before {
-  content: "\e89e";
+    content: "\e89e";
 }
+
 
 /* line 513, ../scss/_fonts.scss */
+
 .lnr-pilcrow:before {
-  content: "\e89f";
+    content: "\e89f";
 }
+
 
 /* line 516, ../scss/_fonts.scss */
+
 .lnr-direction-ltr:before {
-  content: "\e8a0";
+    content: "\e8a0";
 }
+
 
 /* line 519, ../scss/_fonts.scss */
+
 .lnr-direction-rtl:before {
-  content: "\e8a1";
+    content: "\e8a1";
 }
+
 
 /* line 522, ../scss/_fonts.scss */
+
 .lnr-page-break:before {
-  content: "\e8a2";
+    content: "\e8a2";
 }
+
 
 /* line 525, ../scss/_fonts.scss */
+
 .lnr-sort-alpha-asc:before {
-  content: "\e8a3";
+    content: "\e8a3";
 }
+
 
 /* line 528, ../scss/_fonts.scss */
+
 .lnr-sort-amount-asc:before {
-  content: "\e8a4";
+    content: "\e8a4";
 }
+
 
 /* line 531, ../scss/_fonts.scss */
+
 .lnr-hand:before {
-  content: "\e8a5";
+    content: "\e8a5";
 }
+
 
 /* line 534, ../scss/_fonts.scss */
+
 .lnr-pointer-up:before {
-  content: "\e8a6";
+    content: "\e8a6";
 }
+
 
 /* line 537, ../scss/_fonts.scss */
+
 .lnr-pointer-right:before {
-  content: "\e8a7";
+    content: "\e8a7";
 }
+
 
 /* line 540, ../scss/_fonts.scss */
+
 .lnr-pointer-down:before {
-  content: "\e8a8";
+    content: "\e8a8";
 }
+
 
 /* line 543, ../scss/_fonts.scss */
+
 .lnr-pointer-left:before {
-  content: "\e8a9";
+    content: "\e8a9";
 }
+
 
 /* line 2, ../scss/_animates.scss */
+
 #phasebeam {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
+
 
 /* line 11, ../scss/_animates.scss */
+
 #phasebeam canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
+
 /* line 20, ../scss/_animates.scss */
+
 .animatedIcon {
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: iconAni 2s infinite;
-  /* Safari 4+ */
-  -moz-animation: iconAni 2s infinite;
-  /* Fx 5+ */
-  -o-animation: iconAni 2s infinite;
-  /* Opera 12+ */
-  animation: iconAni 2s infinite;
-  /* IE 10+, Fx 29*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: iconAni 2s infinite;
+    /* Safari 4+ */
+    -moz-animation: iconAni 2s infinite;
+    /* Fx 5+ */
+    -o-animation: iconAni 2s infinite;
+    /* Opera 12+ */
+    animation: iconAni 2s infinite;
+    /* IE 10+, Fx 29*/
 }
 
 @-webkit-keyframes iconAni {
-  0% {
-    background-color: #FFF;
-    margin-top: 0px;
-  }
-  50% {
-    background-color: #5CB85C;
-    margin-top: 25px;
-  }
-  100% {
-    background-color: #F0a;
-    margin-top: 10px;
-  }
+    0% {
+        background-color: #FFF;
+        margin-top: 0px;
+    }
+    50% {
+        background-color: #5CB85C;
+        margin-top: 25px;
+    }
+    100% {
+        background-color: #F0a;
+        margin-top: 10px;
+    }
 }
+
 @-moz-keyframes iconAni {
-  0% {
-    background-color: #FFF;
-    margin-top: 0px;
-  }
-  50% {
-    background-color: #5CB85C;
-    margin-top: 25px;
-  }
-  100% {
-    background-color: #F0a;
-    margin-top: 10px;
-  }
+    0% {
+        background-color: #FFF;
+        margin-top: 0px;
+    }
+    50% {
+        background-color: #5CB85C;
+        margin-top: 25px;
+    }
+    100% {
+        background-color: #F0a;
+        margin-top: 10px;
+    }
 }
+
 @-o-keyframes iconAni {
-  0% {
-    background-color: #FFF;
-    margin-top: 0px;
-  }
-  50% {
-    background-color: #5CB85C;
-    margin-top: 25px;
-  }
-  100% {
-    background-color: #F0a;
-    margin-top: 10px;
-  }
+    0% {
+        background-color: #FFF;
+        margin-top: 0px;
+    }
+    50% {
+        background-color: #5CB85C;
+        margin-top: 25px;
+    }
+    100% {
+        background-color: #F0a;
+        margin-top: 10px;
+    }
 }
+
 @keyframes iconAni {
-  0% {
-    background-color: #FFF;
-    margin-top: 0px;
-  }
-  50% {
-    background-color: #5CB85C;
-    margin-top: 25px;
-  }
-  100% {
-    background-color: #F0a;
-    margin-top: 10px;
-  }
+    0% {
+        background-color: #FFF;
+        margin-top: 0px;
+    }
+    50% {
+        background-color: #5CB85C;
+        margin-top: 25px;
+    }
+    100% {
+        background-color: #F0a;
+        margin-top: 10px;
+    }
 }
+
+
 /* line 2, ../scss/_common.scss */
-html, body {
-  min-height: 100%;
+
+html,
+body {
+    min-height: 100%;
 }
+
 
 /* line 5, ../scss/_common.scss */
-body, header {
-  background-color: #000;
+
+body,
+header {
+    background-color: #000;
 }
+
 
 /* line 9, ../scss/_common.scss */
-*:hover, *:active, *:focus, img:hover, img:active, img:focus, a:hover, a:active, a:focus {
-  outline: none;
+
+*:hover,
+*:active,
+*:focus,
+img:hover,
+img:active,
+img:focus,
+a:hover,
+a:active,
+a:focus {
+    outline: none;
 }
+
 
 /* line 13, ../scss/_common.scss */
+
 img {
-  border: none;
-  vertical-align: middle;
+    border: none;
+    vertical-align: middle;
 }
+
 
 /* line 18, ../scss/_common.scss */
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "RobotoCondensed-Regular", sans-serif;
-  font-weight: normal;
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "RobotoCondensed-Regular", sans-serif;
+    font-weight: normal;
 }
+
 
 /* line 22, ../scss/_common.scss */
-strong, b {
-  font-family: "RobotoCondensed-Bold", sans-serif;
-  font-weight: normal;
+
+strong,
+b {
+    font-family: "RobotoCondensed-Bold", sans-serif;
+    font-weight: normal;
 }
+
 
 /* line 26, ../scss/_common.scss */
+
 em {
-  font-family: "RobotoCondensed-Italic", sans-serif;
-  font-style: normal;
+    font-family: "RobotoCondensed-Italic", sans-serif;
+    font-style: normal;
 }
+
 
 /* line 32, ../scss/_common.scss */
-*::-webkit-input-placeholder, .form-control::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 1;
+
+*::-webkit-input-placeholder,
+.form-control::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 1;
 }
+
 
 /* line 35, ../scss/_common.scss */
-*:-moz-placeholder, .form-control:-moz-placeholder {
-  /*Firefox 18-*/
-  color: inherit;
-  opacity: 1;
+
+*:-moz-placeholder,
+.form-control:-moz-placeholder {
+    /*Firefox 18-*/
+    color: inherit;
+    opacity: 1;
 }
+
 
 /* line 38, ../scss/_common.scss */
-*::-moz-placeholder, .form-control::-moz-placeholder {
-  /*Firefox 19+*/
-  color: inherit;
-  opacity: 1;
+
+*::-moz-placeholder,
+.form-control::-moz-placeholder {
+    /*Firefox 19+*/
+    color: inherit;
+    opacity: 1;
 }
+
 
 /* line 41, ../scss/_common.scss */
-*:-ms-input-placeholder, .form-control:-ms-input-placeholder {
-  color: inherit;
-  opacity: 1;
+
+*:-ms-input-placeholder,
+.form-control:-ms-input-placeholder {
+    color: inherit;
+    opacity: 1;
 }
+
 
 /* line 43, ../scss/_common.scss */
-*, .form-control {
-  /*FF Fix*/
+
+*,
+.form-control {
+    /*FF Fix*/
 }
+
+
 /* line 44, ../scss/_common.scss */
-*::-moz-focus-inner, .form-control::-moz-focus-inner {
-  outline: none;
-  border: 0;
-  padding: 0;
+
+*::-moz-focus-inner,
+.form-control::-moz-focus-inner {
+    outline: none;
+    border: 0;
+    padding: 0;
 }
+
 
 /* line 47, ../scss/_common.scss */
+
 .btn {
-  position: relative;
+    position: relative;
 }
+
 
 /* line 48, ../scss/_common.scss */
-.form-control, .btn {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+
+.form-control,
+.btn {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
 }
+
 
 /* line 49, ../scss/_common.scss */
+
 label {
-  font-weight: normal;
+    font-weight: normal;
 }
 
+
 /* line 51, ../scss/_common.scss */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -1104,18 +1528,21 @@ input[type="number"],
 input[type="tel"],
 input[type="search"],
 textarea {
-  font-family: "RobotoCondensed-Regular", sans-serif;
-  padding: 6px 12px;
-  font-size: 14px;
-  color: #555;
-  border-radius: 2px;
-  border: #AAA solid 1px;
-  background-color: #FFF;
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    font-family: "RobotoCondensed-Regular", sans-serif;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+    border-radius: 2px;
+    border: #AAA solid 1px;
+    background-color: #FFF;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+
 /* line 71, ../scss/_common.scss */
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
@@ -1126,12 +1553,14 @@ input[type="number"]:focus,
 input[type="tel"]:focus,
 input[type="search"]:focus,
 textarea:focus {
-  -webkit-box-shadow: 0px 0px 9px 0px rgba(40, 96, 144, 0.63);
-  -moz-box-shadow: 0px 0px 9px 0px rgba(40, 96, 144, 0.63);
-  box-shadow: 0px 0px 9px 0px rgba(40, 96, 144, 0.63);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(40, 96, 144, 0.63);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(40, 96, 144, 0.63);
+    box-shadow: 0px 0px 9px 0px rgba(40, 96, 144, 0.63);
 }
 
+
 /* line 77, ../scss/_common.scss */
+
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -1141,458 +1570,653 @@ input[type="week"],
 input[type="number"],
 input[type="tel"],
 input[type="search"] {
-  height: 34px;
-  line-height: 1.42857143;
+    height: 34px;
+    line-height: 1.42857143;
 }
 
 @media only screen and (max-width: 565px) {
-  /* line 91, ../scss/_common.scss */
-  h1, .h1 {
-    font-size: 30px;
-  }
+    /* line 91, ../scss/_common.scss */
+    h1,
+    .h1 {
+        font-size: 30px;
+    }
+    /* line 92, ../scss/_common.scss */
+    h4,
+    .h4 {
+        font-size: 16px;
+    }
+}
 
-  /* line 92, ../scss/_common.scss */
-  h4, .h4 {
-    font-size: 16px;
-  }
-}
+
 /* line 96, ../scss/_common.scss */
+
 #masthead {
-  min-height: 100%;
-  background: url(../img/background/beauty_01.jpg) center center no-repeat;
-  background-size: cover;
-  background-size: 115% auto;
-  color: #AAC;
+    min-height: 100%;
+    background: url(../img/background/beauty_01.jpg) center center no-repeat;
+    background-size: cover;
+    background-size: 115% auto;
+    color: #AAC;
 }
+
+
 /* line 102, ../scss/_common.scss */
+
 #masthead h1 {
-  font-size: 55px;
-  line-height: 1;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-  margin-top: 80px;
+    font-size: 55px;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-top: 80px;
 }
+
 @media only screen and (min-width: 992px) {
-  /* line 102, ../scss/_common.scss */
-  #masthead h1 {
-    font-size: 100px;
-  }
+    /* line 102, ../scss/_common.scss */
+    #masthead h1 {
+        font-size: 100px;
+    }
 }
+
+
 /* line 111, ../scss/_common.scss */
+
 #masthead .cover {
-  padding-top: 10%;
+    padding-top: 10%;
 }
+
+
 /* line 114, ../scss/_common.scss */
+
 #masthead .well {
-  margin-top: 13%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 0;
-  border-color: #000033;
+    margin-top: 13%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-color: #000033;
 }
+
+
 /* line 120, ../scss/_common.scss */
+
 #masthead .row {
-  margin-right: -15px;
-  margin-left: -15px;
+    margin-right: -15px;
+    margin-left: -15px;
 }
+
 
 /* line 125, ../scss/_common.scss */
+
 #avatar {
-  border: 4px solid #fff;
-  border-radius: 2px;
-  height: 160px;
-  width: 160px;
+    border: 4px solid #fff;
+    border-radius: 2px;
+    height: 160px;
+    width: 160px;
 }
+
 
 /* line 131, ../scss/_common.scss */
+
 .icon-bar {
-  background-color: #fff;
+    background-color: #fff;
 }
+
 
 /* line 134, ../scss/_common.scss */
+
 .navbar-bright {
-  color: #FFF;
+    color: #FFF;
 }
+
 
 /* line 135, ../scss/_common.scss */
-.navbar-bright a, #masthead a, #masthead .lead {
-  color: #AAC;
+
+.navbar-bright a,
+#masthead a,
+#masthead .lead {
+    color: #AAC;
 }
+
 
 /* line 136, ../scss/_common.scss */
+
 .navbar-bright li > a:hover {
-  background-color: #000033;
+    background-color: #000033;
 }
+
 
 /* line 138, ../scss/_common.scss */
+
 .heading-page {
-  background-size: cover;
+    background-size: cover;
 }
+
+
 /* line 140, ../scss/_common.scss */
-.heading-page h1, .heading-page .h1 {
-  color: #FFF;
-  text-shadow: 2px 2px 4px #000;
+
+.heading-page h1,
+.heading-page .h1 {
+    color: #FFF;
+    text-shadow: 2px 2px 4px #000;
 }
+
 
 /* line 147, ../scss/_common.scss */
+
 .user-account {
-  position: relative;
-  margin-top: 2px;
-  padding-left: 100px;
-  overflow: hidden;
-  cursor: pointer;
-  width: 150px;
-}
-/* line 154, ../scss/_common.scss */
-.user-account, .user-account * {
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-/* line 157, ../scss/_common.scss */
-.user-account .avatar-img, .user-account .username-text {
-  float: left;
-}
-/* line 158, ../scss/_common.scss */
-.user-account .avatar-img {
-  position: relative;
-  overflow: hidden;
-  width: 50px;
-  height: 50px;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
-}
-/* line 163, ../scss/_common.scss */
-.user-account .avatar-img img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-/* line 170, ../scss/_common.scss */
-.user-account .username-text {
-  position: absolute;
-  top: 50%;
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  left: 0;
-  width: 90px;
-  color: #FFF;
-  line-height: normal;
-  text-align: right;
-}
-@media only screen and (max-width: 767px) {
-  /* line 147, ../scss/_common.scss */
-  .user-account {
-    margin-top: 7px;
-    width: 120px;
-    padding-left: 80px;
-  }
-  /* line 181, ../scss/_common.scss */
-  .user-account .avatar-img {
-    width: 40px;
-    height: 40px;
-  }
-  /* line 184, ../scss/_common.scss */
-  .user-account .username-text {
-    width: 70px;
-    font-size: 11px;
-    line-height: 12px;
-    max-height: 38px;
+    position: relative;
+    margin-top: 2px;
+    padding-left: 100px;
     overflow: hidden;
-  }
+    cursor: pointer;
+    width: 150px;
 }
+
+
+/* line 154, ../scss/_common.scss */
+
+.user-account,
+.user-account * {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+
+/* line 157, ../scss/_common.scss */
+
+.user-account .avatar-img,
+.user-account .username-text {
+    float: left;
+}
+
+
+/* line 158, ../scss/_common.scss */
+
+.user-account .avatar-img {
+    position: relative;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+
+/* line 163, ../scss/_common.scss */
+
+.user-account .avatar-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* line 170, ../scss/_common.scss */
+
+.user-account .username-text {
+    position: absolute;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 0;
+    width: 90px;
+    color: #FFF;
+    line-height: normal;
+    text-align: right;
+}
+
+@media only screen and (max-width: 767px) {
+    /* line 147, ../scss/_common.scss */
+    .user-account {
+        margin-top: 7px;
+        width: 120px;
+        padding-left: 80px;
+    }
+    /* line 181, ../scss/_common.scss */
+    .user-account .avatar-img {
+        width: 40px;
+        height: 40px;
+    }
+    /* line 184, ../scss/_common.scss */
+    .user-account .username-text {
+        width: 70px;
+        font-size: 11px;
+        line-height: 12px;
+        max-height: 38px;
+        overflow: hidden;
+    }
+}
+
 
 /* line 192, ../scss/_common.scss */
+
 .navbar .user-account {
-  float: right;
+    float: right;
 }
+
+
 /* line 194, ../scss/_common.scss */
+
 .navbar.affix .user-account {
-  margin-top: 4px;
-  width: 120px;
+    margin-top: 4px;
+    width: 120px;
 }
+
+
 /* line 196, ../scss/_common.scss */
+
 .navbar.affix .user-account .avatar-img {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 }
+
+
 /* line 199, ../scss/_common.scss */
+
 .navbar.affix .user-account .username-text {
-  font-size: 11px;
+    font-size: 11px;
 }
+
 
 /* line 205, ../scss/_common.scss */
+
 .btn-facebook {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
 }
+
+
 /* line 207, ../scss/_common.scss */
+
 .btn-facebook .fa {
-  padding-right: 15px;
+    padding-right: 15px;
 }
+
+
 /* line 209, ../scss/_common.scss */
+
 .btn-facebook .fa:after {
-  content: "";
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  width: 1px;
-  background: #FFF;
-  opacity: .1;
-  margin-left: 7px;
+    content: "";
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: #FFF;
+    opacity: .1;
+    margin-left: 7px;
 }
+
 
 /* line 222, ../scss/_common.scss */
+
 .nav-tabs > li > a > li > a {
-  -webkit-border-radius: 2px 2px 0 0;
-  -moz-border-radius: 2px 2px 0 0;
-  border-radius: 2px 2px 0 0;
+    -webkit-border-radius: 2px 2px 0 0;
+    -moz-border-radius: 2px 2px 0 0;
+    border-radius: 2px 2px 0 0;
 }
+
 
 /* line 228, ../scss/_common.scss */
+
 footer .footer-inner {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  background-color: rgba(0, 0, 0, 0.85);
-  font-family: "RobotoCondensed-Light", sans-serif;
-  color: #FAFAFA;
-  zoom: 1;
-}
-/* line 82, ../scss/_mixins.scss */
-footer .footer-inner:after {
-  content: '.';
-  display: block;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  line-height: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.85);
+    font-family: "RobotoCondensed-Light", sans-serif;
+    color: #FAFAFA;
+    zoom: 1;
 }
 
-/* line 237, ../scss/_common.scss */
-.clearfix {
-  zoom: 1;
-}
+
 /* line 82, ../scss/_mixins.scss */
+
+footer .footer-inner:after {
+    content: '.';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+
+/* line 237, ../scss/_common.scss */
+
+.clearfix {
+    zoom: 1;
+}
+
+
+/* line 82, ../scss/_mixins.scss */
+
 .clearfix:after {
-  content: '.';
-  display: block;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  line-height: 0;
+    content: '.';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 240, ../scss/_common.scss */
-  .hide-mobile {
-    display: none;
-  }
+    /* line 240, ../scss/_common.scss */
+    .hide-mobile {
+        display: none;
+    }
 }
+
+
 /* line 246, ../scss/_common.scss */
+
 .modal-content {
-  padding: 1px;
+    padding: 1px;
 }
+
 
 /* line 249, ../scss/_common.scss */
+
 .modal-header {
-  border-radius: 1px 1px 0 0;
+    border-radius: 1px 1px 0 0;
 }
+
+
 /* line 251, ../scss/_common.scss */
-.modal-header h4, .modal-header button {
-  color: #FFF;
-  opacity: 1;
-  filter: alpha(opacity=100);
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+
+.modal-header h4,
+.modal-header button {
+    color: #FFF;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
+
+
 /* line 256, ../scss/_common.scss */
+
 .modal-header .close {
-  -webkit-transition: all ease-in-out .15s;
-  -o-transition: all ease-in-out .15s;
-  transition: all ease-in-out .15s;
+    -webkit-transition: all ease-in-out .15s;
+    -o-transition: all ease-in-out .15s;
+    transition: all ease-in-out .15s;
 }
+
+
 /* line 260, ../scss/_common.scss */
+
 .modal-header .close:hover {
-  color: inherit;
+    color: inherit;
 }
+
 
 /* line 263, ../scss/_common.scss */
-.modal-content, .btn {
-  border-radius: 2px;
+
+.modal-content,
+.btn {
+    border-radius: 2px;
 }
+
 
 /* line 267, ../scss/_common.scss */
-.modal-header, .popover-title {
-  background: #204D74;
-  color: #FFF;
+
+.modal-header,
+.popover-title {
+    background: #204D74;
+    color: #FFF;
+    padding: 5px;
 }
+
 
 /* line 16, ../scss/main.scss */
+
 img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
+
 
 /*attribute sets*/
+
+
 /* line 24, ../scss/main.scss */
-.attribute-sets, .dashboard-management {
-  min-height: 100%;
+
+.attribute-sets,
+.dashboard-management {
+    min-height: 100%;
 }
+
 
 /* line 25, ../scss/main.scss */
+
 .heading-page {
-  padding-top: 140px;
+    padding-top: 140px;
 }
+
 
 /* line 26, ../scss/main.scss */
+
 .attribute-sets {
-  background-color: rgba(0, 0, 0, 0.65);
-  padding-top: 15px;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding-top: 15px;
 }
+
+
 /* line 29, ../scss/main.scss */
+
 .attribute-sets fieldset.scheduler-border {
-  border: 1px groove #ddd;
-  padding: 0 1.4em 1.4em 1.4em;
-  margin: 0 0 1.5em 0;
-  -webkit-box-shadow: 0px 0px 0px 0px #000;
-  box-shadow: 0px 0px 0px 0px #000;
+    border: 1px groove #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
 }
+
+
 /* line 37, ../scss/main.scss */
+
 .attribute-sets legend.scheduler-border {
-  font-size: 1.5em;
-  text-transform: uppercase;
-  text-align: left;
-  width: auto;
-  padding: 0 10px;
-  border-bottom: none;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-align: left;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
 }
+
+
 /* line 46, ../scss/main.scss */
+
 .attribute-sets .popover {
-  min-width: 400px;
-  border-radius: 2px;
+    min-width: 400px;
+    border-radius: 2px;
 }
+
+
 /* line 49, ../scss/main.scss */
+
 .attribute-sets .popover .popover-title {
-  border-radius: 1px 1px 0 0;
+    border-radius: 1px 1px 0 0;
 }
+
+
 /* line 54, ../scss/main.scss */
+
 .attribute-sets .btn {
-  border-radius: 2px;
+    border-radius: 2px;
 }
+
+
 /* line 56, ../scss/main.scss */
+
 .attribute-sets .control {
-  padding: 10px;
+    padding: 10px;
 }
+
+
 /* line 60, ../scss/main.scss */
+
 .attribute-sets .ui-sortable-placeholder {
-  border: 1px dashed #aaa;
-  height: 45px;
-  width: 100%;
-  background: #fafafa;
+    border: 1px dashed #aaa;
+    height: 45px;
+    width: 100%;
+    background: #fafafa;
 }
+
+
 /* line 67, ../scss/main.scss */
+
 .attribute-sets main_panel label {
-  color: inherit;
-  padding-left: 0;
+    color: inherit;
+    padding-left: 0;
 }
+
+
 /* line 70, ../scss/main.scss */
-.attribute-sets main_panel label, .attribute-sets main_panel label + input[type="checkbox"], .attribute-sets main_panel label + input[type="radio"] {
-  width: auto;
+
+.attribute-sets main_panel label,
+.attribute-sets main_panel label + input[type="checkbox"],
+.attribute-sets main_panel label + input[type="radio"] {
+    width: auto;
 }
+
+
 /* line 75, ../scss/main.scss */
+
 .attribute-sets main_panel > label {
-  margin-top: 7px;
+    margin-top: 7px;
 }
+
+
 /* line 79, ../scss/main.scss */
+
 .attribute-sets .popover-title {
-  text-transform: capitalize;
+    text-transform: capitalize;
 }
+
+
 /* line 83, ../scss/main.scss */
+
 .attribute-sets .help-block {
-  padding-left: 0;
+    padding-left: 0;
 }
+
+
 /* line 87, ../scss/main.scss */
-.attribute-sets legend, .attribute-sets label, .attribute-sets .help-block, .attribute-sets a, .attribute-sets span {
-  color: #FFF;
-  font-weight: normal;
+
+.attribute-sets legend,
+.attribute-sets label,
+.attribute-sets .help-block,
+.attribute-sets a,
+.attribute-sets span {
+    color: #FFF;
+    font-weight: normal;
 }
+
+
 /* line 92, ../scss/main.scss */
+
 .attribute-sets .nav-tabs > li > a {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
+
+
 /* line 94, ../scss/main.scss */
+
 .attribute-sets .nav-tabs > li > a:hover {
-  color: inherit;
+    color: inherit;
 }
+
+
 /* line 97, ../scss/main.scss */
+
 .attribute-sets .tab-content {
-  padding-top: 20px;
+    padding-top: 20px;
 }
+
+
 /* line 100, ../scss/main.scss */
-.attribute-sets #div1, .attribute-sets #div2 {
-  min-height: 50px;
-  padding: 30px 20px 50px;
+
+.attribute-sets #div1,
+.attribute-sets #div2 {
+    min-height: 50px;
+    padding: 30px 20px 50px;
 }
+
+
 /* line 104, ../scss/main.scss */
+
 .attribute-sets .c-left {
-  float: left;
-  clear: left;
+    float: left;
+    clear: left;
 }
+
+
 /* line 108, ../scss/main.scss */
+
 .attribute-sets .row.control {
-  position: relative;
-  cursor: pointer;
-  zoom: 1;
+    position: relative;
+    cursor: pointer;
+    zoom: 1;
 }
+
+
 /* line 82, ../scss/_mixins.scss */
+
 .attribute-sets .row.control:after {
-  content: '.';
-  display: block;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-  font-size: 0;
-  line-height: 0;
+    content: '.';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
 }
+
+
 /* line 112, ../scss/main.scss */
+
 .attribute-sets .row.control:before {
-  content: "";
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
 }
+
 
 /* line 121, ../scss/main.scss */
-.modal-content, .btn {
-  border-radius: 2px;
+
+.modal-content,
+.btn {
+    border-radius: 2px;
 }
 
+
 /* line 125, ../scss/main.scss */
-.preview + .preview-md, .preview-md + .preview-sm {
-  display: none;
+
+.preview + .preview-md,
+.preview-md + .preview-sm {
+    display: none;
 }
