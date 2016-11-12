@@ -239,7 +239,8 @@ function createSingleControlGroup(template, isReload) {
             var input = document.importNode(document.getElementById('extraOptionImgHandler').content, true);
             input_cover.appendChild(input);
             input.id = newId;
-            container_div.setAttribute("data-controlType", "ImageOptions");
+            container_div.setAttribute("data-controlType", "ImageOptions"); //
+
             break;
         case ("checkbox"):
             input.type = "checkbox";
@@ -403,6 +404,7 @@ function createSingleControlGroup(template, isReload) {
                         $(this).popover('hide');
                     }
                 });
+                // set custom attribute for popover content here                
                 return popoverContent;
             }
         });
@@ -419,7 +421,7 @@ function createAttributePanel(nodeCopy, title) {
     var main_panel = document.createElement('main_panel');
     main_panel.classList.add("col-md-12");
     main_panel.classList.add("col-lg-12");
-    main_panel.classList.add("clearfix")
+    main_panel.classList.add("clearfix");
     for (var item in fields) {
         var label = document.createElement("LABEL");
         label.classList.add("col-lg-12");
@@ -529,7 +531,6 @@ function createAttributePanel(nodeCopy, title) {
                 var currentNode = dropPad.appendChild(temp);
                 dropPad.lastElementChild.setAttribute('app-value', imgDataOptions[opt].value);
             }
-            // console.log('dropPad', dropPad);
         }
 
     }
@@ -1044,7 +1045,18 @@ function addMoreOrEditImageOptions(elem, event) {
         case "editImgOption":
             var itemHwd = getHandler(elem, "selectItem")
             console.log('2 ', itemHwd);
-            return;
+            var ImageOptions = null;
+            ImageOptions = imgOptionHandler.CUST['ImageOptions'];
+            var appValue = itemHwd.getAttribute("app-value");
+            if (appValue) {
+                currentImgOptItem = imgOptionHandler.CUST['ImageOptions'].filter(function(obj) {
+                    return obj.value.toString() == itemHwd.getAttribute("app-value");
+                })[0];
+                document.getElementById("attImgName").value = currentImgOptItem["optName"];
+                document.getElementById("attImgXRatio").value = currentImgOptItem["attImgXRatio"];
+                document.getElementById("attImgYRatio").value = currentImgOptItem["attImgYRatio"];
+            };
+            break;
         case "deleteImgOption":
             var itemHwd = getHandler(elem, "selectItem");
             console.log('3 ', itemHwd);
@@ -1158,31 +1170,37 @@ function optionPreview(data) {
 
 
 document.getElementById("attImgOptSave").addEventListener('click', function(el) {
-    // console.log("Iam here", currentImgOptItem);
-    var item = document.getElementById('extraOptionImgItem').content;
+    var item;
+    if (currentImgOptItem !== {}) {
+        item = currentDropPad.querySelector('[app-value="' + currentImgOptItem.value + '"]');
+    } else {
+        item = document.getElementById('extraOptionImgItem').content;
+        currentDropPad.appendChild(document.importNode(item, true));
+        var currentItem = currentDropPad.lastElementChild;
+        var ImageOptions = null;
+        ImageOptions = imgOptionHandler.CUST['ImageOptions'];
+        var max;
+        if (ImageOptions) {
+            max = Math.max.apply(null, ImageOptions.map(function(o) {
+                return o.value
+            }));
+        } else {
+            imgOptionHandler.CUST['ImageOptions'] = [];
+            max = 0;
+        }
+
+        max++;
+        currentImgOptItem.value = max;
+        currentItem.setAttribute('app-value', max);
+        // Update current list of currentItem
+        imgOptionHandler.CUST.ImageOptions.push(currentImgOptItem);
+        // console.log(ImageOptions);
+    }
+
     var label = item.querySelector('[app-role="attName"]');
     label.innerHTML = currentImgOptItem['optName'];
     var img = item.querySelector('[app-role = "attImg"]');
     img.setAttribute('src', img_Store);
-    currentDropPad.appendChild(document.importNode(item, true));
-    var currentItem = currentDropPad.lastElementChild;
-    var ImageOptions = null;
-    ImageOptions = imgOptionHandler.CUST['ImageOptions'];
-    var max;
-    if (ImageOptions) {
-        max = Math.max.apply(null, ImageOptions.map(function(o) {
-            return o.value
-        }));
-    } else {
-        imgOptionHandler.CUST['ImageOptions'] = [];
-        max = 0;
-    }
 
-    max++;
-    currentImgOptItem.value = max;
-    currentItem.setAttribute('app-value', max);
-    // Update current list of currentItem
-    imgOptionHandler.CUST.ImageOptions.push(currentImgOptItem);
-    // console.log(ImageOptions);
 
 }, false);
