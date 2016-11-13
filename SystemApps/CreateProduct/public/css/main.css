@@ -1412,6 +1412,7 @@ footer .footer-inner:after {
 /* line 249, ../scss/_common.scss */
 .modal-header {
   border-radius: 1px 1px 0 0;
+  padding: 5px;
 }
 /* line 251, ../scss/_common.scss */
 .modal-header h4, .modal-header button {
