@@ -236,8 +236,10 @@ function createInputObject(node, cType, attributes, origin) {
         var rObject = document.importNode(inputObject, true);
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         rObject = node.insertBefore(rObject, describe);
-        //rObject.focus();        
-        var dropPad = node.querySelector('[app-role="droppad"]');        
+        var dataStoreHandler = node.querySelector('[app-role="selectHandler"]');
+        dataStoreHandler["DATASTORE"] = origin;
+        dataStoreHandler.setAttribute("app-datastore", true);
+        var dropPad = node.querySelector('[app-role="droppad"]');
         for (var opt in imgOpts) {
             //console.log(" Test: ", fields["ImageOptions"][opt]);
             var item = document.getElementById('extraOptionImgItem').content;
@@ -248,7 +250,8 @@ function createInputObject(node, cType, attributes, origin) {
             var temp = document.importNode(item, true);
             var currentNode = dropPad.appendChild(temp);
             dropPad.lastElementChild.setAttribute('app-value', imgOpts[opt].value);
-            dropPad.lastElementChild.focus();
+            dropPad.lastElementChild["SELFDATA"] = imgOpts[opt];
+            // dropPad.lastElementChild.focus();
         }
 
     } else {
@@ -314,7 +317,8 @@ function toggleShow(elem) {
 function getOptionImage(evt) {
     var selectHandler = getHandler(evt, "selectHandler");
     // evt.stopPropagation();
-
+    selectHandler["DATASTORE"]["InputValue"] = evt["SELFDATA"];
+    
     function getHandler(elem, att) {
         // console.log(elem);
         // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
@@ -335,14 +339,10 @@ function getOptionImage(evt) {
     }
     // clone this node
     var cln = evt.cloneNode(true);
+
     // remove action Listener
     cln.onclick = null;
     selectbox.appendChild(cln);
-    var bntBox = cln.querySelector('.s-button');
-    if (bntBox) {
-        bntBox.parentNode.removeChild(bntBox);
-    };
-    // change the css indicate selectedItem.
     // remove current css of selected item
     var curr = selectHandler.querySelector('.curr');
     if (curr) {
