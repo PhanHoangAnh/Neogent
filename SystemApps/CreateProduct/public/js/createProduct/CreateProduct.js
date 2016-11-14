@@ -318,7 +318,7 @@ function getOptionImage(evt) {
     var selectHandler = getHandler(evt, "selectHandler");
     // evt.stopPropagation();
     selectHandler["DATASTORE"]["InputValue"] = evt["SELFDATA"];
-    
+
     function getHandler(elem, att) {
         // console.log(elem);
         // if (elem.parentNode.getAttribute('app-role') == "selectHandler") {
