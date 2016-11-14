@@ -5,6 +5,7 @@ var app = express();
 var router = express.Router();
 var path = require("path");
 var mongoose = require("mongoose");
+var fs = require('fs');
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
@@ -150,6 +151,12 @@ router.get("/deleteOptionSets/:id", checkToken, checkAuth, function(req, res, ne
         res.send(objResult);
     })
 });
+
+
+function writeBase64ImageSync(fileName, imgData) {
+    var data = imgData.replace(/^data:image\/\w+;base64,/, '');
+    fs.writeFileSync(fileName, data, 'base64');
+}
 
 app.use(router);
 module.exports = app;

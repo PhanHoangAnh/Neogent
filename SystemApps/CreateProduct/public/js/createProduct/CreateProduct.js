@@ -154,7 +154,7 @@ function createInputObject(node, cType, attributes, origin) {
                 for (var i = 0; i < data.length; i++) {
                     inputValues.push(data[i].text);
                 }
-                rInput.parentNode.setAttribute("app-datastore", true);
+                rInput.setAttribute("app-datastore", true);
                 rInput["DATASTORE"]["InputValue"] = inputValues;
             });
     } else if (cType == "select") {
@@ -491,7 +491,7 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
     });
 }
 
-function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
+function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayload, fn_cb) {
     var _data = {
         userName: uid,
         password: token,
@@ -499,7 +499,8 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
     };
     aes_key = cryptoUtil.generateAESKey();
     var json_data = {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key),
+        exPayload: exPayload
     };
 
     $.ajax({
@@ -517,4 +518,34 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
 
         }
     });
+}
+// Business Region
+function saveProduct() {
+    var productAttList = document.getElementById("content").querySelectorAll('[app-datastore="true"]');
+    var productAttCollection = [];
+    for (var elem in productAttList) {
+        if (productAttList[elem]["DATASTORE"]) {
+            // console.log(productAttList[elem]["DATASTORE"]);
+            productAttCollection.push(productAttList[elem]["DATASTORE"]);
+        }
+    }
+    var endpoint = window.location.href + "updateProduct";
+    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, productAttCollection, saveProductCb);
+    console.log(productAttCollection);
+
+    function saveProductCb(cb_json) {
+        console.log("Product is saved: ", cb_json);
+    }
+}
+
+function cloneProduct() {
+
+}
+
+function createNewProduct() {
+
+}
+
+function deleteProduct() {
+
 }

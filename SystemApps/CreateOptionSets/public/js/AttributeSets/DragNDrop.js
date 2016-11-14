@@ -838,24 +838,6 @@ function saveAttributeSets() {
         console.log(result);
         requestOptionSets();
     };
-
-    // $.ajax({
-    //     // url: './userToken',
-    //     url: currentUrl,
-    //     method: 'POST',
-    //     data: compObj,
-    //     complete: function(data, status, jqXHR) {
-    //         if (!data.responseJSON.err) {
-    //             compObj.objId = data.responseJSON.return_id
-    //             requestOptionSets();
-    //         } else {
-    //             console.log(data.responseJSON.err);
-    //         }
-    //     }
-    // });
-
-    // end of Post Attributes List
-
 }
 
 function requestOptionSets() {
@@ -1204,3 +1186,5 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
 
 
 }, false);
+
+

@@ -80,5 +80,11 @@ router.get("/getOptionSets", function(req, res, next) {
 
 });
 
+router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
+    var exPayload = req.body.exPayload;
+    console.log("exPayload", exPayload);
+    res.send(objResult);
+});
+
 app.use(router);
 module.exports = app;
