@@ -49,7 +49,8 @@ objResult.err = null;
 objResult.return_id = null;
 //
 router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next) {
-    // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body);
+    console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ");
+
 
     if (!req.auth) {
         objResult.status = 4;
@@ -61,6 +62,29 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
     var postData = req.body.payload.data;
     var exPayload = req.body.exPayload
     if (exPayload && exPayload instanceof Array) {
+        //
+        var components = req.body.exPayload;
+        for (var com in components) {
+            //&& components[com]["attributes"]["ImageOptions"]["img"]
+            if (components[com]["data-controlType"] == "ImageOptions") {
+
+                if (!components[com]["sysId"]) {
+                    components[com]["sysId"] = mongoose.Types.ObjectId();
+                }
+                var shopPath = "./Shops/" + req.shopname + "/public/imgs/" + components[com]["sysId"].toString();
+                // console.log("here: ", components[com]["attributes"]["ImageOptions"][0]["optName"]);
+                var ImageOptions = components[com]["attributes"]["ImageOptions"];
+                if (ImageOptions instanceof Array) {
+                    for (var i in ImageOptions) {
+                        //console.log("indexOf base64: ", ImageOptions[i]["img"].indexOf("data:image/png;base64"), components[com]["attributes"]["ImageOptions"][i]["optName"])
+                        if (ImageOptions[i]["img"].indexOf("data:image/png;base64") !== -1) {
+                            var imageFileName = shopPath + "_" + ImageOptions[i]["value"] + ".png";
+                            writeBase64ImageSync(imageFileName, ImageOptions[i]["img"]);
+                        }
+                    }
+                }
+            }
+        }
         postData['components'].push.apply(postData['components'], req.body.exPayload)
     }
     var optionSets = mongoose.model('OptionSets');
@@ -154,8 +178,14 @@ router.get("/deleteOptionSets/:id", checkToken, checkAuth, function(req, res, ne
 
 
 function writeBase64ImageSync(fileName, imgData) {
-    var data = imgData.replace(/^data:image\/\w+;base64,/, '');
-    fs.writeFileSync(fileName, data, 'base64');
+    console.log(fileName);
+    try {
+        var data = imgData.replace(/^data:image\/\w+;base64,/, '');
+        fs.writeFileSync(fileName, data, 'base64');
+    } catch (err) {
+        console.log(err)
+    }
+
 }
 
 app.use(router);
