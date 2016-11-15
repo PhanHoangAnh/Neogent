@@ -78,7 +78,10 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
                         //console.log("indexOf base64: ", ImageOptions[i]["img"].indexOf("data:image/png;base64"), components[com]["attributes"]["ImageOptions"][i]["optName"])
                         if (ImageOptions[i]["img"].indexOf("data:image/png;base64") !== -1) {
                             var imageFileName = shopPath + "_" + ImageOptions[i]["value"] + ".png";
-                            writeBase64ImageSync(imageFileName, ImageOptions[i]["img"]);
+                            var result = writeBase64ImageSync(imageFileName, ImageOptions[i]["img"]);
+                            if (result) {
+                                ImageOptions[i]["img"] = req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[i]["value"] + ".png";
+                            }
                         }
                     }
                 }
@@ -181,8 +184,10 @@ function writeBase64ImageSync(fileName, imgData) {
     try {
         var data = imgData.replace(/^data:image\/\w+;base64,/, '');
         fs.writeFileSync(fileName, data, 'base64');
+        return true;
     } catch (err) {
-        console.log(err)
+        //console.log(err);
+        return false;
     }
 
 }
