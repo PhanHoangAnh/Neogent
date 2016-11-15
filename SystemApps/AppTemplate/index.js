@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
-    console.log("-----from template");
+    // console.log("-----from template");
     res.render('template', { title: 'Hello, this is template Application of : ' + req.shopname });
 });
 //

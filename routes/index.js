@@ -3,13 +3,12 @@ var path = require("path");
 var app = express();
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    var shopPath = path.join(path.resolve("../public"), req.shopname);
-    // res.send(shopPath);
-    // console.log("current path: ", shopPath);
+router.use(function(req, res, next) {
+    // var shopPath = path.join(path.resolve("../public"), req.shopname);
+    // res.send(shopPath);    
     // res.render('index', { title: 'Express' });
     var nextPath = path.join("../Shops", req.shopname);
-    var shopHandler = require(nextPath);
+    var shopHandler = require(path.join(nextPath, "index"));
     shopHandler(req, res, next);
 
 });

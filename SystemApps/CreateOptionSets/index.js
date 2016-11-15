@@ -67,7 +67,6 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
         for (var com in components) {
             //&& components[com]["attributes"]["ImageOptions"]["img"]
             if (components[com]["data-controlType"] == "ImageOptions") {
-
                 if (!components[com]["sysId"]) {
                     components[com]["sysId"] = mongoose.Types.ObjectId();
                 }
