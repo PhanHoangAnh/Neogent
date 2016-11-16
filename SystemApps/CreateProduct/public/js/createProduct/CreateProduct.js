@@ -246,7 +246,12 @@ function createInputObject(node, cType, attributes, origin) {
             var label = item.querySelector('[app-role="attName"]');
             label.innerHTML = imgOpts[opt]['optName'];
             var img = item.querySelector('[app-role = "attImg"]');
-            img.setAttribute('src', imgOpts[opt].img);
+            var imgSrc = imgOpts[opt].img
+                // update check valid URL later here                    
+            if (imgSrc.indexOf("http") == -1) {
+                imgSrc = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + imgSrc
+            }
+            img.setAttribute('src', imgSrc);
             var temp = document.importNode(item, true);
             var currentNode = dropPad.appendChild(temp);
             dropPad.lastElementChild.setAttribute('app-value', imgOpts[opt].value);

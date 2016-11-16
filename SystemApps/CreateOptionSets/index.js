@@ -79,7 +79,8 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
                             var imageFileName = shopPath + "_" + ImageOptions[i]["value"] + ".png";
                             var result = writeBase64ImageSync(imageFileName, ImageOptions[i]["img"]);
                             if (result) {
-                                ImageOptions[i]["img"] = req.protocol + '://' + req.headers.host + "/" + req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[i]["value"] + ".png";
+                                // ImageOptions[i]["img"] = req.protocol + '://' + req.headers.host + "/" + req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[i]["value"] + ".png";
+                                ImageOptions[i]["img"] = req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[i]["value"] + ".png";
                                 console.log(ImageOptions[i]["img"]);
                             }
                         }

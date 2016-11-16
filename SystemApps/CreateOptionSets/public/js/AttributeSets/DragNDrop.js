@@ -526,7 +526,12 @@ function createAttributePanel(nodeCopy, title) {
                 var label = item.querySelector('[app-role="attName"]');
                 label.innerHTML = imgDataOptions[opt]['optName'];
                 var img = item.querySelector('[app-role = "attImg"]');
-                img.setAttribute('src', imgDataOptions[opt].img);
+                var imgSrc = imgDataOptions[opt].img
+                    // update check valid URL later here                    
+                if (imgSrc.indexOf("http") == -1) {
+                    imgSrc = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + imgSrc
+                }
+                img.setAttribute('src', imgSrc);
                 var temp = document.importNode(item, true);
                 var currentNode = dropPad.appendChild(temp);
                 dropPad.lastElementChild.setAttribute('app-value', imgDataOptions[opt].value);
@@ -703,22 +708,6 @@ function setAttributeName() {
 
 var compObj = {}
 
-// function saveElement() {
-//     // update entire sortable
-//     var sortableDiv = document.querySelector("#div2");
-//     var elementLists = sortableDiv.querySelectorAll("[id]");
-//     var printedList = [];
-//     for (var elem in elementLists) {
-//         if (elementLists[elem]["CUST"]) {
-//             var jsonObj = {}
-//             jsonObj["data-controlType"] = elementLists[elem].getAttribute("data-controlType");
-//             jsonObj["attributes"] = elementLists[elem]["CUST"];
-//             printedList.push(jsonObj);
-//         }
-//     }
-//     compObj.components = printedList
-//         // document.getElementById("printJSON").innerHTML = JSON.stringify(compObj, undefined, 2);
-// }
 
 function initIcon(el) {
     var options = {
@@ -1149,16 +1138,14 @@ function optionPreview(data) {
 
 }
 
-
-
 document.getElementById("attImgOptSave").addEventListener('click', function(el) {
-    var item;
-    if (currentImgOptItem !== {}) {
-        item = currentDropPad.querySelector('[app-value="' + currentImgOptItem.value + '"]');
-    } else {
+
+    var item = currentDropPad.querySelector('[app-value="' + currentImgOptItem.value + '"]');
+    if (!item) {
         item = document.getElementById('extraOptionImgItem').content;
         currentDropPad.appendChild(document.importNode(item, true));
         var currentItem = currentDropPad.lastElementChild;
+        item = currentItem;
         var ImageOptions = null;
         ImageOptions = imgOptionHandler.CUST['ImageOptions'];
         var max;
@@ -1170,7 +1157,6 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
             imgOptionHandler.CUST['ImageOptions'] = [];
             max = 0;
         }
-
         max++;
         currentImgOptItem.value = max;
         currentItem.setAttribute('app-value', max);
@@ -1178,7 +1164,6 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
         imgOptionHandler.CUST.ImageOptions.push(currentImgOptItem);
         // console.log(ImageOptions);
     }
-
     var label = item.querySelector('[app-role="attName"]');
     label.innerHTML = currentImgOptItem['optName'];
     var img = item.querySelector('[app-role = "attImg"]');
@@ -1186,5 +1171,3 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
 
 
 }, false);
-
-
