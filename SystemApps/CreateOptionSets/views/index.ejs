@@ -413,12 +413,13 @@ $(document).ready(function() {
             var parent = removedElement.parentNode;
             parent.removeChild(removedElement);
             parent.appendChild(document.importNode(fbPad, true));
+            requestOptionSets();
         }
     }
 
     function afterGetToken(token) {
         systoken = token;
-        console.log("from afterGetToken: ", token);
+        // console.log("from afterGetToken: ", token);
     }
 
     function afterCheckToken(result) {

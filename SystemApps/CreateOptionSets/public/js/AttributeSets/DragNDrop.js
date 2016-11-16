@@ -735,7 +735,6 @@ function initIcon(el) {
         document.getElementById('iconHolder').setAttribute('src', img_Icon);
     });
     $('#m_icon').on('show.bs.modal', function() {
-        console.log('Good from show modal');
         cropper.resetOption(options);
     }).modal('show');
 
@@ -1026,6 +1025,7 @@ function addMoreOrEditImageOptions(elem, event) {
                 document.getElementById("attImgName").value = currentImgOptItem["optName"];
                 document.getElementById("attImgXRatio").value = currentImgOptItem["attImgXRatio"];
                 document.getElementById("attImgYRatio").value = currentImgOptItem["attImgYRatio"];
+                changeAttImgOptionRatio(currentImgOptItem["attImgXRatio"], currentImgOptItem["attImgXRatio"]);                    
             };
             break;
         case "deleteImgOption":
@@ -1076,24 +1076,25 @@ function attImgRatio_change(evt, elem) {
         appRole = "optName";
     }
     currentImgOptItem[appRole] = elem.value;
-    changeAttImgOptionRatio(currentImgOptItem['attImgXRatio'], currentImgOptItem['attImgYRatio'])
-        // console.log(currentImgOptItem);
-
-    function changeAttImgOptionRatio(attWidth, attHeight) {
-        var thumbBox = document.getElementById("attImageThumb");
-        if (!attWidth || attWidth == 0) {
-            attWidth = 10;
-        }
-        if (!attHeight || attHeight == 0) {
-            attHeight = 10;
-        }
-        var ratio = attWidth / attHeight;
-        var w = 200 * ratio;
-        thumbBox.style.width = w + "px";
-        thumbBox.style.marginLeft = -w / 2 + 'px';
-        neo_cropper.resetOption(ngOpt);
-    }
+    changeAttImgOptionRatio(currentImgOptItem['attImgXRatio'], currentImgOptItem['attImgYRatio']);
+    // console.log(currentImgOptItem);
 }
+
+function changeAttImgOptionRatio(attWidth, attHeight) {
+    var thumbBox = document.getElementById("attImageThumb");
+    if (!attWidth || attWidth == 0) {
+        attWidth = 10;
+    }
+    if (!attHeight || attHeight == 0) {
+        attHeight = 10;
+    }
+    var ratio = attWidth / attHeight;
+    var w = 200 * ratio;
+    thumbBox.style.width = w + "px";
+    thumbBox.style.marginLeft = -w / 2 + 'px';
+    neo_cropper.resetOption(ngOpt);
+}
+
 var img_Store;
 
 var ngOpt = {
