@@ -6,6 +6,7 @@ var router = express.Router();
 var path = require("path");
 var mongoose = require("mongoose");
 var systemAttribute = require("./systemAttribute.js");
+var fs = require('fs');
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
@@ -82,9 +83,53 @@ router.get("/getOptionSets", function(req, res, next) {
 
 router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     var exPayload = req.body.exPayload;
-    console.log("exPayload", exPayload);
+    // write images of Product to file
+    if (exPayload instanceof Array) {
+        for (var i in exPayload) {
+            if (!exPayload[i]["sysId"]) {
+                exPayload[i]["sysId"] = mongoose.Types.ObjectId();
+            }
+            var filePath = "./Shops/" + req.shopname + "/public/imgs/Products/" + exPayload[i]["sysId"].toString() + ".png";
+            console.log(exPayload[i]["InputValue"].indexOf("data:image/png;base64"));
+            if (exPayload[i]["InputValue"].indexOf("data:image/png;base64") !== -1) {
+                var result = writeBase64ImageSync(filePath, exPayload[i]["InputValue"]);
+                if (result) {
+                    exPayload[i]["InputValue"] = req.shopname + "/public/imgs/Products/" + exPayload[i]["sysId"].toString() + ".png";
+                }
+            }
+        }
+    }
+    // merge exPayload and Payload to save in MongoDb
+    var payload = req.body.payload.data;
+    payload.push.apply(payload, exPayload);
+    // console.log("payload: ", payload);
+    var Shops = mongoose.model('Shops');
+    // find Shops via Shops Name
+    Shops.findOne({ shopname: req.shopname }, function(err, shop) {
+        if (err) {
+            console.log("Error from Mongoose:")
+        } else {
+            console.log("shop: ", shop);
+        }
+    });
+
+
+
     res.send(objResult);
 });
+
+function writeBase64ImageSync(fileName, imgData) {
+    console.log(fileName);
+    try {
+        var data = imgData.replace(/^data:image\/\w+;base64,/, '');
+        fs.writeFileSync(fileName, data, 'base64');
+        return true;
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+
+}
 
 app.use(router);
 module.exports = app;

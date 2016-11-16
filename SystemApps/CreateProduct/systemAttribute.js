@@ -6,7 +6,7 @@
          "describe": "Display Name",
          "placeholder": "Product Name",
          "label": "Product Name",
-         "id": "sysProductName"
+         "sysId": "sysProductName"
      }
  }, {
      "data-controlType": "text",
@@ -16,7 +16,7 @@
          "describe": "Custom SKU",
          "placeholder": "Custom SKU",
          "label": "Custom SKU",
-         "id": "sysCustomSKU"
+         "sysId": "sysCustomSKU"
      }
  }, {
      "data-controlType": "number",
@@ -28,7 +28,7 @@
          "displayGroup": "system",
          "placeholder": "Base Price",
          "label": "Base Price",
-         "id": "sysBasePrice"
+         "sysId": "sysBasePrice"
      }
  }, {
      "data-controlType": "number",
@@ -40,12 +40,12 @@
          "displayGroup": "system",
          "placeholder": "Current Price",
          "label": "Current Price",
-         "id": "sysCurrentPrice"
+         "sysId": "sysCurrentPrice"
      }
  }, {
      "data-controlType": "select_tags",
      "attributes": {
-         "id": "sysCategories",
+         "sysId": "sysCategories",
          "label": "Categories",
          "describe": "Cat color",
          "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
@@ -55,7 +55,7 @@
  }, {
      "data-controlType": "select_tag_single",
      "attributes": {
-         "id": "sysBranchName",
+         "sysId": "sysBranchName",
          "label": "Branch Name",
          "describe": "Branch Name",
          "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
@@ -65,7 +65,7 @@
  }, {
      "data-controlType": "select",
      "attributes": {
-         "id": "sysCurrency",
+         "sysId": "sysCurrency",
          "label": "Currency",
          "describe": "Branch Name",
          "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
@@ -75,7 +75,7 @@
  }, {
      "data-controlType": "select_tag_single",
      "attributes": {
-         "id": "sysUnitOfMeasurement",
+         "sysId": "sysUnitOfMeasurement",
          "label": "Unit",
          "describe": "Unit of Measurement",
          "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",

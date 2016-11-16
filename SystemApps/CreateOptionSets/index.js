@@ -49,7 +49,6 @@ objResult.err = null;
 objResult.return_id = null;
 //
 router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next) {
-    console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ");
 
     if (!req.auth) {
         objResult.status = 4;
@@ -59,6 +58,15 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
         return;
     }
     var postData = req.body.payload.data;
+    console.log("postData['components']: ", postData['components'] instanceof Array);
+
+    if (postData['components'] instanceof Array) {
+        for (var com in postData['components']) {
+            if (!postData['components'][com]["sysId"]) {
+                postData['components'][com]["sysId"] = mongoose.Types.ObjectId();
+            }
+        }
+    }    
     var exPayload = req.body.exPayload
     if (exPayload && exPayload instanceof Array) {
         //

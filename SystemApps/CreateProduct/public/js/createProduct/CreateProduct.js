@@ -103,8 +103,8 @@ function createInputObject(node, cType, attributes, origin) {
             var span = inputObject.querySelector('[app-role = "displayValue"]');
             span.innerHTML = opts[i];
             input.type = cType;
-            input.id = attributes["id"];
-            input.name = attributes["id"];
+            input.id = attributes["sysId"];
+            input.name = attributes["sysId"];
             var rObject = document.importNode(inputObject, true);
             var describe = node.parentNode.querySelector('[data-controltype="describe"]');
             node.insertBefore(rObject, describe);
@@ -133,7 +133,7 @@ function createInputObject(node, cType, attributes, origin) {
             select.appendChild(opt);
         }
         var rObject = document.importNode(inputObject, true);
-        select.id = attributes.id;
+        select.id = attributes.sysId;
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(document.importNode(inputObject, true), describe);
         // clear select after import
@@ -176,7 +176,7 @@ function createInputObject(node, cType, attributes, origin) {
             select.appendChild(opt);
         }
         // var rObject = document.importNode(inputObject, true);
-        select.id = attributes.id;
+        select.id = attributes.sysId;
         var describe = node.parentNode.querySelector('[data-controltype="describe"]');
         node.insertBefore(document.importNode(inputObject, true), describe);
         // clear select after import
@@ -214,7 +214,7 @@ function createInputObject(node, cType, attributes, origin) {
         inputObject = document.getElementById("textAreaInput").content;
         var input = inputObject.querySelector('[data-controltype="textarea"]');
         input.type = cType;
-        input.id = attributes["id"];
+        input.id = attributes["sysId"];
         input.placeholder = attributes["placeholder"];
         input.min = attributes["min"];
         input.max = attributes["max"];
@@ -263,7 +263,7 @@ function createInputObject(node, cType, attributes, origin) {
         inputObject = document.getElementById("standardInput").content;
         var input = inputObject.querySelector('[data-controltype="text"]');
         input.type = cType;
-        input.id = attributes["id"];
+        input.id = attributes["sysId"];
         input.placeholder = attributes["placeholder"];
         input.min = attributes["min"];
         input.max = attributes["max"];
@@ -528,14 +528,20 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayloa
 function saveProduct() {
     var productAttList = document.getElementById("content").querySelectorAll('[app-datastore="true"]');
     var productAttCollection = [];
+    var exProductAttCollection = [];
     for (var elem in productAttList) {
         if (productAttList[elem]["DATASTORE"]) {
             // console.log(productAttList[elem]["DATASTORE"]);
-            productAttCollection.push(productAttList[elem]["DATASTORE"]);
+            if (productAttList[elem]["DATASTORE"]["data-controlType"] == "image") {
+                // productAttList[elem]["DATASTORE"]["InputValue"] = null;
+                exProductAttCollection.push(productAttList[elem]["DATASTORE"]);
+            } else {
+                productAttCollection.push(productAttList[elem]["DATASTORE"]);
+            }
         }
     }
     var endpoint = window.location.href + "updateProduct";
-    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, productAttCollection, saveProductCb);
+    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, productAttCollection, exProductAttCollection, saveProductCb);
     console.log(productAttCollection);
 
     function saveProductCb(cb_json) {
