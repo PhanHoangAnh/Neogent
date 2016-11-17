@@ -540,12 +540,20 @@ function saveProduct() {
             }
         }
     }
+    var payload = {};
+    payload.systemSKU = systemSKU;
+    console.log("from post product", systemSKU);
+    payload.productAtttributes = productAttCollection;
     var endpoint = window.location.href + "updateProduct";
-    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, productAttCollection, exProductAttCollection, saveProductCb);
-    console.log(productAttCollection);
+    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, payload, exProductAttCollection, saveProductCb);
+    //console.log(productAttCollection);
 
     function saveProductCb(cb_json) {
         console.log("Product is saved: ", cb_json);
+        if (cb_json.return_id) {
+            systemSKU = cb_json.return_id;
+            console.log(systemSKU);
+        }
     }
 }
 

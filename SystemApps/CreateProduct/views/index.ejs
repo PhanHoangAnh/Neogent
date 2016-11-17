@@ -290,6 +290,7 @@ var fbId;
 var fbToken;
 var conBnt;
 var RSAPublicKey;
+var systemSKU;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
@@ -299,7 +300,8 @@ $(document).ready(function() {
     requestOptionSets();
     var currency =<%-JSON.stringify(currency)%>;
     RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
-    var data =<%-JSON.stringify(system)%>;    
+    var system =<%-JSON.stringify(system)%>;    
+    systemSKU =<%-JSON.stringify(systemSKU)%>
     
     document.querySelector('#imgSource').addEventListener('change', function(el) {
         initImg(this);
@@ -348,7 +350,7 @@ $(document).ready(function() {
     });
 
     // console.log("currency: ", currency);
-    create_productAttributes(data, true);
+    create_productAttributes(system, true);
     var bntFbLogin = document.getElementById('bntFbLogin');
     var fb = new fbHandler(getStatus, bntFbLogin);
 

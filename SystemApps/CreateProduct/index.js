@@ -49,7 +49,8 @@ router.get('/', function(req, res, next) {
         data: setting,
         system: systemAttribute.system,
         currency: currency,
-        RSApublicKey: keyPair.public
+        RSApublicKey: keyPair.public,
+        systemSKU: null
     });
 });
 //  Global variables for Business functions
@@ -78,7 +79,6 @@ router.get("/getOptionSets", function(req, res, next) {
         objResult.doc = null;
         // res.end(JSON.stringify(doc));
     })
-
 });
 
 router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
@@ -101,21 +101,86 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     }
     // merge exPayload and Payload to save in MongoDb
     var payload = req.body.payload.data;
-    payload.push.apply(payload, exPayload);
-    // console.log("payload: ", payload);
+    var systemSKU = req.body.payload.data.systemSKU;
+    payload.productAtttributes.push.apply(payload.productAtttributes, exPayload);
+    console.log("payload: ", payload.systemSKU, payload.productAtttributes[4]);
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
         if (err) {
-            console.log("Error from Mongoose:")
+            // console.log("Error from Mongoose:")
         } else {
-            console.log("shop: ", shop);
+            if (!systemSKU) {
+                addPayloadToItemArr();
+            } else {
+                var items = shop.items;
+                var updateItem = items.filter(function(item) {
+                    return item.systemSKU = systemSKU;
+                });
+                // console.log("updateItem: ", updateItem);
+                if (!updateItem) {
+                    addPayloadToItemArr();
+                } else {
+                    //http://stackoverflow.com/questions/26156687/mongoose-find-update-subdocument
+                    updatePayloadToItemArr();
+                }
+            }
         }
+        //
+        function addPayloadToItemArr() {
+            // console.log("check System SKU", !!payload.systemSKU, payload.systemSKU);
+            if (!payload.systemSKU) {
+                payload.systemSKU = mongoose.Types.ObjectId().toString();
+            }
+            shop.items.push(payload);
+            shop.save(function(err) {
+                // save err to log later
+                if (!err) {
+                    shop.markModified('productAtttributes');
+                    objResult.status = 1
+                    objResult.err = null;
+                    objResult.return_id = payload.systemSKU;
+                    res.send(objResult);
+                } else {
+                    shop.markModified('productAtttributes');
+                    objResult.status = -1
+                    objResult.err = err;
+                    objResult.return_id = payload.systemSKU;
+                    res.send(objResult);
+                }
+            });
+        }
+
+        function updatePayloadToItemArr() {
+            Shops.findOneAndUpdate({
+                shopname: req.shopname,
+                'items.systemSKU': systemSKU
+            }, {
+                "$set": {
+                    "items.$": payload
+                }
+            }, function(err, doc) {
+                console.log(err, doc);
+                if (!err) {
+                    shop.markModified('productAtttributes');
+                    objResult.status = 2
+                    objResult.err = null;
+                    objResult.return_id = payload.systemSKU;
+                    res.send(objResult);
+                } else {
+                    objResult.status = -2
+                    objResult.err = err;
+                    objResult.return_id = payload.systemSKU;
+                    res.send(objResult);
+                }
+            });
+        }
+        //
+
     });
 
 
 
-    res.send(objResult);
 });
 
 function writeBase64ImageSync(fileName, imgData) {
