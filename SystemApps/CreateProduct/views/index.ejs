@@ -291,6 +291,7 @@ var fbToken;
 var conBnt;
 var RSAPublicKey;
 var systemSKU;
+var system;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
@@ -300,7 +301,7 @@ $(document).ready(function() {
     requestOptionSets();
     var currency =<%-JSON.stringify(currency)%>;
     RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
-    var system =<%-JSON.stringify(system)%>;    
+    system =<%-JSON.stringify(system)%>;    
     systemSKU =<%-JSON.stringify(systemSKU)%>
     
     document.querySelector('#imgSource').addEventListener('change', function(el) {

@@ -520,7 +520,6 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayloa
             if (fn_cb) {
                 fn_cb(data.responseJSON);
             }
-
         }
     });
 }
@@ -558,13 +557,45 @@ function saveProduct() {
 }
 
 function cloneProduct() {
-
+    systemSKU = null;
 }
 
 function createNewProduct() {
-
+    //location.href = window.location.href;
+    //
+    var productAttributes = document.getElementById("productAttributes");
+    while (productAttributes.firstChild) {
+        productAttributes.removeChild(productAttributes.firstChild);
+    }
+    var systemAttributes = document.getElementById("systemAttributes")
+    while (systemAttributes.firstChild) {
+        systemAttributes.removeChild(systemAttributes.firstChild);
+    }
+    create_productAttributes(system, true);
+    systemSKU = null;
 }
 
 function deleteProduct() {
+    var endpoint = window.location.href;
+    //fbId, systoken, RSAPublicKey
+    var _data = {
+        userName: fbId,
+        password: systoken,
+        data: { systemSKU: systemSKU }
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+    };
 
+    $.ajax({
+        url: endpoint,
+        type: 'DELETE',
+        data: JSON.stringify(json_data), //JSON.stringify({ systemSKU: systemSKU })
+        contentType: 'application/json', // <---add this
+        dataType: 'text', // <---update this
+        complete: function(data, status, jqXHR) {
+
+        }
+    });
 }

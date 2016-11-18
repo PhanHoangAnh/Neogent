@@ -175,12 +175,12 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 }
             });
         }
-        //
-
     });
+});
 
-
-
+router.delete("/", checkToken, checkAuth, function(req, res, next) {
+    console.log(req.body.payload.data);
+    res.sendStatus(200);
 });
 
 function writeBase64ImageSync(fileName, imgData) {
