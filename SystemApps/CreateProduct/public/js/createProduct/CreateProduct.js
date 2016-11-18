@@ -576,6 +576,9 @@ function createNewProduct() {
 }
 
 function deleteProduct() {
+    if (!systemSKU) {
+        return;
+    }
     var endpoint = window.location.href;
     //fbId, systoken, RSAPublicKey
     var _data = {

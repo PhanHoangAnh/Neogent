@@ -83,34 +83,41 @@ router.get("/getOptionSets", function(req, res, next) {
 
 router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     var exPayload = req.body.exPayload;
+    var systemSKU = req.body.payload.data.systemSKU;
+    var isAddNewItem = false;
+    var payload = req.body.payload.data;
+    if (!systemSKU) {
+        payload.systemSKU = systemSKU = mongoose.Types.ObjectId().toString();
+        isAddNewItem = true;   
+            
+    }
     // write images of Product to file
     if (exPayload instanceof Array) {
         for (var i in exPayload) {
             if (!exPayload[i]["sysId"]) {
                 exPayload[i]["sysId"] = mongoose.Types.ObjectId();
             }
-            var filePath = "./Shops/" + req.shopname + "/public/imgs/Products/" + exPayload[i]["sysId"].toString() + ".png";
+            var filePath = "./Shops/" + req.shopname + "/public/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";
             console.log(exPayload[i]["InputValue"].indexOf("data:image/png;base64"));
             if (exPayload[i]["InputValue"].indexOf("data:image/png;base64") !== -1) {
                 var result = writeBase64ImageSync(filePath, exPayload[i]["InputValue"]);
                 if (result) {
-                    exPayload[i]["InputValue"] = req.shopname + "/public/imgs/Products/" + exPayload[i]["sysId"].toString() + ".png";
+                    exPayload[i]["InputValue"] = req.shopname + "/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";
                 }
             }
         }
     }
     // merge exPayload and Payload to save in MongoDb
-    var payload = req.body.payload.data;
-    var systemSKU = req.body.payload.data.systemSKU;
+    
     payload.productAtttributes.push.apply(payload.productAtttributes, exPayload);
-    console.log("payload: ", payload.systemSKU, payload.productAtttributes[4]);
+    // console.log("payload: ", payload.systemSKU, payload.productAtttributes[4]);
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
         if (err) {
             // console.log("Error from Mongoose:")
         } else {
-            if (!systemSKU) {
+            if (isAddNewItem) {
                 addPayloadToItemArr();
             } else {
                 var items = shop.items;
@@ -136,13 +143,13 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
             shop.save(function(err) {
                 // save err to log later
                 if (!err) {
-                    shop.markModified('productAtttributes');
+                    shop.markModified('items');
                     objResult.status = 1
                     objResult.err = null;
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
                 } else {
-                    shop.markModified('productAtttributes');
+                    shop.markModified('items');
                     objResult.status = -1
                     objResult.err = err;
                     objResult.return_id = payload.systemSKU;
@@ -162,7 +169,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
             }, function(err, doc) {
                 console.log(err, doc);
                 if (!err) {
-                    shop.markModified('productAtttributes');
+                    shop.markModified('items');
                     objResult.status = 2
                     objResult.err = null;
                     objResult.return_id = payload.systemSKU;
@@ -180,8 +187,34 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
 
 router.delete("/", checkToken, checkAuth, function(req, res, next) {
     console.log(req.body.payload.data);
+    var systemSKU = req.body.payload.data.systemSKU;
+    if (!systemSKU) {
+        return
+    }
+    //http://stackoverflow.com/questions/14763721/mongoose-delete-array-element-in-document-and-save
+    //http://stackoverflow.com/questions/15641492/mongodb-remove-object-from-array
+    var Shops = mongoose.model('Shops');
+    Shops.update({
+        shopname: req.shopname
+    }, {
+        $pull: { "items": { systemSKU: systemSKU } }
+    }, false, function(err, numAffected) {
+        if (!err) {
+            objResult.status = 2
+            objResult.err = null;
+            objResult.return_id = payload.systemSKU;
+            res.send(objResult);
+        } else {
+            objResult.status = -3
+            objResult.err = err;
+            objResult.return_id = payload.systemSKU;
+            res.send(objResult);
+        }
+    })
+
     res.sendStatus(200);
 });
+
 
 function writeBase64ImageSync(fileName, imgData) {
     console.log(fileName);
