@@ -292,6 +292,7 @@ var conBnt;
 var RSAPublicKey;
 var systemSKU;
 var system;
+var item;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
@@ -303,6 +304,12 @@ $(document).ready(function() {
     RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
     system =<%-JSON.stringify(system)%>;    
     systemSKU =<%-JSON.stringify(systemSKU)%>
+    item =<%-JSON.stringify(item)%>
+    if(item){
+        console.log(item);
+        // window.location.href=window.location.href.replace(systemSKU,"");
+        window.history.pushState('page2', 'Title', window.location.href.replace(systemSKU,""));
+    }
     
     document.querySelector('#imgSource').addEventListener('change', function(el) {
         initImg(this);

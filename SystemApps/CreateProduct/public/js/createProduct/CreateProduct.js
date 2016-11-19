@@ -27,7 +27,7 @@ $(function() {
 
 function requestOptionSets() {
     // Get Attributes List from server
-    var currentUrl = window.location.href + "getOptionSets"
+    var currentUrl = window.location.href + "getOptionSets"    
     $.ajax({
         // url: './userToken',
         url: currentUrl,

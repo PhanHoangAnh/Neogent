@@ -42,17 +42,25 @@ function requireUncached(module) {
 };
 
 
-router.get('/', function(req, res, next) {
-    // res.send("hello, this is template Application");
+router.get('/', homeEndPoint);
+
+function homeEndPoint(req, res, next) {
+    var item = null;
+    var systemSKU = null;
+    if (req.productItem) {
+        item = req.productItem
+        systemSKU = req.systemSKU;
+    }
     res.render('index', {
         title: 'Hello, this is template Application of : ' + req.shopname,
         data: setting,
         system: systemAttribute.system,
         currency: currency,
         RSApublicKey: keyPair.public,
-        systemSKU: null
+        systemSKU: systemSKU,
+        item: item
     });
-});
+}
 //  Global variables for Business functions
 
 var objResult = {};
@@ -88,8 +96,8 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     var payload = req.body.payload.data;
     if (!systemSKU) {
         payload.systemSKU = systemSKU = mongoose.Types.ObjectId().toString();
-        isAddNewItem = true;   
-            
+        isAddNewItem = true;
+
     }
     // write images of Product to file
     if (exPayload instanceof Array) {
@@ -107,8 +115,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
             }
         }
     }
-    // merge exPayload and Payload to save in MongoDb
-    
+    // merge exPayload and Payload to save in MongoDb    
     payload.productAtttributes.push.apply(payload.productAtttributes, exPayload);
     // console.log("payload: ", payload.systemSKU, payload.productAtttributes[4]);
     var Shops = mongoose.model('Shops');
@@ -184,6 +191,30 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
         }
     });
 });
+
+router.get("/:systemSKU", function(req, res, next) {
+
+    var systemSKU = req.params.systemSKU;
+    var Shops = mongoose.model('Shops');
+    Shops.findOne({
+        'shopname': req.shopname,
+        'items.systemSKU': systemSKU
+    }, {
+        'items.$.systemSKU': systemSKU
+    }, function(err, doc) {
+        if (err || !doc) {
+            var error = {};
+            res.render('error', {
+                message: "cannot find product",
+                error: error
+            })
+        } else {
+            req.productItem = doc;
+            req.systemSKU = systemSKU;
+            next();
+        }
+    });
+}, homeEndPoint)
 
 router.delete("/", checkToken, checkAuth, function(req, res, next) {
     console.log(req.body.payload.data);
