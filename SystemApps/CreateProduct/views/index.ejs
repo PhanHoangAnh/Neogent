@@ -304,12 +304,8 @@ $(document).ready(function() {
     RSAPublicKey =<%-JSON.stringify(RSApublicKey)%>;
     system =<%-JSON.stringify(system)%>;    
     systemSKU =<%-JSON.stringify(systemSKU)%>
-    item =<%-JSON.stringify(item)%>
-    if(item){
-        console.log(item);
-        // window.location.href=window.location.href.replace(systemSKU,"");
-        window.history.pushState('page2', 'Title', window.location.href.replace(systemSKU,""));
-    }
+    productAtts =<%-JSON.stringify(item)%>
+    
     
     document.querySelector('#imgSource').addEventListener('change', function(el) {
         initImg(this);
@@ -402,10 +398,9 @@ $(document).ready(function() {
             return;
         }
     }
-
-
-
-
+    if(productAtts){
+        reloadProductAtts(productAtts); 
+    }
 });
 
     /** Huyen Anh added code here **/

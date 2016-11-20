@@ -208,7 +208,7 @@ router.get("/:systemSKU", function(req, res, next) {
                 message: "cannot find product",
                 error: error
             })
-        } else {
+        } else {            
             req.productItem = doc;
             req.systemSKU = systemSKU;
             next();

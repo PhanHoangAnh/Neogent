@@ -27,7 +27,10 @@ $(function() {
 
 function requestOptionSets() {
     // Get Attributes List from server
-    var currentUrl = window.location.href + "getOptionSets"    
+    // var currentUrl = window.location.href + "getOptionSets"  
+    var urlPath = window.location.href;
+    console.log(urlPath);
+    var currentUrl = "getOptionSets"
     $.ajax({
         // url: './userToken',
         url: currentUrl,
@@ -43,6 +46,9 @@ function requestOptionSets() {
             }
         }
     });
+
+    // history.pushState({}, null, urlPath);
+    // document.location = urlPath;
     // end of Get Attributes List from server
 };
 var newId = 0;
@@ -84,11 +90,11 @@ function create_productAttributes(prop, destination) {
         inputHandler.id = newId;
         _root.appendChild(document.importNode(controlTemplate, true));
         var rHandler = document.getElementById(newId);
-        createInputObject(rHandler, prop[i]["data-controlType"], prop[i]["attributes"], prop[i]);
+        createInputObject(rHandler, prop[i]["data-controlType"], prop[i]["attributes"], prop[i], prop[i]['InputValue']);
     }
 }
 
-function createInputObject(node, cType, attributes, origin) {
+function createInputObject(node, cType, attributes, origin, inputValue) {
     var inputObject = null;
     // console.log("rawData: ", origin);
     if (cType == "radio" || cType == "checkbox") {
@@ -276,6 +282,24 @@ function createInputObject(node, cType, attributes, origin) {
         rInput["DATASTORE"] = origin;
         rInput.addEventListener("change", getInputData, false);
     }
+}
+
+function reloadProductAtts(object) {
+    var items = object.items[0]["productAtttributes"];
+    var sysRoot = document.getElementById("systemAttributes");
+    while (sysRoot.firstChild) {
+        sysRoot.removeChild(sysRoot.firstChild);
+    }
+    console.log(items);
+    var systemAttributes = items.filter(function(obj) {
+        return !obj.sysId;
+    });
+
+    create_productAttributes(systemAttributes, true);
+    var customAtts = items.filter(function(obj) {
+        return obj.sysId;
+    })
+    create_productAttributes(customAtts, false);
 }
 
 function getInputData(evt) {
@@ -543,7 +567,8 @@ function saveProduct() {
     payload.systemSKU = systemSKU;
     console.log("from post product", systemSKU);
     payload.productAtttributes = productAttCollection;
-    var endpoint = window.location.href + "updateProduct";
+    // var endpoint = window.location.href + "updateProduct";
+    var endpoint = "updateProduct";
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, payload, exProductAttCollection, saveProductCb);
     //console.log(productAttCollection);
 
