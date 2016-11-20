@@ -28,8 +28,7 @@ $(function() {
 function requestOptionSets() {
     // Get Attributes List from server
     // var currentUrl = window.location.href + "getOptionSets"  
-    var urlPath = window.location.href;
-    console.log(urlPath);
+    var urlPath = window.location.href;    
     var currentUrl = "getOptionSets"
     $.ajax({
         // url: './userToken',
@@ -116,7 +115,8 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
             node.insertBefore(rObject, describe);
         }
         var rInputs = node.querySelectorAll('[app-role="option"]');
-        node["DATASTORE"] = origin;
+        rInputs["DATASTORE"] = origin;
+        rInputs.setAttribute("app-datastore", true);
         for (var i = 0; i < rInputs.length; i++) {
             rInputs[i].addEventListener("click", getInputFromOption, false);
         }
@@ -148,6 +148,9 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         }
         var rInput = node.querySelector('[data-controltype="select"]');
         rInput["DATASTORE"] = origin;
+        if (inputValue) {
+            rInput.setAttribute("app-datastore", true);
+        }
         // rInput.addEventListener("change", getInputData, false);
         $(rInput).select2({
                 tags: true
@@ -191,6 +194,7 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         }
         var rInput = node.querySelector('[data-controltype="select"]');
         rInput["DATASTORE"] = origin;
+        rInput.setAttribute("app-datastore", true);
         rInput.addEventListener("change", getInputData, false);
 
     } else if (cType == "image") {
@@ -215,6 +219,8 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         rMark.customRatio = rRatio;
         rMark.customImg = img.id;
         rMark["DATASTORE"] = origin;
+        rMark.setAttribute("app-datastore", true);
+
         return;
     } else if (cType == 'textarea') {
         inputObject = document.getElementById("textAreaInput").content;
@@ -232,6 +238,9 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         var rInput = node.querySelector('[data-controltype="textarea"]');
         rInput["DATASTORE"] = origin;
         rInput.addEventListener("change", getInputData, false);
+
+        rInput.setAttribute("app-datastore", true);
+
     } else if (cType == "ImageOptions") {
         // Special case for ImageOptions
         if (!attributes["ImageOptions"]) {
@@ -245,6 +254,7 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         var dataStoreHandler = node.querySelector('[app-role="selectHandler"]');
         dataStoreHandler["DATASTORE"] = origin;
         dataStoreHandler.setAttribute("app-datastore", true);
+        dataStoreHandler.setAttribute("data-controltype", "imgOpt");
         var dropPad = node.querySelector('[app-role="droppad"]');
         for (var opt in imgOpts) {
             //console.log(" Test: ", fields["ImageOptions"][opt]);
@@ -263,6 +273,7 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
             dropPad.lastElementChild.setAttribute('app-value', imgOpts[opt].value);
             dropPad.lastElementChild["SELFDATA"] = imgOpts[opt];
             // dropPad.lastElementChild.focus();
+
         }
 
     } else {
@@ -281,6 +292,8 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         var rInput = node.querySelector('[data-controltype="text"]');
         rInput["DATASTORE"] = origin;
         rInput.addEventListener("change", getInputData, false);
+        input.setAttribute("app-datastore", true);
+
     }
 }
 
@@ -290,16 +303,25 @@ function reloadProductAtts(object) {
     while (sysRoot.firstChild) {
         sysRoot.removeChild(sysRoot.firstChild);
     }
-    console.log(items);
+    console.log(items, items.length);
     var systemAttributes = items.filter(function(obj) {
         return !obj.sysId;
     });
-
+    // Generate AttributeControl from data
     create_productAttributes(systemAttributes, true);
     var customAtts = items.filter(function(obj) {
         return obj.sysId;
     })
     create_productAttributes(customAtts, false);
+    // fillup AttributeControl
+    var productControls = document.querySelectorAll('[app-datastore="true"]');
+    console.log(productControls.length);
+    for (var i = 0; i < productControls.length; i++) {
+        console.log(productControls[i].getAttribute("data-controltype"), productControls[i]);
+        if (productControls[i].getAttribute("data-controltype") == 'text') {
+            productControls[i].value = productControls[i]["DATASTORE"]["InputValue"];
+        }
+    }
 }
 
 function getInputData(evt) {
