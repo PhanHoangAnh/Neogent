@@ -28,7 +28,7 @@ $(function() {
 function requestOptionSets() {
     // Get Attributes List from server
     // var currentUrl = window.location.href + "getOptionSets"  
-    var urlPath = window.location.href;    
+    var urlPath = window.location.href;
     var currentUrl = "getOptionSets"
     $.ajax({
         // url: './userToken',
@@ -101,6 +101,7 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         opts = opts.filter(function(n) {
             return n != "";
         });
+        node.setAttribute("data-controltype", cType);
         for (var i in opts) {
             inputObject = document.getElementById("optionInput").content;
             var input = inputObject.querySelector('[app-role = "option"]');
@@ -115,8 +116,9 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
             node.insertBefore(rObject, describe);
         }
         var rInputs = node.querySelectorAll('[app-role="option"]');
-        rInputs["DATASTORE"] = origin;
-        rInputs.setAttribute("app-datastore", true);
+        // var parent = node.querySelector('[app-role="inputHandler"]')
+        node["DATASTORE"] = origin;
+        // console.log(node, rInputs);
         for (var i = 0; i < rInputs.length; i++) {
             rInputs[i].addEventListener("click", getInputFromOption, false);
         }
@@ -128,14 +130,11 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         }
 
         var select = inputObject.querySelector('[data-controltype="select"]');
-        var opts = attributes["options"].split('\n');
-        opts = opts.filter(function(n) {
-            return n != "";
-        });
-        for (var i in opts) {
+        var attOpts = attributes["options"];
+        for (var i = 0; i < attOpts.length; i++) {
             var opt = document.createElement('option');
             // opt.value = i;
-            opt.innerHTML = opts[i];
+            opt.innerHTML = attOpts[i];
             select.appendChild(opt);
         }
         var rObject = document.importNode(inputObject, true);
@@ -169,15 +168,8 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
     } else if (cType == "select") {
         inputObject = document.getElementById("selectInput").content;
         var select = inputObject.querySelector('[data-controltype="select"]');
-        var opts = attributes["options"].split('\n');
-        // Exeption for currency select box
-        // if (attributes['id'] == "sysCurrency") {
+        var opts = attributes["options"]
 
-        //     opts = currency;
-        // };
-        opts = opts.filter(function(n) {
-            return n != "";
-        });
         for (var i in opts) {
             var opt = document.createElement('option');
             // opt.value = i;
@@ -298,30 +290,86 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
 }
 
 function reloadProductAtts(object) {
-    var items = object.items[0]["productAtttributes"];
-    var sysRoot = document.getElementById("systemAttributes");
-    while (sysRoot.firstChild) {
-        sysRoot.removeChild(sysRoot.firstChild);
-    }
-    console.log(items, items.length);
-    var systemAttributes = items.filter(function(obj) {
-        return !obj.sysId;
-    });
-    // Generate AttributeControl from data
-    create_productAttributes(systemAttributes, true);
-    var customAtts = items.filter(function(obj) {
-        return obj.sysId;
-    })
-    create_productAttributes(customAtts, false);
-    // fillup AttributeControl
-    var productControls = document.querySelectorAll('[app-datastore="true"]');
-    console.log(productControls.length);
-    for (var i = 0; i < productControls.length; i++) {
-        console.log(productControls[i].getAttribute("data-controltype"), productControls[i]);
-        if (productControls[i].getAttribute("data-controltype") == 'text') {
-            productControls[i].value = productControls[i]["DATASTORE"]["InputValue"];
+    try {
+        var items = object.items[0]["productAtttributes"];
+        var sysRoot = document.getElementById("systemAttributes");
+        while (sysRoot.firstChild) {
+            sysRoot.removeChild(sysRoot.firstChild);
         }
-    }
+        console.log(items, items.length);
+        var systemAttributes = items.filter(function(obj) {
+            return !obj.sysId;
+        });
+        // Generate AttributeControl from data
+        create_productAttributes(systemAttributes, true);
+        var customAtts = items.filter(function(obj) {
+            return obj.sysId;
+        })
+        create_productAttributes(customAtts, false);
+        // fillup AttributeControl
+        var productControls = document.querySelectorAll('[app-datastore="true"]');
+        //console.log(productControls.length);
+        for (var i = 0; i < productControls.length; i++) {
+            console.log(productControls[i].getAttribute("data-controltype"), productControls[i]);
+            if (productControls[i].getAttribute("data-controltype") == 'text') {
+                productControls[i].value = productControls[i]["DATASTORE"]["InputValue"];
+            }
+            if (productControls[i].getAttribute("data-controltype") == 'radio') {
+                var optionCheckeds = productControls[i].querySelector('[app-role="inputCover"]');
+                var option = productControls[i]["DATASTORE"]["InputValue"]
+                for (var i = 0; i < optionCheckeds.length; i++) {
+                    if (optionCheckeds[i].querySelector['app-role="option"'].value == option) {
+                        optionCheckeds[i].querySelector['app-role="option"'].value = option;
+                    }
+                }
+            }
+            if (productControls[i].getAttribute("data-controltype") == 'checkbox') {
+
+            }
+            if (productControls[i].getAttribute("data-controltype") == "imgMask") {
+                var img = document.createElement('img');
+                img.setAttribute('app-img', true);
+                img.setAttribute('src', "/" + productControls[i]["DATASTORE"]["InputValue"]);
+                img.style.position = "absolute";
+                productControls[i].parentNode.insertBefore(img, productControls[i]);
+            }
+            if (productControls[i].getAttribute("data-controltype") == "imgOpt") {
+                var selectbox = productControls[i].querySelector('[app-role="selectbox"]');
+                var optValue = productControls[i]["DATASTORE"]["InputValue"].value;
+                var selectedItem = productControls[i].querySelector('[app-value="' + optValue + '"]');
+                var cln = selectedItem.cloneNode(true);
+                var selectbox = productControls[i].querySelector('[app-role="selectbox"]');
+                while (selectbox.firstChild) {
+                    selectbox.removeChild(selectbox.firstChild);
+                };
+                cln.onclick = null;
+                selectbox.appendChild(cln);
+            }
+            if (productControls[i].getAttribute("data-controltype") == "select") {
+                var selectType = productControls[i]["DATASTORE"]["data-controlType"];
+                var inputValue = productControls[i]["DATASTORE"]["InputValue"];
+                //console.log(selectType)
+                //https://kevin-brown.com/select2/examples.html
+                //http: //stackoverflow.com/questions/19639951/how-do-i-change-selected-value-of-select2-dropdown-with-jqgrid
+                //http://stackoverflow.com/questions/21968467/select2-add-data-without-replacing-content
+                if (selectType == "select_tag_single" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
+                    console.log("select_tag_single", inputValue, productControls[i]);
+
+                    $(productControls[i]).val(inputValue[0]).trigger("change");
+                } else
+                if (selectType == "select_tags" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
+                    // console.log("select_tags", productControls[i]);
+                    // $(productControls[i]).val("4").trigger("change");
+                    // for (var i = 0; i < productControls[i]["DATASTORE"]["InputValue"].length; i++) {
+                    //     $(productControls[i]).val(inputValue[i]).trigger("change");
+                    // }
+
+                } else if (selectType == "select") {
+                    productControls[i].value = inputValue;
+                }
+            }
+        }
+    } catch (err) { console.log(err) };
 }
 
 function getInputData(evt) {
@@ -330,26 +378,29 @@ function getInputData(evt) {
 }
 
 function getInputFromOption(evt) {
-    if (!this.parentNode["DATASTORE"]) {
+    if (!this.parentNode.parentNode["DATASTORE"]) {
         console.log("No DATASTORE");
+        for (var i in system) {
+
+        }
         return;
     }
-    this.parentNode.setAttribute("app-datastore", true);
+    this.parentNode.parentNode.setAttribute("app-datastore", true);
     if (evt.target.type == "radio") {
-        this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
+        this.parentNode.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
         // get data from value
     }
     if (evt.target.type == "checkbox") {
         // this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
         var inputValues = [];
         var checkArray = this.parentNode.querySelectorAll('[type="checkbox"]');
-        console.log(checkArray);
+        // console.log(checkArray);
         for (var i = 0; i < checkArray.length; i++) {
             if (checkArray[i].checked == true) {
                 inputValues.push(checkArray[i].value);
             }
         }
-        this.parentNode["DATASTORE"]["InputValue"] = inputValues;
+        this.parentNode.parentNode["DATASTORE"]["InputValue"] = inputValues;
     }
     // console.log(this.parentNode["DATASTORE"]["InputValue"])
 }

@@ -48,7 +48,7 @@
          "sysId": "sysCategories",
          "label": "Categories",
          "describe": "Cat color",
-         "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
+         "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
          "displayGroup": "system",
          "required": "true"
      }
@@ -58,7 +58,7 @@
          "sysId": "sysBranchName",
          "label": "Branch Name",
          "describe": "Branch Name",
-         "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
+         "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
          "displayGroup": "system",
          "required": "false"
      }
@@ -68,7 +68,7 @@
          "sysId": "sysCurrency",
          "label": "Currency",
          "describe": "Branch Name",
-         "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
+         "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
          "displayGroup": "system",
          "required": "true"
      }
@@ -78,7 +78,7 @@
          "sysId": "sysUnitOfMeasurement",
          "label": "Unit",
          "describe": "Unit of Measurement",
-         "options": "Ginggle\nGray\nBlack\nWhite\nZebra\nYellow\n...More\n",
+         "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
          "displayGroup": "system",
          "required": "true"
      }

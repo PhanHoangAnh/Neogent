@@ -1,0 +1,66 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.2/select2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/select2/3.2/select2.min.js"></script>
+    <!--<link rel="stylesheet" href="css/main.css"> -->
+</head>
+
+<body>
+    <select multiple id="e1" style="width:300px">
+        <option value="AL">Alabama</option>
+        <option value="Am">Amalapuram</option>
+        <option value="An">Anakapalli</option>
+        <option value="Ak">Akkayapalem</option>
+        <option value="WY">Wyoming</option>
+    </select>
+    <input type="checkbox" id="checkbox">Select All
+    </br>
+    <!-- http://stackoverflow.com/questions/28649240/select2-set-selected-value-new-method -->
+    <select id="mySelect" multiple class="row">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select>
+</body>
+</body>
+<script type="text/javascript">
+//http://jsfiddle.net/jEADR/62/
+$("#e1").select2();
+$("#checkbox").click(function() {
+    if ($("#checkbox").is(':checked')) {
+        // $("#e1 > option").prop("selected", "selected");
+        // $("#e1").trigger("change");
+        $("#el").val("AL").trigger("change");
+    } else {
+        $("#e1 > option").removeAttr("selected");
+        $("#e1").trigger("change");
+    }
+});
+
+$("#button").click(function() {
+    alert($("#e1").val());
+});
+
+$("#mySelect").select2();
+$("#mySelect").val("audi").trigger("change");
+$("#mySelect").val("saab").trigger("change");
+</script>
+
+</html>

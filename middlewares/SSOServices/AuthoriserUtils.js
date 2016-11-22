@@ -4,7 +4,7 @@ function checkAuthorization(req, res, next) {
     //1. check req.shopname
     var shopname = req.shopname;
     //2. check req.body.uid
-    var fb_uid = req.body.uid;
+    var fb_uid = req.body.uid;   
     //3. check whether uid is member of shop    
     var query = { shopname: shopname }
         // var Shop = mongoose.model("Shops");
@@ -26,7 +26,7 @@ function checkAuthorization(req, res, next) {
         }
     });
     //     console.log(shopname, fb_uid, memberLists);
-        // console.log("via checkAuthorization...........");
+    // console.log("via checkAuthorization...........");
     //     next();
 }
 
