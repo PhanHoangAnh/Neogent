@@ -117,6 +117,7 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
         }
         var rInputs = node.querySelectorAll('[app-role="option"]');
         // var parent = node.querySelector('[app-role="inputHandler"]')
+        node.setAttribute("app-datastore", true);
         node["DATASTORE"] = origin;
         // console.log(node, rInputs);
         for (var i = 0; i < rInputs.length; i++) {
@@ -309,22 +310,41 @@ function reloadProductAtts(object) {
         // fillup AttributeControl
         var productControls = document.querySelectorAll('[app-datastore="true"]');
         //console.log(productControls.length);
-        for (var i = 0; i < productControls.length; i++) {
+        for (var i in productControls) {
             console.log(productControls[i].getAttribute("data-controltype"), productControls[i]);
             if (productControls[i].getAttribute("data-controltype") == 'text') {
                 productControls[i].value = productControls[i]["DATASTORE"]["InputValue"];
             }
             if (productControls[i].getAttribute("data-controltype") == 'radio') {
-                var optionCheckeds = productControls[i].querySelector('[app-role="inputCover"]');
+                var optionCheckeds = productControls[i].querySelectorAll('[app-role="inputCover"]');
                 var option = productControls[i]["DATASTORE"]["InputValue"]
-                for (var i = 0; i < optionCheckeds.length; i++) {
-                    if (optionCheckeds[i].querySelector['app-role="option"'].value == option) {
-                        optionCheckeds[i].querySelector['app-role="option"'].value = option;
+                for (var opt in optionCheckeds) {
+                    if (optionCheckeds[opt] instanceof Element) {
+                        var optValue = optionCheckeds[opt].querySelector('[app-role="option"]').value;
+                        if (optValue == option) {
+                            optionCheckeds[opt].querySelector('[app-role="option"]').checked = true;
+                        }
                     }
+
                 }
             }
             if (productControls[i].getAttribute("data-controltype") == 'checkbox') {
+                var optionCheckeds = productControls[i].querySelectorAll('[app-role="inputCover"]');
+                var option = productControls[i]["DATASTORE"]["InputValue"]
+                for (var opt in optionCheckeds) {
+                    if (optionCheckeds[opt] instanceof Element) {
+                        var optValue = optionCheckeds[opt].querySelector('[app-role="option"]').value;
+                        console.log("CHECK OPTION: ", optValue);
+                        if (option instanceof Array) {
+                            for (var chkItem in optValue) {
+                                if (option[chkItem] == optValue) {
+                                    optionCheckeds[opt].querySelector('[app-role="option"]').checked = true;
+                                }
+                            }
+                        }
+                    }
 
+                }
             }
             if (productControls[i].getAttribute("data-controltype") == "imgMask") {
                 var img = document.createElement('img');
@@ -380,10 +400,6 @@ function getInputData(evt) {
 function getInputFromOption(evt) {
     if (!this.parentNode.parentNode["DATASTORE"]) {
         console.log("No DATASTORE");
-        for (var i in system) {
-
-        }
-        return;
     }
     this.parentNode.parentNode.setAttribute("app-datastore", true);
     if (evt.target.type == "radio") {
@@ -391,10 +407,8 @@ function getInputFromOption(evt) {
         // get data from value
     }
     if (evt.target.type == "checkbox") {
-        // this.parentNode["DATASTORE"]["InputValue"] = evt.target.value;
-        var inputValues = [];
-        var checkArray = this.parentNode.querySelectorAll('[type="checkbox"]');
-        // console.log(checkArray);
+        inputValues = [];
+        var checkArray = this.parentNode.parentNode.querySelectorAll('[type="checkbox"]');
         for (var i = 0; i < checkArray.length; i++) {
             if (checkArray[i].checked == true) {
                 inputValues.push(checkArray[i].value);
