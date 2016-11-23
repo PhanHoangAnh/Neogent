@@ -9,7 +9,7 @@ var publicKey = savedKeyPair.public;
 
 
 var mock_obj = {};
-mock_obj.userName = "concho con meo va co gi nua day";
+mock_obj.userName = "con chó, con mèo, con vịt, con khỉ và con gì nữa đây";
 mock_obj.password = "123456"
 
 var result = cryptoUtil.EncryptJSON(mock_obj, publicKey);

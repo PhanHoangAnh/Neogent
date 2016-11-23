@@ -94,6 +94,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     var systemSKU = req.body.payload.data.systemSKU;
     var isAddNewItem = false;
     var payload = req.body.payload.data;
+    console.log("from line 97: ", payload);
     if (!systemSKU) {
         payload.systemSKU = systemSKU = mongoose.Types.ObjectId().toString();
         isAddNewItem = true;
@@ -106,7 +107,6 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 exPayload[i]["sysId"] = mongoose.Types.ObjectId();
             }
             var filePath = "./Shops/" + req.shopname + "/public/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";
-            console.log(exPayload[i]["InputValue"].indexOf("data:image/png;base64"));
             if (exPayload[i]["InputValue"].indexOf("data:image/png;base64") !== -1) {
                 var result = writeBase64ImageSync(filePath, exPayload[i]["InputValue"]);
                 if (result) {
@@ -140,7 +140,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 }
             }
         }
-        //
+        // 
         function addPayloadToItemArr() {
             // console.log("check System SKU", !!payload.systemSKU, payload.systemSKU);
             if (!payload.systemSKU) {
@@ -208,7 +208,7 @@ router.get("/:systemSKU", function(req, res, next) {
                 message: "cannot find product",
                 error: error
             })
-        } else {            
+        } else {
             req.productItem = doc;
             req.systemSKU = systemSKU;
             next();

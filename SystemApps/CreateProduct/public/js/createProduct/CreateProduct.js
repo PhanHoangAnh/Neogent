@@ -162,6 +162,10 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
                 var inputValues = [];
                 for (var i = 0; i < data.length; i++) {
                     inputValues.push(data[i].text);
+                    if (attOpts.indexOf(data) < 0) {
+                        console.log($(this)[0]);
+                        rInput["DATASTORE"]["attributes"]["options"].push(data[i].text);
+                    }
                 }
                 rInput.setAttribute("app-datastore", true);
                 rInput["DATASTORE"]["InputValue"] = inputValues;
@@ -297,7 +301,6 @@ function reloadProductAtts(object) {
         while (sysRoot.firstChild) {
             sysRoot.removeChild(sysRoot.firstChild);
         }
-        console.log(items, items.length);
         var systemAttributes = items.filter(function(obj) {
             return !obj.sysId;
         });
@@ -311,7 +314,6 @@ function reloadProductAtts(object) {
         var productControls = document.querySelectorAll('[app-datastore="true"]');
         //console.log(productControls.length);
         for (var i in productControls) {
-            console.log(productControls[i].getAttribute("data-controltype"), productControls[i]);
             if (productControls[i].getAttribute("data-controltype") == 'text') {
                 productControls[i].value = productControls[i]["DATASTORE"]["InputValue"];
             }
@@ -334,7 +336,6 @@ function reloadProductAtts(object) {
                 for (var opt in optionCheckeds) {
                     if (optionCheckeds[opt] instanceof Element) {
                         var optValue = optionCheckeds[opt].querySelector('[app-role="option"]').value;
-                        console.log("CHECK OPTION: ", optValue);
                         if (option instanceof Array) {
                             for (var chkItem in optValue) {
                                 if (option[chkItem] == optValue) {
@@ -368,21 +369,13 @@ function reloadProductAtts(object) {
             if (productControls[i].getAttribute("data-controltype") == "select") {
                 var selectType = productControls[i]["DATASTORE"]["data-controlType"];
                 var inputValue = productControls[i]["DATASTORE"]["InputValue"];
-                //console.log(selectType)
-                //https://kevin-brown.com/select2/examples.html
-                //http: //stackoverflow.com/questions/19639951/how-do-i-change-selected-value-of-select2-dropdown-with-jqgrid
-                //http://stackoverflow.com/questions/21968467/select2-add-data-without-replacing-content
                 if (selectType == "select_tag_single" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
                     console.log("select_tag_single", inputValue, productControls[i]);
 
                     $(productControls[i]).val(inputValue[0]).trigger("change");
                 } else
                 if (selectType == "select_tags" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
-                    // console.log("select_tags", productControls[i]);
-                    // $(productControls[i]).val("4").trigger("change");
-                    // for (var i = 0; i < productControls[i]["DATASTORE"]["InputValue"].length; i++) {
-                    //     $(productControls[i]).val(inputValue[i]).trigger("change");
-                    // }
+                    // http://stackoverflow.com/questions/24905607/select2-cant-set-multiple-value
 
                 } else if (selectType == "select") {
                     productControls[i].value = inputValue;
@@ -624,8 +617,9 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayloa
         url: endpoint,
         cache: false,
         method: 'POST',
+        contentType: "application/json; charset=utf-8",
         headers: { "cache-control": "no-cache" },
-        data: json_data,
+        data: JSON.stringify(json_data),
         // contentType:'application/json',
         complete: function(data, status, jqXHR) {
             if (fn_cb) {
