@@ -162,8 +162,7 @@ function createInputObject(node, cType, attributes, origin, inputValue) {
                 var inputValues = [];
                 for (var i = 0; i < data.length; i++) {
                     inputValues.push(data[i].text);
-                    if (attOpts.indexOf(data) < 0) {
-                        console.log($(this)[0]);
+                    if (attOpts.indexOf(data[i].text) < 0) {
                         rInput["DATASTORE"]["attributes"]["options"].push(data[i].text);
                     }
                 }
@@ -370,13 +369,14 @@ function reloadProductAtts(object) {
                 var selectType = productControls[i]["DATASTORE"]["data-controlType"];
                 var inputValue = productControls[i]["DATASTORE"]["InputValue"];
                 if (selectType == "select_tag_single" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
-                    console.log("select_tag_single", inputValue, productControls[i]);
-
                     $(productControls[i]).val(inputValue[0]).trigger("change");
                 } else
                 if (selectType == "select_tags" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
                     // http://stackoverflow.com/questions/24905607/select2-cant-set-multiple-value
-
+                    console.log("select_tags", inputValue, productControls[i], $(productControls[i]).val());
+                    if (inputValue && inputValue instanceof Array) {
+                        $(productControls[i]).val(inputValue).trigger("change");
+                    }
                 } else if (selectType == "select") {
                     productControls[i].value = inputValue;
                 }
@@ -646,6 +646,7 @@ function saveProduct() {
     }
     var payload = {};
     payload.systemSKU = systemSKU;
+    console.log(payload);
     console.log("from post product", systemSKU);
     payload.productAtttributes = productAttCollection;
     // var endpoint = window.location.href + "updateProduct";

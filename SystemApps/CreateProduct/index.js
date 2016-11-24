@@ -94,7 +94,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     var systemSKU = req.body.payload.data.systemSKU;
     var isAddNewItem = false;
     var payload = req.body.payload.data;
-    console.log("from line 97: ", payload);
+    // console.log("from line 97: ", payload.productAtttributes[4]);
     if (!systemSKU) {
         payload.systemSKU = systemSKU = mongoose.Types.ObjectId().toString();
         isAddNewItem = true;
