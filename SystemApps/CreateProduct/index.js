@@ -107,7 +107,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 exPayload[i]["sysId"] = mongoose.Types.ObjectId();
             }
             var filePath = "./Shops/" + req.shopname + "/public/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";
-            if (exPayload[i]["InputValue"].indexOf("data:image/png;base64") !== -1) {
+            if (exPayload[i]["InputValue"] && exPayload[i]["InputValue"].indexOf("data:image/png;base64") !== -1) {
                 var result = writeBase64ImageSync(filePath, exPayload[i]["InputValue"]);
                 if (result) {
                     exPayload[i]["InputValue"] = req.shopname + "/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";

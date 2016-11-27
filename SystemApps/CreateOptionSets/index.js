@@ -5,7 +5,6 @@ var app = express();
 var router = express.Router();
 var path = require("path");
 var mongoose = require("mongoose");
-var async = require("async");
 var fs = require('fs');
 
 app.set('views', path.join(__dirname, 'views'))
