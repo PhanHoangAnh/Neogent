@@ -241,15 +241,16 @@ router.delete("/:systemSKU", checkToken, checkAuth, function(req, res, next) {
             objResult.err = null;
             objResult.return_id = systemSKU;
             res.send(objResult);
+            return;
         } else {
             objResult.status = -3
             objResult.err = err;
             objResult.return_id = systemSKU;
             res.send(objResult);
+            return;
         }
-    })
+    });
 
-    res.sendStatus(200);
 });
 
 

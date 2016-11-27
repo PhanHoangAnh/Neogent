@@ -685,7 +685,8 @@ function deleteProduct() {
     if (!systemSKU) {
         return;
     }
-    var endpoint = window.location.href;
+    // var endpoint = window.location.href;
+    var endpoint = '';
     //fbId, systoken, RSAPublicKey
     var _data = {
         userName: fbId,
@@ -704,7 +705,7 @@ function deleteProduct() {
         contentType: 'application/json', // <---add this
         dataType: 'text', // <---update this
         complete: function(data, status, jqXHR) {
-
+            console.log("from delete function: ", data);
         }
     });
 }
