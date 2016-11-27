@@ -819,7 +819,7 @@ function saveAttributeSets() {
     compObj.components = printedList
         // Post Attributes List to server
     var currentUrl = window.location.href + "updateOptionSets"
-    console.log(compObj);
+    console.log(exPayload);
     postSensitiveData(fbId, systoken, RSAPublicKey, currentUrl, compObj, fn_cb, exPayload)
 
     function fn_cb(result) {
@@ -1004,13 +1004,13 @@ function addMoreOrEditImageOptions(elem, event) {
 
     switch (appRole) {
         case "addMoreImgOption":
-            console.log('1');
+            // console.log('1');
+            currentImgOptItem = {};
             document.querySelector('[app-role="attImgName"]').value = null;
             document.querySelector('[app-role="attImgXRatio"]').value = null;
             document.querySelector('[app-role="attImgYRatio"]').value = null;
             ngOpt.imgSrc = '';
             neo_cropper.resetOption(ngOpt, 1);
-            currentImgOptItem = {};
             break;
         case "editImgOption":
             var itemHwd = getHandler(elem, "selectItem")
@@ -1025,7 +1025,7 @@ function addMoreOrEditImageOptions(elem, event) {
                 document.getElementById("attImgName").value = currentImgOptItem["optName"];
                 document.getElementById("attImgXRatio").value = currentImgOptItem["attImgXRatio"];
                 document.getElementById("attImgYRatio").value = currentImgOptItem["attImgYRatio"];
-                changeAttImgOptionRatio(currentImgOptItem["attImgXRatio"], currentImgOptItem["attImgXRatio"]);                    
+                changeAttImgOptionRatio(currentImgOptItem["attImgXRatio"], currentImgOptItem["attImgXRatio"]);
             };
             break;
         case "deleteImgOption":
@@ -1133,8 +1133,9 @@ function optionPreview(data) {
     document.getElementById('attPreview').setAttribute('src', data);
     document.getElementById('attPreviewMd').setAttribute('src', data);
     document.getElementById('attPreviewSm').setAttribute('src', data);
+    //error here
     if (currentImgOptItem) {
-        currentImgOptItem['img'] = data;
+        currentImgOptItem['img'] = data;;
     }
 
 }
@@ -1149,14 +1150,18 @@ document.getElementById("attImgOptSave").addEventListener('click', function(el) 
         item = currentItem;
         var ImageOptions = null;
         ImageOptions = imgOptionHandler.CUST['ImageOptions'];
-        var max;
+        var valueArr = [];
+        var max = 0;
         if (ImageOptions) {
-            max = Math.max.apply(null, ImageOptions.map(function(o) {
-                return o.value
-            }));
+            for (var i = 0; i < ImageOptions.length; i++) {
+                valueArr.push(ImageOptions[i].value);
+                if (isNaN(ImageOptions[i].value) || isFinite(ImageOptions[i].value) || ImageOptions[i].value == "-Infinity") {
+                    ImageOptions[i].value = i;
+                }
+            }
+            max = Math.max.apply(Math, valueArr);
         } else {
             imgOptionHandler.CUST['ImageOptions'] = [];
-            max = 0;
         }
         max++;
         currentImgOptItem.value = max;

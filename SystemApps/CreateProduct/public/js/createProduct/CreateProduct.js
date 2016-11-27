@@ -372,8 +372,7 @@ function reloadProductAtts(object) {
                     $(productControls[i]).val(inputValue[0]).trigger("change");
                 } else
                 if (selectType == "select_tags" && productControls[i]["DATASTORE"]["InputValue"] instanceof Array) {
-                    // http://stackoverflow.com/questions/24905607/select2-cant-set-multiple-value
-                    console.log("select_tags", inputValue, productControls[i], $(productControls[i]).val());
+                    // http://stackoverflow.com/questions/24905607/select2-cant-set-multiple-value                    
                     if (inputValue && inputValue instanceof Array) {
                         $(productControls[i]).val(inputValue).trigger("change");
                     }

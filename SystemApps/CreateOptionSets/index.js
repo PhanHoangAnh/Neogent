@@ -5,6 +5,7 @@ var app = express();
 var router = express.Router();
 var path = require("path");
 var mongoose = require("mongoose");
+var async = require("async");
 var fs = require('fs');
 
 app.set('views', path.join(__dirname, 'views'))
@@ -58,7 +59,7 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
         return;
     }
     var postData = req.body.payload.data;
-    console.log("postData['components']: ", postData['components'] instanceof Array);
+    // console.log("postData['components']: ", postData['components'] instanceof Array);
 
     if (postData['components'] instanceof Array) {
         for (var com in postData['components']) {
@@ -66,11 +67,12 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
                 postData['components'][com]["sysId"] = mongoose.Types.ObjectId();
             }
         }
-    }    
+    }
     var exPayload = req.body.exPayload
     if (exPayload && exPayload instanceof Array) {
-        //
+
         var components = req.body.exPayload;
+        ////
         for (var com in components) {
             //&& components[com]["attributes"]["ImageOptions"]["img"]
             if (components[com]["data-controlType"] == "ImageOptions") {
@@ -78,24 +80,25 @@ router.post("/updateOptionSets", checkToken, checkAuth, function(req, res, next)
                     components[com]["sysId"] = mongoose.Types.ObjectId();
                 }
                 var shopPath = "./Shops/" + req.shopname + "/public/imgs/" + components[com]["sysId"].toString();
-                // console.log("here: ", components[com]["attributes"]["ImageOptions"][0]["optName"]);
                 var ImageOptions = components[com]["attributes"]["ImageOptions"];
                 if (ImageOptions instanceof Array) {
-                    for (var i in ImageOptions) {
-                        //console.log("indexOf base64: ", ImageOptions[i]["img"].indexOf("data:image/png;base64"), components[com]["attributes"]["ImageOptions"][i]["optName"])
-                        if (ImageOptions[i]["img"].indexOf("data:image/png;base64") !== -1) {
-                            var imageFileName = shopPath + "_" + ImageOptions[i]["value"] + ".png";
-                            var result = writeBase64ImageSync(imageFileName, ImageOptions[i]["img"]);
-                            if (result) {
-                                // ImageOptions[i]["img"] = req.protocol + '://' + req.headers.host + "/" + req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[i]["value"] + ".png";
-                                ImageOptions[i]["img"] = req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[i]["value"] + ".png";
-                                console.log(ImageOptions[i]["img"]);
+                    for (var i = 0; i < ImageOptions.length; i++) {
+                        with({ n: i }) {
+                            if (ImageOptions[n]["img"].indexOf("data:image/png;base64") !== -1) {
+                                var imageFileName = shopPath + "_" + ImageOptions[n]["value"] + ".png";
+                                var result = writeBase64ImageSync(imageFileName, ImageOptions[n]["img"]);
+                                if (result) {
+                                    ImageOptions[n]["img"] = req.shopname + "/imgs/" + components[com]["sysId"].toString() + "_" + ImageOptions[n]["value"] + ".png";
+                                    console.log(ImageOptions[n]["img"]);
+                                }
                             }
+
                         }
                     }
                 }
             }
         }
+        ////
         postData['components'].push.apply(postData['components'], req.body.exPayload)
     }
     var optionSets = mongoose.model('OptionSets');
@@ -189,16 +192,14 @@ router.get("/deleteOptionSets/:id", checkToken, checkAuth, function(req, res, ne
 
 
 function writeBase64ImageSync(fileName, imgData) {
-    console.log(fileName);
     try {
         var data = imgData.replace(/^data:image\/\w+;base64,/, '');
         fs.writeFileSync(fileName, data, 'base64');
         return true;
     } catch (err) {
-        //console.log(err);
+        console.log("err: ", err);
         return false;
     }
-
 }
 
 app.use(router);
