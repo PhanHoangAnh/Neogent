@@ -312,7 +312,7 @@ function reloadProductAtts(object) {
         // fillup AttributeControl
         var productControls = document.querySelectorAll('[app-datastore="true"]');
         //console.log(productControls.length);
-        for (var i in productControls) {
+        for (var i = 0; i < productControls.length; i++) {
             if (productControls[i].getAttribute("data-controltype") == 'text') {
                 productControls[i].value = productControls[i]["DATASTORE"]["InputValue"];
             }
