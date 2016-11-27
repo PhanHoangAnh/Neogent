@@ -133,6 +133,8 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 });
                 // console.log("updateItem: ", updateItem);
                 if (!updateItem) {
+                    // prevent faked mongooseId from client
+                    payload.systemSKU == null;
                     addPayloadToItemArr();
                 } else {
                     //http://stackoverflow.com/questions/26156687/mongoose-find-update-subdocument
@@ -140,10 +142,13 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 }
             }
         }
-        // 
+        //
+        updateCategory(shop, payload);
+        updateBranchName(shop, payload);
+        //
         function addPayloadToItemArr() {
             // console.log("check System SKU", !!payload.systemSKU, payload.systemSKU);
-            if (!payload.systemSKU) {
+            if (!mongoose.Types.ObjectId.isValid(payload.systemSKU) || !payload.systemSKU) {
                 payload.systemSKU = mongoose.Types.ObjectId().toString();
             }
             shop.items.push(payload);
@@ -190,6 +195,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
             });
         }
     });
+
 });
 
 router.get("/:systemSKU", function(req, res, next) {
@@ -216,9 +222,9 @@ router.get("/:systemSKU", function(req, res, next) {
     });
 }, homeEndPoint)
 
-router.delete("/", checkToken, checkAuth, function(req, res, next) {
+router.delete("/:systemSKU", checkToken, checkAuth, function(req, res, next) {
     console.log(req.body.payload.data);
-    var systemSKU = req.body.payload.data.systemSKU;
+    var systemSKU = req.body.payload.data.systemSKU || req.params.systemSKU;
     if (!systemSKU) {
         return
     }
@@ -233,12 +239,12 @@ router.delete("/", checkToken, checkAuth, function(req, res, next) {
         if (!err) {
             objResult.status = 2
             objResult.err = null;
-            objResult.return_id = payload.systemSKU;
+            objResult.return_id = systemSKU;
             res.send(objResult);
         } else {
             objResult.status = -3
             objResult.err = err;
-            objResult.return_id = payload.systemSKU;
+            objResult.return_id = systemSKU;
             res.send(objResult);
         }
     })
@@ -247,6 +253,8 @@ router.delete("/", checkToken, checkAuth, function(req, res, next) {
 });
 
 
+
+// Business Region
 function writeBase64ImageSync(fileName, imgData) {
     console.log(fileName);
     try {
@@ -258,6 +266,30 @@ function writeBase64ImageSync(fileName, imgData) {
         return false;
     }
 
+}
+
+function updateCategory(shop, product) {
+    // template of singgle category
+    // {
+    //     name: "abcd",
+    //     products: {
+    //         ["productItem", "productItem"]
+    //     },
+    //     branchNameList: ["--branchName", "--branchName"]
+    // }
+    console.log("from updateCategory: ", product);
+}
+
+function updateBranchName(shop, product) {
+    // template of singgle branchName
+    // {
+    //     name: "abcd",
+    //     products: {
+    //         ["productItem", "productItem"]
+    //     },
+    //     categoriesList: ["--category", "--category"]
+    // }
+    console.log("from updateBranchName: ", product);
 }
 
 app.use(router);
