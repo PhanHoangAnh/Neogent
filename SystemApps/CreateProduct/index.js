@@ -312,11 +312,27 @@ function updateCategory(shop, product) {
         // JOBs TODO:
         // 1. delete associated properties in d and e (modify).
         // 2. create new objects d and e follows above schema. 
-        // So we need 3 previous steps:
-        // I.   Define ovelap objects in array ;
-        // II.  Define modidy needed objects .
-        // III. Create new object and push it into categories of shop
+       
+
+        // A. Find object in category with contains product SKU;
+        var oldCatContainSKU = categories.filter(function(obj) {
+            return obj.products.indexOf(product.systemSKU !== -1);
+        });
+        // B. Define new objects and modify needed object arrays        
         
+        var neededModifyCats = []; // only in category
+        var newCats = []; // only in pCatValues
+
+        neededModifyCats = categories.filter(function(obj) {
+            return pCatValues.indexOf(obj.name) == -1;
+        });
+
+        newCats = pCatValues.filter(function(obj) {
+            return categories.map(function(item) {
+                return item.name;
+            }).indexOf(obj) == -1;
+        })
+
         var oldCats;
         for (var i = 0; i < pCatValues.length; i++) {
             oldCats = categories.filter(function(item) {
@@ -328,8 +344,8 @@ function updateCategory(shop, product) {
             for (var i = 0; i < pCatValues.length; i++) {
                 var tempCat = {};
                 tempCat.name = pCatValues[i];
-                tempCat.product = [];
-                tempCat.product.push(product.systemSKU);
+                tempCat.products = [];
+                tempCat.products.push(product.systemSKU);
                 tempCat.branchNames = [];
                 tempCat.branchNames = pCatBranchName;
                 categories.push(tempCat);
