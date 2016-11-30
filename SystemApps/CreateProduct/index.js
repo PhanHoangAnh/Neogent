@@ -143,8 +143,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
             }
         }
         //
-        updateCategory(shop, payload);
-        updateBranchName(shop, payload);
+
         //
         function addPayloadToItemArr() {
             // console.log("check System SKU", !!payload.systemSKU, payload.systemSKU);
@@ -152,6 +151,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                 payload.systemSKU = mongoose.Types.ObjectId().toString();
             }
             shop.items.push(payload);
+
             shop.save(function(err) {
                 // save err to log later
                 if (!err) {
@@ -160,8 +160,9 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     objResult.err = null;
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
+                    updateCategory(req.shopname, payload);
+                    updateBranchName(req.shopname, payload);
                 } else {
-                    shop.markModified('items');
                     objResult.status = -1
                     objResult.err = err;
                     objResult.return_id = payload.systemSKU;
@@ -186,6 +187,8 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     objResult.err = null;
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
+                    updateCategory(req.shopname, payload);
+                    updateBranchName(req.shopname, payload);
                 } else {
                     objResult.status = -2
                     objResult.err = err;
@@ -223,13 +226,15 @@ router.get("/:systemSKU", function(req, res, next) {
 }, homeEndPoint)
 
 router.delete("/:systemSKU", checkToken, checkAuth, function(req, res, next) {
-    console.log(req.body.payload.data);
+    //console.log(req.body.payload.data);
     var systemSKU = req.body.payload.data.systemSKU || req.params.systemSKU;
     if (!systemSKU) {
         return
     }
-    //http://stackoverflow.com/questions/14763721/mongoose-delete-array-element-in-document-and-save
-    //http://stackoverflow.com/questions/15641492/mongodb-remove-object-from-array
+    var item = {};
+    item.systemSKU = systemSKU;
+    // updateCategory(req.shopname, item);
+    // updateBranchName(req.shopname, item);
     var Shops = mongoose.model('Shops');
     Shops.update({
         shopname: req.shopname
@@ -241,6 +246,8 @@ router.delete("/:systemSKU", checkToken, checkAuth, function(req, res, next) {
             objResult.err = null;
             objResult.return_id = systemSKU;
             res.send(objResult);
+            // updateCategory(req.shopname, systemSKU);
+            // updateBranchName(req.shopname, systemSKU);
             return;
         } else {
             objResult.status = -3
@@ -257,7 +264,7 @@ router.delete("/:systemSKU", checkToken, checkAuth, function(req, res, next) {
 
 // Business Region
 function writeBase64ImageSync(fileName, imgData) {
-    console.log(fileName);
+    //console.log(fileName);
     try {
         var data = imgData.replace(/^data:image\/\w+;base64,/, '');
         fs.writeFileSync(fileName, data, 'base64');
@@ -274,11 +281,73 @@ function updateCategory(shop, product) {
     // {
     //     name: "abcd",
     //     products: {
-    //         ["productItem", "productItem"]
+    //         ["--productItem", "--productItem"]
     //     },
     //     branchNameList: ["--branchName", "--branchName"]
-    // }
-    console.log("from updateCategory: ", product);
+    // }    
+    var Shops = mongoose.model('Shops');
+    // find Shops via Shops Name
+    Shops.findOne({ shopname: shop }, function(err, shop) {
+        if (err) {
+            return;
+        }
+        var categories = shop.categories
+        var pCats = product["productAtttributes"];
+        var pCatValues;
+        var pCatBranchName;
+        for (var i = 0; i < pCats.length; i++) {
+            if (pCats[i]['attributes']['sysId'] == 'sysCategories') {
+                pCatValues = pCats[i]["InputValue"];
+            }
+            if (pCats[i]['attributes']['sysId'] == 'sysBranchName') {
+                pCatBranchName = pCats[i]["InputValue"];
+            }
+        }
+        if (!pCatValues instanceof Array) {
+            return;
+        }
+        console.log("from updateCategory: ", pCatValues);
+        // find associated object in categories. 
+        // E.g given oldValue = [a,b,c] and newValue = [a,d,e]
+        // JOBs TODO:
+        // 1. delete associated properties in d and e (modify).
+        // 2. create new objects d and e follows above schema. 
+        // So we need 3 previous steps:
+        // I.   Define ovelap objects in array ;
+        // II.  Define modidy needed objects .
+        // III. Create new object and push it into categories of shop
+        
+        var oldCats;
+        for (var i = 0; i < pCatValues.length; i++) {
+            oldCats = categories.filter(function(item) {
+                return item.name = pCatValues[i];
+            })
+        }
+        // first case; totally new
+        if (oldCats.length == 0) {
+            for (var i = 0; i < pCatValues.length; i++) {
+                var tempCat = {};
+                tempCat.name = pCatValues[i];
+                tempCat.product = [];
+                tempCat.product.push(product.systemSKU);
+                tempCat.branchNames = [];
+                tempCat.branchNames = pCatBranchName;
+                categories.push(tempCat);
+                console.log('categories: ', categories);
+            }
+        } else {
+            // 
+        }
+
+
+        shop.save(function(err) {
+            console.log("check err: ", err);
+        })
+
+
+    })
+
+
 }
 
 function updateBranchName(shop, product) {
@@ -286,11 +355,17 @@ function updateBranchName(shop, product) {
     // {
     //     name: "abcd",
     //     products: {
-    //         ["productItem", "productItem"]
+    //         ["--productItem", "--productItem"]
     //     },
     //     categoriesList: ["--category", "--category"]
     // }
-    console.log("from updateBranchName: ", product);
+    // console.log("from updateBranchName: ", product);
+
+
+}
+
+function shopResolve(shop) {
+
 }
 
 app.use(router);
