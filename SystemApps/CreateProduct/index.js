@@ -311,58 +311,59 @@ function updateCategory(shop, product) {
         // E.g given oldValue = [a,b,c] and newValue = [a,d,e]
         // JOBs TODO:
         // 1. delete associated properties in d and e (modify).
-        // 2. create new objects d and e follows above schema. 
-       
+        // 2. create new objects d and e follows above schema.        
 
         // A. Find object in category with contains product SKU;
         var oldCatContainSKU = categories.filter(function(obj) {
             return obj.products.indexOf(product.systemSKU !== -1);
         });
-        // B. Define new objects and modify needed object arrays        
-        
-        var neededModifyCats = []; // only in category
-        var newCats = []; // only in pCatValues
-
-        neededModifyCats = categories.filter(function(obj) {
+        // B. Define new objects and modify needed object arrays
+        // only in oldCatContainSKU
+        var neededModifyCats = oldCatContainSKU.filter(function(obj) {
             return pCatValues.indexOf(obj.name) == -1;
         });
-
-        newCats = pCatValues.filter(function(obj) {
-            return categories.map(function(item) {
+        // only in pCatValues
+        var newCats = pCatValues.filter(function(obj) {
+            return oldCatContainSKU.map(function(item) {
                 return item.name;
             }).indexOf(obj) == -1;
-        })
+        });
 
-        var oldCats;
-        for (var i = 0; i < pCatValues.length; i++) {
-            oldCats = categories.filter(function(item) {
-                return item.name = pCatValues[i];
-            })
-        }
-        // first case; totally new
-        if (oldCats.length == 0) {
-            for (var i = 0; i < pCatValues.length; i++) {
+        // create new cat objects
+        for (var i = 0; i < newCats.length; i++) {
+            (function(n) {
                 var tempCat = {};
-                tempCat.name = pCatValues[i];
+                tempCat.name = newCats[n];
                 tempCat.products = [];
                 tempCat.products.push(product.systemSKU);
                 tempCat.branchNames = [];
                 tempCat.branchNames = pCatBranchName;
                 categories.push(tempCat);
                 console.log('categories: ', categories);
-            }
-        } else {
-            // 
+            })(i);
         }
-
+        // modify old cat objects in categories
+        // in oldCatContainSKU only
+        for (var i = 0; i < neededModifyCats.length; i++) {
+            neededModifyCats[i].products.splice(indexOf(product.systemSKU), 1);
+        }
+        // modify old cat objects in categories
+        // in both oldCatContainSKU and pCatValues
+        var sameCats = oldCatContainSKU.filter(function(obj) {
+            return pCatValues.indexOf(obj.name) !== -1;
+        });
+        for (var i = 0; i < sameCats.length; i++) {
+            var systemSKUArr = [product.systemSKU];
+            sameCats[i].products = sameCats[i].products.concat(systemSKUArr.filter(function(obj) {
+                return sameCats[i].products.indexOf(obj) < 0;
+            }));
+        };
+        shop.markModified('categories');
 
         shop.save(function(err) {
             console.log("check err: ", err);
         })
-
-
     })
-
 
 }
 

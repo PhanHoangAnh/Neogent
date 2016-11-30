@@ -1,7 +1,7 @@
 var neededModifyCats = []; // only in category
 var newCats = []; // only in pCatValues
 
-pCatValues = ['xanh', 'vang', 'tim', "red"];
+pCatValues = ['xanh', 'vang', 'tim', "red", "gaf"];
 
 categories = [{
     "name": "vang",
@@ -52,9 +52,6 @@ categories = [{
 // })
 
 neededModifyCats = categories.filter(function(obj) {
-    // return pCatValues.some(function(item) {
-    //     console.log(obj.name, item)
-    // })
     return pCatValues.indexOf(obj.name) == -1;
 })
 
@@ -68,6 +65,10 @@ var index = categories.map(function(item) {
 //     return index.indexOf(obj) == -1;
 // })
 
+var sameInBoth = categories.filter(function(obj){
+    return pCatValues.indexOf(obj.name) !== -1;
+})
+
 
 
 var newCats = pCatValues.filter(function(obj) {
@@ -78,9 +79,11 @@ var newCats = pCatValues.filter(function(obj) {
 
 console.log("neededModifyCats: ", neededModifyCats);
 
-console.log("index: ", index);
 
-console.log("pCatValues: ", newCats);
+
+console.log("newCats: ", newCats);
+
+console.log("sameInBoth: ", sameInBoth);
 
 
 
