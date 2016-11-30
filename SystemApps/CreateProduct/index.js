@@ -306,7 +306,6 @@ function updateCategory(shop, product) {
         if (!pCatValues instanceof Array) {
             return;
         }
-        console.log("from updateCategory: ", pCatValues);
         // find associated object in categories. 
         // E.g given oldValue = [a,b,c] and newValue = [a,d,e]
         // JOBs TODO:
@@ -328,7 +327,6 @@ function updateCategory(shop, product) {
                 return item.name;
             }).indexOf(obj) == -1;
         });
-
         // create new cat objects
         for (var i = 0; i < newCats.length; i++) {
             (function(n) {
@@ -339,13 +337,17 @@ function updateCategory(shop, product) {
                 tempCat.branchNames = [];
                 tempCat.branchNames = pCatBranchName;
                 categories.push(tempCat);
-                console.log('categories: ', categories);
             })(i);
         }
         // modify old cat objects in categories
         // in oldCatContainSKU only
-        for (var i = 0; i < neededModifyCats.length; i++) {
-            neededModifyCats[i].products.splice(indexOf(product.systemSKU), 1);
+        var len = len = neededModifyCats.length
+        for (var i = 0; i < len; i++) {
+            neededModifyCats[i].products.splice(neededModifyCats[i].products.indexOf(product.systemSKU), 1);
+            console.log("product.length:=  ", neededModifyCats[i].products.length)
+            if (neededModifyCats[i].products.length == 0) {
+                categories.pull(neededModifyCats[i]);
+            }
         }
         // modify old cat objects in categories
         // in both oldCatContainSKU and pCatValues
