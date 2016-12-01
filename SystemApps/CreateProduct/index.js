@@ -306,12 +306,6 @@ function updateCategory(shop, product) {
         if (!pCatValues instanceof Array) {
             return;
         }
-        // find associated object in categories. 
-        // E.g given oldValue = [a,b,c] and newValue = [a,d,e]
-        // JOBs TODO:
-        // 1. delete associated properties in d and e (modify).
-        // 2. create new objects d and e follows above schema.        
-
         // A. Find object in category with contains product SKU;
         var oldCatContainSKU = categories.filter(function(obj) {
             return obj.products.indexOf(product.systemSKU !== -1);
@@ -431,15 +425,15 @@ function updateBranchName(shop, product) {
         var len = neededModifyBns.length
         for (var i = 0; i < len; i++) {
             (function(n) {
-                neededModifyBns[n].products.splice(neededModifyBns.products.indexOf(product.systemSKU), 1);
-                if (neededModifyBns[n].product.length == 0) {
+                neededModifyBns[n].products.splice(neededModifyBns[n].products.indexOf(product.systemSKU), 1);
+                if (neededModifyBns[n].products.length == 0) {
                     branchNames.pull(neededModifyBns[n]);
                 }
             })(i);
         };
         // same in both
         var sameBns = oldBranchNameContainSKU.filter(function(obj) {
-            return pBranchValues.index(obj.name) !== -1;
+            return pBranchValues.indexOf(obj.name) !== -1;
         });
         for (var i = 0; i < sameBns.length; i++) {
             with({ n: i }) {
@@ -455,9 +449,9 @@ function updateBranchName(shop, product) {
         })
 
     });
+};
 
 
-}
 
 function shopResolve(shop) {
 
