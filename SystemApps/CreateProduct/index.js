@@ -343,11 +343,14 @@ function updateCategory(shop, product) {
         // in oldCatContainSKU only
         var len = len = neededModifyCats.length
         for (var i = 0; i < len; i++) {
-            neededModifyCats[i].products.splice(neededModifyCats[i].products.indexOf(product.systemSKU), 1);
-            console.log("product.length:=  ", neededModifyCats[i].products.length)
-            if (neededModifyCats[i].products.length == 0) {
-                categories.pull(neededModifyCats[i]);
-            }
+            (function(n) {
+                neededModifyCats[n].products.splice(neededModifyCats[n].products.indexOf(product.systemSKU), 1);
+                console.log("product.length:=  ", neededModifyCats[n].products.length)
+                if (neededModifyCats[n].products.length == 0) {
+                    categories.pull(neededModifyCats[n]);
+                };
+            })(i)
+            // check branchName 
         }
         // modify old cat objects in categories
         // in both oldCatContainSKU and pCatValues
@@ -355,10 +358,12 @@ function updateCategory(shop, product) {
             return pCatValues.indexOf(obj.name) !== -1;
         });
         for (var i = 0; i < sameCats.length; i++) {
-            var systemSKUArr = [product.systemSKU];
-            sameCats[i].products = sameCats[i].products.concat(systemSKUArr.filter(function(obj) {
-                return sameCats[i].products.indexOf(obj) < 0;
-            }));
+            (function(n) {
+                var systemSKUArr = [product.systemSKU];
+                sameCats[n].products = sameCats[n].products.concat(systemSKUArr.filter(function(obj) {
+                    return sameCats[n].products.indexOf(obj) < 0;
+                }));
+            })(i);
         };
         shop.markModified('categories');
 
@@ -376,9 +381,80 @@ function updateBranchName(shop, product) {
     //     products: {
     //         ["--productItem", "--productItem"]
     //     },
-    //     categoriesList: ["--category", "--category"]
+    //     categories: ["--category", "--category"]
     // }
     // console.log("from updateBranchName: ", product);
+    var Shops = mongoose.model('Shops');
+    // find Shops via Shops Name
+    Shops.findOne({ shopname: shop }, function(err, shop) {
+        if (err) {
+            return;
+        }
+        var branchNames = shop.branchNames;
+        var pBranchName = product["productAtttributes"];
+        var pBranchValues;
+        var pCatCategories;
+        for (var i = 0; i < pBranchName.length; i++) {
+            if (pBranchName[i]['attributes']['sysId'] == 'sysBranchName') {
+                pBranchValues = pBranchName[i]["InputValue"];
+            }
+            if (pBranchName[i]['attributes']['sysId'] == 'sysCategories') {
+                pCatCategories = pBranchName[i]["InputValue"];
+            }
+        }
+        var oldBranchNameContainSKU = branchNames.filter(function(obj) {
+            return obj.products.indexOf(product.systemSKU) !== -1;
+        });
+        // List of objects which contain sysSKU in oldBranchNameContainSKU only, not in pBranchValues
+        var neededModifyBns = oldBranchNameContainSKU.filter(function(obj) {
+            return pBranchValues.indexOf(obj.name) == -1;
+        });
+        // Only in pBranchValues;
+        var newBns = pBranchValues.filter(function(obj) {
+            return neededModifyBns.map(function(item) {
+                return item.name;
+            }).indexOf(obj) == -1;
+        });
+        // update new Objects
+        for (var i = 0; i < newBns.length; i++) {
+            (function(n) {
+                var tempBn = {};
+                tempBn.name = newBns[n];
+                tempBn.products = [];
+                tempBn.products.push(product.systemSKU);
+                tempBn.categories = pCatCategories;
+                branchNames.push(tempBn);
+            })(i);
+        };
+        // modify old branchName objects in branchNames
+        // in neededModifyBns only
+        var len = neededModifyBns.length
+        for (var i = 0; i < len; i++) {
+            (function(n) {
+                neededModifyBns[n].products.splice(neededModifyBns.products.indexOf(product.systemSKU), 1);
+                if (neededModifyBns[n].product.length == 0) {
+                    branchNames.pull(neededModifyBns[n]);
+                }
+            })(i);
+        };
+        // same in both
+        var sameBns = oldBranchNameContainSKU.filter(function(obj) {
+            return pBranchValues.index(obj.name) !== -1;
+        });
+        for (var i = 0; i < sameBns.length; i++) {
+            with({ n: i }) {
+                var systemSKUArr = [product.systemSKU];
+                sameBns[n].products.concat(systemSKU.filter(function(obj) {
+                    return sameBns.indexOf(obj) < 0;
+                }));
+            }
+        };
+        shop.markModified("branchNames");
+        shop.save(function(err) {
+            console.log("from saving branchNames: ", err);
+        })
+
+    });
 
 
 }

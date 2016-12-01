@@ -22,7 +22,7 @@ var Shop_schema = new Schema({
     updated: { type: Date, default: Date.now },
     items: [Schema.Types.Mixed],
     categories: [Schema.Types.Mixed],
-    branchName: [Schema.Types.Mixed],
+    branchNames: [Schema.Types.Mixed],
     extends: [Schema.Types.Mixed],
 });
 
