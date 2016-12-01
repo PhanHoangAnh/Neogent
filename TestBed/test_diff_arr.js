@@ -3,6 +3,24 @@ var newCats = []; // only in pCatValues
 
 pCatValues = ['xanh', 'vang', 'tim', "red", "gaf"];
 
+// secondArr = ['xanh', 'vang', 'dien', 'meo'];
+secondArr = ['meo'];
+
+BranchName = ['ga'];
+
+var uq = secondArr.concat(BranchName.filter(function(obj) {
+    return secondArr.indexOf(obj) < 0;
+}));
+
+console.log("Join uq------------: ", uq);
+
+var uinque = pCatValues.concat(secondArr.filter(function(obj) {
+    return pCatValues.indexOf(obj) < 0;
+}))
+
+console.log('Join de-duplicate: ', uinque);
+// [ 'xanh', 'vang', 'tim', 'red', 'gaf', 'dien', 'meo' ]
+
 categories = [{
     "name": "vang",
     "products": [
@@ -65,7 +83,7 @@ var index = categories.map(function(item) {
 //     return index.indexOf(obj) == -1;
 // })
 
-var sameInBoth = categories.filter(function(obj){
+var sameInBoth = categories.filter(function(obj) {
     return pCatValues.indexOf(obj.name) !== -1;
 })
 

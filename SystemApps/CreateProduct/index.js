@@ -160,8 +160,8 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     objResult.err = null;
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
-                    updateCategory(req.shopname, payload);
-                    updateBranchName(req.shopname, payload);
+                    updateCategoryAndBranchName(req.shopname, payload);
+                    // updateBranchName(req.shopname, payload);
                 } else {
                     objResult.status = -1
                     objResult.err = err;
@@ -187,8 +187,8 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     objResult.err = null;
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
-                    updateCategory(req.shopname, payload);
-                    updateBranchName(req.shopname, payload);
+                    updateCategoryAndBranchName(req.shopname, payload);
+                    // updateBranchName(req.shopname, payload);
                 } else {
                     objResult.status = -2
                     objResult.err = err;
@@ -276,7 +276,8 @@ function writeBase64ImageSync(fileName, imgData) {
 
 }
 
-function updateCategory(shop, product) {
+function updateCategoryAndBranchName(shop, product) {
+    // CATEGORIES UPDATE REGION
     // template of singgle category
     // {
     //     name: "abcd",
@@ -357,33 +358,21 @@ function updateCategory(shop, product) {
                 sameCats[n].products = sameCats[n].products.concat(systemSKUArr.filter(function(obj) {
                     return sameCats[n].products.indexOf(obj) < 0;
                 }));
+                sameCats[n].branchNames = sameCats[n].branchNames.concat(pCatBranchName.filter(function(obj) {
+                    return sameCats[n].branchNames.indexOf(obj) < 0;
+                }));
             })(i);
         };
-        shop.markModified('categories');
-
-        shop.save(function(err) {
-            console.log("check err: ", err);
-        })
-    })
-
-}
-
-function updateBranchName(shop, product) {
-    // template of singgle branchName
-    // {
-    //     name: "abcd",
-    //     products: {
-    //         ["--productItem", "--productItem"]
-    //     },
-    //     categories: ["--category", "--category"]
-    // }
-    // console.log("from updateBranchName: ", product);
-    var Shops = mongoose.model('Shops');
-    // find Shops via Shops Name
-    Shops.findOne({ shopname: shop }, function(err, shop) {
-        if (err) {
-            return;
-        }
+        // BRANCHNAME UPDATE REGION
+        // template of singgle branchName
+        // {
+        //     name: "abcd",
+        //     products: {
+        //         ["--productItem", "--productItem"]
+        //     },
+        //     categories: ["--category", "--category"]
+        // }
+        // console.log("from updateBranchName: ", product);
         var branchNames = shop.branchNames;
         var pBranchName = product["productAtttributes"];
         var pBranchValues;
@@ -405,10 +394,11 @@ function updateBranchName(shop, product) {
         });
         // Only in pBranchValues;
         var newBns = pBranchValues.filter(function(obj) {
-            return neededModifyBns.map(function(item) {
+            return oldBranchNameContainSKU.map(function(item) {
                 return item.name;
             }).indexOf(obj) == -1;
         });
+
         // update new Objects
         for (var i = 0; i < newBns.length; i++) {
             (function(n) {
@@ -438,19 +428,27 @@ function updateBranchName(shop, product) {
         for (var i = 0; i < sameBns.length; i++) {
             with({ n: i }) {
                 var systemSKUArr = [product.systemSKU];
-                sameBns[n].products.concat(systemSKU.filter(function(obj) {
-                    return sameBns.indexOf(obj) < 0;
+                sameBns[n].products = sameBns[n].products.concat(systemSKUArr.filter(function(obj) {
+                    return sameBns[n].products.indexOf(obj) < 0;
                 }));
+                sameBns[n].categories = sameBns[n].categories.concat(pCatCategories.filter(function(obj) {
+                    return sameBns[n].categories.indexOf(obj) < 0;
+                }))
             }
         };
+        // Synchronize BranchName and Categories Region
+
+
+
         shop.markModified("branchNames");
+        shop.markModified('categories');
+
         shop.save(function(err) {
-            console.log("from saving branchNames: ", err);
+            console.log("check err: ", err);
         })
+    })
 
-    });
-};
-
+}
 
 
 function shopResolve(shop) {
