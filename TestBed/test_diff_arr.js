@@ -103,6 +103,47 @@ console.log("newCats: ", newCats);
 
 console.log("sameInBoth: ", sameInBoth);
 
+console.log("///////////////////////////////////////////////////////////");
 
+// var oldCatContainSKU = [{
+//     name: 'alice',
+//     products: ['58412e41c564fd5a10a4dda6'],
+//     branchNames: ['mèo']
+// }, {
+//     name: 'bob',
+//     products: ['58412e41c564fd5a10a4dda6'],
+//     branchNames: ['mèo']
+// }]
 
+var oldCatContainSKU = [{
+    "name": "alice",
+    "products": [
+        "58412e41c564fd5a10a4dda6"
+    ],
+    "branchNames": [
+        "mèo"
+    ]
+}, {
+    "name": "bob",
+    "products": [
+        "58412e41c564fd5a10a4dda6"
+    ],
+    "branchNames": [
+        "mèo"
+    ]
+}, {
+    "name": "celina",
+    "products": [
+        "58412e58c564fd5a10a4dda7"
+    ],
+    "branchNames": [
+        "cún"
+    ]
+}]
+
+var neededModifyCats = oldCatContainSKU.filter(function(obj) {
+    return obj.products.indexOf("58412e58c564fd5a10a4dda7") !== -1
+})
+
+console.log("neededModifyCats: ", neededModifyCats);
 //

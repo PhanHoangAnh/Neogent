@@ -161,7 +161,6 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
                     updateCategoryAndBranchName(req.shopname, payload);
-                    // updateBranchName(req.shopname, payload);
                 } else {
                     objResult.status = -1
                     objResult.err = err;
@@ -188,7 +187,6 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     objResult.return_id = payload.systemSKU;
                     res.send(objResult);
                     updateCategoryAndBranchName(req.shopname, payload);
-                    // updateBranchName(req.shopname, payload);
                 } else {
                     objResult.status = -2
                     objResult.err = err;
@@ -307,9 +305,9 @@ function updateCategoryAndBranchName(shop, product) {
         if (!pCatValues instanceof Array) {
             return;
         }
-        // A. Find object in category with contains product SKU;
+        // A. Find objects in category which contains product SKU;
         var oldCatContainSKU = categories.filter(function(obj) {
-            return obj.products.indexOf(product.systemSKU !== -1);
+            return obj.products.indexOf(product.systemSKU) !== -1;
         });
         // B. Define new objects and modify needed object arrays
         // only in oldCatContainSKU
@@ -318,9 +316,15 @@ function updateCategoryAndBranchName(shop, product) {
         });
         // only in pCatValues
         var newCats = pCatValues.filter(function(obj) {
-            return oldCatContainSKU.map(function(item) {
+            return categories.map(function(item) {
                 return item.name;
             }).indexOf(obj) == -1;
+        });
+        console.log("newCats: ", newCats);
+        // modify old cat objects in categories
+        // in both oldCatContainSKU and pCatValues
+        var sameCats = categories.filter(function(obj) {
+            return pCatValues.indexOf(obj.name) !== -1;
         });
         // create new cat objects
         for (var i = 0; i < newCats.length; i++) {
@@ -337,32 +341,30 @@ function updateCategoryAndBranchName(shop, product) {
         // modify old cat objects in categories
         // in oldCatContainSKU only
         var len = len = neededModifyCats.length
+        console.log("neededModifyCats: ", neededModifyCats, product.systemSKU);
         for (var i = 0; i < len; i++) {
             (function(n) {
-                neededModifyCats[n].products.splice(neededModifyCats[n].products.indexOf(product.systemSKU), 1);
-                console.log("product.length:=  ", neededModifyCats[n].products.length)
-                if (neededModifyCats[n].products.length == 0) {
-                    categories.pull(neededModifyCats[n]);
+                if (neededModifyCats[i].products.indexOf(product.systemSKU) !== -1) {
+                    neededModifyCats[n].products.splice(neededModifyCats[n].products.indexOf(product.systemSKU), 1);
+                    if (neededModifyCats[n].products.length == 0) {
+                        categories.pull(neededModifyCats[n]);
+                    };
                 };
             })(i)
             // check branchName 
         }
-        // modify old cat objects in categories
-        // in both oldCatContainSKU and pCatValues
-        var sameCats = oldCatContainSKU.filter(function(obj) {
-            return pCatValues.indexOf(obj.name) !== -1;
-        });
+
+
         for (var i = 0; i < sameCats.length; i++) {
-            (function(n) {
-                var systemSKUArr = [product.systemSKU];
-                sameCats[n].products = sameCats[n].products.concat(systemSKUArr.filter(function(obj) {
-                    return sameCats[n].products.indexOf(obj) < 0;
-                }));
-                sameCats[n].branchNames = sameCats[n].branchNames.concat(pCatBranchName.filter(function(obj) {
-                    return sameCats[n].branchNames.indexOf(obj) < 0;
-                }));
-            })(i);
-        };
+            // sameCats[n].branchNames = sameCats[n].branchNames.concat(pCatBranchName.filter(function(obj) {
+            //     return sameCats[n].branchNames.indexOf(obj) < 0;
+            // }));
+            if (sameCats[i].products.indexOf(product.systemSKU) < 0) {
+                sameCats[i].products = sameCats[i].products.concat(product.systemSKU)
+            }
+
+        }
+        console.log("sameCats: ", sameCats);
         // BRANCHNAME UPDATE REGION
         // template of singgle branchName
         // {
@@ -386,7 +388,7 @@ function updateCategoryAndBranchName(shop, product) {
             }
         }
         var oldBranchNameContainSKU = branchNames.filter(function(obj) {
-            return obj.products.indexOf(product.systemSKU) !== -1;
+            return obj.products.indexOf(product.systemSKU) != -1;
         });
         // List of objects which contain sysSKU in oldBranchNameContainSKU only, not in pBranchValues
         var neededModifyBns = oldBranchNameContainSKU.filter(function(obj) {
@@ -431,14 +433,26 @@ function updateCategoryAndBranchName(shop, product) {
                 sameBns[n].products = sameBns[n].products.concat(systemSKUArr.filter(function(obj) {
                     return sameBns[n].products.indexOf(obj) < 0;
                 }));
-                sameBns[n].categories = sameBns[n].categories.concat(pCatCategories.filter(function(obj) {
-                    return sameBns[n].categories.indexOf(obj) < 0;
-                }))
             }
         };
         // Synchronize BranchName and Categories Region
+        var realFlatCats = sameCats.map(function(obj) {
+            return obj.name;
+        }).concat(newCats);
+        var realFlatBns = sameBns.map(function(obj) {
+            return obj.name;
+        }).concat(newBns);
 
-
+        for (var i = 0; i < sameCats.length; i++) {
+            (function(n) {
+                sameCats[n].branchNames = realFlatBns
+            })(i);
+        };
+        for (var i = 0; i < sameBns.length; i++) {
+            with({ n: i }) {
+                sameBns[n].categories = realFlatCats;
+            }
+        };
 
         shop.markModified("branchNames");
         shop.markModified('categories');
@@ -450,10 +464,6 @@ function updateCategoryAndBranchName(shop, product) {
 
 }
 
-
-function shopResolve(shop) {
-
-}
 
 app.use(router);
 module.exports = app;
