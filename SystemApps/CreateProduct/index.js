@@ -179,7 +179,6 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
                     "items.$": payload
                 }
             }, function(err, doc) {
-                console.log(err, doc);
                 if (!err) {
                     shop.markModified('items');
                     objResult.status = 2
@@ -320,7 +319,7 @@ function updateCategoryAndBranchName(shop, product) {
         var oldCatContainSKU = categories.filter(function(obj) {
             return obj.products.indexOf(product.systemSKU) !== -1;
         });
-        
+
         // B. Define new objects and modify needed object arrays
         // only in oldCatContainSKU
         var neededModifyCats = oldCatContainSKU.filter(function(obj) {
@@ -332,7 +331,7 @@ function updateCategoryAndBranchName(shop, product) {
                 return item.name;
             }).indexOf(obj) == -1;
         });
-        
+
         // modify old cat objects in categories
         // in both oldCatContainSKU and pCatValues
         var sameCats = categories.filter(function(obj) {
@@ -353,23 +352,23 @@ function updateCategoryAndBranchName(shop, product) {
         // modify old cat objects in categories
         // in oldCatContainSKU only
         var len = len = neededModifyCats.length
-        console.log("neededModifyCats: ", neededModifyCats, product.systemSKU);
         for (var i = 0; i < len; i++) {
             (function(n) {
-                if (neededModifyCats[i].products.indexOf(product.systemSKU) !== -1) {
+                if (neededModifyCats[n].products.indexOf(product.systemSKU) !== -1) {
                     neededModifyCats[n].products.splice(neededModifyCats[n].products.indexOf(product.systemSKU), 1);
                     if (neededModifyCats[n].products.length == 0) {
                         categories.pull(neededModifyCats[n]);
+                        // update branchName                        
                     };
                 };
             })(i)
-            // check branchName 
+
         }
 
         for (var i = 0; i < sameCats.length; i++) {
             if (sameCats[i].products.indexOf(product.systemSKU) < 0) {
                 //sameCats[i].products = sameCats[i].products.concat(product.systemSKU);
-                categories[categories.indexOf(sameCats[i])].products.push(product.systemSKU);                
+                categories[categories.indexOf(sameCats[i])].products.push(product.systemSKU);
             }
         }
         // BRANCHNAME UPDATE REGION
@@ -397,7 +396,7 @@ function updateCategoryAndBranchName(shop, product) {
         if (!pBranchValues) {
             return;
         }
-        
+
         var oldBranchNameContainSKU = branchNames.filter(function(obj) {
             return obj.products.indexOf(product.systemSKU) !== -1;
         });
@@ -434,6 +433,7 @@ function updateCategoryAndBranchName(shop, product) {
                 neededModifyBns[n].products.splice(neededModifyBns[n].products.indexOf(product.systemSKU), 1);
                 if (neededModifyBns[n].products.length == 0) {
                     branchNames.pull(neededModifyBns[n]);
+                    // update Categories                    
                 }
             })(i);
         };
@@ -445,14 +445,25 @@ function updateCategoryAndBranchName(shop, product) {
             }
         };
         // Synchronize BranchName and Categories Region
-        var realFlatCats = sameCats.map(function(obj) {
+
+        var realFlatCats = categories.filter(function(obj) {
+            // obj is array of branchNames in Categories and it must bear at least one of item in pBranchValues
+            return obj.branchNames.filter(function(item) {
+                //item is single branchName in array
+                return pBranchValues.indexOf(item) !== -1;
+            });
+        }).map(function(obj) {
             return obj.name;
-        }).concat(newCats);
-        var realFlatBns = sameBns.map(function(obj) {
+        });
+        var realFlatBns = branchNames.filter(function(obj) {
+            // obj is array of categories in branchNames and it must bear at least on of item in pCatValues
+            return obj.categories.filter(function(item) {
+                // item is single category in arrya
+                return pCatValues.indexOf(item) !== -1
+            })
+        }).map(function(obj) {
             return obj.name;
-        }).concat(newBns);
-        console.log("realFlatBns: ", realFlatBns);
-        console.log("realFlatCats: ", realFlatCats);
+        });
 
         for (var i = 0; i < sameCats.length; i++) {
             (function(n) {
