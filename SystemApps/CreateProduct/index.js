@@ -284,6 +284,17 @@ function updateCategoryAndBranchName(shop, product) {
     //     },
     //     branchNameList: ["--branchName", "--branchName"]
     // }    
+    // <==========category==============================================>..............
+    // .........................................<=================pValues=============>
+    //                                          |                        |             |
+    // .........................<==================oldContainSKU=========>
+    //                                          |                        |             |
+    // .........................<=neededModify=><====sameInBoth==========><===new======> 
+    //
+    // needModify = compare by name with oldContainSKU - not includes in pValues  pValues.indexOf          ===-1
+    // sameInBoth = compare by name with category      - includes in both         pValues.indexOf          !==-1           
+    // new = compare by name with category             - includes in pValue only  categories.map.indexOf   ===-1       
+
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: shop }, function(err, shop) {
@@ -309,6 +320,7 @@ function updateCategoryAndBranchName(shop, product) {
         var oldCatContainSKU = categories.filter(function(obj) {
             return obj.products.indexOf(product.systemSKU) !== -1;
         });
+        
         // B. Define new objects and modify needed object arrays
         // only in oldCatContainSKU
         var neededModifyCats = oldCatContainSKU.filter(function(obj) {
@@ -320,7 +332,7 @@ function updateCategoryAndBranchName(shop, product) {
                 return item.name;
             }).indexOf(obj) == -1;
         });
-        console.log("newCats: ", newCats);
+        
         // modify old cat objects in categories
         // in both oldCatContainSKU and pCatValues
         var sameCats = categories.filter(function(obj) {
@@ -354,17 +366,12 @@ function updateCategoryAndBranchName(shop, product) {
             // check branchName 
         }
 
-
         for (var i = 0; i < sameCats.length; i++) {
-            // sameCats[n].branchNames = sameCats[n].branchNames.concat(pCatBranchName.filter(function(obj) {
-            //     return sameCats[n].branchNames.indexOf(obj) < 0;
-            // }));
             if (sameCats[i].products.indexOf(product.systemSKU) < 0) {
-                sameCats[i].products = sameCats[i].products.concat(product.systemSKU)
+                //sameCats[i].products = sameCats[i].products.concat(product.systemSKU);
+                categories[categories.indexOf(sameCats[i])].products.push(product.systemSKU);                
             }
-
         }
-        console.log("sameCats: ", sameCats);
         // BRANCHNAME UPDATE REGION
         // template of singgle branchName
         // {
@@ -387,8 +394,12 @@ function updateCategoryAndBranchName(shop, product) {
                 pCatCategories = pBranchName[i]["InputValue"];
             }
         }
+        if (!pBranchValues) {
+            return;
+        }
+        
         var oldBranchNameContainSKU = branchNames.filter(function(obj) {
-            return obj.products.indexOf(product.systemSKU) != -1;
+            return obj.products.indexOf(product.systemSKU) !== -1;
         });
         // List of objects which contain sysSKU in oldBranchNameContainSKU only, not in pBranchValues
         var neededModifyBns = oldBranchNameContainSKU.filter(function(obj) {
@@ -396,11 +407,14 @@ function updateCategoryAndBranchName(shop, product) {
         });
         // Only in pBranchValues;
         var newBns = pBranchValues.filter(function(obj) {
-            return oldBranchNameContainSKU.map(function(item) {
+            return branchNames.map(function(item) {
                 return item.name;
             }).indexOf(obj) == -1;
         });
-
+        // same in both
+        var sameBns = branchNames.filter(function(obj) {
+            return pBranchValues.indexOf(obj.name) !== -1;
+        });
         // update new Objects
         for (var i = 0; i < newBns.length; i++) {
             (function(n) {
@@ -423,16 +437,11 @@ function updateCategoryAndBranchName(shop, product) {
                 }
             })(i);
         };
-        // same in both
-        var sameBns = oldBranchNameContainSKU.filter(function(obj) {
-            return pBranchValues.indexOf(obj.name) !== -1;
-        });
+
         for (var i = 0; i < sameBns.length; i++) {
-            with({ n: i }) {
-                var systemSKUArr = [product.systemSKU];
-                sameBns[n].products = sameBns[n].products.concat(systemSKUArr.filter(function(obj) {
-                    return sameBns[n].products.indexOf(obj) < 0;
-                }));
+            if (sameBns[i].products.indexOf(product.systemSKU) == -1) {
+                //sameBns[n].products.push(product.systemSKU);
+                branchNames[branchNames.indexOf(sameBns[i])].products.push(product.systemSKU);
             }
         };
         // Synchronize BranchName and Categories Region
@@ -442,6 +451,8 @@ function updateCategoryAndBranchName(shop, product) {
         var realFlatBns = sameBns.map(function(obj) {
             return obj.name;
         }).concat(newBns);
+        console.log("realFlatBns: ", realFlatBns);
+        console.log("realFlatCats: ", realFlatCats);
 
         for (var i = 0; i < sameCats.length; i++) {
             (function(n) {
@@ -454,8 +465,12 @@ function updateCategoryAndBranchName(shop, product) {
             }
         };
 
-        shop.markModified("branchNames");
         shop.markModified('categories');
+        shop.markModified('categories.$.products');
+        shop.markModified('categories.$.branchNames');
+        shop.markModified('branchNames');
+        shop.markModified('branchNames.$.products');
+        shop.markModified('branchNames.$.categories');
 
         shop.save(function(err) {
             console.log("check err: ", err);
