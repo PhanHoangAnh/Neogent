@@ -14,6 +14,12 @@ $(document).ready(function() {
     }
     var latLng;
     // Try HTML5 geolocation.
+    var options = {
+        zoom: 10,
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
@@ -26,7 +32,7 @@ $(document).ready(function() {
             map.setCenter(pos);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
-        });
+        }, options);
     } else {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
