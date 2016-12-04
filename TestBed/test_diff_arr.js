@@ -146,4 +146,9 @@ var neededModifyCats = oldCatContainSKU.filter(function(obj) {
 })
 
 console.log("neededModifyCats: ", neededModifyCats);
+
+var test = [].filter(function(obj) {
+    [].indexOf('a');
+})
+console.log("test: ", test);
 //
