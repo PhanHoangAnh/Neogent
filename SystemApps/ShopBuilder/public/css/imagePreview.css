@@ -88,7 +88,7 @@
 }
 @media (min-width: 768px) {
     .modal-dialog {
-        width: 90% !important;
+        width: 100% !important;
         margin: 30px auto;
     }
 }

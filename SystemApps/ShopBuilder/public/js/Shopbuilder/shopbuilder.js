@@ -61,8 +61,7 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
     });
 }
 
-function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
-    console.log("Type of Payload: ", payload.constructor);
+function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayload, fn_cb) {
     var _data = {
         userName: uid,
         password: token,
@@ -70,7 +69,8 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
     };
     aes_key = cryptoUtil.generateAESKey();
     var json_data = {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key),
+        exPayload: exPayload
     };
 
     $.ajax({
@@ -78,14 +78,14 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
         url: endpoint,
         cache: false,
         method: 'POST',
+        contentType: "application/json; charset=utf-8",
         headers: { "cache-control": "no-cache" },
-        data: json_data,
+        data: JSON.stringify(json_data),
         // contentType:'application/json',
         complete: function(data, status, jqXHR) {
             if (fn_cb) {
                 fn_cb(data.responseJSON);
             }
-
         }
     });
 }
@@ -133,7 +133,7 @@ function initIcon(el) {
 
     function iconPreview(data) {
         //console.log('imgdata: ', data);
-        shopInfo.avatars = data;
+        //shopInfo.avatars = data;
         img_Icon = data;
         document.getElementById('icon_preview').setAttribute('src', data);
         document.getElementById('icon_preview-md').setAttribute('src', data);
@@ -190,7 +190,7 @@ function initWall(el) {
     });
 
     function wallPreview(data) {
-        shopInfo.walls = data;
+        //shopInfo.walls = data;
         img_Wall = data;
         document.getElementById('wall_preview').setAttribute('src', data);
         document.getElementById('wall_preview-md').setAttribute('src', data);
@@ -239,8 +239,9 @@ function saveShopInfo() {
     //     categories: [Schema.Types.Mixed],
     //     extends: [Schema.Types.Mixed],
     // });
-    shopInfo.walls = document.getElementById('wallHolder').getAttribute('src');
-    shopInfo.avatars = document.getElementById('iconHolder').getAttribute('src');
+    var exPayload = {}
+    exPayload.walls = document.getElementById('wallHolder').getAttribute('src');
+    exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
     var atts = document.querySelectorAll("[app-input]");
     var pendding = false;
     for (var i = 0; i < atts.length; i++) {
@@ -255,8 +256,9 @@ function saveShopInfo() {
     console.log(pendding);
     if (!pendding) {
         // sending shopInfo to server
-        var endpoint = window.location.href + 'updateShop';
-        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
+        var endpoint = location.href + '/updateShop';
+        // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
+        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, exPayload, fn_cb);
 
         function fn_cb(returnObj) {
             console.log(returnObj)

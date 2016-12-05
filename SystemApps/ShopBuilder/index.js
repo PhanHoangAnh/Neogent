@@ -88,12 +88,13 @@ router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
     //         }
     //     });
     // }
+    res.sendStatus(200);
 });
 
 router.get("/getShop", function(req, res, next) {
     // console.log("from /getOptionSets");
     var Shop = mongoose.model('Shops');
-    var query = { shopName: req.shopname };
+    var query = { shopname: req.shopname };
     Shop.find(query, function(err, doc) {
         if (err) {
             objResult.status = 4;
