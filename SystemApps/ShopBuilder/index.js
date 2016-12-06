@@ -50,7 +50,7 @@ objResult.return_id = null;
 //
 router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
     console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", req.body.payload.data);
-
+    console.log("Wall Image: ", req.body.exPayload.walls.length);
     //var optionSets = dbEngine.OptionSets();
     var Shop = mongoose.model('Shops');
     // var _id = req.body.objId;

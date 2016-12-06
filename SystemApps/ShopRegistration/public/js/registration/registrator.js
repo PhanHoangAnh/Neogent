@@ -8,7 +8,7 @@ function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
         data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
     };
     // Make post request to getToken Endpoint
-    var currentUrl = window.location.href + 'getToken';
+    var currentUrl = 'getToken';
     $.ajax({
         // url: './userToken',
         url: currentUrl,
@@ -38,7 +38,7 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
     var json_data = {
         data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
     };
-    var currentUrl = window.location.href + 'checkToken';
+    var currentUrl = 'checkToken'
     $.ajax({
         // url: './userToken',
         url: currentUrl,
@@ -66,7 +66,7 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, fn_cb) {
     var json_data = {
         data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
     };
-    
+
     $.ajax({
         // url: './userToken',
         url: endpoint,

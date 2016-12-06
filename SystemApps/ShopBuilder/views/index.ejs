@@ -19,6 +19,7 @@
 <script src="js/Shopbuilder/shopbuilder.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
+
 <body>
     <!-- Dont touch this section -->
     <!-- NavBar -->
@@ -32,94 +33,104 @@
         </div>
     </template>
     <!-- NavBar -->
-        <div id="nav-wrapper">
-            <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
-                <div class="container">
-                    <div class="row">
-                        <div>
-                            <img src="img/CatLogo.png" class="logo" id = 'logo'>
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <img src="img/CatLogo.png" class="logo" id='logo'>
+                    </div>
+                    <div class='site-name hidden-xs'>
+                        AbcJSC
+                    </div>
+                    <div>
+                        <div app-role='removeAfterLogin'>
+                            <button class="btn btn-facebook" id="bntFbLogin">
+                                <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                            </button>
                         </div>
-                        <div class='site-name hidden-xs'>
-                            AbcJSC
-                        </div>
-                        <div>
-                            <div app-role = 'removeAfterLogin'>
-                                <button class="btn btn-facebook" id="bntFbLogin">
-                                     <i class="fa fa-facebook"></i><span> Login with Facebook</span>
-                                </button>
-                            </div>
-                        </div>
-                        <span class="hambugger" onclick="toggleMenu()">
+                    </div>
+                    <span class="hambugger" onclick="toggleMenu()">
                              <span class="menu-bar"></span>
-                             <!--span class="icon-bar"></span>
+                    <!--span class="icon-bar"></span>
                              <span class="icon-bar"></span>
                              <span class="icon-bar"></span-->
-                        </span>
-                        <div id="menuBroad" class="menu-board">
-                             <div id = "AppManagerBoard" class="mini-broad-cover">
-
-                             </div>
+                    </span>
+                    <div id="menuBroad" class="menu-board">
+                        <div id="AppManagerBoard" class="mini-broad-cover">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <template id="AppTemp">
-            <a class='mini-broad' app-role="link">
-                <img app-role="AppIcon">
-            </a>
-        </template>
-        <template id="optionSet">
-            <div class="row" style="margin-top: 5px;margin-bottom: 5px;" app-role="optionSet">
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <img src='../img/logo.png' id="iconHolder" app-role="icon" >
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                    <legend app-role="setsName">Set's Name</legend>
-                </div>
+    </div>
+    <template id="AppTemp">
+        <a class='mini-broad' app-role="link">
+            <img app-role="AppIcon">
+        </a>
+    </template>
+    <template id="optionSet">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;" app-role="optionSet">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <img src='../img/logo.png' id="iconHolder" app-role="icon">
             </div>
-        </template>
-        <template id="controlTemplate">
-            <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
-                <div class="col-md-3 col-lg-3">
-                    <label data-controltype="label"></label>
-                </div>
-                <div class="col-md-9 col-lg-9" app-role="inputHandler">
-                    <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
-                </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                <legend app-role="setsName">Set's Name</legend>
             </div>
-        </template>
-        <template id="optionInput">
-            <input type="" name="" class="c-left" value="0" app-role="option"><span class="col-md-11 col-lg-11" app-role="displayValue"></span>
-        </template>
-        <template id="standardInput">
-            <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
-        </template>
-        <template id="textAreaInput">
-            <textarea class="col-md-12 col-lg-12 form-control" data-controltype="textarea"></textarea>
-        </template>
-        <template id="selectInput">
-            <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
-            </select>
-        </template>
-        <template id="selectInputTags">
-            <select class="col-md-12 col-lg-12 form-control" data-controltype="select" multiple="multiple">
-            </select>
-        </template>
-        <template id="selectInputSingle">
-            <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
-            </select>
-        </template>
-        <template id="imgInput">
-            <div class="test" style="background: url(https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg) 0 0 no-repeat; background-size: cover; position:relative" data-controltype="img">
-                <!-- <div data-controltype="imgMask" data-toggle="modal" data-target="#m_icon"> -->
-                <div data-controltype="imgMask" style="position:relative; z-index:5;" >
-                </div>
+        </div>
+    </template>
+    <template id="controlTemplate">
+        <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
+            <div class="col-md-3 col-lg-3">
+                <label data-controltype="label"></label>
             </div>
-            <span ><i data-controltype="collection">Collection</i></span>
-        </template>
+            <div class="col-md-9 col-lg-9" app-role="inputHandler">
+                <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
+            </div>
+        </div>
+    </template>
+    <!-- <template id="optionInput">
+        <input type="" name="" class="c-left" value="0" app-role="option"><span class="col-md-11 col-lg-11" app-role="displayValue"></span>
+    </template>
+    <template id="standardInput">
+        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
+    </template> -->
+    <template id="textAreaInput">
+        <div class="row control" id="24">
+            <div class="col-md-3 col-lg-3">
+                <label>Static Content</label>
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input="shop_description"></textarea>
+                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
+            </div>
+        </div>
+    </template>
+    <!-- <template id="selectInput">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
+        </select>
+    </template>
+    <template id="selectInputTags">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select" multiple="multiple">
+        </select>
+    </template>
+    <template id="selectInputSingle">
+        <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
+        </select>
+    </template> -->
+    <template id="imgInput">
+        <div class="row control">
+            <div class="col-md-3 col-lg-3">
+                <label data-controltype="label">Shop's background</label>
+            </div>
+            <div class="col-md-9 col-lg-9">
+                <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role ="imgBackground">
+                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
+            </div>
+        </div>
+    </template>
     <!-- /NavBar -->
-    <section class='heading-page' style="position: relative; background:url('img/Civil-engineering-Banner.jpg') no-repeat top center; background-size: cover; height: 100vh; opacity: 1" id = 'masthead' >
+    <section class='heading-page' style="position: relative; background:url('img/Civil-engineering-Banner.jpg') no-repeat top center; background-size: cover; height: 100vh; opacity: 1" id='masthead'>
         <div class="container-fluid">
             <!-- Breadcrumb stay here -->
             <div class="col-md-12 col-lg-12 " style="position: absolute; left: 0; bottom: 20vh;">
@@ -135,35 +146,44 @@
     <div class="container-fluid shop-buider" id="start-offset">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelLeft">
-                <div class="row control" id="17" >
+                <div class="row control" id="17">
                     <div class="col-md-3 col-lg-3">
-                        <label >Shop's Name</label>
+                        <label>Shop's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" app-input = "showName"><span class="help-block col-md-12 col-lg-12" >Display Name of Shop</span>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
                     </div>
                 </div>
-                <div class="row control" id="18" >
+                <div class="row control" id="18">
                     <div class="col-md-3 col-lg-3">
-                        <label >Shop's Slogan</label>
+                        <label>Shop's Slogan</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" app-input = "slogan"><span class="help-block col-md-12 col-lg-12" >Emphasize your message to customers</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
                 </div>
                 <div class="row control" id="19" data-controltype="text">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Company's Name or Group's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" app-input = "companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                 </div>
-                <div class="row control" id="24" >
+                <div class="row control" id="24">
                     <div class="col-md-3 col-lg-3">
-                        <label >Shop's Introduction</label>
+                        <label>Static Content</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input = "shop_description"></textarea>
+                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input="shop_description"></textarea>
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
+                    </div>
+                </div>
+                <div class="row control" app-role = "rowCover">
+                    <div class="col-md-3 col-lg-3">
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <div class="text-right">
+                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick = addMoreStaticContent(this)>Add More Static Content..</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row control" id="29" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
@@ -171,7 +191,7 @@
                         <label data-controltype="label">Contact Email</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control"  type="email" placeholder="Contact Email" app-input = "contact_email"><span class="help-block col-md-12 col-lg-12" >Contact Email</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="email" placeholder="Contact Email" app-input="contact_email"><span class="help-block col-md-12 col-lg-12">Contact Email</span></div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelRight">
@@ -191,15 +211,24 @@
                         <label data-controltype="label">Contact Phone Number</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control"  type="number" placeholder="Contact Phone Number" app-input = "contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
-                </div>                
+                        <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
+                </div>
                 <div class="row control" id="23" data-controltype="image">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Shop's background</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <img id = "wallHolder" src = "https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg">
+                        <img id="wallHolder" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role ="imgBackground">
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
+                    </div>
+                </div>
+                <div class="row control" app-role = "rowCover">
+                    <div class="col-md-3 col-lg-3">
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <div class="text-right">
+                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick = addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row control" id="27" data-controltype="text" style="position: relative; left: 0px; top: 0px;">
@@ -207,7 +236,7 @@
                         <label data-controltype="label">Shop Address</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12" >Provide Shop address by typing input or drag on map bellow</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12">Provide Shop address by typing input or drag on map bellow</span></div>
                 </div>
             </div>
         </div>
@@ -234,14 +263,14 @@
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
             <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo()">Save</button>
-<!--             <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
+            <!--             <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
             <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
             <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button> -->
         </div>
     </section>
     <footer>
         <div class="col-md-12 footer-inner">
-           @Copyright:abcd@abc.jsc
+            @Copyright:abcd@abc.jsc
         </div>
     </footer>
     </div>
@@ -430,7 +459,7 @@ $(document).ready(function() {
             fbId = objFb.fbId;
             fbToken = objFb.fbToken;
             systoken = localStorage.getItem("app_token");
-            if (systoken) {                
+            if (systoken) {
                 checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
             } else {
                 getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
@@ -470,15 +499,15 @@ $(document).ready(function() {
     }, false);
 });
 
-        /** Huyen Anh added code here **/
-        window.onload = function()
-        {
-            var offsetWidth = document.getElementById('AppManagerBoard').offsetWidth;
-            document.getElementById('AppManagerBoard').style.right = "-" + offsetWidth + "px";
-        }
-        function toggleMenu() {
-            document.getElementById('nav').classList.toggle('menu-active');
-        }
+/** Huyen Anh added code here **/
+window.onload = function() {
+    var offsetWidth = document.getElementById('AppManagerBoard').offsetWidth;
+    document.getElementById('AppManagerBoard').style.right = "-" + offsetWidth + "px";
+}
+
+function toggleMenu() {
+    document.getElementById('nav').classList.toggle('menu-active');
+}
 </script>
 
 </html>

@@ -95,7 +95,11 @@ function openIconModal(evt) {
     $(m_icon).modal("show");
 }
 
+var currentImage;
+
 function openBackgroundModal(evt) {
+    console.log("evt", this);
+    currentImage = this;
     $(m_wall).modal("show");
 }
 
@@ -150,6 +154,7 @@ function initWall(el) {
     // console.log("initWall..");    
     // document.getElementById("wallImg").style.height = screen.height + "px";
     // document.getElementById("thumbWall").style.height = screen.height + "px";
+
     options = {
         imageBox: '#wallImg',
         thumbBox: '#thumbWall',
@@ -196,7 +201,8 @@ function initWall(el) {
         document.getElementById('wall_preview-md').setAttribute('src', data);
         document.getElementById('wall_preview-sm').setAttribute('src', data);
         document.getElementById("openInput").classList.add("hiddenElem");
-        document.getElementById('wallHolder').setAttribute('src', data);
+        //document.getElementById('wallHolder').setAttribute('src', data);
+        currentImage.setAttribute('src', data);
     }
 
 };
@@ -218,29 +224,34 @@ function updateShopInfo(evt) {
 }
 
 function saveShopInfo() {
-    //     var Shop_schema = new Schema({
+    // var Shop_schema = new Schema({
     //     _id: Schema.Types.ObjectId,
     //     fb_uid: { type: String, unique: true, required: true, dropDups: true, index: true },
     //     members: [Schema.Types.Mixed],
     //     avatars: { type: String },
-    //     walls: { type: String },
+    //     walls: [String],
     //     longitude: { type: String },
     //     latitude: { type: String },
     //     shopname: { type: String, unique: true, required: true, dropDups: true, index: true },
     //     showName: { type: String },
     //     slogan: { type: String },
     //     companyName: { type: String },
-    //     shop_description: { type: String },
+    //     static_content: [String],
     //     contact_phone: { type: Number },
     //     contact_email: { type: String },
     //     address: { type: String },
     //     updated: { type: Date, default: Date.now },
     //     items: [Schema.Types.Mixed],
     //     categories: [Schema.Types.Mixed],
+    //     branchNames: [Schema.Types.Mixed],
     //     extends: [Schema.Types.Mixed],
     // });
     var exPayload = {}
-    exPayload.walls = document.getElementById('wallHolder').getAttribute('src');
+    exPayload.walls = []
+    var wallHandlers = document.querySelectorAll('[app-role ="imgBackground"]');
+    wallHandlers.forEach(function(img) {
+        exPayload.walls.push(img.getAttribute('src'));
+    });
     exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
     var atts = document.querySelectorAll("[app-input]");
     var pendding = false;
@@ -256,7 +267,7 @@ function saveShopInfo() {
     console.log(pendding);
     if (!pendding) {
         // sending shopInfo to server
-        var endpoint = location.href + '/updateShop';
+        var endpoint = 'updateShop';
         // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
         postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, exPayload, fn_cb);
 
@@ -265,4 +276,35 @@ function saveShopInfo() {
         }
     }
 
+}
+
+function addMoreStaticContent(el) {
+    var root = getRowCover(el).parentNode;
+    var staticContentTempplate = document.getElementById("textAreaInput").content;
+    root.insertBefore(document.importNode(staticContentTempplate, true), getRowCover(el));
+}
+
+function addMoreBackgroundImg(el) {
+    var root = getRowCover(el).parentNode;
+    var staticBackGroundImg = document.getElementById("imgInput").content
+    root.insertBefore(document.importNode(staticBackGroundImg, true), getRowCover(el));
+    var item = previousElementSibling(getRowCover(el));
+    var img = item.querySelector('[app-role ="imgBackground"]');
+    img.addEventListener('click', openBackgroundModal, false);
+}
+
+function getRowCover(elem) {
+    if (elem.parentNode.getAttribute('app-role') == 'rowCover') {
+        return elem.parentNode;
+    } else {
+        return getRowCover(elem.parentNode);
+    }
+}
+
+//http://stackoverflow.com/questions/9008732/does-previoussibling-always-return-the-parents-text-node-first
+function previousElementSibling(elem) {
+    do {
+        elem = elem.previousSibling;
+    } while (elem && elem.nodeType !== 1);
+    return elem;
 }
