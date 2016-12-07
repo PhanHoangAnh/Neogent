@@ -15,9 +15,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="js/Crypto/cryptoUtils.js"></script>
-<script src="js/Shopbuilder/shopbuilder.js" type="text/javascript" charset="utf-8"></script>
-<script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
+
 <!--script type="text/javascript" src='js/navbar.js'></script-->
 
 <body>
@@ -51,10 +49,7 @@
                         </div>
                     </div>
                     <span class="hambugger" onclick="toggleMenu()">
-                             <span class="menu-bar"></span>
-                    <!--span class="icon-bar"></span>
-                             <span class="icon-bar"></span>
-                             <span class="icon-bar"></span-->
+                        <span class="menu-bar"></span>                   
                     </span>
                     <div id="menuBroad" class="menu-board">
                         <div id="AppManagerBoard" class="mini-broad-cover">
@@ -89,43 +84,29 @@
             </div>
         </div>
     </template>
-    <!-- <template id="optionInput">
-        <input type="" name="" class="c-left" value="0" app-role="option"><span class="col-md-11 col-lg-11" app-role="displayValue"></span>
-    </template>
-    <template id="standardInput">
-        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="placeholder" data-controltype="text">
-    </template> -->
+    
     <template id="textAreaInput">
         <div class="row control" id="24">
             <div class="col-md-3 col-lg-3">
                 <label>Static Content</label>
             </div>
             <div class="col-md-9 col-lg-9">
-                <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input="shop_description"></textarea>
+                <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea>
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
+                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </template>
-    <!-- <template id="selectInput">
-        <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
-        </select>
-    </template>
-    <template id="selectInputTags">
-        <select class="col-md-12 col-lg-12 form-control" data-controltype="select" multiple="multiple">
-        </select>
-    </template>
-    <template id="selectInputSingle">
-        <select class="col-md-12 col-lg-12 form-control" data-controltype="select">
-        </select>
-    </template> -->
+   
     <template id="imgInput">
         <div class="row control">
             <div class="col-md-3 col-lg-3">
                 <label data-controltype="label">Shop's background</label>
             </div>
             <div class="col-md-9 col-lg-9">
-                <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role ="imgBackground">
+                <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
+                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </template>
@@ -173,16 +154,16 @@
                         <label>Static Content</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input="shop_description"></textarea>
+                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea>
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
                     </div>
                 </div>
-                <div class="row control" app-role = "rowCover">
+                <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <div class="text-right">
-                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick = addMoreStaticContent(this)>Add More Static Content..</button>
+                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add More Static Content..</button>
                         </div>
                     </div>
                 </div>
@@ -218,16 +199,16 @@
                         <label data-controltype="label">Shop's background</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <img id="wallHolder" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role ="imgBackground">
+                        <img id="wallHolder" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
                     </div>
                 </div>
-                <div class="row control" app-role = "rowCover">
+                <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <div class="text-right">
-                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick = addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
+                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
                         </div>
                     </div>
                 </div>
@@ -263,9 +244,6 @@
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
             <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo()">Save</button>
-            <!--             <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
-            <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
-            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button> -->
         </div>
     </section>
     <footer>
@@ -337,12 +315,23 @@
                 <div class="modal-body" style="padding:0; width: 100%; margin:0">
                     <p style="margin-left: 15px">Drag the image to take an wall</p>
                     <!-- <div class="row"> -->
+                    <div class="row" style="padding-bottom: 15px">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                           
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgXRatio" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgYRatio" app-role="attImgYRatio" name="y-ratio" placeholder="Y ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-12" style="padding:0">
                         <div class="imageBox" id='wallImg' style="background-color: #F5F5F5">
                             <div class="fullWidth" id="thumbWall" style="height: 100%; "></div>
                             <div class="spinner" style="display: none" id="spinnerWall">Loading...</div>
-                            <div id='openInput' class="spinner" style="background-color: rgba(0,0,0,0) color: #333">
-                                <h3>Click here ....</h3></div>
+                            <!-- <div id='openInput' class="spinner" style="background-color: rgba(0,0,0,0) color: #333">
+                                <h3>Click here ....</h3>
+                            </div> -->
                         </div>
                         <div class="action" style="padding: 15px">
                             <span class="file-input btn btn-primary btn-file">
@@ -379,7 +368,10 @@
     <!-- <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCx0H7BZdjAlcMDFwa7ay6HDZvUyxxh_gA" type="text/javascript"></script>
     <script src="js/Shopbuilder/googlemap.js" type="text/javascript" charset="utf-8"></script>
-</body>
+    <script src="js/Crypto/cryptoUtils.js"></script>
+    <script src="js/Shopbuilder/shopbuilder.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
+    </body>
 <script type="text/javascript">
 $(function() {
 
@@ -497,6 +489,9 @@ $(document).ready(function() {
     document.querySelector('#wallFile').addEventListener('change', function() {
         initWall(this);
     }, false);
+    
+
+    
 });
 
 /** Huyen Anh added code here **/

@@ -103,6 +103,7 @@
             <div class="col-md-9 col-lg-9">
                 <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-input="shop_description"></textarea>
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
+                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </template>
@@ -124,8 +125,9 @@
                 <label data-controltype="label">Shop's background</label>
             </div>
             <div class="col-md-9 col-lg-9">
-                <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg">
+                <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
+                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
     </template>
@@ -177,12 +179,12 @@
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
                     </div>
                 </div>
-                <div class="row control">
+                <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <div class="text-right">
-                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary">Add More Static Content..</button>
+                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=a ddMoreStaticContent(this)>Add More Static Content..</button>
                         </div>
                     </div>
                 </div>
@@ -218,16 +220,16 @@
                         <label data-controltype="label">Shop's background</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <img id="wallHolder" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg">
+                        <img id="wallHolder" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                         <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
                     </div>
                 </div>
-                <div class="row control">
+                <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <div class="text-right">
-                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary">Add More Background Wallpaper..</button>
+                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=a ddMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
                         </div>
                     </div>
                 </div>
@@ -263,9 +265,6 @@
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
             <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo()">Save</button>
-            <!--             <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
-            <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
-            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button> -->
         </div>
     </section>
     <footer>
@@ -337,6 +336,19 @@
                 <div class="modal-body" style="padding:0; width: 100%; margin:0">
                     <p style="margin-left: 15px">Drag the image to take an wall</p>
                     <!-- <div class="row"> -->
+                    <div class="row" style="padding-bottom: 15px">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input type="text" id="attImgName" app-role="attImgName" onchange="attImgRatio_change(event,this)" name="Attribute Name" placeholder="Option Name" style="width:80%">
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgXRatio" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgYRatio" app-role="attImgYRatio" name="y-ratio" placeholder="Y ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-12" style="padding:0">
                         <div class="imageBox" id='wallImg' style="background-color: #F5F5F5">
                             <div class="fullWidth" id="thumbWall" style="height: 100%; "></div>

@@ -98,23 +98,27 @@ function openIconModal(evt) {
 var currentImage;
 
 function openBackgroundModal(evt) {
-    console.log("evt", this);
     currentImage = this;
     $(m_wall).modal("show");
 }
 
+icon_options = {
+    imageBox: '#iconImg',
+    thumbBox: '#thumbIcon',
+    spinner: '#spinnerIcon',
+    imgSrc: ''
+}
+
+var cropper = new cropbox(icon_options, iconPreview);
+
 function initIcon(el) {
-    options = {
-        imageBox: '#iconImg',
-        thumbBox: '#thumbIcon',
-        spinner: '#spinnerIcon',
-        imgSrc: ''
-    }
     var reader = new FileReader();
-    cropper = new cropbox(options, iconPreview);
+    if (!cropper) {
+        cropper = new cropbox(icon_options, iconPreview);
+    }
     reader.onload = function(e) {
-        options.imgSrc = e.target.result;
-        cropper.resetOption(options);
+        icon_options.imgSrc = e.target.result;
+        cropper.resetOption(icon_options);
     }
     reader.readAsDataURL(el.files[0]);
     //el.files = [];
@@ -132,48 +136,56 @@ function initIcon(el) {
         // uploadImage("avatars");
     });
     $('#m_icon').on('shown.bs.modal', function() {
-        cropper.resetOption(options);
+        cropper.resetOption(icon_options);
     });
 
-    function iconPreview(data) {
-        //console.log('imgdata: ', data);
-        //shopInfo.avatars = data;
-        img_Icon = data;
-        document.getElementById('icon_preview').setAttribute('src', data);
-        document.getElementById('icon_preview-md').setAttribute('src', data);
-        document.getElementById('icon_preview-sm').setAttribute('src', data);
-        //document.getElementById('Img_Avatar').setAttribute('src',data);
-    }
 
 };
 
+function iconPreview(data) {
+    //console.log('imgdata: ', data);
+    //shopInfo.avatars = data;
+    img_Icon = data;
+    document.getElementById('icon_preview').setAttribute('src', data);
+    document.getElementById('icon_preview-md').setAttribute('src', data);
+    document.getElementById('icon_preview-sm').setAttribute('src', data);
+    //document.getElementById('Img_Avatar').setAttribute('src',data);
+}
+
 var img_Icon;
 var img_Wall;
+
+options = {
+    imageBox: '#wallImg',
+    thumbBox: '#thumbWall',
+    spinner: '#spinnerWall',
+    imgSrc: ''
+}
+
+var neo_cropper = new cropbox(options, wallPreview);
+
 
 function initWall(el) {
     // console.log("initWall..");    
     // document.getElementById("wallImg").style.height = screen.height + "px";
     // document.getElementById("thumbWall").style.height = screen.height + "px";
 
-    options = {
-        imageBox: '#wallImg',
-        thumbBox: '#thumbWall',
-        spinner: '#spinnerWall',
-        imgSrc: ''
-    }
+
     var reader = new FileReader();
-    cropper = new cropbox(options, wallPreview);
+    if (!neo_cropper) {
+        neo_cropper = new cropbox(options, wallPreview);
+    }
     reader.onload = function(e) {
         options.imgSrc = e.target.result;
-        cropper.resetOption(options);
+        neo_cropper.resetOption(options);
     }
     reader.readAsDataURL(el.files[0]);
     //el.files = [];
     document.querySelector('#wall_btnZoomIn').addEventListener('click', function() {
-        cropper.zoomIn();
+        neo_cropper.zoomIn();
     })
     document.querySelector('#wall_btnZoomOut').addEventListener('click', function() {
-        cropper.zoomOut();
+        neo_cropper.zoomOut();
     })
     $('#m_wall').on('hidden.bs.modal', function() {
 
@@ -191,21 +203,27 @@ function initWall(el) {
 
     });
     $('#m_wall').on('shown.bs.modal', function() {
-        cropper.resetOption(options);
+        neo_cropper.resetOption(options);
     });
 
-    function wallPreview(data) {
-        //shopInfo.walls = data;
-        img_Wall = data;
-        document.getElementById('wall_preview').setAttribute('src', data);
-        document.getElementById('wall_preview-md').setAttribute('src', data);
-        document.getElementById('wall_preview-sm').setAttribute('src', data);
-        document.getElementById("openInput").classList.add("hiddenElem");
-        //document.getElementById('wallHolder').setAttribute('src', data);
-        currentImage.setAttribute('src', data);
-    }
+
 
 };
+
+function wallPreview(data) {
+    //shopInfo.walls = data;
+    img_Wall = data;
+    document.getElementById('wall_preview').setAttribute('src', data);
+    document.getElementById('wall_preview-md').setAttribute('src', data);
+    document.getElementById('wall_preview-sm').setAttribute('src', data);
+    //document.getElementById("openInput").classList.add("hiddenElem");
+    //document.getElementById('wallHolder').setAttribute('src', data);
+    if (currentImage) {
+        currentImage.setAttribute('src', data);
+    }
+}
+
+
 // Update post object section
 var shopInfo = {}
 $(document).ready(function() {
@@ -221,6 +239,25 @@ function updateShopInfo(evt) {
     var att = this.getAttribute("app-input");
     this.parentNode.classList.remove("missing");
     shopInfo[att] = this.value;
+}
+
+function attImgRatio_change(evt, elem) {
+    var appRole = elem.getAttribute("app-role");
+    var attImgXRatio = 16;
+    var attImgYRatio = 9
+    if (appRole == "attImgXRatio") {
+        attImgXRatio = elem.value;
+    } else if (appRole == "attImgYRatio") {
+        attImgYRatio = elem.value;
+    }
+    var ratio = attImgYRatio / attImgXRatio
+    var imageBox = document.getElementById("wallImg");
+    var thumbBox = document.getElementById("thumbWall");
+    var realWidth = imageBox.getBoundingClientRect().width;
+    var realHeight = imageBox.getBoundingClientRect().height
+    var applyHeight = realWidth * ratio + 'px'
+    thumbBox.style.height = applyHeight;
+    imageBox.style.height = applyHeight;
 }
 
 function saveShopInfo() {
@@ -248,10 +285,15 @@ function saveShopInfo() {
     // });
     var exPayload = {}
     exPayload.walls = []
+    exPayload.staticContent = [];
     var wallHandlers = document.querySelectorAll('[app-role ="imgBackground"]');
     wallHandlers.forEach(function(img) {
         exPayload.walls.push(img.getAttribute('src'));
     });
+    var staticContentHandler = document.querySelectorAll('[app-role="static_content"]');
+    staticContentHandler.forEach(function(elem) {
+        exPayload.staticContent.push(elem.value);
+    })
     exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
     var atts = document.querySelectorAll("[app-input]");
     var pendding = false;
@@ -282,6 +324,12 @@ function addMoreStaticContent(el) {
     var root = getRowCover(el).parentNode;
     var staticContentTempplate = document.getElementById("textAreaInput").content;
     root.insertBefore(document.importNode(staticContentTempplate, true), getRowCover(el));
+    var contentPad = previousElementSibling(getRowCover(el));
+    var deleteBnt = contentPad.querySelector('[app-role ="deleteBnt"]')
+    deleteBnt.addEventListener('click', function() {
+        contentPad.parentNode.removeChild(contentPad);
+    }, false);
+
 }
 
 function addMoreBackgroundImg(el) {
@@ -291,6 +339,10 @@ function addMoreBackgroundImg(el) {
     var item = previousElementSibling(getRowCover(el));
     var img = item.querySelector('[app-role ="imgBackground"]');
     img.addEventListener('click', openBackgroundModal, false);
+    var deleteBnt = item.querySelector('[app-role ="deleteBnt"]')
+    deleteBnt.addEventListener('click', function() {
+        item.parentNode.removeChild(item);
+    }, false);
 }
 
 function getRowCover(elem) {

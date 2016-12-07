@@ -14,10 +14,11 @@ var cropbox = function(options, fn_cb) {
             image: new Image(),
             bgX: parseInt(window.getComputedStyle(el, null).backgroundPosition.trim().split(/\s+/)[0]),
             bgY: parseInt(window.getComputedStyle(el, null).backgroundPosition.trim().split(/\s+/)[1]),
+            canvas: document.createElement("canvas"),
             getDataURL: function() {
                 var width = this.thumbBox.clientWidth,
                     height = this.thumbBox.clientHeight,
-                    canvas = document.createElement("canvas"),
+                    canvas = obj.canvas,
                     dim = el.style.backgroundPosition.split(' '),
                     size = el.style.backgroundSize.split(' '),
                     dx = parseInt(dim[0]) - el.clientWidth / 2 + width / 2,
@@ -54,14 +55,18 @@ var cropbox = function(options, fn_cb) {
                 this.ratio *= 0.9;
                 setBackground();
             },
-            resetOption: function(opt) {
-                el.style.backgroundImage = "none";
-                obj.options = opt;
-                obj.bgX = 0;
-                obj.bgY = 0;
-                obj.ratio = 1;
+            resetOption: function(opt, isFull) {
+                if (isFull) {
+                    el.style.backgroundImage = "none";
+                    obj.options = opt;
+                    obj.bgX = 0;
+                    obj.bgY = 0;
+                    obj.ratio = 1;
+                }
+
                 obj.image.src = options.imgSrc;
                 // this.getDataURL();
+                fn_cb(obj.getDataURL());
             }
         },
         attachEvent = function(node, event, cb) {
