@@ -211,7 +211,6 @@ function initWall(el) {
 };
 
 function wallPreview(data) {
-    //shopInfo.walls = data;
     img_Wall = data;
     document.getElementById('wall_preview').setAttribute('src', data);
     document.getElementById('wall_preview-md').setAttribute('src', data);
@@ -225,7 +224,7 @@ function wallPreview(data) {
 
 
 // Update post object section
-var shopInfo = {}
+
 $(document).ready(function() {
     var inputs = document.querySelectorAll('[app-input]');
     // console.log("available input: ", inputs);
@@ -261,7 +260,7 @@ function attImgRatio_change(evt, elem) {
 }
 
 
-function addMoreStaticContent(el) {
+function addMoreStaticContent(el, content) {
     var root = getRowCover(el).parentNode;
     var staticContentTempplate = document.getElementById("textAreaInput").content;
     root.insertBefore(document.importNode(staticContentTempplate, true), getRowCover(el));
@@ -270,10 +269,12 @@ function addMoreStaticContent(el) {
     deleteBnt.addEventListener('click', function() {
         contentPad.parentNode.removeChild(contentPad);
     }, false);
-
+    if (content) {
+        contentPad.querySelector('[app-role="static_content"]').value = content;
+    }
 }
 
-function addMoreBackgroundImg(el) {
+function addMoreBackgroundImg(el, image) {
     var root = getRowCover(el).parentNode;
     var staticBackGroundImg = document.getElementById("imgInput").content
     root.insertBefore(document.importNode(staticBackGroundImg, true), getRowCover(el));
@@ -284,6 +285,9 @@ function addMoreBackgroundImg(el) {
     deleteBnt.addEventListener('click', function() {
         item.parentNode.removeChild(item);
     }, false);
+    if (image) {
+        img.setAttribute('src', image);
+    }
 }
 
 function getRowCover(elem) {
@@ -310,7 +314,7 @@ function updatePage(elem) {
 }
 
 function saveShopInfo() {
-    
+
     var exPayload = {}
     exPayload.walls = []
     exPayload.staticContent = [];
@@ -347,4 +351,23 @@ function saveShopInfo() {
         }
     }
 
+}
+
+function loadShopInfo(shopInfo) {
+    var inputs = document.querySelectorAll('[app-input]');
+    for (var i in shopInfo) {
+        if (i == "staticContent" || i == "walls" || i == "avatars") {
+            console.log(i, shopInfo[i]);
+        } else {
+            inputs.forEach(function(item) {
+                // console.log("item Attribute: ", item.getAttribute('app-input'));
+                if (item.getAttribute('app-input') == i) {
+                    item.value = shopInfo[i];
+                }
+                if (i == "companyName") {
+                    document.getElementById("companyName").innerHTML = shopInfo[i];
+                }
+            })
+        }
+    }
 }

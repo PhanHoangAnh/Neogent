@@ -36,11 +36,35 @@ function requireUncached(module) {
 router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
     // console.log(req.shopname)
-    res.render('index', {
-        title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting,
-        RSApublicKey: keyPair.public
-    });
+    var Shops = mongoose.model('Shops');
+    Shops.findOne({ shopname: req.shopname }, function(err, shop) {
+        if (err || !shop) {
+            res.sendStatus(404);
+            return;
+        } else {
+            var shopInfo = {
+                avatars: shop.avatars,
+                walls: shop.walls,
+                longitude: shop.longitude,
+                latitude: shop.latitude,
+                shopname: shop.shopname,
+                showName: shop.showName,
+                slogan: shop.slogan,
+                companyName: shop.companyName,
+                staticContent: shop.static_content,
+                contact_phone: shop.contact_phone,
+                contact_email: shop.contact_email,
+                address: shop.address
+            };
+            res.render('index', {
+                title: 'Hello, this is template Application of : ' + req.shopname,
+                data: setting,
+                RSApublicKey: keyPair.public,
+                shopInfo: shopInfo
+            });
+        }
+    })
+
 });
 //  Global variables for Business functions
 
