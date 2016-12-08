@@ -38,7 +38,7 @@
                     <div>
                         <img src="img/CatLogo.png" class="logo" id='logo'>
                     </div>
-                    <div class='site-name hidden-xs'>
+                    <div class='site-name hidden-xs' id = "companyName">
                         AbcJSC
                     </div>
                     <div>
@@ -74,7 +74,7 @@
             </div>
         </div>
     </template>
-    <template id="controlTemplate">
+    <!-- <template id="controlTemplate">
         <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
             <div class="col-md-3 col-lg-3">
                 <label data-controltype="label"></label>
@@ -83,7 +83,7 @@
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
             </div>
         </div>
-    </template>
+    </template> -->
     
     <template id="textAreaInput">
         <div class="row control" id="24">
@@ -132,7 +132,7 @@
                         <label>Shop's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" onchange= 'updatePage(this)'app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
                     </div>
                 </div>
                 <div class="row control" id="18">
@@ -140,14 +140,14 @@
                         <label>Shop's Slogan</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" onchange= 'updatePage(this)' app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
                 </div>
                 <div class="row control" id="19" data-controltype="text">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Company's Name or Group's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange= 'updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                 </div>
                 <div class="row control" id="24">
                     <div class="col-md-3 col-lg-3">

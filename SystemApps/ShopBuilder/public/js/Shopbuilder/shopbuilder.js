@@ -190,8 +190,8 @@ function initWall(el) {
     $('#m_wall').on('hidden.bs.modal', function() {
 
         var masthead = document.getElementById('masthead');
-        var prop = "#f3f3f3 url('" + img_Wall + "') no-repeat right top"
-        masthead.style.background = prop;
+        //var prop = "#f3f3f3 url('" + img_Wall + "') no-repeat right top"
+        //masthead.style.background = prop;
 
         masthead.classList.remove("hiddenElem");
         // masthead.addClass('start');
@@ -260,65 +260,6 @@ function attImgRatio_change(evt, elem) {
     imageBox.style.height = applyHeight;
 }
 
-function saveShopInfo() {
-    // var Shop_schema = new Schema({
-    //     _id: Schema.Types.ObjectId,
-    //     fb_uid: { type: String, unique: true, required: true, dropDups: true, index: true },
-    //     members: [Schema.Types.Mixed],
-    //     avatars: { type: String },
-    //     walls: [String],
-    //     longitude: { type: String },
-    //     latitude: { type: String },
-    //     shopname: { type: String, unique: true, required: true, dropDups: true, index: true },
-    //     showName: { type: String },
-    //     slogan: { type: String },
-    //     companyName: { type: String },
-    //     static_content: [String],
-    //     contact_phone: { type: Number },
-    //     contact_email: { type: String },
-    //     address: { type: String },
-    //     updated: { type: Date, default: Date.now },
-    //     items: [Schema.Types.Mixed],
-    //     categories: [Schema.Types.Mixed],
-    //     branchNames: [Schema.Types.Mixed],
-    //     extends: [Schema.Types.Mixed],
-    // });
-    var exPayload = {}
-    exPayload.walls = []
-    exPayload.staticContent = [];
-    var wallHandlers = document.querySelectorAll('[app-role ="imgBackground"]');
-    wallHandlers.forEach(function(img) {
-        exPayload.walls.push(img.getAttribute('src'));
-    });
-    var staticContentHandler = document.querySelectorAll('[app-role="static_content"]');
-    staticContentHandler.forEach(function(elem) {
-        exPayload.staticContent.push(elem.value);
-    })
-    exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
-    var atts = document.querySelectorAll("[app-input]");
-    var pendding = false;
-    for (var i = 0; i < atts.length; i++) {
-        if (!atts[i].value) {
-            pendding = true;
-            // add class that indicate require fields
-            atts[i].parentNode.classList.add("missing");
-            console.log(atts[i]);
-        }
-    }
-    console.log("shopInfo: ", shopInfo);
-    console.log(pendding);
-    if (!pendding) {
-        // sending shopInfo to server
-        var endpoint = 'updateShop';
-        // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
-        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, exPayload, fn_cb);
-
-        function fn_cb(returnObj) {
-            console.log(returnObj)
-        }
-    }
-
-}
 
 function addMoreStaticContent(el) {
     var root = getRowCover(el).parentNode;
@@ -359,4 +300,51 @@ function previousElementSibling(elem) {
         elem = elem.previousSibling;
     } while (elem && elem.nodeType !== 1);
     return elem;
+}
+
+function updatePage(elem) {
+    var controlType = elem.getAttribute("app-input");
+    if (controlType == "companyName") {
+        document.getElementById("companyName").innerHTML = elem.value;
+    }
+}
+
+function saveShopInfo() {
+    
+    var exPayload = {}
+    exPayload.walls = []
+    exPayload.staticContent = [];
+    var wallHandlers = document.querySelectorAll('[app-role ="imgBackground"]');
+    wallHandlers.forEach(function(img) {
+        exPayload.walls.push(img.getAttribute('src'));
+    });
+    var staticContentHandler = document.querySelectorAll('[app-role="static_content"]');
+    staticContentHandler.forEach(function(elem) {
+        exPayload.staticContent.push(elem.value);
+    })
+    exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
+    console.log("staticContent: ", exPayload.staticContent);
+    var atts = document.querySelectorAll("[app-input]");
+    var pendding = false;
+    for (var i = 0; i < atts.length; i++) {
+        if (!atts[i].value) {
+            pendding = true;
+            // add class that indicate require fields
+            console.log(atts[i]);
+            atts[i].parentNode.classList.add("missing");
+        }
+    }
+    //console.log("shopInfo: ", shopInfo);
+    console.log(pendding);
+    if (!pendding) {
+        // sending shopInfo to server
+        var endpoint = 'updateShop';
+        // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
+        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, exPayload, fn_cb);
+
+        function fn_cb(returnObj) {
+            console.log(returnObj)
+        }
+    }
+
 }

@@ -53,10 +53,8 @@ function checkToken(uid, token, RSAPublicKey, fn_cb) {
             // }
             console.log(data);
             if (fn_cb) {
-
                 fn_cb(data.responseJSON);
             }
-
         }
     });
 }
