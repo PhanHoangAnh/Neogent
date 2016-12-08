@@ -193,16 +193,7 @@
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
-                </div>
-<!--                 <div class="row control" id="23" data-controltype="image">
-                    <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Shop's background</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <img id="wallHolder" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
-                    </div>
-                </div> -->
+                </div>                
                 <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
@@ -485,8 +476,7 @@ $(document).ready(function() {
         }
     }
 
-    document.getElementById('iconHolder').addEventListener('click', openIconModal, false);
-    document.getElementById('wallHolder').addEventListener('click', openBackgroundModal, false);
+    document.getElementById('iconHolder').addEventListener('click', openIconModal, false);    
     document.querySelector('#iconFile').addEventListener('change', function(el) {
         initIcon(this);
     }, false);

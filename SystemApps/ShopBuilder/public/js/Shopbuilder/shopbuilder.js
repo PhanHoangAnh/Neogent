@@ -286,7 +286,7 @@ function addMoreBackgroundImg(el, image) {
         item.parentNode.removeChild(item);
     }, false);
     if (image) {
-        img.setAttribute('src', image);
+        img.setAttribute('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + image);
     }
 }
 
@@ -320,13 +320,21 @@ function saveShopInfo() {
     exPayload.staticContent = [];
     var wallHandlers = document.querySelectorAll('[app-role ="imgBackground"]');
     wallHandlers.forEach(function(img) {
-        exPayload.walls.push(img.getAttribute('src'));
+        if (img.getAttribute('src').indexOf("data:image/png;base64") !== -1) {
+            exPayload.walls.push(img.getAttribute('src'));
+        } else {
+            exPayload.walls.push(img.getAttribute('src').replace(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/", ""));
+        }
     });
     var staticContentHandler = document.querySelectorAll('[app-role="static_content"]');
     staticContentHandler.forEach(function(elem) {
         exPayload.staticContent.push(elem.value);
     })
-    exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
+    if (document.getElementById('iconHolder').getAttribute('src').indexOf("data:image/png;base64") !== -1) {
+        exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
+    } else {
+        exPayload.avatars = document.getElementById('iconHolder').getAttribute('src').replace(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/", "");
+    }
     console.log("staticContent: ", exPayload.staticContent);
     var atts = document.querySelectorAll("[app-input]");
     var pendding = false;
@@ -356,8 +364,22 @@ function saveShopInfo() {
 function loadShopInfo(shopInfo) {
     var inputs = document.querySelectorAll('[app-input]');
     for (var i in shopInfo) {
-        if (i == "staticContent" || i == "walls" || i == "avatars") {
-            console.log(i, shopInfo[i]);
+        if (i == "staticContent" && shopInfo[i] instanceof Array) {
+            var addMoreSC = document.getElementById("AddmoreStaticContent");
+            shopInfo[i].filter(function(obj) {
+                addMoreStaticContent(addMoreSC, obj);
+            });
+        } else if (i == "walls" && shopInfo[i] instanceof Array) {
+            var addMoreBG = document.getElementById('AddmoreBackrgound');
+            shopInfo[i].filter(function(obj) {
+                addMoreBackgroundImg(addMoreBG, obj);
+            })
+            console.log(shopInfo[i]);
+        } else if (i == "avatars") {
+            var imgPath = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + shopInfo[i];
+            document.getElementById('logo').setAttribute('src', imgPath);
+            document.getElementById('iconHolder').setAttribute('src', imgPath);
+
         } else {
             inputs.forEach(function(item) {
                 // console.log("item Attribute: ", item.getAttribute('app-input'));

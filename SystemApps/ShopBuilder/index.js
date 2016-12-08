@@ -97,21 +97,24 @@ router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
         shop.contact_phone = mainData.contact_phone;
 
         var walls = req.body.exPayload.walls;
-        if (walls instanceof Array) {
+        if (walls && walls instanceof Array) {
             for (var i = 0; i < walls.length; i++) {
-                if (walls[i].indexOf("data:image/png;base64") !== -1) {
-                    var filePath = "./Shops/" + req.shopname + "/public/imgs/wall_" + i + ".png";
-                    var result = writeBase64ImageSync(filePath, walls[i]);
-                    if (result) {
-                        walls[i] = req.shopname + "/imgs/wall_" + i + ".png"
+                (function(n) {
+                    if (walls[n].indexOf("data:image/png;base64") !== -1) {
+                        var filePath = "./Shops/" + req.shopname + "/public/imgs/wall_" + n + ".png";
+                        var result = writeBase64ImageSync(filePath, walls[n]);
+                        console.log("writefile: ", n, result);
+                        if (result) {
+                            walls[i] = req.shopname + "/imgs/wall_" + n + ".png"
+                        }
                     }
-                }
+                })(i);
             }
         }
         shop.walls = walls;
         shop.markModified('walls');
         avatar = req.body.exPayload.avatars;
-        if (avatar.indexOf("data:image/png;base64") !== -1) {
+        if (avatar && avatar.indexOf("data:image/png;base64") !== -1) {
             var filePath = "./Shops/" + req.shopname + "/public/imgs/avatar.png";
             var result = writeBase64ImageSync(filePath, avatar);
             if (result) {
