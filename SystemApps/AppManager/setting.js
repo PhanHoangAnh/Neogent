@@ -19,6 +19,11 @@ var setting = [{
     path: "../ShopBuilder/",
     logo: "shopbuilder/img/logoicon.png"
 }, {
+    name: "Categories And BranchNames Manager",
+    url: "catandbranch",
+    path: "../CatsAndBrachsManager/",
+    logo: "template/imgs/LogoSamples/1.png"
+}, {
     name: "Artbackground",
     url: "arttemp",
     path: "../ArtTemplate/",

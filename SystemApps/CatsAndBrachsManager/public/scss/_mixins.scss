@@ -1,0 +1,115 @@
+//position
+@mixin ver-pos {
+  top: 50%;
+  @include translateY (-50%);
+}
+@mixin hoz-pos {
+  left: 50%;
+  @include translateX (-50%);
+}
+@mixin center-pos {
+  top: 50%; left: 50%;
+  @include translate(-50%, -50%);
+}
+@mixin no-pos {
+  top: auto; left: auto;
+  @include translate(0, 0);
+}
+
+//box shadow
+@mixin box-shadow($box-value) {
+  -webkit-box-shadow: $box-value;
+  -moz-box-shadow: $box-value;
+  box-shadow: $box-value;
+}
+
+//box-sizing
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+  -moz-box-sizing: $box-model;
+  box-sizing: $box-model;
+}
+
+//border-radius
+@mixin border-radius($b-deg) {
+  -webkit-border-radius: $b-deg;
+  -moz-border-radius: $b-deg;
+  border-radius: $b-deg;
+}
+
+//transition
+@mixin single-transition($property,$duration){
+  -webkit-transition: $property $duration ease-in-out;
+  -moz-transition: $property $duration ease-in-out;
+  -o-transition: $property $duration ease-in-out;
+  transition: $property $duration ease-in-out;
+}
+
+//user selected
+@mixin user-select ($user-select) {
+  -moz-user-select: $user-select;
+  -webkit-user-select: $user-select;
+  -ms-user-select: $user-select;
+  user-select: $user-select;
+}
+
+//scroll-x
+@mixin scroll-x {overflow-x: auto; overflow-y: hidden;}
+//scroll-y
+@mixin scroll-y {overflow-x: hidden; overflow-y: auto;}
+
+//ellipsis
+@mixin ellipsis {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+//icon fonts
+@mixin icon-font {
+  font-family: 'Linearicons-Free';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+//clearfix
+@mixin clearfix {
+  zoom: 1;
+  &:after {
+    content: '.';
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+  }
+}
+
+//media queries
+$w-lmobile: 566px;
+$w-tablet: 768px;
+$w-desktop: 992px;
+$w-large: 1200px;
+
+@mixin mobile {
+  @media only screen and (max-width: $w-tablet - 1) {@content;}
+}
+@mixin large-mobile {
+  @media only screen and (min-width: $w-lmobile) and (max-width: $w-tablet - 1) {@content;}
+}
+@mixin tablet {
+  @media only screen and (min-width: $w-tablet) and (max-width: $w-desktop - 1) {@content;}
+}
+@mixin desktop {
+  @media only screen and (min-width: $w-desktop) {@content;}
+}
+@mixin widescreen {
+  @media only screen and (min-width: $w-large) {@content;}
+}

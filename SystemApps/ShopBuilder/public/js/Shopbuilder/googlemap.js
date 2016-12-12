@@ -22,10 +22,19 @@ $(document).ready(function() {
     };
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
+            var pos;
+            if (!shopInfo.longitude && !shopInfo.latitude) {
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+            } else {
+                pos = {
+                    lat: shopInfo.latitude,
+                    lng: shopInfo.longitude
+                }
+            }
+
             latLng = new google.maps.LatLng(pos.lat, pos.lng);
             // infoWindow.setPosition(pos);
             // infoWindow.setContent('Location found.');

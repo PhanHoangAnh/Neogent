@@ -1,0 +1,414 @@
+/* line 3, ../scss/navbar.scss */
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+/* line 7, ../scss/navbar.scss */
+#topNav {
+  z-index: -1;
+}
+
+/* line 8, ../scss/navbar.scss */
+#nav {
+  position: fixed;
+  width: 100%;
+  top: -50px;
+  -webkit-transition: top 1.2s ease-in-out;
+  -moz-transition: top 1.2s ease-in-out;
+  -o-transition: top 1.2s ease-in-out;
+  transition: top 1.2s ease-in-out;
+}
+/* line 13, ../scss/navbar.scss */
+#nav.affix-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 55px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  box-shadow: 0px 5px 7px 1px rgba(0, 0, 0, 0.1);
+  margin-left: 30px;
+  right: 30px;
+  width: calc(100% - 60px);
+  margin-bottom: 93px;
+}
+/* line 28, ../scss/navbar.scss */
+#nav > .container {
+  width: auto;
+}
+@media only screen and (max-width: 767px) {
+  /* line 28, ../scss/navbar.scss */
+  #nav > .container {
+    text-align: center;
+  }
+  /* line 32, ../scss/navbar.scss */
+  #nav > .container .hambugger {
+    display: inline-block;
+    float: none;
+    margin-left: 37.5px;
+  }
+}
+@media only screen and (min-width: 566px) and (max-width: 767px) {
+  /* line 28, ../scss/navbar.scss */
+  #nav > .container {
+    text-align: left;
+  }
+  /* line 39, ../scss/navbar.scss */
+  #nav > .container .hambugger {
+    float: right;
+  }
+}
+/* line 42, ../scss/navbar.scss */
+#nav li {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+/* line 45, ../scss/navbar.scss */
+#nav li > a:hover {
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  background-color: #ff3333;
+}
+/* line 50, ../scss/navbar.scss */
+#nav li:first-child, #nav li:last-child {
+  -webkit-border-radius: 8px 0 0 8px;
+  -moz-border-radius: 8px 0 0 8px;
+  border-radius: 8px 0 0 8px;
+}
+/* line 54, ../scss/navbar.scss */
+#nav.affix {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  opacity: .9;
+  height: 50px;
+  -webkit-transition: all 1.2s ease-in-out;
+  -moz-transition: all 1.2s ease-in-out;
+  -o-transition: all 1.2s ease-in-out;
+  transition: all 1.2s ease-in-out;
+}
+/* line 62, ../scss/navbar.scss */
+#nav .btn-facebook {
+  float: right;
+  margin: 10px 0 0 10px;
+}
+
+/* line 65, ../scss/navbar.scss */
+.logo, .site-name, .site-name-and-slogan {
+  float: left;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* line 66, ../scss/navbar.scss */
+.logo {
+  width: 55px;
+  margin: 10px 10px 10px 0;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+/* line 72, ../scss/navbar.scss */
+.site-name {
+  font-family: "RobotoCondensed-Light";
+  margin-top: 6px;
+  font-size: 34px;
+  color: #FFF;
+}
+
+/* line 80, ../scss/navbar.scss */
+.navbar.affix .mini-broad {
+  color: #FFF;
+}
+/* line 82, ../scss/navbar.scss */
+.navbar.affix .mini-broad:hover {
+  background: transparent;
+}
+
+/* line 86, ../scss/navbar.scss */
+.mini-broad, .mini-broad img, .glyphicon, .caption-text, .hambugger .icon-bar {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* line 89, ../scss/navbar.scss */
+.mini-broad-cover {
+  -webkit-transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+}
+
+/* line 92, ../scss/navbar.scss */
+.mini-broad {
+  float: left;
+  margin: 3px 15px 0;
+  font-size: 18px;
+  color: #FFF;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+/* line 100, ../scss/navbar.scss */
+.mini-broad:hover {
+  padding-left: 12px;
+  padding-right: 12px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+/* line 107, ../scss/navbar.scss */
+.mini-broad img {
+  width: auto;
+  height: 38px;
+  vertical-align: middle;
+}
+/* line 112, ../scss/navbar.scss */
+.mini-broad span {
+  padding-left: 5px;
+}
+/* line 115, ../scss/navbar.scss */
+.mini-broad .glyphicon {
+  padding-left: 0;
+  color: #FFF;
+}
+/* line 118, ../scss/navbar.scss */
+.mini-broad .caption-text {
+  font-family: "RobotoCondensed-Light";
+  font-size: 10px;
+}
+
+/* line 123, ../scss/navbar.scss */
+.navbar.affix .mini-broad img {
+  height: 32px;
+}
+
+/* line 127, ../scss/navbar.scss */
+.menu-board {
+  position: relative;
+  overflow: hidden;
+  float: right;
+  min-width: 50%;
+  height: 60px;
+}
+
+/* line 134, ../scss/navbar.scss */
+.hambugger {
+  position: relative;
+  float: right;
+  /*padding: 17px 10px 0;*/
+  padding: 5px 10px;
+  margin-top: 8px;
+  background-image: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  width: 42px;
+  height: 38px;
+  z-index: 5;
+}
+/* line 144, ../scss/navbar.scss */
+.hambugger .icon-bar {
+  position: absolute;
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #FFF;
+}
+/* line 152, ../scss/navbar.scss */
+.hambugger .icon-bar + .icon-bar {
+  margin-top: 6px;
+}
+/* line 155, ../scss/navbar.scss */
+.hambugger .icon-bar + .icon-bar + .icon-bar {
+  margin-top: 12px;
+}
+/* line 159, ../scss/navbar.scss */
+.hambugger .menu-bar, .hambugger .menu-bar:before, .hambugger .menu-bar:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background-color: #FFF;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+/* line 167, ../scss/navbar.scss */
+.hambugger .menu-bar {
+  top: 17px;
+  left: 9px;
+}
+/* line 168, ../scss/navbar.scss */
+.hambugger .menu-bar:before {
+  top: -6px;
+}
+/* line 169, ../scss/navbar.scss */
+.hambugger .menu-bar:after {
+  bottom: -6px;
+}
+
+/* line 172, ../scss/navbar.scss */
+.navbar.affix .hambugger {
+  margin-top: 6px;
+}
+
+/* line 176, ../scss/navbar.scss */
+.mini-broad-cover {
+  position: absolute;
+  right: -50%;
+}
+
+/* line 182, ../scss/navbar.scss */
+.menu-active .mini-broad-cover {
+  right: 0 !important;
+}
+/* line 184, ../scss/navbar.scss */
+.menu-active .hambugger .icon-bar:nth-of-type(2) {
+  width: 0;
+}
+/* line 187, ../scss/navbar.scss */
+.menu-active .hambugger .icon-bar + .icon-bar {
+  margin-top: 0;
+}
+/* line 190, ../scss/navbar.scss */
+.menu-active .hambugger .icon-bar:nth-of-type(1) {
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+/* line 195, ../scss/navbar.scss */
+.menu-active .hambugger .icon-bar:nth-of-type(3) {
+  -ms-transform: rotate(-45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(-45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-45deg);
+}
+/* line 201, ../scss/navbar.scss */
+.menu-active .hambugger .menu-bar {
+  background-color: transparent;
+}
+/* line 203, ../scss/navbar.scss */
+.menu-active .hambugger .menu-bar:before {
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  top: 0;
+}
+/* line 210, ../scss/navbar.scss */
+.menu-active .hambugger .menu-bar:after {
+  -moz-transform: translateY(-6px) rotate(45deg);
+  -ms-transform: translateY(-6px) rotate(45deg);
+  -webkit-transform: translateY(-6px) rotate(45deg);
+  transform: translateY(-6px) rotate(45deg);
+  top: 6px;
+}
+
+/* line 221, ../scss/navbar.scss */
+#iconHolder {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  /* line 225, ../scss/navbar.scss */
+  #nav.affix-top li {
+    margin-top: 20px;
+    background-color: transparent;
+  }
+
+  /* line 229, ../scss/navbar.scss */
+  #nav.affix-top li > a:hover {
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  /* line 233, ../scss/navbar.scss */
+  #nav li {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  /* line 236, ../scss/navbar.scss */
+  #nav.affix .site-name {
+    font-size: 24px;
+  }
+
+  /* line 240, ../scss/navbar.scss */
+  .site-name {
+    font-size: 28px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 246, ../scss/navbar.scss */
+  .br-response {
+    min-height: 160px;
+    padding-left: 15px;
+  }
+
+  /* line 250, ../scss/navbar.scss */
+  #sidebar.affix-bottom {
+    position: absolute;
+  }
+
+  /* line 253, ../scss/navbar.scss */
+  #sidebar.affix-top {
+    position: static;
+  }
+
+  /* line 256, ../scss/navbar.scss */
+  #sidebar.affix {
+    position: fixed;
+    top: 70px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  /* line 263, ../scss/navbar.scss */
+  .menu-board {
+    top: -15px;
+    height: 50px;
+    width: 100%;
+    float: none;
+  }
+
+  /* line 269, ../scss/navbar.scss */
+  .mini-broad-cover {
+    right: -150%;
+  }
+
+  /* line 270, ../scss/navbar.scss */
+  .mini-broad {
+    margin-bottom: 3px;
+  }
+  /* line 272, ../scss/navbar.scss */
+  .mini-broad img {
+    height: 32px;
+  }
+}
+@media only screen and (max-width: 565px) {
+  /* line 278, ../scss/navbar.scss */
+  #nav.affix-top {
+    width: 100%;
+    right: 0;
+    margin-left: 0;
+  }
+  /* line 282, ../scss/navbar.scss */
+  #nav .btn-facebook {
+    font-size: 11px;
+    margin: 12px 0 0;
+  }
+}

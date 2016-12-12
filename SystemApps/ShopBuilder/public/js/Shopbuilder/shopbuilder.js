@@ -373,8 +373,7 @@ function loadShopInfo(shopInfo) {
             var addMoreBG = document.getElementById('AddmoreBackrgound');
             shopInfo[i].filter(function(obj) {
                 addMoreBackgroundImg(addMoreBG, obj);
-            })
-            console.log(shopInfo[i]);
+            })            
         } else if (i == "avatars") {
             var imgPath = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + shopInfo[i];
             document.getElementById('logo').setAttribute('src', imgPath);
