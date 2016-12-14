@@ -1738,12 +1738,6 @@ img {
   margin-bottom: 10px;
 }
 /* line 212, ../scss/main.scss */
-.create-catandbrand .content-panel .cat-list .cat-name, .create-catandbrand .content-panel .cat-list .brand-name, .create-catandbrand .content-panel .brand-list .cat-name, .create-catandbrand .content-panel .brand-list .brand-name {
-  font-size: 16px;
-  display: inline-block;
-  margin: 0;
-}
-/* line 213, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list span, .create-catandbrand .content-panel .brand-list span {
   display: inline-block;
   background: #337ab7;
@@ -1755,10 +1749,16 @@ img {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 218, ../scss/main.scss */
+/* line 217, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list span:before, .create-catandbrand .content-panel .brand-list span:before {
   content: "\00D7";
   margin-right: 3px;
+}
+/* line 223, ../scss/main.scss */
+.create-catandbrand .content-panel .cat-name, .create-catandbrand .content-panel .brand-name {
+  font-size: 16px;
+  display: inline-block;
+  margin: 0;
 }
 /* line 224, ../scss/main.scss */
 .create-catandbrand .content-panel .fieldset-content {

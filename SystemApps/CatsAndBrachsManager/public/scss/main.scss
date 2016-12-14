@@ -209,7 +209,6 @@ img {
     }
     .cat-list, .brand-list {
       margin-bottom: 10px;
-      .cat-name, .brand-name {font-size: 16px; display: inline-block; margin: 0;}
       span {
         display: inline-block;
         background: #337ab7; cursor: pointer;
@@ -221,6 +220,7 @@ img {
         }
       }
     }
+    .cat-name, .brand-name {font-size: 16px; display: inline-block; margin: 0;}
     .fieldset-content {
       position: relative;
       @include clearfix;
