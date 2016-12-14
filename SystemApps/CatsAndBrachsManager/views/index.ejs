@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div>
-                        <img src="img/CatLogo.png" class="logo">
+                        <img src="imgs/CatLogo.png" class="logo">
                     </div>
                     <div class='site-name hidden-xs'>
                         AbcJSC
@@ -66,7 +66,7 @@
                 <legend app-role="catsName">Category's group Name</legend>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="cat-img"><img app-role = "categoryImg" src="img/gamebanner.jpg"></div>
+                <div class="cat-img"><img app-role = "categoryImg" src="imgs/gamebanner.jpg"></div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="cat-list" app-role="categories">
@@ -107,11 +107,11 @@
         </div>
     </template>
     <!-- /NavBar -->
-    <section class='heading-page' style="background:url('img/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
+    <section class='heading-page' style="background:url('imgs/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
         <div class="container-fluid">
             <!-- Breadcrumb stay here -->
             <div class="col-md-12 col-lg-12 ">
-                <h1 class="col-md-6 col-lg-6"> Categoies and Branch Names Manager</h1>
+                <h1 class="col-md-6 col-lg-6"> Categories and Branch Names Manager</h1>
             </div>
         </div>
     </section>
@@ -190,9 +190,6 @@
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
             <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
-            <button type="button" class="btn btn-success" style="width: 100px;" onclick="cloneSet()">Clone</button>
-            <button type="button" class="btn btn-info" style="width: 100px;" onclick="createNewSet()">Create New</button>
-            <button type="button" class="btn btn-danger" style="width: 100px;" onclick="deleteSet()">Delete</button>
         </div>
     </section>
     <footer>
@@ -322,12 +319,14 @@ $(function() {
         // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
     });;
 });
+var shopInfo
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
-
+    shopInfo = <%- JSON.stringify(shopInfo) %>
+    console.log("shopInfo",shopInfo)
 
     LoadApp();
 

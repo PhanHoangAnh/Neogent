@@ -71,10 +71,6 @@ router.get('/', function(req, res, next) {
             });
         }
     });
-    res.render('index', {
-        title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting
-    });
 });
 
 
