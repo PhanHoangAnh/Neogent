@@ -1820,10 +1820,10 @@ footer .footer-inner:after {
 }
 @media only screen and (min-width: 992px) {
   /* line 251, ../scss/main.scss */
-  .col-xs-12 .col-md-2:nth-of-type(6n+1),
-  .col-sm-12 .col-md-2:nth-of-type(6n+1),
-  .col-md-12 .col-md-2:nth-of-type(6n+1),
-  .col-lg-12 .col-md-2:nth-of-type(6n+1) {
+  .col-xs-12 .col-md-2:nth-of-type(7n+1),
+  .col-sm-12 .col-md-2:nth-of-type(7n+1),
+  .col-md-12 .col-md-2:nth-of-type(7n+1),
+  .col-lg-12 .col-md-2:nth-of-type(7n+1) {
     clear: left;
   }
 }

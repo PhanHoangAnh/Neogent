@@ -1,9 +1,4 @@
 @import 'mixins';
-
-.row {
-  margin-left: 0px; margin-right: 0px;
-}
-
 #topNav {z-index: -1;}
 #nav {
   position: fixed;
@@ -60,6 +55,9 @@
     @include single-transition(all,1.2s);
   }
   .btn-facebook {float: right; margin: 10px 0 0 10px;}
+  .row {
+    margin-left: 0px; margin-right: 0px;
+  }
 }
 
 .logo, .site-name, .site-name-and-slogan {float: left; @include single-transition(all,0.3s);}

@@ -27,6 +27,7 @@ em {
   font-family: $italicFont;
   font-style: normal;
 }
+hr {opacity: .3;}
 
 *, .form-control {
   &::-webkit-input-placeholder {color: inherit; opacity: 1;}
