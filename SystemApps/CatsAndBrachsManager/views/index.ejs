@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/social-buttons.css">
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -62,10 +63,10 @@
     <template id="catGroupTemp">
         <div class="row inner-item" app-role="catGroup" class="dynamic">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <legend app-role="setsName">Category's group Name</legend>
+                <legend app-role="catsName">Category's group Name</legend>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="cat-img"><img src="img/gamebanner.jpg"></div>
+                <div class="cat-img"><img app-role = "categoryImg" src="img/gamebanner.jpg"></div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="cat-list" app-role="categories">
@@ -79,8 +80,8 @@
             </div>            
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="button-set">
-					<button type="button" id="deleteCate" class="btn">Delete Categories Group </button>
-					<button type="button" id="changeCatImage" class="btn btn-primary">Change Background Image</button>
+					<button type="button" app-role="deleteCats" class="btn">Delete Categories Group </button>
+					<button type="button" app-role="changeCatImage" class="btn btn-primary">Change Background Image</button>
 				</div>
             </div>
         </div>
@@ -129,7 +130,7 @@
 							<fieldset class="scheduler-border">
 								<legend class="scheduler-border">Categories</legend>
 								<div class="fieldset-content">
-									<p>Listing droppable categories here</p>	
+									<!-- <p>Listing droppable categories here</p> -->	
 									<div class="button-set" app-role="baseLine">
 										<button type="button" id="createCat" class="btn btn-primary" onclick="openModal(event,this)">Create new Categories Group</button>
 									</div>														
@@ -141,9 +142,6 @@
 								<legend class="scheduler-border">Brand</legend>
 								<div class="fieldset-content">
 									<p>Listing droppable branchs here</p>
-									<div class="button-set" app-role="baseLine">
-										<button type="button" id="createBranch" class="btn btn-primary" onclick="openModal(event,this)">Create new Branch </button>
-									</div>						
 								</div>
 							</fieldset>
 						</div>
@@ -162,15 +160,22 @@
 							<div id="home" class="tab-pane fade in active">
 								<p>Listing droppable categories here</p>
 								 <ul id="catLists" class="connectedSortable">
-									<li class="ui-state-highlight">Item 1</li>
-									<li class="ui-state-highlight">Item 2</li>
-									<li class="ui-state-highlight">Item 3</li>
-									<li class="ui-state-highlight">Item 4</li>
-									<li class="ui-state-highlight">Item 5</li>
+									<li class="ui-state-highlight" app-role = "category">Item 1</li>
+									<li class="ui-state-highlight" app-role = "category">Item 2</li>
+									<li class="ui-state-highlight" app-role = "category">Item 3</li>
+									<li class="ui-state-highlight" app-role = "category">Item 4</li>
+									<li class="ui-state-highlight" app-role = "category">Item 5</li>
 								</ul>
 							</div>
 							<div id="menu1" class="tab-pane fade">
 								<p>Listing droppable branchs here</p>
+                                <ul id="branchLists" class="connectedSortable">
+                                    <li class="ui-state-highlight" app-role = "branch">Item 1</li>
+                                    <li class="ui-state-highlight" app-role = "branch">Item 2</li>
+                                    <li class="ui-state-highlight" app-role = "branch">Item 3</li>
+                                    <li class="ui-state-highlight" app-role = "branch">Item 4</li>
+                                    <li class="ui-state-highlight" app-role = "branch">Item 5</li>
+                                </ul>
 							</div>                   
 						</div>					
 					</div>
@@ -210,7 +215,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Set Name..&hellip;</p>
-                    <input type="text"></input>
+                    <input type="text" id = "catName"></input>
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
@@ -222,6 +227,66 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+        <!--  -->
+    <div class="modal fade" id="m_wall" role="dialog">
+        <div class="modal-dialog fullWidth">
+            <!-- Modal content-->
+            <div class="modal-content" style="height: 120%">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Chọn hình nền cho category.</h4>
+                </div>
+                <div class="modal-body" style="padding:0; width: 100%; margin:0">
+                    <p style="margin-left: 15px">Drag the image to take a category's wall</p>
+                    <!-- <div class="row"> -->
+                    <div class="row" style="padding-bottom: 15px">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                           
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgXRatio" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgYRatio" app-role="attImgYRatio" name="y-ratio" placeholder="Y ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0">
+                        <div class="imageBox" id='wallImg' style="background-color: #F5F5F5">
+                            <div class="fullWidth" id="thumbWall" style="height: 100%; "></div>
+                            <div class="spinner" style="display: none" id="spinnerWall">Loading...</div>
+                            <!-- <div id='openInput' class="spinner" style="background-color: rgba(0,0,0,0) color: #333">
+                                <h3>Click here ....</h3>
+                            </div> -->
+                        </div>
+                        <div class="action" style="padding: 15px">
+                            <span class="file-input btn btn-primary btn-file">
+                            Browse&hellip;
+                            <input type="file" multiple id='wallFile' onchange = "initWall(this)">
+                        </span>
+                            <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
+                            <input type="button" id="wall_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                            <input type="button" id="wall_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                        </div>
+                    </div>
+                    <div class="col-md-3" style=" padding: 15px">
+                        <div class="preview">
+                            <img id='wall_preview'>
+                        </div>
+                        <div class="preview-md">
+                            <img id='wall_preview-md'>
+                        </div>
+                        <div class="preview-sm">
+                            <img id='wall_preview-sm'>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="margin-top: 15px" class="btn btn-default" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
     <!--  -->
     <script type="text/javascript" src="js/c2runtime.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
