@@ -23,6 +23,11 @@ var setting = [{
     url: "catandbranch",
     path: "../CatsAndBrachsManager/",
     logo: "template/imgs/LogoSamples/1.png"
+},{
+    name: "Collections Builder",
+    url: "collectionsbuilder",
+    path: "../CollectionsBuilder/",
+    logo: "template/imgs/LogoSamples/9.png"
 }, {
     name: "Artbackground",
     url: "arttemp",
