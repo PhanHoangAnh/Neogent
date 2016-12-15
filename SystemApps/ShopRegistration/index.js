@@ -27,17 +27,17 @@ var shopOwnerManagerInvert = new hashmap();
 
 
 // Read data from file:
-var file = "shopownerdata.json";
+var file = "Owners/shopownerdata.json";
 
 jsonfile.readFile(file, function(err, obj) {
     if (err) {
+        console.log("from shop registration: ", err);
         return
     }
     shopOwnerManager.copy(obj);
     shopOwnerManager.forEach(function(v, k) {
-        
         shopOwnerManagerInvert.set(v, k);
-    });   
+    });
 });
 // Utility function to check whether folder is existed take from https://groups.google.com/forum/#!topic/nodejs/h2h7dIKtP9E
 // function dirExists(d, cb) {
