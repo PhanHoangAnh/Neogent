@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7eda8f0-bd3a-40c8-b5f6-1214b37cfa60" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_animation.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_animation.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/ecfb55e93fb961e8b70459f1600f35d147b6e747/_base.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/ecfb55e93fb961e8b70459f1600f35d147b6e747/_base.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_border-radius.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_border-radius.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/4174713f69253d6fe877a0bd2e1fc5b24e05f538/_borders.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/4174713f69253d6fe877a0bd2e1fc5b24e05f538/_borders.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_box-shadow.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_box-shadow.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_columns.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_columns.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_deprecated-support.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_deprecated-support.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/8f94eb898a9783786c406a84806e4fc94c68aa1c/_ellipsis.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/8f94eb898a9783786c406a84806e4fc94c68aa1c/_ellipsis.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_flexbox.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_flexbox.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_font-face.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_font-face.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3aa8e0230493eb6fd1c3680539c42b9bb329e1c6/_grid-background.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3aa8e0230493eb6fd1c3680539c42b9bb329e1c6/_grid-background.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_images.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_images.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/58b0854ee45b46579ec070dbdedaf9e0088c5fb9/_inline-block-list.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/58b0854ee45b46579ec070dbdedaf9e0088c5fb9/_inline-block-list.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/79db1df0af0471c2664c612e8a6fdc3832f23fae/_link-colors.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/79db1df0af0471c2664c612e8a6fdc3832f23fae/_link-colors.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/8f94eb898a9783786c406a84806e4fc94c68aa1c/_replacement.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/8f94eb898a9783786c406a84806e4fc94c68aa1c/_replacement.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/ecfb55e93fb961e8b70459f1600f35d147b6e747/_sprite-img.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/ecfb55e93fb961e8b70459f1600f35d147b6e747/_sprite-img.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_text-shadow.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_text-shadow.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_transform.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_transform.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_transition.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/3746710bfe7e0b2975954c3a0118ba047eb1860b/_transition.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/1c34efa04a87ae48d61ce4fe2156a769ba4ff9d8/_units.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/1c34efa04a87ae48d61ce4fe2156a769ba4ff9d8/_units.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/1c34efa04a87ae48d61ce4fe2156a769ba4ff9d8/_vertical_rhythm.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/1c34efa04a87ae48d61ce4fe2156a769ba4ff9d8/_vertical_rhythm.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/b692ed7e1f801bd0542c08728e8945db2035b57a/main.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/b692ed7e1f801bd0542c08728e8945db2035b57a/main.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/b692ed7e1f801bd0542c08728e8945db2035b57a/navbar.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/b692ed7e1f801bd0542c08728e8945db2035b57a/navbar.scssc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/css/main.css" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Neogent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,9 +50,38 @@
       <file leaf-file-name="main.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.45098" vertical-offset="4006" max-vertical-offset="4641">
-              <caret line="261" column="33" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="-8.45098" vertical-offset="3751" max-vertical-offset="4386">
+              <caret line="246" column="33" selection-start-line="246" selection-start-column="33" selection-end-line="246" selection-end-column="33" />
+              <folding>
+                <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
+                <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5952381" vertical-offset="593" max-vertical-offset="5474">
-              <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+              <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -316,7 +319,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -402,7 +405,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -426,7 +458,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -505,16 +566,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.45098" vertical-offset="4006" max-vertical-offset="4641">
-          <caret line="261" column="33" selection-start-line="261" selection-start-column="33" selection-end-line="261" selection-end-column="33" />
-          <folding />
+        <state vertical-scroll-proportion="-8.45098" vertical-offset="3751" max-vertical-offset="4386">
+          <caret line="246" column="33" selection-start-line="246" selection-start-column="33" selection-end-line="246" selection-end-column="33" />
+          <folding>
+            <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
+            <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5952381" vertical-offset="593" max-vertical-offset="5474">
-          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+          <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
           <folding />
         </state>
       </provider>
