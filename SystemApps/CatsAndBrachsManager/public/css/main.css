@@ -1815,3 +1815,6 @@ img {
 .create-catandbrand .available-items .panel {
   min-height: 365px;
 }
+
+/*body { border: solid 1px red;  }
+.modal-dialog.fullWidth { width: 100% !important; }*/
