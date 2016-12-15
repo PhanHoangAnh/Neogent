@@ -73,6 +73,10 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.post("/update",function(req,res,next){
+    
+})
+
 
 app.use(router);
 module.exports = app;
