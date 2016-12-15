@@ -31,7 +31,7 @@ var file = "Owners/shopownerdata.json";
 
 jsonfile.readFile(file, function(err, obj) {
     if (err) {
-        console.log("from shop registration: ", err);
+        // console.log("from shop registration: ", err);
         return
     }
     shopOwnerManager.copy(obj);
