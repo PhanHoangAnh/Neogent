@@ -59,6 +59,47 @@ function createNewCategoriesGroup(name) {
     }, false);
 }
 
+
+function deleteCatBranchs(elem) {
+    var bandCover = getElement(elem, "bandCover");
+    console.log("bandCover: ", bandCover);
+    var catGroup = getElement(elem, "catGroup");
+    console.log("catGroup: ", catGroup);
+    var roles = findElemRoles(elem).getAttribute("app-role");
+    var itemContent = bandCover.querySelector('[app-role="band"]').innerHTML
+    console.log("handler: ", roles);
+    var data;
+    switch (roles) {
+        case "categories":
+            data = catGroup["DATASTORE"]["cats"]
+            console.log("categories");
+            break;
+        case "branchname":
+            data = catGroup["DATASTORE"]["branchs"]
+            console.log("branchname");
+            break
+    }
+    data.splice(data.indexOf(itemContent), 1)
+    bandCover.parentNode.removeChild(bandCover);
+    console.log(catGroup["DATASTORE"])
+
+    function getElement(el, att) {
+        if (el.parentNode.getAttribute('app-role') == att) {
+            return el.parentNode;
+        } else {
+            return getElement(el.parentNode, att);
+        }
+    }
+
+    function findElemRoles(el) {
+        if (el.getAttribute("base-role") !== "handler") {
+            return findElemRoles(el.parentNode)
+        } else {
+            return el;
+        }
+    }
+}
+
 function createNew() {
     var catName = document.getElementById("catName").value;
     createNewCategoriesGroup(catName);
@@ -69,7 +110,7 @@ function getBaseLine(elem) {
     if (elem.parentNode.getAttribute('app-role') == 'baseLine') {
         return elem.parentNode;
     } else {
-        return getRowCover(elem.parentNode);
+        return getBaseLine(elem.parentNode);
     }
 }
 

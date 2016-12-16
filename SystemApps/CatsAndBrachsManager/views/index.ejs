@@ -53,7 +53,7 @@
         </div>
     </div>
     <template id = "band">
-        <span class="item-band"><span class="x-close">&times;</span><span app-role = "band"></span></span>
+        <span class="item-band" app-role = "bandCover"><span onclick="deleteCatBranchs(this)" class="x-close">&times;</span><span app-role = "band"></span></span>
     </template>
     <template id="AppTemp">
         <a class='mini-broad' app-role="link">
@@ -69,12 +69,12 @@
                 <div class="cat-img"><img app-role = "categoryImg" src="imgs/gamebanner.jpg"></div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="cat-list" app-role="categories">
+				<div class="cat-list" app-role="categories" base-role = "handler">
 					<p class="cat-name">Categories</p>
 				</div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="brand-list" app-role = "branchname">
+				<div class="brand-list" app-role = "branchname" base-role = "handler">
                 <p class="brand-name">BranchNames</p>
 				</div>
             </div>            
