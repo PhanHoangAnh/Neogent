@@ -62,26 +62,20 @@ function createNewCategoriesGroup(name) {
 
 function deleteCatBranchs(elem) {
     var bandCover = getElement(elem, "bandCover");
-    console.log("bandCover: ", bandCover);
     var catGroup = getElement(elem, "catGroup");
-    console.log("catGroup: ", catGroup);
     var roles = findElemRoles(elem).getAttribute("app-role");
     var itemContent = bandCover.querySelector('[app-role="band"]').innerHTML
-    console.log("handler: ", roles);
     var data;
     switch (roles) {
         case "categories":
-            data = catGroup["DATASTORE"]["cats"]
-            console.log("categories");
+            data = catGroup["DATASTORE"]["cats"];
             break;
         case "branchname":
-            data = catGroup["DATASTORE"]["branchs"]
-            console.log("branchname");
-            break
+            data = catGroup["DATASTORE"]["branchs"];
+            break;
     }
     data.splice(data.indexOf(itemContent), 1)
     bandCover.parentNode.removeChild(bandCover);
-    console.log(catGroup["DATASTORE"])
 
     function getElement(el, att) {
         if (el.parentNode.getAttribute('app-role') == att) {
