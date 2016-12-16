@@ -199,11 +199,13 @@ img {
     .nav-tabs {margin-left: 10px; margin-right: 10px;}
     .inner-item {
       margin-top: 20px; margin-bottom: 25px;
-      .button-set {text-align: left; padding-left: 140px;}
+      .button-set {
+        text-align: left; padding-left: 140px;
+        button {margin-right: 5px;}
+      }
     }
     .button-set {
       text-align: right;
-      button {margin-left: 5px;}
     }
     .cat-img, .brand-img {margin-bottom: 20px;}
     .brand-img {
@@ -255,7 +257,7 @@ img {
     @include clearfix;
     .brand-name {float: left;}
     input[type="text"], textarea {
-      width: 37%;
+      width: 36.5%;
     }
     textarea {min-height: 100px;}
   }
