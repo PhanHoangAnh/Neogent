@@ -29,6 +29,7 @@
   .user-account {margin-top: 10px;}
 }
 .panel-default {@include clearfix;}
+.panel-default .popover-content {font-family: $mainFont; font-size: 14px; color: #333;}
 footer {
   position: absolute;
   bottom: 0;

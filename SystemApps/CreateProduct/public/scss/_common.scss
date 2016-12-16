@@ -27,6 +27,7 @@ em {
   font-family: $italicFont;
   font-style: normal;
 }
+hr {opacity: .3;}
 
 *, .form-control {
   &::-webkit-input-placeholder {color: inherit; opacity: 1;}
@@ -56,23 +57,23 @@ input[type="month"],
 input[type="week"],
 input[type="number"],
 input[type="tel"],
-input[type="search"], 
+input[type="search"],
 textarea {
-	font-family: $mainFont;
-    padding: 6px 12px;
-    font-size: 14px;
-    color: #555;
-	border-radius: 2px;
-	border: #AAA solid 1px;
-    background-color: #FFF;
-	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-	&:focus {
-		-webkit-box-shadow: 0px 0px 9px 0px rgba(40,96,144,0.63);
-		-moz-box-shadow: 0px 0px 9px 0px rgba(40,96,144,0.63);
-		box-shadow: 0px 0px 9px 0px rgba(40,96,144,0.63);
-	}
+  font-family: $mainFont;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #555;
+  border-radius: 2px;
+  border: #AAA solid 1px;
+  background-color: #FFF;
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  &:focus {
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(40,96,144,0.63);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(40,96,144,0.63);
+    box-shadow: 0px 0px 9px 0px rgba(40,96,144,0.63);
+  }
 }
 input[type="text"],
 input[type="email"],
@@ -83,8 +84,8 @@ input[type="week"],
 input[type="number"],
 input[type="tel"],
 input[type="search"] {
-    height: 34px;
-    line-height: 1.42857143;
+  height: 34px;
+  line-height: 1.42857143;
 }
 
 @media only screen and (max-width: $w-lmobile - 1) {
@@ -254,10 +255,10 @@ footer {
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   }
   .close {
-	  -webkit-transition: all ease-in-out .15s;
-	  -o-transition: all ease-in-out .15s;
-	  transition: all ease-in-out .15s;
-	  &:hover {color: inherit;}	  
+    -webkit-transition: all ease-in-out .15s;
+    -o-transition: all ease-in-out .15s;
+    transition: all ease-in-out .15s;
+    &:hover {color: inherit;}
   }
 }
 .modal-content, .btn {
@@ -265,6 +266,6 @@ footer {
 }
 
 .modal-header, .popover-title {
-	background: #204D74;
-	color: #FFF;
+  background: #204D74;
+  color: #FFF;
 }

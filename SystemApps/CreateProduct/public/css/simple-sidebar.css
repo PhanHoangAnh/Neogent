@@ -17,7 +17,8 @@
 }
 
 .contentCollasing {
-    width: 75%;
+    /*width: 75%;*/
+    width: calc(75% - 7px);
 }
 .contentExpanding {
     width: 100%;
@@ -36,9 +37,9 @@
 
 .controlExpanding, .controlCollasing {
     position: absolute;
-    top: 15px; bottom: 15px; min-height: auto;
+    top: 0; bottom: 15px; min-height: auto;
     overflow: hidden;
-    width: calc(25% - 15px);
+    width: calc(25% - 30px);
 }
 .controlExpanding {
     /*width: 25%;

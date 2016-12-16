@@ -1495,6 +1495,13 @@ footer .footer-inner:after {
 }
 
 /* line 32, ../scss/main.scss */
+.panel-default .popover-content {
+  font-family: "RobotoCondensed-Regular", sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+/* line 33, ../scss/main.scss */
 footer {
   position: absolute;
   bottom: 0;
@@ -1503,21 +1510,21 @@ footer {
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 41, ../scss/main.scss */
+  /* line 42, ../scss/main.scss */
   .shop-registration .btn.btn-facebook {
     margin-bottom: 15px;
   }
-  /* line 44, ../scss/main.scss */
+  /* line 45, ../scss/main.scss */
   .shop-registration .panel-body .col-sm-5.col-md-4 {
     padding-left: 15px;
   }
-  /* line 46, ../scss/main.scss */
+  /* line 47, ../scss/main.scss */
   .shop-registration .user-account {
     margin: 10px auto 15px;
   }
 }
 @media only screen and (min-width: 566px) and (max-width: 767px) {
-  /* line 52, ../scss/main.scss */
+  /* line 53, ../scss/main.scss */
   .shop-registration .btn {
     width: 60%;
   }

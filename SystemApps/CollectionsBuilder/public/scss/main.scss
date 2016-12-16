@@ -1,0 +1,252 @@
+//
+// Import Compass
+//
+@import 'compass';
+@import 'compass/css3/user-interface';
+
+//
+// Variables & Mixins
+//
+//@import 'variables';
+@import 'mixins';
+@import 'fonts';
+@import 'animates';
+@import 'common';
+
+html, body {height: 100%;}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.heading-page {
+  padding-top: 140px;
+  h1, .h1 {
+    color: #FFF;
+  }
+}
+
+.attribute-sets, .dashboard-management  {
+  min-height: 100%;
+}
+.attribute-sets {
+  background-color: rgba(0, 0, 0, 0.65);
+  padding-top: 15px;
+  fieldset.scheduler-border {
+    border: 1px groove #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+    -webkit-box-shadow: 0px 0px 0px 0px #000;
+    box-shadow: 0px 0px 0px 0px #000;
+  }
+
+  legend.scheduler-border {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-align: left;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+  }
+
+  .popover {
+    min-width: 400px;
+    border-radius: 2px;
+    .popover-title {
+      border-radius: 1px 1px 0 0;
+    }
+  }
+
+  .btn {border-radius: 2px;}
+
+  .control {
+    padding: 10px;
+  }
+
+  .ui-sortable-placeholder {
+    border: 1px dashed #aaa;
+    height: 45px;
+    width: 100%;
+    background: #fafafa;
+  }
+
+  main_panel label {
+    color: inherit;
+    padding-left: 0;
+    &, & + input[type="checkbox"], & + input[type="radio"] {
+      width: auto;
+    }
+  }
+
+  main_panel >label {
+    margin-top: 7px;
+  }
+
+  .popover-title {
+    background: #00A600;
+    text-transform: capitalize;
+    color: #FFF;
+  }
+
+  .help-block {
+    padding-left: 0;
+  }
+
+  legend, label, .help-block, a , span {
+    color: #FFF;
+    font-weight: normal;
+  }
+
+  .nav-tabs > li > a {
+    @include single-transition(all,0.3s);
+    &:hover {color: inherit;}
+  }
+
+  .nav-tabs > li > a:hover {color: inherit;}
+
+  .tab-content {
+    padding-top: 20px;
+  }
+  #div1, #div2 {
+    min-height: 50px;
+    padding: 30px 20px 50px;
+  }
+  .c-left {
+    float: left;
+    clear: left;
+  }
+  .row.control {
+    position: relative;
+    cursor: pointer;
+    &:before {
+      content: "";
+      position: absolute; display: block;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 2;
+    }
+  }
+}//end .attribute-sets
+
+.create-catandbrand {
+  .panel {
+    @include border-radius(0);
+  }
+
+  fieldset.scheduler-border {
+    border: 1px groove #ffff99;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 10px;
+    @include box-shadow(0 0 0 0 #000);
+  }
+  legend.scheduler-border {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    text-align: left;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none;
+  }
+
+  legend[app-role="setsName"] {
+    border-bottom: none;
+  }
+
+  .button-set {padding-top: 10px;}
+  .tab-content {
+    padding: 0.01em;
+    @include clearfix;
+  }
+
+  .nav-tabs > li {
+    > a {
+      @include single-transition(all,0.3s);
+      &:hover {
+        background-color: transparent;
+        border-color: transparent;
+        color: #555;
+      }
+    }
+    &.active > a {
+      &, &:focus, &:hover {
+        border: #DDD solid 1px;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  .connectedSortable {
+    float: none; width: 100%;
+    border: 1px solid #eee;
+    max-height: 400px; overflow-y: auto; overflow-x: hidden;
+    list-style: none; margin: 0; padding: 5px 0 0 0;
+    &, li {@include border-radius(2px);}
+    li {
+      margin: 0 5px 5px 5px; padding: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .content-panel {
+    .inner {padding-top: 32px;}
+    .inner,
+    .nav-tabs > li.active > a {
+      &, &:focus, &:hover {
+        background: #FFFFE0;
+      }
+    }
+    .nav-tabs {margin-left: 10px; margin-right: 10px;}
+    .inner-item {
+      margin-top: 20px; margin-bottom: 25px;
+    }
+    .button-set {
+      text-align: right;
+      button {margin-left: 5px;}
+    }
+    .cat-img, .brand-img {margin-bottom: 20px;}
+    .brand-img {
+      @include clearfix;
+    }
+    .cat-list, .brand-list {
+      margin-bottom: 10px;
+      span {
+        display: inline-block;
+        background: #337ab7; cursor: pointer;
+        color: #FFF; padding: 0 5px; margin-left: 2px;
+        @include border-radius(2px);
+        &:before {
+          content: "\00D7";
+          margin-right: 3px;
+        }
+      }
+    }
+    .cat-name, .brand-name {font-size: 16px; display: inline-block; margin: 0;}
+    .fieldset-content {
+      position: relative;
+      @include clearfix;
+      min-height: 200px;
+      padding-bottom: 44px;
+      > div.button-set {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+      }
+    }
+  }
+  .available-items {
+    @include single-transition(all,0.3s);
+    h4 {margin-top: 0;}
+    &.sticky {
+      position: fixed;
+      top: 10px; right: 0;
+    }
+    .nav-tabs > li.active > a {
+      &, &:focus, &:hover {
+        background: #FFF;
+      }
+    }
+    .tab-content {padding-top: 15px;}
+  }
+  .available-items .panel {min-height: 365px;}
+
+}
+

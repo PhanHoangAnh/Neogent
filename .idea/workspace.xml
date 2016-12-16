@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7eda8f0-bd3a-40c8-b5f6-1214b37cfa60" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\_PROJECTS\Mine\Chipl\Neogent\SystemApps\CatsAndBrachsManager\public\css.rar" afterPath="" />
+      <change type="DELETED" beforePath="D:\_PROJECTS\Mine\Chipl\Neogent\SystemApps\CatsAndBrachsManager\public\scss.rar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/b692ed7e1f801bd0542c08728e8945db2035b57a/main.scssc" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/.sass-cache/b692ed7e1f801bd0542c08728e8945db2035b57a/main.scssc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/_common.scss" afterPath="$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/_common.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/_common.scss" afterPath="$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/_common.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/_common.scss" afterPath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/_common.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopBuilder/views/index.ejs" afterPath="$PROJECT_DIR$/SystemApps/ShopBuilder/views/index.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/css/main.css" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CreateProduct/public/css/main.css" afterPath="$PROJECT_DIR$/SystemApps/CreateProduct/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopBuilder/public/css/main.css" afterPath="$PROJECT_DIR$/SystemApps/ShopBuilder/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/css/main.css" afterPath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss" afterPath="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/main.scss" afterPath="$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/main.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/main.scss" afterPath="$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/main.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/main.scss" afterPath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/main.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/css/shop.css" afterPath="$PROJECT_DIR$/SystemApps/ShopRegistration/public/css/shop.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CreateProduct/public/css/simple-sidebar.css" afterPath="$PROJECT_DIR$/SystemApps/CreateProduct/public/css/simple-sidebar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Neogent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,77 +44,7 @@
     <favorites_list name="Neogent" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="_mixins.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/_mixins.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2040">
-              <caret line="40" column="22" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_common.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/_common.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="4692">
-              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.45098" vertical-offset="3751" max-vertical-offset="4386">
-              <caret line="246" column="33" selection-start-line="246" selection-start-column="33" selection-end-line="246" selection-end-column="33" />
-              <folding>
-                <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
-                <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.ejs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5952381" vertical-offset="593" max-vertical-offset="5474">
-              <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,8 +56,16 @@
         <option value="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs.html" />
         <option value="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/_common.scss" />
         <option value="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/navbar.scss" />
-        <option value="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss" />
         <option value="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs" />
+        <option value="$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/_common.scss" />
+        <option value="$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/_common.scss" />
+        <option value="$PROJECT_DIR$/SystemApps/ShopRegistration/public/css/shop.css" />
+        <option value="$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/main.scss" />
+        <option value="$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/main.scss" />
+        <option value="$PROJECT_DIR$/SystemApps/CreateProduct/public/css/simple-sidebar.css" />
+        <option value="$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss" />
+        <option value="$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/_common.scss" />
+        <option value="$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/main.scss" />
       </list>
     </option>
   </component>
@@ -192,7 +148,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CatsAndBrachsManager" />
+              <option name="myItemId" value="ShopBuilder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -210,7 +166,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CatsAndBrachsManager" />
+              <option name="myItemId" value="ShopBuilder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -232,7 +188,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CatsAndBrachsManager" />
+              <option name="myItemId" value="ShopBuilder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -254,7 +210,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="CatsAndBrachsManager" />
+              <option name="myItemId" value="ShopBuilder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -328,7 +284,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25718608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25718608" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -405,36 +361,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -458,36 +385,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4573">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -535,16 +433,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/_mixins.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2040">
+        <state vertical-scroll-proportion="-12.423077" vertical-offset="357" max-vertical-offset="2040">
           <caret line="40" column="22" selection-start-line="40" selection-start-column="7" selection-end-line="40" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/_common.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="4692">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -564,47 +454,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss">
+    <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.45098" vertical-offset="3751" max-vertical-offset="4386">
-          <caret line="246" column="33" selection-start-line="246" selection-start-column="33" selection-end-line="246" selection-end-column="33" />
-          <folding>
-            <marker date="1481685018886" expanded="true" signature="1959:1994" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2055:2159" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2186:2286" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2379:2413" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2506:2554" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2597:2875" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2589:2721" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2656:2702" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2756:2838" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2769:2824" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="2949:3108" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3028:3087" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3180:4368" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3348:3408" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3353:3406" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3420:3460" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3483:3561" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3585:3648" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3715:3946" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3723:3935" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="3858:3910" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4040:4295" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4209:4217" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4384:4655" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4456:4522" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4538:4634" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4752:4830" placeholder="{...}" />
-            <marker date="1481685018886" expanded="true" signature="4780:4828" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="0.52998066" vertical-offset="661" max-vertical-offset="6562">
+          <caret line="55" column="63" selection-start-line="55" selection-start-column="63" selection-end-line="55" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/views/index.ejs">
+    <entry file="file://$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/_common.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5952381" vertical-offset="593" max-vertical-offset="5474">
-          <caret line="54" column="32" selection-start-line="54" selection-start-column="32" selection-end-line="54" selection-end-column="32" />
+        <state vertical-scroll-proportion="7.7688174" vertical-offset="0" max-vertical-offset="4692">
+          <caret line="255" column="3" selection-start-line="255" selection-start-column="3" selection-end-line="255" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/_common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9390681" vertical-offset="4049" max-vertical-offset="4675">
+          <caret line="269" column="1" selection-start-line="269" selection-start-column="1" selection-end-line="269" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopRegistration/public/css/shop.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02910959" vertical-offset="0" max-vertical-offset="3910">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/_fonts.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9418">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopRegistration/public/scss/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3670635" vertical-offset="342" max-vertical-offset="1071">
+          <caret line="31" column="86" selection-start-line="31" selection-start-column="86" selection-end-line="31" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/CreateOptionSets/public/scss/_common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33512545" vertical-offset="0" max-vertical-offset="4675">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/CreateProduct/public/css/simple-sidebar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58219177" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/CreateProduct/public/scss/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2797619" vertical-offset="182" max-vertical-offset="3332">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopBuilder/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8653">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58960575" vertical-offset="2765" max-vertical-offset="4352">
+          <caret line="182" column="40" selection-start-line="182" selection-start-column="40" selection-end-line="182" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/_common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.423077" vertical-offset="4066" max-vertical-offset="4692">
+          <caret line="249" column="15" selection-start-line="249" selection-start-column="15" selection-end-line="249" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/ShopBuilder/public/scss/main.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54221386" vertical-offset="102" max-vertical-offset="1819">
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SystemApps/CatsAndBrachsManager/public/scss/_common.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16487455" vertical-offset="146" max-vertical-offset="4692">
+          <caret line="14" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="270" selection-end-column="1" />
           <folding />
         </state>
       </provider>

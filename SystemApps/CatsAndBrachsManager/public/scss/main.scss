@@ -183,6 +183,7 @@ img {
     &, li {@include border-radius(2px);}
     li {
       margin: 0 5px 5px 5px; padding: 5px;
+      background: #FFFDC8;
       cursor: pointer;
     }
   }
@@ -209,16 +210,13 @@ img {
     }
     .cat-list, .brand-list {
       margin-bottom: 10px;
-      span {
+      .item-band {
         display: inline-block;
-        background: #337ab7; cursor: pointer;
+        background: #337ab7;
         color: #FFF; padding: 0 5px; margin-left: 2px;
         @include border-radius(2px);
-        &:before {
-          content: "\00D7";
-          margin-right: 3px;
-        }
       }
+      .x-close {margin-right: 3px; cursor: pointer;}
     }
     .cat-name, .brand-name {font-size: 16px; display: inline-block; margin: 0;}
     .fieldset-content {

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Collections Builder</title>
+<meta name="generator" content="Bootply" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/social-buttons.css">
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/imagePreview.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<!--script type="text/javascript" src='js/navbar.js'></script-->
+
+<body>
+    <!-- Dont touch this section -->
+    <!-- NavBar -->
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <div class="container">
+                <div class="row">
+                    <div>
+                        <img src="imgs/CatLogo.png" class="logo">
+                    </div>
+                    <div class='site-name hidden-xs'>
+                        AbcJSC
+                    </div>
+                    <div>
+                        <div app-role='removeAfterLogin'>
+                            <button class="btn btn-facebook" id="bntFbLogin">
+                                <i class="fa fa-facebook"></i><span> Login with Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                    <span class="hambugger" onclick="toggleMenu()">
+                                     <span class="menu-bar"></span>
+                    <!--span class="icon-bar"></span>
+                                     <span class="icon-bar"></span>
+                                     <span class="icon-bar"></span-->
+                    </span>
+                    <div id="menuBroad" class="menu-board">
+                        <div id="AppManagerBoard" class="mini-broad-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="band">
+        <span app-role="band"></span>
+    </template>
+    <template id="AppTemp">
+        <a class='mini-broad' app-role="link">
+            <img app-role="AppIcon">
+        </a>
+    </template>
+    <template id="collsTemp">
+        <div class="row inner-item" app-role="catGroup" class="dynamic">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <legend app-role="collsName">Collections Name</legend>
+            </div>
+                <div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="colls-img"><img app-role="categoryImg" src="imgs/gamebanner.jpg"></div>
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                    <div class="colls-list" app-role="categories">
+                        <p class="cat-name">Products</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="button-set">
+                    <button type="button" app-role="deleteCats" class="btn">Delete Categories Group </button>
+                    <button type="button" app-role="changeCatImage" class="btn btn-primary">Change Background Image</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- /NavBar -->
+    <section class='heading-page' style="background:url('imgs/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
+        <div class="container-fluid">
+            <!-- Breadcrumb stay here -->
+            <div class="col-md-12 col-lg-12 ">
+                <h1 class="col-md-6 col-lg-6"> Collection Builder</h1>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Metro style -->
+    <div class="container-fluid create-catandbrand" id="start-offset">
+        <div class="row">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 content-panel" id="content">
+                <div class="inner">
+                    <div class="tab-content">
+                        <div id="mainCat" class="tab-pane fade in active">
+                            <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">Collections</legend>
+                                <div class="fieldset-content">                                   
+                                    <div class="button-set" app-role="baseLine">
+                                        <button type="button" id="createCat" class="btn btn-primary" onclick="openModal(event,this)">Create new Collections</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 available-items" id="availableItems">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Available Products</h4>
+                        <!-- <p>Listing droppable categories here</p> -->
+                        <ul id="catLists" class="connectedSortable">
+                            <li class="ui-state-highlight" app-role="category">Item 1</li>
+                            <li class="ui-state-highlight" app-role="category">Item 2</li>
+                            <li class="ui-state-highlight" app-role="category">Item 3</li>
+                            <li class="ui-state-highlight" app-role="category">Item 4</li>
+                            <li class="ui-state-highlight" app-role="category">Item 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- /Right Sidebar -->
+    <!-- /Metro style -->
+    <div id="end-offset"></div>
+    <section class="divider">
+        <div style="padding: 70px 0; text-align: center;">
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
+        </div>
+    </section>
+    <footer>
+        <div class="col-md-12 footer-inner">
+            @Copyright:abcd@abc.jsc
+        </div>
+    </footer>
+    </div>
+    <div id="phasebeam">
+        <canvas id="backgroundAni" width="120%" height="100%">
+        </canvas>
+    </div>
+    <!--  -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Set Name for a new Categories Group </h4>
+                </div>
+                <div class="modal-body">
+                    <p>Set Name..&hellip;</p>
+                    <input type="text" id="catName"></input>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="createNew" onclick="createNew()">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!--  -->
+    <div class="modal fade" id="m_wall" role="dialog">
+        <div class="modal-dialog fullWidth">
+            <!-- Modal content-->
+            <div class="modal-content" style="height: 120%">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Chọn hình nền cho category.</h4>
+                </div>
+                <div class="modal-body" style="padding:0; width: 100%; margin:0">
+                    <p style="margin-left: 15px">Drag the image to take a category's wall</p>
+                    <!-- <div class="row"> -->
+                    <div class="row" style="padding-bottom: 15px">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgXRatio" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                <input type="number" id="attImgYRatio" app-role="attImgYRatio" name="y-ratio" placeholder="Y ratio" onchange="attImgRatio_change(event,this)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding:0">
+                        <div class="imageBox" id='wallImg' style="background-color: #F5F5F5">
+                            <div class="fullWidth" id="thumbWall" style="height: 100%; "></div>
+                            <div class="spinner" style="display: none" id="spinnerWall">Loading...</div>
+                            <!-- <div id='openInput' class="spinner" style="background-color: rgba(0,0,0,0) color: #333">
+                                <h3>Click here ....</h3>
+                            </div> -->
+                        </div>
+                        <div class="action" style="padding: 15px">
+                            <span class="file-input btn btn-primary btn-file">
+                            Browse&hellip;
+                            <input type="file" multiple id='wallFile' onchange = "initWall(this)">
+                        </span>
+                            <!--input type="button" id="btnCrop" class="btn btn-primary btncrop" value="Crop"-->
+                            <input type="button" id="wall_btnZoomIn" class="btn btn-primary" value="+" style="float: right">
+                            <input type="button" id="wall_btnZoomOut" class="btn btn-primary" value="-" style="float: right">
+                        </div>
+                    </div>
+                    <div class="col-md-3" style=" padding: 15px">
+                        <div class="preview">
+                            <img id='wall_preview'>
+                        </div>
+                        <div class="preview-md">
+                            <img id='wall_preview-md'>
+                        </div>
+                        <div class="preview-sm">
+                            <img id='wall_preview-sm'>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="margin-top: 15px" class="btn btn-default" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <!--  -->
+    <script type="text/javascript" src="js/c2runtime.js"></script>
+    <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+    <script type="text/javascript" src="js/CollsBuilder/collsbuilder.js"></script>
+</body>
+<script type="text/javascript">
+$(function() {
+
+    // Activate background
+    cr_createRuntime("backgroundAni");
+    // $('#nav-wrapper').height($("#nav").height());
+    // $('#nav-wrapper').height(200);
+    $('#nav').affix({
+        offset: {
+            top: function() {
+                // Do other stuff here-- chipl
+                return $('#start-offset').offset().top / 2;
+            }
+        }
+    });
+    // Sidebar affix
+    $('#sidebar').affix({
+        offset: {
+            top: $('#start-offset').offset().top + 0,
+            bottom: $('#end-offset').outerHeight() - 20
+        }
+    }).on('affix.bs.affix', function() { // before affix
+        $(this).css({
+            /*'top': headerHeight,*/ // for fixed height
+            'width': $(this).outerWidth() // variable widths
+        });
+    }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+        // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+    });;
+});
+var shopInfo
+$(document).ready(function() {
+    /** code inside **/
+    var masthead = $("#masthead");
+    masthead.addClass('start');
+    var data = <%- JSON.stringify(data) %>
+    shopInfo = <%- JSON.stringify(shopInfo) %>
+    console.log("shopInfo", shopInfo)
+
+    LoadApp();
+
+    function LoadApp() {
+        var root = document.getElementById("AppManagerBoard");
+        var AppTemplate = document.getElementById('AppTemp').content;
+        var pathArray = window.location.pathname.split('/');
+        remove = pathArray.splice(pathArray.length - 2, 2);
+        var newPathname = "";
+        for (i = 0; i < pathArray.length; i++) {
+            newPathname += pathArray[i];
+            newPathname += "/";
+        }
+        for (var i in data) {
+            var link = AppTemplate.querySelector('[app-role = "link"]')
+            var icon = AppTemplate.querySelector('[app-role = "AppIcon"]');
+            var caption = AppTemplate.querySelector('[app-role = "Caption"]');
+            link.setAttribute('href', window.location.protocol + '//' + window.location.host + newPathname + data[i].url);
+            icon.setAttribute('src', window.location.protocol + '//' + window.location.host + newPathname + data[i].logo);
+            // caption.innerHTML = data[i].name;
+            root.appendChild(document.importNode(AppTemplate, true));
+        }
+    };
+
+    $("#catLists").sortable({
+        connectWith: ".dynamic"
+    })
+
+});
+
+/** Huyen Anh added code here **/
+window.onload = function() {
+    var offsetWidth = document.getElementById('AppManagerBoard').offsetWidth;
+    document.getElementById('AppManagerBoard').style.right = "-" + offsetWidth + "px";
+}
+
+window.onscroll = function() {
+    myFunction()
+};
+
+function myFunction() {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+        document.getElementById("availableItems").classList.add("sticky");
+    } else {
+        document.getElementById("availableItems").classList.remove("sticky");
+    }
+}
+
+function toggleMenu() {
+    document.getElementById('nav').classList.toggle('menu-active');
+}
+</script>
+
+</html>
