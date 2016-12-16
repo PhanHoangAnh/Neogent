@@ -1442,6 +1442,11 @@ footer .footer-inner:after {
   color: #FFF;
 }
 
+/* line 273, ../scss/_common.scss */
+.popover.top > .arrow:after {
+  bottom: 2px;
+}
+
 /* line 17, ../scss/main.scss */
 .heading-page h1, .heading-page .h1 {
   text-align: center;

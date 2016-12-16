@@ -269,3 +269,8 @@ footer {
 	background: #204D74;
 	color: #FFF;
 }
+.popover {
+  &.top>.arrow {
+    &:after {bottom: 2px;}
+  }
+}
