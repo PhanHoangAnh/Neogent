@@ -315,6 +315,7 @@ function generateCatGroups(groups) {
         rItem["DATASTORE"]["name"] = item['name'];
         rItem["DATASTORE"]['cats'] = item['cats'];
         rItem["DATASTORE"]['branchs'] = item['branchs'];
+        rItem["DATASTORE"]['img'] = item['img'];
         var catLine = rItem.querySelector('[app-role="categories"]');
         var branchLine = rItem.querySelector('[app-role="branchname"]');
         item.cats.filter(function(obj) {
