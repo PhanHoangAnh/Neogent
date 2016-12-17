@@ -132,12 +132,14 @@ function createNewCategoriesGroup(name) {
         }
     });
     connectedGroup.push($(rItem));
-    $("#catLists").sortable({
-        connectWith: connectedGroup
-    }).disableSelection();
+
     $("#branchLists").sortable({
         connectWith: connectedGroup
     }).disableSelection();
+    $("#catLists").sortable({
+        connectWith: connectedGroup
+    }).disableSelection();
+
     var deleteButton = rItem.querySelector('[app-role="deleteCats"]');
     deleteButton.addEventListener('click', function() {
         connectedGroup.splice(connectedGroup.indexOf($(rItem)), 1);
@@ -149,6 +151,7 @@ function createNewCategoriesGroup(name) {
         currentDataStore = rItem;
         $("#m_wall").modal();
     }, false);
+    return rItem;
 }
 
 function readTitleAndDesc(el) {
@@ -292,7 +295,6 @@ function saveCatAndBranchs() {
         obj["DATASTORE"].type = "catGroup"
         saveDataStores.push(obj["DATASTORE"]);
     });
-    console.log("saveDataStores: ", saveDataStores);
     var endpoint = 'update';
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
@@ -300,4 +302,32 @@ function saveCatAndBranchs() {
     function fn_cb(returnObj) {
         console.log(returnObj)
     }
+}
+
+function generateCatGroups(groups) {
+
+    groups.filter(function(item) {
+        baseLine = getBaseLine(document.getElementById('createCat'))
+        var rItem = createNewCategoriesGroup(item['name']);
+        var img = rItem.querySelector('[app-role="categoryImg"]');
+        img.setAttribute("src", "/" + item['img']);
+        rItem["DATASTORE"] = {}
+        rItem["DATASTORE"]["name"] = item['name'];
+        rItem["DATASTORE"]['cats'] = item['cats'];
+        rItem["DATASTORE"]['branchs'] = item['branchs'];
+        var catLine = rItem.querySelector('[app-role="categories"]');
+        var branchLine = rItem.querySelector('[app-role="branchname"]');
+        item.cats.filter(function(obj) {
+            var span = document.getElementById("band").content;
+            var s = span.querySelector('[app-role = "band"]');
+            s.innerHTML = obj;
+            catLine.appendChild(document.importNode(span, true));
+        });
+        item.branchs.filter(function(obj) {
+            var span = document.getElementById("band").content;
+            var s = span.querySelector('[app-role = "band"]');
+            s.innerHTML = obj;
+            branchLine.appendChild(document.importNode(span, true));
+        });
+    })
 }
