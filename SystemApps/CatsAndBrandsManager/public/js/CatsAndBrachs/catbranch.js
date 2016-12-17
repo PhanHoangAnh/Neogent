@@ -305,7 +305,6 @@ function saveCatAndBranchs() {
 }
 
 function generateCatGroups(groups) {
-
     groups.filter(function(item) {
         baseLine = getBaseLine(document.getElementById('createCat'))
         var rItem = createNewCategoriesGroup(item['name']);

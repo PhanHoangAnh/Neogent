@@ -19,9 +19,9 @@ var setting = [{
     path: "../ShopBuilder/",
     logo: "shopbuilder/img/logoicon.png"
 }, {
-    name: "Categories And BranchNames Manager",
-    url: "catandbranch",
-    path: "../CatsAndBrachsManager/",
+    name: "Categories And BrandNames Manager",
+    url: "catandbrand",
+    path: "../CatsAndBrandsManager/",
     logo: "template/imgs/LogoSamples/1.png"
 },{
     name: "Collections Builder",

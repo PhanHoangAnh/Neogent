@@ -370,7 +370,7 @@ function updateCategoryAndBranchName(shop, product) {
                 neededModifyCats[i].products.splice(neededModifyCats[i].products.indexOf(product.systemSKU), 1);
                 if (neededModifyCats[i].products.length == 0) {
                     categories.pull(neededModifyCats[i]);
-                    // update branchName                        
+                    // update brahdName                        
                 };
             };
         }
@@ -381,7 +381,7 @@ function updateCategoryAndBranchName(shop, product) {
                 categories[categories.indexOf(sameCats[i])].products.push(product.systemSKU);
             }
         }
-        // BRANCHNAME UPDATE REGION
+        // BRANDNAME UPDATE REGION
         // template of singgle branchName
         // {
         //     name: "abcd",
