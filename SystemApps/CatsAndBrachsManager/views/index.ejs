@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
 <link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/imagePreview.css">
- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -52,8 +52,17 @@
             </div>
         </div>
     </div>
-    <template id = "band">
-        <span class="item-band" app-role = "bandCover"><span onclick="deleteCatBranchs(this)" class="x-close">&times;</span><span app-role = "band"></span></span>
+    <template id="FbPad">
+        <div class="user-account">
+            <div class="fb-avatar">
+                <span class="username-text" app-role="fbName"></span>
+                <span class="avatar-img"><img app-role = "fbAvatar">
+            </span>
+            </div>
+        </div>
+    </template>
+    <template id="band">
+        <span class="item-band" app-role="bandCover"><span onclick="deleteCatBranchs(this)" class="x-close">&times;</span><span app-role="band"></span></span>
     </template>
     <template id="AppTemp">
         <a class='mini-broad' app-role="link">
@@ -66,40 +75,40 @@
                 <legend app-role="catsName">Category's group Name</legend>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="cat-img"><img app-role = "categoryImg" src="imgs/gamebanner.jpg"></div>
+                <div class="cat-img"><img app-role="categoryImg" src="imgs/gamebanner.jpg"></div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="cat-list" app-role="categories" base-role = "handler">
-					<p class="cat-name">Categories</p>
-				</div>
+                <div class="cat-list" app-role="categories" base-role="handler">
+                    <p class="cat-name">Categories</p>
+                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="brand-list" app-role = "branchname" base-role = "handler">
-                <p class="brand-name">BranchNames</p>
-				</div>
-            </div>  
+                <div class="brand-list" app-role="branchname" base-role="handler">
+                    <p class="brand-name">BranchNames</p>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="fr-row">
-					<p class="brand-name">Category Title</p>
-					<input type="text" />
-				</div>
-            </div>   
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="fr-row">
-					<p class="brand-name">Category Description</p>
-					<textarea name=""></textarea>
-				</div>                 
-            </div>   
+                <div class="fr-row">
+                    <p class="brand-name">Category Title</p>
+                    <input app-role="catTitle" type="text" onchange="readTitleAndDesc(this)" />
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="button-set">
-					<button type="button" app-role="deleteCats" class="btn btn-danger">Delete Categories Group </button>
-					<button type="button" app-role="changeCatImage" class="btn btn-primary">Change Background Image</button>
-				</div>
+                <div class="fr-row">
+                    <p class="brand-name">Category Description</p>
+                    <textarea app-role="catDesc" onchange="readTitleAndDesc(this)"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="button-set">
+                    <button type="button" app-role="deleteCats" class="btn btn-danger">Delete Categories Group </button>
+                    <button type="button" app-role="changeCatImage" class="btn btn-primary">Change Background Image</button>
+                </div>
             </div>
         </div>
     </template>
     <template id="branchTemp">
-        <div class="row inner-item" app-role="catGroup">
+        <div class="row inner-item" app-role="branchGroup">
             <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
                 <div class="brand-img"><img src='../img/logo.png' id="iconHolder" app-role="icon"></div>
             </div>
@@ -109,11 +118,11 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <p class="cat-name">Categories</p>
-                </div>               
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                    
-					<div class="button-set">
-						<button type="button" id="changeBranImage" class="btn btn-primary">Change Brand background </button>
-					</div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="button-set">
+                        <button type="button" id="changeBranImage" class="btn btn-primary">Change Brand background </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,77 +132,77 @@
         <div class="container-fluid">
             <!-- Breadcrumb stay here -->
             <div class="col-md-12 col-lg-12 ">
-                <h1 class="col-md-6 col-lg-6"> Categories and Branch Names Manager</h1>
+                <h1 class="col-md-6 col-lg-6"> Categories and Branchnames Manager</h1>
             </div>
         </div>
     </section>
     <hr>
     <!-- Metro style -->
     <div class="container-fluid create-catandbrand" id="start-offset">
-		<div class="row">
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 content-panel" id="content">
-				<div class="inner">
-					<ul class="nav nav-tabs">
-						<li class="active"><a data-toggle="tab" href="#mainCat"><i class="fa fa-bars"></i> Categories Group</a></li>
-						<li><a data-toggle="tab" href="#mainBranch"><i class="fa fa-circle"></i> Brand</a></li>
-					</ul>
-					<div class="tab-content">
-						<div id="mainCat" class="tab-pane fade in active">
-							<fieldset class="scheduler-border">
-								<legend class="scheduler-border">Categories</legend>
-								<div class="fieldset-content">
-									<!-- <p>Listing droppable categories here</p> -->	
-									<div class="button-set" app-role="baseLine">
-										<button type="button" id="createCat" class="btn btn-primary" onclick="openModal(event,this)">Create new Categories Group</button>
-									</div>														
-								</div>
-							</fieldset>
-						</div>
-						<div id="mainBranch" class="tab-pane fade">
-							<fieldset class="scheduler-border">
-								<legend class="scheduler-border">Brand</legend>
-								<div class="fieldset-content">
-									<p>Listing droppable branchs here</p>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 available-items" id="availableItems">
-				<div class="panel panel-default">
-					<div class="panel-body">
-						<h4>Available Item</h4>
-						<ul class="nav nav-tabs">
-							<li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-bars"></i> Categories</a></li>
-							<li><a data-toggle="tab" href="#menu1"><i class="fa fa-circle"></i> Brand</a></li>
-						</ul>
-						<div class="tab-content">
-							<div id="home" class="tab-pane fade in active">
-								<p>Listing droppable categories here</p>
-								 <ul id="catLists" class="connectedSortable">
-									<li class="ui-state-highlight" app-role = "category">Item 1</li>
-									<li class="ui-state-highlight" app-role = "category">Item 2</li>
-									<li class="ui-state-highlight" app-role = "category">Item 3</li>
-									<li class="ui-state-highlight" app-role = "category">Item 4</li>
-									<li class="ui-state-highlight" app-role = "category">Item 5</li>
-								</ul>
-							</div>
-							<div id="menu1" class="tab-pane fade">
-								<p>Listing droppable branchs here</p>
-                                <ul id="branchLists" class="connectedSortable">
-                                    <li class="ui-state-highlight" app-role = "branch">Item 1</li>
-                                    <li class="ui-state-highlight" app-role = "branch">Item 2</li>
-                                    <li class="ui-state-highlight" app-role = "branch">Item 3</li>
-                                    <li class="ui-state-highlight" app-role = "branch">Item 4</li>
-                                    <li class="ui-state-highlight" app-role = "branch">Item 5</li>
+        <div class="row">
+            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 content-panel" id="content">
+                <div class="inner">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#mainCat"><i class="fa fa-bars"></i> Categories Group</a></li>
+                        <li><a data-toggle="tab" href="#mainBranch"><i class="fa fa-circle"></i> Brand</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="mainCat" class="tab-pane fade in active">
+                            <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">Categories</legend>
+                                <div class="fieldset-content">
+                                    <!-- <p>Listing droppable categories here</p> -->
+                                    <div class="button-set" app-role="baseLine">
+                                        <button type="button" id="createCat" class="btn btn-primary" onclick="openModal(event,this)">Create new Categories Group</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="mainBranch" class="tab-pane fade">
+                            <fieldset class="scheduler-border">
+                                <legend class="scheduler-border">Brand</legend>
+                                <div class="fieldset-content">
+                                    <p>Listing droppable branchs here</p>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 available-items" id="availableItems">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4>Available Item</h4>
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home"><i class="fa fa-bars"></i> Categories</a></li>
+                            <li><a data-toggle="tab" href="#menu1"><i class="fa fa-circle"></i> Brand</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane fade in active">
+                                <p>Listing droppable categories here</p>
+                                <ul id="catLists" class="connectedSortable">
+                                    <li class="ui-state-highlight" app-role="category">Item 1</li>
+                                    <li class="ui-state-highlight" app-role="category">Item 2</li>
+                                    <li class="ui-state-highlight" app-role="category">Item 3</li>
+                                    <li class="ui-state-highlight" app-role="category">Item 4</li>
+                                    <li class="ui-state-highlight" app-role="category">Item 5</li>
                                 </ul>
-							</div>                   
-						</div>					
-					</div>
-				</div>
-			</div>
-		</div>
+                            </div>
+                            <div id="menu1" class="tab-pane fade">
+                                <p>Listing droppable branchs here</p>
+                                <ul id="branchLists" class="connectedSortable">
+                                    <li class="ui-state-highlight" app-role="branch">Item 1</li>
+                                    <li class="ui-state-highlight" app-role="branch">Item 2</li>
+                                    <li class="ui-state-highlight" app-role="branch">Item 3</li>
+                                    <li class="ui-state-highlight" app-role="branch">Item 4</li>
+                                    <li class="ui-state-highlight" app-role="branch">Item 5</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     </div>
     <!-- /Right Sidebar -->
@@ -201,7 +210,7 @@
     <div id="end-offset"></div>
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
-            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveCatAndBranchs()">Save</button>
         </div>
     </section>
     <footer>
@@ -224,7 +233,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Set Name..&hellip;</p>
-                    <input type="text" id = "catName"></input>
+                    <input type="text" id="catName"></input>
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
@@ -236,7 +245,7 @@
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-        <!--  -->
+    <!--  -->
     <div class="modal fade" id="m_wall" role="dialog">
         <div class="modal-dialog fullWidth">
             <!-- Modal content-->
@@ -249,7 +258,7 @@
                     <p style="margin-left: 15px">Drag the image to take a category's wall</p>
                     <!-- <div class="row"> -->
                     <div class="row" style="padding-bottom: 15px">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                           
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                 <input type="number" id="attImgXRatio" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)">
                             </div>
@@ -298,8 +307,10 @@
     <!--  -->
     <!--  -->
     <script type="text/javascript" src="js/c2runtime.js"></script>
+    <script src="js/Crypto/cryptoUtils.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
     <script type="text/javascript" src="js/CatsAndBrachs/catbranch.js"></script>
+    <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 </body>
 <script type="text/javascript">
 $(function() {
@@ -331,14 +342,19 @@ $(function() {
         // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
     });;
 });
-var shopInfo
+var systoken;
+var fbId;
+var fbToken;
+var conBnt;
+var RSAPublicKey;
+var shopInfo ={};
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
     shopInfo = <%- JSON.stringify(shopInfo) %>
-    console.log("shopInfo",shopInfo)
+    RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
 
     LoadApp();
 
@@ -365,7 +381,47 @@ $(document).ready(function() {
 
     $("#catLists").sortable({
         connectWith: ".dynamic"
-    })
+    });
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+
+    function getStatus(objFb) {
+        // console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            systoken = localStorage.getItem("app_token");
+            if (systoken) {
+                checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
+            } else {
+                getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            }
+
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));           
+
+        }
+    }
+
+    function afterGetToken(token) {
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+
+    function afterCheckToken(result) {
+        //console.log(result)
+        if (result.errNum != 0) {
+            getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            return;
+        }
+    }
 
 });
 
@@ -375,14 +431,14 @@ window.onload = function() {
     document.getElementById('AppManagerBoard').style.right = "-" + offsetWidth + "px";
 }
 
-window.onscroll = function() {myFunction()};
-	function myFunction() {
-		if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-			document.getElementById("availableItems").classList.add("sticky");
-		} else {
-			document.getElementById("availableItems").classList.remove("sticky");
-		}
-}
+window.onscroll = function() {
+    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+        document.getElementById("availableItems").classList.add("sticky");
+    } else {
+        document.getElementById("availableItems").classList.remove("sticky");
+    }
+};
+
 
 function toggleMenu() {
     document.getElementById('nav').classList.toggle('menu-active');

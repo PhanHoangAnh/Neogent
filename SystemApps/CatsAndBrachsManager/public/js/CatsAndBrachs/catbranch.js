@@ -2,6 +2,97 @@ var currentImg;
 var currentDataStore;
 var connectedGroup = [];
 
+function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: fbToken
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+    };
+    // Make post request to getToken Endpoint
+    var currentUrl = '../../getToken';
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        method: 'POST',
+        data: json_data,
+        // data: compObj,
+        complete: function(data, status, jqXHR) {
+            if (!data.responseJSON.errNum) {
+                var encrypted_app_token = data.responseJSON.encrypted_app_token;
+                var _app_token = cryptoUtil.aesDecryptor(encrypted_app_token, aes_key);
+                app_token = JSON.parse(_app_token).app_token;
+                localStorage.setItem("app_token", app_token);
+                //for testing only                
+                if (fn_cb) {
+                    fn_cb(app_token);
+                }
+            }
+        }
+    });
+}
+
+function checkToken(uid, token, RSAPublicKey, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: token
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+    };
+    var currentUrl = '../../checkToken';
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        cache: false,
+        method: 'POST',
+        headers: { "cache-control": "no-cache" },
+        data: json_data,
+        // contentType:'application/json',
+        complete: function(data, status, jqXHR) {
+            // console.log(data);
+            // if (data.status == 401 || !data.responseJSON.auth) {
+            //     window.location = "/";
+            // }
+            if (fn_cb) {
+                fn_cb(data.responseJSON);
+            }
+
+        }
+    });
+}
+
+function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayload, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: token,
+        data: payload
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key),
+        exPayload: exPayload
+    };
+    $.ajax({
+        // url: './userToken',
+        url: endpoint,
+        cache: false,
+        method: 'POST',
+        contentType: "application/json; charset=utf-8",
+        headers: { "cache-control": "no-cache" },
+        data: JSON.stringify(json_data),
+        // contentType:'application/json',
+        complete: function(data, status, jqXHR) {
+            if (fn_cb) {
+                fn_cb(data.responseJSON);
+            }
+        }
+    });
+}
+
 function openModal(event, elem) {
     $("#myModal").modal();
     baseLine = getBaseLine(elem);
@@ -49,6 +140,7 @@ function createNewCategoriesGroup(name) {
     }).disableSelection();
     var deleteButton = rItem.querySelector('[app-role="deleteCats"]');
     deleteButton.addEventListener('click', function() {
+        connectedGroup.splice(connectedGroup.indexOf($(rItem)), 1);
         rItem.parentNode.removeChild(rItem);
     }, false);
     var changeCatImage = rItem.querySelector('[app-role="changeCatImage"]');
@@ -59,6 +151,21 @@ function createNewCategoriesGroup(name) {
     }, false);
 }
 
+function readTitleAndDesc(el) {
+    function findcatGroup(el) {
+        if (el.parentNode.getAttribute("app-role") == "catGroup") {
+            return el.parentNode;
+        } else {
+            return findcatGroup(el.parentNode);
+        }
+    }
+    var catGroup = findcatGroup(el);
+    if (el.getAttribute("app-role") == "catTitle") {
+        catGroup["DATASTORE"]["Tilte"] = el.value;
+    } else {
+        catGroup["DATASTORE"]["Desc"] = el.value;
+    }
+}
 
 function deleteCatBranchs(elem) {
     var bandCover = getElement(elem, "bandCover");
@@ -97,7 +204,6 @@ function deleteCatBranchs(elem) {
 function createNew() {
     var catName = document.getElementById("catName").value;
     createNewCategoriesGroup(catName);
-
 }
 
 function getBaseLine(elem) {
@@ -177,4 +283,21 @@ function attImgRatio_change(evt, elem) {
     var applyHeight = realWidth * ratio + 'px'
     thumbBox.style.height = applyHeight;
     imageBox.style.height = applyHeight;
+}
+//
+function saveCatAndBranchs() {
+    var saveElems = document.querySelectorAll('[app-role="catGroup"]');
+    var saveDataStores = [];
+    saveElems.forEach(function(obj) {
+        obj["DATASTORE"].type = "catGroup"
+        saveDataStores.push(obj["DATASTORE"]);
+    });
+    console.log("saveDataStores: ", saveDataStores);
+    var endpoint = 'update';
+    // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
+    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
+
+    function fn_cb(returnObj) {
+        console.log(returnObj)
+    }
 }
