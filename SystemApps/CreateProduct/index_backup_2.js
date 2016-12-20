@@ -496,35 +496,79 @@ function updateCategoryAndBrandName(shop, product) {
 
 
 function getRealFlatCats(shop, products) {
-    var realFlatCats = [];
-    shop.categories.forEach(function(obj) {
+
+    var realProducts = [];
+    shop.items.forEach(function(obj) {
         products.forEach(function(item) {
-            if (obj["products"].indexOf(item) !== -1) {
-                realFlatCats.push(obj["name"]);
+            if (item == obj["systemSKU"]) {
+                realProducts.push(obj);
             }
         })
     })
 
-    return realFlatCats.filter(function(item, pos) {
-        return realFlatCats.indexOf(item) == pos;
+    var dupRealFlatCats = []
+    realProducts.forEach(function(obj) {
+        obj.productAtttributes.forEach(function(item) {
+            if (item["attributes"]["sysId"] == "sysCategories" && dupRealFlatCats.indexOf(item["InputValue"] == -1)) {
+                dupRealFlatCats.push(item["InputValue"]);
+            }
+        })
+    });
+    dupRealFlatCats = flatten(dupRealFlatCats);
+    return dupRealFlatCats.filter(function(item, pos) {
+        return dupRealFlatCats.indexOf(item) == pos;
     })
 }
 
 function getRealFlatBrands(shop, products) {
-    var realFlatBrands = [];
-    shop.brandNames.forEach(function(obj) {
+    var realProducts = [];
+    shop.items.forEach(function(obj) {
         products.forEach(function(item) {
-            if (obj["products"].indexOf(item) !== -1) {
-                realFlatBrands.push(obj["name"]);
+            if (item == obj["systemSKU"]) {
+                realProducts.push(obj);
             }
         })
     })
 
-    return realFlatBrands.filter(function(item, pos) {
-        return realFlatBrands.indexOf(item) == pos;
+    var dupRealFlatBrands = []
+    realProducts.forEach(function(obj) {
+        obj.productAtttributes.forEach(function(item) {
+            if (item["attributes"]["sysId"] == "sysBrandName" && dupRealFlatBrands.indexOf(item["InputValue"] == -1)) {
+                dupRealFlatBrands.push(item["InputValue"]);
+            }
+        })
+    });
+    dupRealFlatBrands = flatten(dupRealFlatBrands);
+    return dupRealFlatBrands.filter(function(item, pos) {
+        return dupRealFlatBrands.indexOf(item) == pos;
     })
 }
 
+function flatten(array, mutable) {
+    var toString = Object.prototype.toString;
+    var arrayTypeStr = '[object Array]';
+
+    var result = [];
+    var nodes = (mutable && array) || array.slice();
+    var node;
+
+    if (!array.length) {
+        return result;
+    }
+
+    node = nodes.pop();
+
+    do {
+        if (toString.call(node) === arrayTypeStr) {
+            nodes.push.apply(nodes, node);
+        } else {
+            result.push(node);
+        }
+    } while (nodes.length && (node = nodes.pop()) !== undefined);
+
+    result.reverse(); // we reverse result to restore the original order
+    return result;
+}
 
 app.use(router);
 module.exports = app;

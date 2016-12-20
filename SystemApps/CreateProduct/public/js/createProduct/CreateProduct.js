@@ -686,7 +686,7 @@ function deleteProduct() {
         return;
     }
     // var endpoint = window.location.href;
-    var endpoint = '';
+    var endpoint = '' ;
     //fbId, systoken, RSAPublicKey
     var _data = {
         userName: fbId,

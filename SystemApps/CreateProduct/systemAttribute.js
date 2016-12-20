@@ -55,9 +55,9 @@
  }, {
      "data-controlType": "select_tag_single",
      "attributes": {
-         "sysId": "sysBranchName",
-         "label": "Branch Name",
-         "describe": "Branch Name",
+         "sysId": "sysBrandName",
+         "label": "Brand Name",
+         "describe": "Brand Name",
          "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
          "displayGroup": "system",
          "required": "false"

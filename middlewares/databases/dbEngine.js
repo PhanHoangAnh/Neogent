@@ -23,7 +23,7 @@ var Shop_schema = new Schema({
     items: [Schema.Types.Mixed],
     categories: [Schema.Types.Mixed],
     catGroups: [Schema.Types.Mixed],
-    branchNames: [Schema.Types.Mixed],
+    brandNames: [Schema.Types.Mixed],
     extends: [Schema.Types.Mixed],
 });
 

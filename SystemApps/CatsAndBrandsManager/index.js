@@ -59,7 +59,7 @@ router.get('/', function(req, res, next) {
                 categories: shop.categories.map(function(obj) {
                     return obj["name"];
                 }),
-                branchNames: shop.branchNames.map(function(obj) {
+                brandNames: shop.brandNames.map(function(obj) {
                     return obj["name"];
                 }),
                 catGroups: shop.catGroups
@@ -103,7 +103,7 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                             catGroups.push(savedData[n]);
                         } else if (savedData[n]["type"] == "branchGroup") {
                             //delete obj["type"];
-                            shop.branchNames.filter(function(br) {
+                            shop.brandNames.filter(function(br) {
                                 if (br["name"] == savedData[n]["name"]) {
                                     br["img"] = savedData[n]["img"];
                                 }

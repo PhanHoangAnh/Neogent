@@ -331,10 +331,7 @@ function updateCategoryAndBrandName(shop, product) {
         }
         // A. Find objects in category which contains product SKU;
         var oldCatContainSKU = categories.filter(function(obj) {
-            if (obj.products) {
-                return obj.products.indexOf(product.systemSKU) !== -1;
-            }
-
+            return obj.products.indexOf(product.systemSKU) !== -1;
         });
 
         // B. Define new objects and modify needed object arrays
@@ -410,10 +407,9 @@ function updateCategoryAndBrandName(shop, product) {
         if (!pBrandValues) {
             return;
         }
+
         var oldBrandNameContainSKU = brandNames.filter(function(obj) {
-            if (obj.products) {
-                return obj.products.indexOf(product.systemSKU) !== -1;
-            }
+            return obj.products.indexOf(product.systemSKU) !== -1;
         });
         // List of objects which contain sysSKU in oldBrandNameContainSKU only, not in pBrandValues
         var neededModifyBns = oldBrandNameContainSKU.filter(function(obj) {
@@ -455,31 +451,99 @@ function updateCategoryAndBrandName(shop, product) {
             if (sameBns[i].products.indexOf(product.systemSKU) == -1) {
                 //sameBns[n].products.push(product.systemSKU);
                 brandNames[brandNames.indexOf(sameBns[i])].products.push(product.systemSKU);
+            } else {
+                // update Category for this BrandName
             }
         };
         // Synchronize BrandName and Categories Region- trouble comes from here
 
+        // var realFlatCats = categories.filter(function(obj) {
+        //     // obj is array of brandNames in Categories and it must bear at least one of item in pBrandValues
+        //     return obj.brandNames.filter(function(item) {
+        //         //item is single brandName in array
+        //         return pBrandValues.indexOf(item) !== -1;
+        //     });
+        // }).map(function(obj) {
+        //     return obj.name;
+        // });
 
+        // var realFlatBns = brandNames.filter(function(obj) {
+        //     // obj is array of categories in brandNames and it must bear at least on of item in pCatValues
+        //     return obj.categories.filter(function(item) {
+        //         // item is single category in arrya
+        //         return pCatValues.indexOf(item) !== -1
+        //     })
+        // }).map(function(obj) {
+        //     return obj.name;
+        // });
 
-        oldCatContainSKU.forEach(function(item) {
-            // console.log(item["products"]);
-            var realFlatBrands = getRealFlatBrands(shop, item["products"]);
-            if (categories.indexOf(item) !== -1) {
-                categories[categories.indexOf(item)]["brandNames"] = realFlatBrands;
-            }
-            obj["brandNames"] = realFlatBrands;
+        var cats = newCats.concat(sameCats)
+        var catProducts = cats.map(function(obj) {
+            return obj.products;
         });
 
-
-        oldBrandNameContainSKU.forEach(function(item) {
-            var realFlatCats = getRealFlatCats(shop, item["products"]);
-            if (brandNames.indexOf(item) !== -1) {
-                brandNames[brandNames.indexOf(item)]["categories"] = realFlatCats;
-            }
-            obj["categories"] = realFlatCats;
+        var realFlatCats = getRealFlatCats(shop, flatten(catProducts, true));
+        realFlatCats = flatten(realFlatCats)
+        realFlatCats = realFlatCats.filter(function(item, pos) {
+            return realFlatCats.indexOf(item) == pos;
         })
 
+        var brands = newBns.concat(sameBns);
+        var brandProducts = brands.map(function(obj) {
+            return obj.products;
+        })
+        var realFlatBns = getRealFlatBrands(shop, brandProducts);
+        realFlatBns = flatten(realFlatBns);
+        realFlatBns = realFlatBns.filter(function(item, pos) {
+                return realFlatBns.indexOf(item) == pos;
+            })
+            // console.log("realFlatBns: ", realFlatBns);
+            // console.log("realFlatCats: ", realFlatCats);
+
+        for (var i = 0; i < sameCats.length; i++) {
+            (function(n) {
+                sameCats[n]['brandNames'] = null;
+                sameCats[n]['brandNames'] = realFlatBns
+            })(i);
+        };
+        for (var i = 0; i < sameBns.length; i++) {
+            (function(n) {
+                sameBns[n]['categories'] = null;
+                sameBns[n]['categories'] = realFlatCats;
+            })(i);
+        };
+
+        var needModifiedCatProducts = neededModifyCats.map(function(obj) {
+            return obj.products;
+        });
+        realFlatBns = getRealFlatBrands(shop, needModifiedCatProducts);
+        realFlatBns = flatten(realFlatBns);
+        realFlatBns = realFlatBns.filter(function(item, pos) {
+            return realFlatBns.indexOf(item) == pos;
+        })
+
+        
+        var needModifiedBrandProducts = neededModifyBns.map(function(obj) {
+            return obj.products;
+        });
+        realFlatCats = getRealFlatCats(shop, flatten(needModifiedBrandProducts, true));
+        realFlatCats = flatten(realFlatCats)
+        realFlatCats = realFlatCats.filter(function(item, pos) {
+            return realFlatCats.indexOf(item) == pos;
+        })
+        
+
+        neededModifyCats.forEach(function(obj) {
+            obj["brandNames"] = realFlatBns;
+        })
+        neededModifyBns.forEach(function(obj) {
+            obj["categories"] = realFlatCats
+        })
+
+
+        //console.log('realFlatCats: ', realFlatCats);
         shop.markModified('mixed.type');
+
         shop.markModified('categories');
         shop.markModified('categories.$.products');
         shop.markModified('categories.$.brandNames');
@@ -496,35 +560,69 @@ function updateCategoryAndBrandName(shop, product) {
 
 
 function getRealFlatCats(shop, products) {
-    var realFlatCats = [];
-    shop.categories.forEach(function(obj) {
-        products.forEach(function(item) {
-            if (obj["products"].indexOf(item) !== -1) {
-                realFlatCats.push(obj["name"]);
+
+    var realProducts = shop.items.filter(function(obj) {
+        return products.filter(function(item) {
+            if (item == obj.systemSKU) {
+                return item;
             }
         })
     })
-
-    return realFlatCats.filter(function(item, pos) {
-        return realFlatCats.indexOf(item) == pos;
-    })
+    var dupRealFlatCats = []
+    realProducts.forEach(function(obj) {
+        obj.productAtttributes.forEach(function(item) {
+            if (item["attributes"]["sysId"] == "sysCategories" && dupRealFlatCats.indexOf(item["InputValue"] == -1)) {
+                dupRealFlatCats.push(item["InputValue"]);
+            }
+        })
+    });
+    return dupRealFlatCats;
 }
 
 function getRealFlatBrands(shop, products) {
-    var realFlatBrands = [];
-    shop.brandNames.forEach(function(obj) {
-        products.forEach(function(item) {
-            if (obj["products"].indexOf(item) !== -1) {
-                realFlatBrands.push(obj["name"]);
+    var realProducts = shop.items.filter(function(obj) {
+        return products.filter(function(item) {
+            if (item == obj.systemSKU) {
+                return item;
             }
         })
     })
-
-    return realFlatBrands.filter(function(item, pos) {
-        return realFlatBrands.indexOf(item) == pos;
-    })
+    var dupRealFlatBrands = []
+    realProducts.forEach(function(obj) {
+        obj.productAtttributes.forEach(function(item) {
+            if (item["attributes"]["sysId"] == "sysBrandName" && dupRealFlatBrands.indexOf(item["InputValue"] == -1)) {
+                dupRealFlatBrands.push(item["InputValue"]);
+            }
+        })
+    });
+    return dupRealFlatBrands
 }
 
+function flatten(array, mutable) {
+    var toString = Object.prototype.toString;
+    var arrayTypeStr = '[object Array]';
+
+    var result = [];
+    var nodes = (mutable && array) || array.slice();
+    var node;
+
+    if (!array.length) {
+        return result;
+    }
+
+    node = nodes.pop();
+
+    do {
+        if (toString.call(node) === arrayTypeStr) {
+            nodes.push.apply(nodes, node);
+        } else {
+            result.push(node);
+        }
+    } while (nodes.length && (node = nodes.pop()) !== undefined);
+
+    result.reverse(); // we reverse result to restore the original order
+    return result;
+}
 
 app.use(router);
 module.exports = app;
