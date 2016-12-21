@@ -48,7 +48,7 @@
          "sysId": "sysCategories",
          "label": "Categories",
          "describe": "Cat color",
-         "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
+         "options": [],
          "displayGroup": "system",
          "required": "true"
      }
@@ -58,7 +58,7 @@
          "sysId": "sysBrandName",
          "label": "Brand Name",
          "describe": "Brand Name",
-         "options": ["Gingle", "Gray", "Black", "White", "Zebra", "Yellow"],
+         "options": [],
          "displayGroup": "system",
          "required": "false"
      }

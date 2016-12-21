@@ -51,15 +51,41 @@ function homeEndPoint(req, res, next) {
         item = req.productItem
         systemSKU = req.systemSKU;
     }
-    res.render('index', {
-        title: 'Hello, this is template Application of : ' + req.shopname,
-        data: setting,
-        system: systemAttribute.system,
-        currency: currency,
-        RSApublicKey: keyPair.public,
-        systemSKU: systemSKU,
-        item: item
-    });
+    // update cats and brands
+
+    var Shops = mongoose.model('Shops');
+    // find Shops via Shops Name
+    Shops.findOne({ shopname: req.shopname }, function(err, shop) {
+        if (err) {
+            // console.log("Error from Mongoose:")
+        } else {
+            var customElem = systemAttribute.system;
+            customElem.forEach(function(obj) {
+                if (obj["attributes"]["sysId"] == "sysCategories") {
+                    obj["attributes"]["options"] = shop["categories"].map(function(item) {
+                        return item["name"];
+                    })
+                }
+                if (obj["attributes"]["sysId"] == "sysBrandName") {
+                    obj["attributes"]["options"] = shop["brandNames"].map(function(item) {
+                        return item["name"];
+                    })
+                }
+            })
+
+            res.render('index', {
+                title: 'Hello, this is template Application of : ' + req.shopname,
+                data: setting,
+                system: systemAttribute.system,
+                currency: currency,
+                RSApublicKey: keyPair.public,
+                systemSKU: systemSKU,
+                item: item
+            });
+        }
+    })
+
+
 }
 //  Global variables for Business functions
 
@@ -417,7 +443,9 @@ function updateCategoryAndBrandName(shop, product) {
         });
         // List of objects which contain sysSKU in oldBrandNameContainSKU only, not in pBrandValues
         var neededModifyBns = oldBrandNameContainSKU.filter(function(obj) {
-            return pBrandValues.indexOf(obj.name) == -1;
+            if(obj.name){
+                return pBrandValues.indexOf(obj.name) == -1;
+            }            
         });
         // Only in pBrandValues;
         var newBns = pBrandValues.filter(function(obj) {
@@ -457,9 +485,7 @@ function updateCategoryAndBrandName(shop, product) {
                 brandNames[brandNames.indexOf(sameBns[i])].products.push(product.systemSKU);
             }
         };
-        // Synchronize BrandName and Categories Region- trouble comes from here
-
-
+        // Synchronize BrandName and Categories Region
 
         oldCatContainSKU.forEach(function(item) {
             // console.log(item["products"]);
@@ -467,7 +493,6 @@ function updateCategoryAndBrandName(shop, product) {
             if (categories.indexOf(item) !== -1) {
                 categories[categories.indexOf(item)]["brandNames"] = realFlatBrands;
             }
-            obj["brandNames"] = realFlatBrands;
         });
 
 
@@ -476,7 +501,6 @@ function updateCategoryAndBrandName(shop, product) {
             if (brandNames.indexOf(item) !== -1) {
                 brandNames[brandNames.indexOf(item)]["categories"] = realFlatCats;
             }
-            obj["categories"] = realFlatCats;
         })
 
         shop.markModified('mixed.type');

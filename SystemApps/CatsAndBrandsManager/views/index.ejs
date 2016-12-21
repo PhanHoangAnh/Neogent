@@ -2,7 +2,7 @@
 <html lang="en">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Manage Categories and Branchs</title>
+<title>Manage Categories and Brands</title>
 <meta name="generator" content="Bootply" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -62,7 +62,7 @@
         </div>
     </template>
     <template id="band">
-        <span class="item-band" app-role="bandCover"><span onclick="deleteCatBranchs(this)" class="x-close">&times;</span><span app-role="band"></span></span>
+        <span class="item-band" app-role="bandCover"><span onclick="deleteCatBrands(this)" class="x-close">&times;</span><span app-role="band"></span></span>
     </template>
     <template id="AppTemp">
         <a class='mini-broad' app-role="link">
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="brand-list" app-role="branchname" base-role="handler">
+                <div class="brand-list" app-role="brandname" base-role="handler">
                     <label class="brand-name">BrandNames</label>
                 </div>
             </div>
@@ -107,25 +107,28 @@
             </div>
         </div>
     </template>
-    <template id="branchTemp">
-        <div class="row inner-item" app-role="branchGroup">
+    <template id="brandTemp">
+        <div class="row inner-item" app-role="brandGroup">
             <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
                 <div class="brand-img"><img src='../img/logo.png' id="iconHolder" app-role="icon"></div>
             </div>
             <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <legend app-role="setsName">Brand Name</legend>
+                    <legend app-role="setsName">BrandNames</legend>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <p class="cat-name">Categories</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="button-set">
-                        <button type="button" id="changeBranImage" class="btn btn-primary">Change Brand background </button>
+                        <button type="button" id="changeBranImage" class="btn btn-primary" onclick = "changeBrandBackground(this)">Change Brand background </button>
                     </div>
                 </div>
             </div>
         </div>
+    </template>
+    <template id = "brandcats">
+        <li class="ui-state-highlight" ><span app-role = "content"></span></li>
     </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('imgs/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
@@ -144,12 +147,12 @@
                 <div class="inner">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#mainCat"><i class="fa fa-bars"></i> Categories Group</a></li>
-                        <li><a data-toggle="tab" href="#mainBranch"><i class="fa fa-circle"></i> Brands</a></li>
+                        <li><a data-toggle="tab" href="#mainBrand"><i class="fa fa-circle"></i> Brands</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="mainCat" class="tab-pane fade in active">
                             <fieldset class="scheduler-border">
-                                <legend class="scheduler-border">Categories</legend>
+                                <legend class="scheduler-border">Categories Group</legend>
                                 <div class="fieldset-content">
                                     <!-- <p>Listing droppable categories here</p> -->
                                     <div class="button-set" app-role="baseLine">
@@ -158,10 +161,10 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <div id="mainBranch" class="tab-pane fade">
+                        <div id="mainBrand" class="tab-pane fade">
                             <fieldset class="scheduler-border">
                                 <legend class="scheduler-border">Brand</legend>
-                                <div class="fieldset-content">
+                                <div class="fieldset-content" id = "brandPad">
                                     <p>Listing droppable brand here</p>
                                 </div>
                             </fieldset>
@@ -181,21 +184,21 @@
                             <div id="home" class="tab-pane fade in active">
                                 <p>Listing droppable categories here</p>
                                 <ul id="catLists" class="connectedSortable">
-                                    <li class="ui-state-highlight" app-role="category">Item 1</li>
+                                   <!--  <li class="ui-state-highlight" app-role="category">Item 1</li>
                                     <li class="ui-state-highlight" app-role="category">Item 2</li>
                                     <li class="ui-state-highlight" app-role="category">Item 3</li>
                                     <li class="ui-state-highlight" app-role="category">Item 4</li>
-                                    <li class="ui-state-highlight" app-role="category">Item 5</li>
+                                    <li class="ui-state-highlight" app-role="category">Item 5</li> -->
                                 </ul>
                             </div>
                             <div id="menu1" class="tab-pane fade">
-                                <p>Listing droppable branchs here</p>
-                                <ul id="branchLists" class="connectedSortable">
-                                    <li class="ui-state-highlight" app-role="branch">Item 1</li>
+                                <p>Listing droppable brands here</p>
+                                <ul id="brandLists" class="connectedSortable">
+                                   <!--  <li class="ui-state-highlight" app-role="branch">Item 1</li>
                                     <li class="ui-state-highlight" app-role="branch">Item 2</li>
                                     <li class="ui-state-highlight" app-role="branch">Item 3</li>
                                     <li class="ui-state-highlight" app-role="branch">Item 4</li>
-                                    <li class="ui-state-highlight" app-role="branch">Item 5</li>
+                                    <li class="ui-state-highlight" app-role="branch">Item 5</li> -->
                                 </ul>
                             </div>
                         </div>
@@ -210,7 +213,7 @@
     <div id="end-offset"></div>
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
-            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveCatAndBranchs()">Save</button>
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveCatAndBrands()">Save</button>
         </div>
     </section>
     <footer>
@@ -309,7 +312,7 @@
     <script type="text/javascript" src="js/c2runtime.js"></script>
     <script src="js/Crypto/cryptoUtils.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
-    <script type="text/javascript" src="js/CatsAndBrachs/catbranch.js"></script>
+    <script type="text/javascript" src="js/CatsAndBrads/catbrand.js"></script>
     <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 </body>
 <script type="text/javascript">

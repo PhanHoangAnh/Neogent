@@ -107,13 +107,13 @@ function createNewCategoriesGroup(name) {
     rItem["DATASTORE"] = {}
     rItem["DATASTORE"]["name"] = name;
     rItem["DATASTORE"]['cats'] = [];
-    rItem["DATASTORE"]['branchs'] = [];
+    rItem["DATASTORE"]['brands'] = [];
     $(rItem).sortable({
         receive: function(e, ui) {
             ui.sender.sortable("cancel");
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
-            s.innerHTML = ui.item[0].innerHTML;
+            s.innerHTML = ui.item[0].querySelector('[app-role="content"]').innerHTML;
             var appRole = ui.item[0].getAttribute("app-role");
             if (appRole == "category") {
                 var cat = rItem.querySelector('[app-role="categories"]');
@@ -122,18 +122,18 @@ function createNewCategoriesGroup(name) {
                     rItem["DATASTORE"]['cats'].push(s.innerHTML);
                 }
             }
-            if (appRole == "branch") {
-                var branch = rItem.querySelector('[app-role="branchname"]');
-                if (rItem["DATASTORE"]['branchs'].indexOf(s.innerHTML) == -1) {
-                    branch.appendChild(document.importNode(span, true));
-                    rItem["DATASTORE"]['branchs'].push(s.innerHTML);
+            if (appRole == "brand") {
+                var brand = rItem.querySelector('[app-role="brandname"]');
+                if (rItem["DATASTORE"]['brands'].indexOf(s.innerHTML) == -1) {
+                    brand.appendChild(document.importNode(span, true));
+                    rItem["DATASTORE"]['brands'].push(s.innerHTML);
                 }
             }
         }
     });
     connectedGroup.push($(rItem));
 
-    $("#branchLists").sortable({
+    $("#brandLists").sortable({
         connectWith: connectedGroup
     }).disableSelection();
     $("#catLists").sortable({
@@ -152,6 +152,7 @@ function createNewCategoriesGroup(name) {
         $("#m_wall").modal();
     }, false);
     return rItem;
+
 }
 
 function readTitleAndDesc(el) {
@@ -170,7 +171,7 @@ function readTitleAndDesc(el) {
     }
 }
 
-function deleteCatBranchs(elem) {
+function deleteCatBrands(elem) {
     var bandCover = getElement(elem, "bandCover");
     var catGroup = getElement(elem, "catGroup");
     var roles = findElemRoles(elem).getAttribute("app-role");
@@ -180,20 +181,12 @@ function deleteCatBranchs(elem) {
         case "categories":
             data = catGroup["DATASTORE"]["cats"];
             break;
-        case "branchname":
-            data = catGroup["DATASTORE"]["branchs"];
+        case "brandname":
+            data = catGroup["DATASTORE"]["brands"];
             break;
     }
     data.splice(data.indexOf(itemContent), 1)
     bandCover.parentNode.removeChild(bandCover);
-
-    function getElement(el, att) {
-        if (el.parentNode.getAttribute('app-role') == att) {
-            return el.parentNode;
-        } else {
-            return getElement(el.parentNode, att);
-        }
-    }
 
     function findElemRoles(el) {
         if (el.getAttribute("base-role") !== "handler") {
@@ -201,6 +194,14 @@ function deleteCatBranchs(elem) {
         } else {
             return el;
         }
+    }
+}
+
+function getElement(el, att) {
+    if (el.parentNode.getAttribute('app-role') == att) {
+        return el.parentNode;
+    } else {
+        return getElement(el.parentNode, att);
     }
 }
 
@@ -265,6 +266,8 @@ function wallPreview(data) {
     //document.getElementById('wallHolder').setAttribute('src', data);
     if (currentImg) {
         currentImg.setAttribute('src', data);
+    }
+    if (currentDataStore) {
         currentDataStore["DATASTORE"]["img"] = data;
     }
 }
@@ -288,13 +291,21 @@ function attImgRatio_change(evt, elem) {
     imageBox.style.height = applyHeight;
 }
 //
-function saveCatAndBranchs() {
+function saveCatAndBrands() {
     var saveElems = document.querySelectorAll('[app-role="catGroup"]');
     var saveDataStores = [];
     saveElems.forEach(function(obj) {
         obj["DATASTORE"].type = "catGroup"
         saveDataStores.push(obj["DATASTORE"]);
     });
+    saveElems = document.querySelectorAll('[app-role="icon"]');
+    saveElems.forEach(function(obj) {
+        var iteratedObj = {}
+        iteratedObj.type = "branchGroup"
+        iteratedObj['img'] = obj.getAttribute('src');
+        saveDataStores.push(obj);
+    })
+
     var endpoint = 'update';
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
@@ -305,6 +316,7 @@ function saveCatAndBranchs() {
 }
 
 function generateCatGroups(groups) {
+    var newId = 0;
     groups.filter(function(item) {
         baseLine = getBaseLine(document.getElementById('createCat'))
         var rItem = createNewCategoriesGroup(item['name']);
@@ -313,21 +325,70 @@ function generateCatGroups(groups) {
         rItem["DATASTORE"] = {}
         rItem["DATASTORE"]["name"] = item['name'];
         rItem["DATASTORE"]['cats'] = item['cats'];
-        rItem["DATASTORE"]['branchs'] = item['branchs'];
+        rItem["DATASTORE"]['brands'] = item['brands'];
         rItem["DATASTORE"]['img'] = item['img'];
         var catLine = rItem.querySelector('[app-role="categories"]');
-        var branchLine = rItem.querySelector('[app-role="branchname"]');
+        var brandLine = rItem.querySelector('[app-role="brandname"]');
         item.cats.filter(function(obj) {
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
             s.innerHTML = obj;
             catLine.appendChild(document.importNode(span, true));
         });
-        item.branchs.filter(function(obj) {
+        item.brands.filter(function(obj) {
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
             s.innerHTML = obj;
-            branchLine.appendChild(document.importNode(span, true));
+            brandLine.appendChild(document.importNode(span, true));
         });
-    })
+    });
+    // update items for categories and brandnames
+    var brandnames = shopInfo.brandNames;
+    var categories = shopInfo.categories;
+
+    for (var i = 0; i < brandnames.length; i++) {
+        with({ n: i }) {
+            var brandcats = document.getElementById("brandcats").content;
+            var span = brandcats.querySelector('[app-role = "content"]')
+            span.id = "br_" + n;
+            span.innerHTML = brandnames[n];
+            var item = document.importNode(brandcats, true);
+            document.getElementById("brandLists").appendChild(document.importNode(brandcats, true));
+            var rItem = document.getElementById(span.id);
+            rItem.parentNode.setAttribute("app-role", "brand");
+
+            var brandPad = document.getElementById("brandTemp").content;
+            var legend = brandPad.querySelector('[app-role="setsName"]');
+            legend.innerHTML = brandnames[n];
+            document.getElementById("brandPad").appendChild(document.importNode(brandPad, true));
+        }
+    }
+
+    for (var i = 0; i < categories.length; i++) {
+        with({ n: i }) {
+
+            var brandcats = document.getElementById("brandcats").content;
+            var span = brandcats.querySelector('[app-role = "content"]')
+            span.id = "br_" + n;
+            span.innerHTML = categories[n];
+            var item = document.importNode(brandcats, true);
+            // item.innerHTML = categories[n];
+            // item.id = "cat_" + n;
+            //item.setAttribute("app-role", "category")
+            document.getElementById("catLists").appendChild(item);
+            var rItem = document.getElementById(span.id);
+            //rItem.innerHTML = categories[n];
+            rItem.parentNode.setAttribute("app-role", "category");
+
+        }
+    }
+}
+
+function changeBrandBackground(elem) {
+
+    var brandGroup = getElement(elem, "brandGroup");
+    currentImg = brandGroup.querySelector('[app-role="icon"]');
+    currentDataStore = null;
+    //console.log("changeBrandBackground", currentImg);
+    $("#m_wall").modal();
 }
