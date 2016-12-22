@@ -59,9 +59,7 @@ router.get('/', function(req, res, next) {
                 categories: shop.categories.map(function(obj) {
                     return obj["name"];
                 }),
-                brandNames: shop.brandNames.map(function(obj) {
-                    return obj["name"];
-                }),
+                brandNames: shop.brandNames,
                 catGroups: shop.catGroups
 
             };
@@ -87,30 +85,31 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
             var catGroups = [];
 
             if (savedData && savedData instanceof Array) {
-
                 for (var i = 0; i < savedData.length; i++) {
                     with({ n: i }) {
                         if (savedData[n]["img"] && savedData[n]["img"].indexOf("data:image/png;base64") !== -1) {
                             var alias = mongoose.Types.ObjectId().toString();
-                            var filePath = "./Shops/" + req.shopname + "/public/imgs/catGroup_" + alias + ".png";
+                            var filePath = "./Shops/" + req.shopname + "/public/imgs/CatAndBrands_" + alias + ".png";
                             var result = writeBase64ImageSync(filePath, savedData[n]["img"]);
                             if (result) {
-                                savedData[n]["img"] = req.shopname + "/imgs/catGroup_" + alias + ".png";
+                                savedData[n]["img"] = '/' + req.shopname + "/imgs/CatAndBrands_" + alias + ".png";
                             }
                         }
                         if (savedData[n]["type"] == "catGroup") {
                             delete savedData[n]["type"];
                             catGroups.push(savedData[n]);
-                        } else if (savedData[n]["type"] == "branchGroup") {
-                            //delete obj["type"];
+                        } else if (savedData[n]["type"] == "brand") {
+                            delete savedData[n]["type"];
                             shop.brandNames.filter(function(br) {
                                 if (br["name"] == savedData[n]["name"]) {
-                                    br["img"] = savedData[n]["img"];
+                                    shop.brandNames[shop.brandNames.indexOf(br)]['img'] = savedData[n]['img'];
                                 }
                             })
                         }
                     }(i);
                 }
+                shop.markModified('brandNames');
+                shop.markModified('brandNames.$.img');
                 shop.catGroups = catGroups;
             }
             shop.save(function(error) {

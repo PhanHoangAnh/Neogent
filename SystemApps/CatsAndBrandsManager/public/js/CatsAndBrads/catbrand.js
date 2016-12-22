@@ -301,12 +301,14 @@ function saveCatAndBrands() {
     saveElems = document.querySelectorAll('[app-role="icon"]');
     saveElems.forEach(function(obj) {
         var iteratedObj = {}
-        iteratedObj.type = "branchGroup"
+        iteratedObj.type = "brand"
         iteratedObj['img'] = obj.getAttribute('src');
-        saveDataStores.push(obj);
+        iteratedObj['name'] = obj.name;
+        saveDataStores.push(iteratedObj);
     })
 
     var endpoint = 'update';
+    // console.log("saveDataStores: ", saveDataStores);
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
 
@@ -351,7 +353,7 @@ function generateCatGroups(groups) {
             var brandcats = document.getElementById("brandcats").content;
             var span = brandcats.querySelector('[app-role = "content"]')
             span.id = "br_" + n;
-            span.innerHTML = brandnames[n];
+            span.innerHTML = brandnames[n]['name'];
             var item = document.importNode(brandcats, true);
             document.getElementById("brandLists").appendChild(document.importNode(brandcats, true));
             var rItem = document.getElementById(span.id);
@@ -359,8 +361,29 @@ function generateCatGroups(groups) {
 
             var brandPad = document.getElementById("brandTemp").content;
             var legend = brandPad.querySelector('[app-role="setsName"]');
-            legend.innerHTML = brandnames[n];
+            var image = brandPad.querySelector('[app-role="icon"]');
+            var contentId = "contentId_" + n;
+            var cats = brandPad.querySelector('[app-role = "cats"]');
+            cats.id = contentId;
+            if (brandnames[n]['img']) {
+                image.setAttribute('src', brandnames[n]['img']);
+            }
+            image.name = brandnames[n]['name']
+            legend.innerHTML = brandnames[n]['name'];
             document.getElementById("brandPad").appendChild(document.importNode(brandPad, true));
+            cats = document.getElementById(contentId);
+
+            for (var j = 0; j < brandnames[n]['categories'].length; j++) {
+                (function(m) {
+                    console.log(m);
+                    var brandcats = document.getElementById("smallCat").content;
+                    var span = brandcats.querySelector('[app-role = "band"]')
+                    span.id = "catContent_" + n;
+                    span.innerHTML = brandnames[n]['categories'][m];
+                    cats.appendChild(document.importNode(brandcats, true));
+                })(j);
+            }
+
         }
     }
 
