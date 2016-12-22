@@ -217,12 +217,12 @@ img {
       .item-band {
         display: inline-block;
         background: #337ab7;
-        color: #FFF; padding: 0 5px; margin: 0 0 0 2px;
+        color: #FFF; padding: 0 7px; margin: 0 0 0 2px;
         @include border-radius(2px);
       }
       .x-close {margin-right: 3px; cursor: pointer;}
     }
-    .cat-name, .brand-name {font-size: 16px; display: inline-block; margin: 0;}
+    .cat-name, .brand-name {display: inline-block; margin: 0;}
     .fieldset-content {
       position: relative;
       @include clearfix;
