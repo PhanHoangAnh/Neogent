@@ -165,7 +165,7 @@ function readTitleAndDesc(el) {
     }
     var catGroup = findcatGroup(el);
     if (el.getAttribute("app-role") == "catTitle") {
-        catGroup["DATASTORE"]["Tilte"] = el.value;
+        catGroup["DATASTORE"]["Title"] = el.value;
     } else {
         catGroup["DATASTORE"]["Desc"] = el.value;
     }
@@ -323,12 +323,18 @@ function generateCatGroups(groups) {
         baseLine = getBaseLine(document.getElementById('createCat'))
         var rItem = createNewCategoriesGroup(item['name']);
         var img = rItem.querySelector('[app-role="categoryImg"]');
-        img.setAttribute("src", "/" + item['img']);
+        img.setAttribute("src", item['img']);
+        var catTitle = rItem.querySelector('[app-role="catTitle"]');
+        catTitle.value = item['Title'];
+        var catDesc = rItem.querySelector('[app-role="catDesc"]');
+        catDesc.value = item['Desc'];
         rItem["DATASTORE"] = {}
         rItem["DATASTORE"]["name"] = item['name'];
         rItem["DATASTORE"]['cats'] = item['cats'];
         rItem["DATASTORE"]['brands'] = item['brands'];
         rItem["DATASTORE"]['img'] = item['img'];
+        rItem["DATASTORE"]['Title'] = item['Title'];
+        rItem["DATASTORE"]['Desc'] = item['Desc'];
         var catLine = rItem.querySelector('[app-role="categories"]');
         var brandLine = rItem.querySelector('[app-role="brandname"]');
         item.cats.filter(function(obj) {

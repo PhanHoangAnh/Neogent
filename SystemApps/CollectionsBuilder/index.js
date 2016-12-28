@@ -59,7 +59,7 @@ router.get('/', function(req, res, next) {
                 categories: shop.categories.map(function(obj) {
                     return obj["name"];
                 }),
-                branchNames: shop.branchNames.map(function(obj) {
+                brandNames: shop.brandNames.map(function(obj) {
                     return obj["name"];
                 })
             };

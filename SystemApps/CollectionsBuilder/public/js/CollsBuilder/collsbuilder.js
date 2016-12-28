@@ -7,6 +7,8 @@ function openModal(event, elem) {
     baseLine = getBaseLine(elem);
 }
 
+
+
 function createNewCategoriesGroup(name) {
     var catTemp = document.getElementById("collsTemp").content;
     baseLine.parentNode.insertBefore(document.importNode(catTemp, true), baseLine);
@@ -15,54 +17,73 @@ function createNewCategoriesGroup(name) {
     catsName.innerHTML = name;
     rItem["DATASTORE"] = {}
     rItem["DATASTORE"]["name"] = name;
-    rItem["DATASTORE"]['cats'] = [];
-    rItem["DATASTORE"]['branchs'] = [];
+    rItem["DATASTORE"]['productLists'] = [];
+
     $(rItem).sortable({
         receive: function(e, ui) {
-            // ui.sender.sortable("cancel");
-            // var span = document.getElementById("band").content;
-            // var s = span.querySelector('[app-role = "band"]');
-            // s.innerHTML = ui.item[0].innerHTML;
-            // var appRole = ui.item[0].getAttribute("app-role");
-            // if (appRole == "category") {
-            //     var cat = rItem.querySelector('[app-role="categories"]');
-            //     if (rItem["DATASTORE"]['cats'].indexOf(s.innerHTML) == -1) {
-            //         cat.appendChild(document.importNode(span, true));
-            //         rItem["DATASTORE"]['cats'].push(s.innerHTML);
-            //     }
-            // }
-            // if (appRole == "branch") {
-            //     var branch = rItem.querySelector('[app-role="branchname"]');
-            //     if (rItem["DATASTORE"]['branchs'].indexOf(s.innerHTML) == -1) {
-            //         branch.appendChild(document.importNode(span, true));
-            //         rItem["DATASTORE"]['branchs'].push(s.innerHTML);
-            //     }
-            // }
+            ui.sender.sortable("cancel");
+            var span = document.getElementById("band").content;
+            var s = span.querySelector('[app-role = "band"]');
+            s.innerHTML = ui.item[0].querySelector('[app-role="dataContent"]').innerHTML;
+            var productLists = rItem.querySelector('[app-role="product"]');
+            productLists.appendChild(document.importNode(span, true));
+
         }
     });
     connectedGroup.push($(rItem));
     $("#catLists").sortable({
         connectWith: connectedGroup
     }).disableSelection();
-    $("#branchLists").sortable({
-        connectWith: connectedGroup
-    }).disableSelection();
-    var deleteButton = rItem.querySelector('[app-role="deleteCats"]');
+    // $("#branchLists").sortable({
+    //     connectWith: connectedGroup
+    // }).disableSelection();
+    var deleteButton = rItem.querySelector('[app-role="deleteColls"]');
     deleteButton.addEventListener('click', function() {
         rItem.parentNode.removeChild(rItem);
     }, false);
-    var changeCatImage = rItem.querySelector('[app-role="changeCatImage"]');
-    changeCatImage.addEventListener('click', function() {
-        currentImg = rItem.querySelector('[app-role = "categoryImg"]');
+    var changeCollImage = rItem.querySelector('[app-role="changeCollImage"]');
+    changeCollImage.addEventListener('click', function() {
+        currentImg = rItem.querySelector('[app-role = "collectionImg"]');
         currentDataStore = rItem;
         $("#m_wall").modal();
     }, false);
+    var img = rItem.querySelector('[app-role="collectionImg"]');
+    $(img).popover({
+        title: function() {
+            var popoverHeader = document.getElementById('popoverHeader').content;
+            return document.importNode(popoverHeader, true);
+        },
+        html: true,
+        content: function() {
+            var collDescElem = document.getElementById("collDescElem").content;
+            return document.importNode(collDescElem, true);
+        },
+        trigger: 'none'
+
+    });
+    img.addEventListener('click', function() {
+        $(img).popover('toggle');
+    }, false);
+    $(img).on('hidden.bs.popover', function() {
+        var mainPad = findElem(img, "mainPad");
+        var colDesc = mainPad.querySelector('[ app-role = "colDesc"]');
+        rItem["DATASTORE"]['collDesc'] = colDesc.innerHTML;
+    });
+    $(img).on('shown.bs.popover', function() {
+        var mainPad = findElem(img, "dataHandler");
+        var colDesc = mainPad.querySelector('[ app-role = "colDesc"]');
+        var descInput = mainPad.querySelector('[app-role = "descInput"]');
+        descInput.value = colDesc.innerHTML;
+        var nameInput = mainPad.querySelector('[app-role="nameInput"]');
+        var oldName = mainPad.querySelector('[app-role="collsName"]');
+        nameInput.value = oldName.innerHTML;
+    });
+    return rItem;
 }
 
 function createNew() {
     var catName = document.getElementById("catName").value;
     createNewCategoriesGroup(catName);
-
 }
 
 function getBaseLine(elem) {
@@ -142,4 +163,35 @@ function attImgRatio_change(evt, elem) {
     var applyHeight = realWidth * ratio + 'px'
     thumbBox.style.height = applyHeight;
     imageBox.style.height = applyHeight;
+}
+
+function deleteProduct(elem) {
+    var productElem = findElem(elem, "productElement");
+    productElem.parentNode.removeChild(productElem);
+}
+
+function updateDesc(elem) {
+    var mainPad = findElem(elem, "dataHandler");
+    var colDesc = mainPad.querySelector('[ app-role = "colDesc"]');
+    colDesc.innerHTML = elem.value;
+    mainPad["DATASTORE"]['collDesc'] = elem.value;
+}
+
+function updateName(elem) {
+    var mainPad = findElem(elem, "dataHandler");
+    var catsName = mainPad.querySelector('[app-role="collsName"]');
+    catsName.innerHTML = elem.value;
+    mainPad["DATASTORE"]['name'] = elem.value;
+}
+
+function closePop(elem) {
+    $(elem).parents(".popover").popover('hide');
+}
+
+function findElem(el, att) {
+    if (el.getAttribute("app-role") !== att) {
+        return findElem(el.parentNode, att);
+    } else {
+        return el;
+    }
 }

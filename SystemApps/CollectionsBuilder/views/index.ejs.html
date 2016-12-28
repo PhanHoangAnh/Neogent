@@ -53,55 +53,56 @@
         </div>
     </div>
     <template id="band">
-        <span app-role="band"></span>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" app-role="productElement">
+            <span class="item-band">
+                <span app-role = "closeBnt" onclick="deleteProduct(this)" class="x-close">&times;</span>
+            </span>
+            <img app-role="productImg" src="imgs/gamebanner.jpg">
+            <span app-role="band"></span>
+        </div>
     </template>
     <template id="AppTemp">
         <a class='mini-broad' app-role="link">
             <img app-role="AppIcon">
         </a>
     </template>
-    <template id="catGroupTemp">
-        <div class="row inner-item" app-role="catGroup" class="dynamic">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <legend app-role="catsName">Category's group Name</legend>
+    <template id="popoverHeader">
+        <div>
+            Edit Description <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
+        </div>
+    </template>
+    <template id="collDescElem">
+        <div>
+            <textarea app-role: "collDescription" rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
+            <div>
+                <button type="button" class="btn btn-primary center-block" onclick="closePop(this)">Close</button>
             </div>
+        </div>
+    </template>
+    <template id="collsTemp">
+        <div class="row inner-item" app-role="dataHandler" class="dynamic">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="cat-img"><img app-role="categoryImg" src="imgs/gamebanner.jpg"></div>
+                <legend app-role="collsName">Collections Name</legend>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="cat-list" app-role="categories">
-                    <p class="cat-name">Categories</p>
+            <div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" app-role="mainPad">
+                    <div class="colls-img"><img app-role="collectionImg" src="imgs/gamebanner.jpg"></div>
+                    <span><i>click image </i></span>
+                    <div>
+                        <h5>Collection Description</h5></div>
+                    <div app-role="colDesc"></div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="brand-list" app-role="branchname">
-                    <p class="brand-name">BranchNames</p>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <div class="colls-list">
+                        <p class="cat-name">Products</p>
+                        <div app-role="product" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="button-set">
-                    <button type="button" app-role="deleteCats" class="btn">Delete Categories Group </button>
-                    <button type="button" app-role="changeCatImage" class="btn btn-primary">Change Background Image</button>
-                </div>
-            </div>
-        </div>
-    </template>
-    <template id="branchTemp">
-        <div class="row inner-item" app-role="catGroup">
-            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
-                <div class="brand-img"><img src='../img/logo.png' id="iconHolder" app-role="icon"></div>
-            </div>
-            <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <legend app-role="setsName">Branch Name</legend>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <p class="cat-name">Categories</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="button-set">
-                        <button type="button" id="changeBranImage" class="btn btn-primary">Change Brand background </button>
-                    </div>
+                    <button type="button" app-role="deleteColls" class="btn">Delete Collection </button>
+                    <button type="button" app-role="changeCollImage" class="btn btn-primary">Change Background Image</button>
                 </div>
             </div>
         </div>
@@ -121,27 +122,15 @@
         <div class="row">
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 content-panel" id="content">
                 <div class="inner">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#mainCat"><i class="fa fa-bars"></i> Categories Group</a></li>
-                        <li><a data-toggle="tab" href="#mainBranch"><i class="fa fa-circle"></i> Brand</a></li>
-                    </ul>
                     <div class="tab-content">
                         <div id="mainCat" class="tab-pane fade in active">
                             <fieldset class="scheduler-border">
-                                <legend class="scheduler-border">Categories</legend>
+                                <legend class="scheduler-border">Collections</legend>
                                 <div class="fieldset-content">
-                                    <!-- <p>Listing droppable categories here</p> -->
                                     <div class="button-set" app-role="baseLine">
-                                        <button type="button" id="createCat" class="btn btn-primary" onclick="openModal(event,this)">Create new Categories Group</button>
+                                        <hr style="border-top: 1px solid #abab66;">
+                                        <button type="button" id="createCat" class="btn btn-primary" onclick="openModal(event,this)">Create new Collections</button>
                                     </div>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div id="mainBranch" class="tab-pane fade">
-                            <fieldset class="scheduler-border">
-                                <legend class="scheduler-border">Brand</legend>
-                                <div class="fieldset-content">
-                                    <p>Listing droppable branchs here</p>
                                 </div>
                             </fieldset>
                         </div>
@@ -154,11 +143,14 @@
                         <h4>Available Products</h4>
                         <!-- <p>Listing droppable categories here</p> -->
                         <ul id="catLists" class="connectedSortable">
-                            <li class="ui-state-highlight" app-role="category">Item 1</li>
-                            <li class="ui-state-highlight" app-role="category">Item 2</li>
-                            <li class="ui-state-highlight" app-role="category">Item 3</li>
-                            <li class="ui-state-highlight" app-role="category">Item 4</li>
-                            <li class="ui-state-highlight" app-role="category">Item 5</li>
+                            <li class="ui-state-highlight" app-role="product">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <img src="imgs/CatLogo.png" class="logo"></div>
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">Item</div>
+                            </li>
+                            <li class="ui-state-highlight" app-role="product">Item 2</li>
+                            <li class="ui-state-highlight" app-role="product">Item 3</li>
+                            <li class="ui-state-highlight" app-role="product">Item 4</li>
+                            <li class="ui-state-highlight" app-role="product">Item 5</li>
                         </ul>
                     </div>
                 </div>
@@ -269,7 +261,7 @@
     <!--  -->
     <script type="text/javascript" src="js/c2runtime.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
-    <script type="text/javascript" src="js/CatsAndBrachs/catbranch.js"></script>
+    <script type="text/javascript" src="js/CollsBuilder/collsbuilder.js"></script>
 </body>
 <script type="text/javascript">
 $(function() {
