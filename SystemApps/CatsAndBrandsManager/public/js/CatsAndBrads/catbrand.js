@@ -298,17 +298,17 @@ function saveCatAndBrands() {
         obj["DATASTORE"].type = "catGroup"
         saveDataStores.push(obj["DATASTORE"]);
     });
-    saveElems = document.querySelectorAll('[app-role="icon"]');
+    saveElems = document.querySelectorAll('[app-role="brandHandler"]');
     saveElems.forEach(function(obj) {
-        var iteratedObj = {}
-        iteratedObj.type = "brand"
-        iteratedObj['img'] = obj.getAttribute('src');
-        iteratedObj['name'] = obj.name;
-        saveDataStores.push(iteratedObj);
+        // var iteratedObj = {}
+        obj["DATASTORE"].type = "brand";
+        // iteratedObj['img'] = obj.getAttribute('src');
+        // iteratedObj['name'] = obj.name;
+        saveDataStores.push(obj["DATASTORE"]);
     })
 
     var endpoint = 'update';
-    // console.log("saveDataStores: ", saveDataStores);
+    console.log("saveDataStores: ", saveDataStores);
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
 
@@ -391,10 +391,13 @@ function generateCatGroups(groups) {
 
             var brandGroup = getElement(cats, "brandGroup");
             brandGroup["DATASTORE"] = {}
-            brandGroup["DATASTORE"]["name"] = item['name'];
-            brandGroup["DATASTORE"]['cats'] = item['cats'];
-            brandGroup["DATASTORE"]['img'] = item['img'];
-            brandGroup.setAttribute("app-role", 'dataHandler');
+            brandGroup["DATASTORE"]["name"] = brandnames[n]['name'];
+            brandGroup["DATASTORE"]['categories'] = brandnames[n]['categories'];
+            brandGroup["DATASTORE"]['img'] = brandnames[n]['img'];
+            brandGroup["DATASTORE"]['description'] = brandnames[n]['description'];
+            brandGroup.setAttribute("app-role", 'brandHandler');
+            var description = brandGroup.querySelector('[app-role = "description"]');
+            description.innerHTML = brandnames[n]['description'];
             var brandEdit = brandGroup.querySelector('[app-role = "brandEdit"]');
             $(brandEdit).popover({
                 title: function() {
@@ -411,6 +414,12 @@ function generateCatGroups(groups) {
             brandEdit.addEventListener('click', function() {
                 $(brandEdit).popover('toggle');
             }, false);
+            $(brandEdit).on('shown.bs.popover', function() {
+                var mainPad = findElem(brandEdit, "brandDesc");
+                var description = mainPad.querySelector('[ app-role = "description"]');
+                var descInput = mainPad.querySelector('[app-role = "descInput"]');
+                descInput.value = description.innerHTML;
+            });
 
         }
     }
@@ -445,10 +454,10 @@ function changeBrandBackground(elem) {
 }
 
 function updateDesc(elem) {
-    var mainPad = findElem(elem, "dataHandler");
+    var mainPad = findElem(elem, "brandHandler");
     var brandDesc = mainPad.querySelector('[ app-role = "description"]');
     brandDesc.innerHTML = elem.value;
-    mainPad["DATASTORE"]['Desc'] = elem.value;
+    mainPad["DATASTORE"]['description'] = elem.value;
 }
 
 function closePop(elem) {

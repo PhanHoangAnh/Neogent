@@ -63,15 +63,14 @@
     </template>
     <template id="popoverHeader">
         <div>
-            Edit <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
+            Edit Description <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
         </div>
     </template>
     <template id="brandDescElem">
         <div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    Edit Brand Description
-                    <textarea app-role: "collDescription" rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                    
+                    <textarea rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
                 </div>                
             </div>             
             <div>
@@ -135,7 +134,7 @@
                 <div class="brand-img"><img src='../img/logo.png' app-role="icon"></div>
             </div>
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" app-rold = "brandDesc">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" app-role = "brandDesc">
                      <p class="cat-name">Description</p>
                      <div app-role = "description"></div>
                      <div class="row cat-name">

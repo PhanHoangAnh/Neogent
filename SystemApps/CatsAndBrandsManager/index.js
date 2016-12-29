@@ -103,6 +103,7 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                             shop.brandNames.filter(function(br) {
                                 if (br["name"] == savedData[n]["name"]) {
                                     shop.brandNames[shop.brandNames.indexOf(br)]['img'] = savedData[n]['img'];
+                                    shop.brandNames[shop.brandNames.indexOf(br)]['description'] = savedData[n]['description'];
                                 }
                             })
                         }
@@ -110,6 +111,7 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                 }
                 shop.markModified('brandNames');
                 shop.markModified('brandNames.$.img');
+                shop.markModified('brandNames.$.description');
                 shop.catGroups = catGroups;
             }
             shop.save(function(error) {
