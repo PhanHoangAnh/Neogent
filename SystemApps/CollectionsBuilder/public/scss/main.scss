@@ -188,7 +188,7 @@ img {
       @include clearfix;
       .colls-img {
         position: relative;
-        float: left; width: 20px; height: 20px;
+        float: left; width: 25px; height: 25px;
         overflow: hidden; margin-right: 10px;
         @include border-radius(2px);
         img {
