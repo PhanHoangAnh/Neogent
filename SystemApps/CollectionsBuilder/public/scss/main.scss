@@ -188,7 +188,7 @@ img {
       @include clearfix;
       .colls-img {
         position: relative;
-        float: left; width: 25px; height: 25px;
+        float: left; width: 35px; height: 35px;
         overflow: hidden; margin-right: 10px;
         @include border-radius(2px);
         img {
@@ -196,6 +196,10 @@ img {
           @include center-pos;
           width: auto;
         }
+      }
+      .colls-name {
+        position: absolute;
+        @include ver-pos; left: 45px; right: 10px;
       }
     }
   }
