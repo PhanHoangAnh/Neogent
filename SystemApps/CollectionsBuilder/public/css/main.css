@@ -1601,7 +1601,7 @@ img {
 }
 /* line 136, ../scss/main.scss */
 .create-catandbrand fieldset.scheduler-border {
-  border: 1px groove #ffff99;
+  border: #CCC solid 1px;
   padding: 0 1.4em 1.4em 1.4em;
   margin: 10px;
   -webkit-box-shadow: 0 0 0 0 #000;
@@ -1680,44 +1680,81 @@ img {
 }
 /* line 184, ../scss/main.scss */
 .create-catandbrand .connectedSortable li {
+  position: relative;
   margin: 0 5px 5px 5px;
   padding: 5px;
   cursor: pointer;
+  zoom: 1;
 }
-/* line 191, ../scss/main.scss */
+/* line 82, ../scss/_mixins.scss */
+.create-catandbrand .connectedSortable li:after {
+  content: '.';
+  display: block;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+/* line 189, ../scss/main.scss */
+.create-catandbrand .connectedSortable li .colls-img {
+  position: relative;
+  float: left;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  margin-right: 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 194, ../scss/main.scss */
+.create-catandbrand .connectedSortable li .colls-img img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: auto;
+}
+/* line 204, ../scss/main.scss */
 .create-catandbrand .content-panel .inner {
   padding-top: 32px;
 }
-/* line 194, ../scss/main.scss */
+/* line 207, ../scss/main.scss */
 .create-catandbrand .content-panel .inner, .create-catandbrand .content-panel .inner:focus, .create-catandbrand .content-panel .inner:hover,
 .create-catandbrand .content-panel .nav-tabs > li.active > a,
 .create-catandbrand .content-panel .nav-tabs > li.active > a:focus,
 .create-catandbrand .content-panel .nav-tabs > li.active > a:hover {
   background: #FFFFE0;
 }
-/* line 198, ../scss/main.scss */
+/* line 211, ../scss/main.scss */
 .create-catandbrand .content-panel .nav-tabs {
   margin-left: 10px;
   margin-right: 10px;
 }
-/* line 199, ../scss/main.scss */
+/* line 212, ../scss/main.scss */
 .create-catandbrand .content-panel .inner-item {
   margin-top: 20px;
   margin-bottom: 25px;
 }
-/* line 202, ../scss/main.scss */
+/* line 215, ../scss/main.scss */
 .create-catandbrand .content-panel .button-set {
   text-align: right;
 }
-/* line 204, ../scss/main.scss */
+/* line 217, ../scss/main.scss */
 .create-catandbrand .content-panel .button-set button {
   margin-left: 5px;
 }
-/* line 206, ../scss/main.scss */
+/* line 219, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-img, .create-catandbrand .content-panel .brand-img {
   margin-bottom: 20px;
 }
-/* line 207, ../scss/main.scss */
+/* line 220, ../scss/main.scss */
 .create-catandbrand .content-panel .brand-img {
   zoom: 1;
 }
@@ -1733,11 +1770,11 @@ img {
   font-size: 0;
   line-height: 0;
 }
-/* line 210, ../scss/main.scss */
+/* line 223, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list, .create-catandbrand .content-panel .brand-list {
   margin-bottom: 10px;
 }
-/* line 212, ../scss/main.scss */
+/* line 225, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list span, .create-catandbrand .content-panel .brand-list span {
   display: inline-block;
   background: #337ab7;
@@ -1749,18 +1786,18 @@ img {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 217, ../scss/main.scss */
+/* line 230, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list span:before, .create-catandbrand .content-panel .brand-list span:before {
   content: "\00D7";
   margin-right: 3px;
 }
-/* line 223, ../scss/main.scss */
+/* line 236, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-name, .create-catandbrand .content-panel .brand-name {
   font-size: 16px;
   display: inline-block;
   margin: 0;
 }
-/* line 224, ../scss/main.scss */
+/* line 237, ../scss/main.scss */
 .create-catandbrand .content-panel .fieldset-content {
   position: relative;
   zoom: 1;
@@ -1779,42 +1816,74 @@ img {
   font-size: 0;
   line-height: 0;
 }
-/* line 229, ../scss/main.scss */
+/* line 242, ../scss/main.scss */
 .create-catandbrand .content-panel .fieldset-content > div.button-set {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
 }
-/* line 235, ../scss/main.scss */
+/* line 248, ../scss/main.scss */
 .create-catandbrand .available-items {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 237, ../scss/main.scss */
+/* line 250, ../scss/main.scss */
 .create-catandbrand .available-items h4 {
   margin-top: 0;
 }
-/* line 238, ../scss/main.scss */
+/* line 251, ../scss/main.scss */
 .create-catandbrand .available-items.sticky {
   position: fixed;
-  top: 10px;
+  top: 50px;
   right: 0;
 }
-/* line 243, ../scss/main.scss */
+/* line 256, ../scss/main.scss */
 .create-catandbrand .available-items .nav-tabs > li.active > a, .create-catandbrand .available-items .nav-tabs > li.active > a:focus, .create-catandbrand .available-items .nav-tabs > li.active > a:hover {
   background: #FFF;
 }
-/* line 247, ../scss/main.scss */
+/* line 260, ../scss/main.scss */
 .create-catandbrand .available-items .tab-content {
   padding-top: 15px;
 }
-/* line 249, ../scss/main.scss */
+/* line 262, ../scss/main.scss */
 .create-catandbrand .available-items .panel {
   min-height: 365px;
 }
-
-/*body { border: solid 1px red;  }
-.modal-dialog.fullWidth { width: 100% !important; }*/
+/* line 265, ../scss/main.scss */
+.create-catandbrand .colls-list span[app-role="closeBnt"] {
+  display: inline-block;
+  padding: 0 5px;
+  cursor: pointer;
+}
+/* line 269, ../scss/main.scss */
+.create-catandbrand .colls-list .colls-row {
+  -moz-column-width: 18em;
+  -webkit-column-width: 18em;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+}
+/* line 275, ../scss/main.scss */
+.create-catandbrand .colls-list .colls-item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: #FFF;
+  margin-bottom: 1em;
+  border: #EEE solid 1px;
+}
+/* line 281, ../scss/main.scss */
+.create-catandbrand .colls-list .colls-item, .create-catandbrand .colls-list .colls-item img {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 282, ../scss/main.scss */
+.create-catandbrand .colls-list .colls-item .item-band {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}

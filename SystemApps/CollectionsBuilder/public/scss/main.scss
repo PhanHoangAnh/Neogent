@@ -134,7 +134,7 @@ img {
   }
 
   fieldset.scheduler-border {
-    border: 1px groove #ffff99;
+    border: #CCC solid 1px;
     padding: 0 1.4em 1.4em 1.4em;
     margin: 10px;
     @include box-shadow(0 0 0 0 #000);
@@ -182,8 +182,21 @@ img {
     list-style: none; margin: 0; padding: 5px 0 0 0;
     &, li {@include border-radius(2px);}
     li {
+      position: relative;
       margin: 0 5px 5px 5px; padding: 5px;
       cursor: pointer;
+      @include clearfix;
+      .colls-img {
+        position: relative;
+        float: left; width: 20px; height: 20px;
+        overflow: hidden; margin-right: 10px;
+        @include border-radius(2px);
+        img {
+          position: absolute;
+          @include center-pos;
+          width: auto;
+        }
+      }
     }
   }
 
@@ -237,7 +250,7 @@ img {
     h4 {margin-top: 0;}
     &.sticky {
       position: fixed;
-      top: 10px; right: 0;
+      top: 50px; right: 0;
     }
     .nav-tabs > li.active > a {
       &, &:focus, &:hover {
@@ -247,6 +260,30 @@ img {
     .tab-content {padding-top: 15px;}
   }
   .available-items .panel {min-height: 365px;}
+
+  .colls-list {
+    span[app-role="closeBnt"] {
+      display: inline-block;
+      padding: 0 5px; cursor: pointer;
+    }
+    .colls-row {
+      -moz-column-width: 18em;
+      -webkit-column-width: 18em;
+      -moz-column-gap: 1em;
+      -webkit-column-gap:1em;
+    }
+    .colls-item {
+      position: relative;
+      display: inline-block;
+      width: 100%; padding: 20px 10px 10px;
+      background: #FFF; margin-bottom: 1em;
+      border: #EEE solid 1px;
+      &, img {@include border-radius(2px);}
+      .item-band {
+        position: absolute; top: 0; right: 5px;
+      }
+    }
+  }
 
 }
 
