@@ -439,16 +439,16 @@ function changeBrandBackground(elem) {
 
     var brandGroup = getElement(elem, "brandGroup");
     currentImg = brandGroup.querySelector('[app-role="icon"]');
-    currentDataStore = null;
+    currentDataStore = brandGroup;
     //console.log("changeBrandBackground", currentImg);
     $("#m_wall").modal();
 }
 
 function updateDesc(elem) {
     var mainPad = findElem(elem, "dataHandler");
-    var colDesc = mainPad.querySelector('[ app-role = "description"]');
-    colDesc.innerHTML = elem.value;
-    mainPad["DATASTORE"]['brandDesc'] = elem.value;
+    var brandDesc = mainPad.querySelector('[ app-role = "description"]');
+    brandDesc.innerHTML = elem.value;
+    mainPad["DATASTORE"]['Desc'] = elem.value;
 }
 
 function closePop(elem) {
