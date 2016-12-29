@@ -197,6 +197,10 @@ img {
           width: auto;
         }
       }
+      .colls-name {
+        position: absolute;
+        @include ver-pos; left: 45px; right: 10px;
+      }
     }
   }
 

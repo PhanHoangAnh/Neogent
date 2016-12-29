@@ -1721,40 +1721,51 @@ img {
   transform: translate(-50%, -50%);
   width: auto;
 }
-/* line 204, ../scss/main.scss */
+/* line 200, ../scss/main.scss */
+.create-catandbrand .connectedSortable li .colls-name {
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 45px;
+  right: 10px;
+}
+/* line 208, ../scss/main.scss */
 .create-catandbrand .content-panel .inner {
   padding-top: 32px;
 }
-/* line 207, ../scss/main.scss */
+/* line 211, ../scss/main.scss */
 .create-catandbrand .content-panel .inner, .create-catandbrand .content-panel .inner:focus, .create-catandbrand .content-panel .inner:hover,
 .create-catandbrand .content-panel .nav-tabs > li.active > a,
 .create-catandbrand .content-panel .nav-tabs > li.active > a:focus,
 .create-catandbrand .content-panel .nav-tabs > li.active > a:hover {
   background: #FFFFE0;
 }
-/* line 211, ../scss/main.scss */
+/* line 215, ../scss/main.scss */
 .create-catandbrand .content-panel .nav-tabs {
   margin-left: 10px;
   margin-right: 10px;
 }
-/* line 212, ../scss/main.scss */
+/* line 216, ../scss/main.scss */
 .create-catandbrand .content-panel .inner-item {
   margin-top: 20px;
   margin-bottom: 25px;
 }
-/* line 215, ../scss/main.scss */
+/* line 219, ../scss/main.scss */
 .create-catandbrand .content-panel .button-set {
   text-align: right;
 }
-/* line 217, ../scss/main.scss */
+/* line 221, ../scss/main.scss */
 .create-catandbrand .content-panel .button-set button {
   margin-left: 5px;
 }
-/* line 219, ../scss/main.scss */
+/* line 223, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-img, .create-catandbrand .content-panel .brand-img {
   margin-bottom: 20px;
 }
-/* line 220, ../scss/main.scss */
+/* line 224, ../scss/main.scss */
 .create-catandbrand .content-panel .brand-img {
   zoom: 1;
 }
@@ -1770,11 +1781,11 @@ img {
   font-size: 0;
   line-height: 0;
 }
-/* line 223, ../scss/main.scss */
+/* line 227, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list, .create-catandbrand .content-panel .brand-list {
   margin-bottom: 10px;
 }
-/* line 225, ../scss/main.scss */
+/* line 229, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list span, .create-catandbrand .content-panel .brand-list span {
   display: inline-block;
   background: #337ab7;
@@ -1786,18 +1797,18 @@ img {
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 230, ../scss/main.scss */
+/* line 234, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-list span:before, .create-catandbrand .content-panel .brand-list span:before {
   content: "\00D7";
   margin-right: 3px;
 }
-/* line 236, ../scss/main.scss */
+/* line 240, ../scss/main.scss */
 .create-catandbrand .content-panel .cat-name, .create-catandbrand .content-panel .brand-name {
   font-size: 16px;
   display: inline-block;
   margin: 0;
 }
-/* line 237, ../scss/main.scss */
+/* line 241, ../scss/main.scss */
 .create-catandbrand .content-panel .fieldset-content {
   position: relative;
   zoom: 1;
@@ -1816,56 +1827,56 @@ img {
   font-size: 0;
   line-height: 0;
 }
-/* line 242, ../scss/main.scss */
+/* line 246, ../scss/main.scss */
 .create-catandbrand .content-panel .fieldset-content > div.button-set {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
 }
-/* line 248, ../scss/main.scss */
+/* line 252, ../scss/main.scss */
 .create-catandbrand .available-items {
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 250, ../scss/main.scss */
+/* line 254, ../scss/main.scss */
 .create-catandbrand .available-items h4 {
   margin-top: 0;
 }
-/* line 251, ../scss/main.scss */
+/* line 255, ../scss/main.scss */
 .create-catandbrand .available-items.sticky {
   position: fixed;
   top: 50px;
   right: 0;
 }
-/* line 256, ../scss/main.scss */
+/* line 260, ../scss/main.scss */
 .create-catandbrand .available-items .nav-tabs > li.active > a, .create-catandbrand .available-items .nav-tabs > li.active > a:focus, .create-catandbrand .available-items .nav-tabs > li.active > a:hover {
   background: #FFF;
 }
-/* line 260, ../scss/main.scss */
+/* line 264, ../scss/main.scss */
 .create-catandbrand .available-items .tab-content {
   padding-top: 15px;
 }
-/* line 262, ../scss/main.scss */
+/* line 266, ../scss/main.scss */
 .create-catandbrand .available-items .panel {
   min-height: 365px;
 }
-/* line 265, ../scss/main.scss */
+/* line 269, ../scss/main.scss */
 .create-catandbrand .colls-list span[app-role="closeBnt"] {
   display: inline-block;
   padding: 0 5px;
   cursor: pointer;
 }
-/* line 269, ../scss/main.scss */
+/* line 273, ../scss/main.scss */
 .create-catandbrand .colls-list .colls-row {
   -moz-column-width: 18em;
   -webkit-column-width: 18em;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
 }
-/* line 275, ../scss/main.scss */
+/* line 279, ../scss/main.scss */
 .create-catandbrand .colls-list .colls-item {
   position: relative;
   display: inline-block;
@@ -1875,13 +1886,13 @@ img {
   margin-bottom: 1em;
   border: #EEE solid 1px;
 }
-/* line 281, ../scss/main.scss */
+/* line 285, ../scss/main.scss */
 .create-catandbrand .colls-list .colls-item, .create-catandbrand .colls-list .colls-item img {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 282, ../scss/main.scss */
+/* line 286, ../scss/main.scss */
 .create-catandbrand .colls-list .colls-item .item-band {
   position: absolute;
   top: 0;
