@@ -1702,8 +1702,8 @@ img {
 .create-catandbrand .connectedSortable li .colls-img {
   position: relative;
   float: left;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   overflow: hidden;
   margin-right: 10px;
   -webkit-border-radius: 2px;
