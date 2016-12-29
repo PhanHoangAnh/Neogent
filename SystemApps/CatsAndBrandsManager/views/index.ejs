@@ -61,6 +61,24 @@
             </div>
         </div>
     </template>
+    <template id="popoverHeader">
+        <div>
+            Edit <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
+        </div>
+    </template>
+    <template id="brandDescElem">
+        <div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    Edit Brand Description
+                    <textarea app-role: "collDescription" rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
+                </div>                
+            </div>             
+            <div>
+                <button type="button" class="btn btn-primary center-block" onclick="closePop(this)">Close</button>
+            </div>
+        </div>
+    </template>
     <template id="band">
         <span class="item-band" app-role="bandCover"><span onclick="deleteCatBrands(this)" class="x-close">&times;</span><span app-role="band"></span></span>
     </template>
@@ -109,21 +127,30 @@
     </template>
     <template id="brandTemp">
         <div class="row inner-item" app-role="brandGroup">
-            <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2">
+            <hr style = "border-top: 1px solid #abab66;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <legend app-role="setsName">BrandNames</legend>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="brand-img"><img src='../img/logo.png' app-role="icon"></div>
             </div>
-            <div class="col-xs-9 col-sm-9 col-md-10 col-lg-10">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <legend app-role="setsName">BrandNames</legend>
-                </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" app-rold = "brandDesc">
+                     <p class="cat-name">Description</p>
+                     <div app-role = "description"></div>
+                     <div class="row cat-name">
+                          <a app-role = "brandEdit">Edit Description</a>
+                     </div>
+                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 brand-list">
+                    <hr style = "border-top: 1px solid #abab66;">
                     <p class="cat-name">Categories</p>
                     <div app-role="cats"></div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="button-set">
-                        <button type="button" id="changeBrandImage" class="btn btn-primary" onclick="changeBrandBackground(this)">Change Brand background </button>
-                    </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="button-set">
+                    <button type="button" id="changeBrandImage" class="btn btn-primary center-block" onclick="changeBrandBackground(this)">Change Brand background </button>
                 </div>
             </div>
         </div>

@@ -1800,7 +1800,7 @@ img {
 /* line 238, ../scss/main.scss */
 .create-catandbrand .available-items.sticky {
   position: fixed;
-  top: 10px;
+  top: 50px;
   right: 0;
 }
 /* line 243, ../scss/main.scss */

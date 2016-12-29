@@ -381,7 +381,6 @@ function generateCatGroups(groups) {
 
             for (var j = 0; j < brandnames[n]['categories'].length; j++) {
                 (function(m) {
-                    console.log(m);
                     var brandcats = document.getElementById("smallCat").content;
                     var span = brandcats.querySelector('[app-role = "band"]')
                     span.id = "catContent_" + n;
@@ -389,6 +388,29 @@ function generateCatGroups(groups) {
                     cats.appendChild(document.importNode(brandcats, true));
                 })(j);
             }
+
+            var brandGroup = getElement(cats, "brandGroup");
+            brandGroup["DATASTORE"] = {}
+            brandGroup["DATASTORE"]["name"] = item['name'];
+            brandGroup["DATASTORE"]['cats'] = item['cats'];
+            brandGroup["DATASTORE"]['img'] = item['img'];
+            brandGroup.setAttribute("app-role", 'dataHandler');
+            var brandEdit = brandGroup.querySelector('[app-role = "brandEdit"]');
+            $(brandEdit).popover({
+                title: function() {
+                    var popoverHeader = document.getElementById('popoverHeader').content;
+                    return document.importNode(popoverHeader, true);
+                },
+                html: true,
+                content: function() {
+                    var brandDescElem = document.getElementById("brandDescElem").content;
+                    return document.importNode(brandDescElem, true);
+                },
+                trigger: 'none'
+            });
+            brandEdit.addEventListener('click', function() {
+                $(brandEdit).popover('toggle');
+            }, false);
 
         }
     }
@@ -420,4 +442,23 @@ function changeBrandBackground(elem) {
     currentDataStore = null;
     //console.log("changeBrandBackground", currentImg);
     $("#m_wall").modal();
+}
+
+function updateDesc(elem) {
+    var mainPad = findElem(elem, "dataHandler");
+    var colDesc = mainPad.querySelector('[ app-role = "description"]');
+    colDesc.innerHTML = elem.value;
+    mainPad["DATASTORE"]['brandDesc'] = elem.value;
+}
+
+function closePop(elem) {
+    $(elem).parents(".popover").popover('hide');
+}
+
+function findElem(el, att) {
+    if (el.getAttribute("app-role") !== att) {
+        return findElem(el.parentNode, att);
+    } else {
+        return el;
+    }
 }
