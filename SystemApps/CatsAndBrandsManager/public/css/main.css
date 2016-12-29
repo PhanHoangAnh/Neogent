@@ -1485,7 +1485,7 @@ img {
 }
 /* line 36, ../scss/main.scss */
 .attribute-sets fieldset.scheduler-border {
-  border: 1px groove #ddd;
+  border: #CCC solid 1px;
   padding: 0 1.4em 1.4em 1.4em;
   margin: 0 0 1.5em 0;
   -webkit-box-shadow: 0px 0px 0px 0px #000;
@@ -1823,7 +1823,7 @@ img {
 /* line 240, ../scss/main.scss */
 .create-catandbrand .available-items.sticky {
   position: fixed;
-  top: 10px;
+  top: 50px;
   right: 0;
 }
 /* line 245, ../scss/main.scss */
