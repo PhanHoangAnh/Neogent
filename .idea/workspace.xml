@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7b9e2ab-7b7c-4890-bbeb-c92f689d641c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CollectionsBuilder/public/scss/.sass-cache/3207b6e5b40c4650c64d95c16fc92ad4fcbad5bd/main.scssc" afterPath="$PROJECT_DIR$/SystemApps/CollectionsBuilder/public/scss/.sass-cache/3207b6e5b40c4650c64d95c16fc92ad4fcbad5bd/main.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CollectionsBuilder/public/css/main.css" afterPath="$PROJECT_DIR$/SystemApps/CollectionsBuilder/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SystemApps/CollectionsBuilder/public/scss/main.scss" afterPath="$PROJECT_DIR$/SystemApps/CollectionsBuilder/public/scss/main.scss" />
-    </list>
+    <list default="true" id="d7b9e2ab-7b7c-4890-bbeb-c92f689d641c" name="Default" comment="" />
     <ignored path="Neogent.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
