@@ -146,6 +146,39 @@ function createNewCollectionGroup(name, collection) {
         var collDesc = rItem.querySelector('[app-role="colDesc"]');
         collDesc.innerHTML = collection["collDesc"];
         rItem["DATASTORE"]['collDesc'] = collection["collDesc"];
+        var products = collection["productLists"];
+        var items = shopInfo.items;
+        products.forEach(function(obj) {
+            var span = document.getElementById("band").content;
+            var prName, prId;
+            var prImg = "imgs/gamebanner.jpg";
+            items.forEach(function(item) {
+                var atts = item['atts'];
+                if (item.systemSKU == obj) {
+                    console.log("match item");
+                    prId = obj;
+                    atts.forEach(function(att) {
+                        //get information of product base on systemSKU;
+                        var isImg = false;
+                        if (att['sysId'] == "sysProductName") {
+                            prName = att["InputValue"];
+                        }
+                        if (att['data-controlType'] == 'image' && isImg == false) {
+                            isImg = true;
+                            prImg = att['InputValue'];
+                        }
+
+                    })
+                }
+            });
+            var productName = span.querySelector('[app-role="band"]')
+            productName.innerHTML = prName
+            productName.id = prImg;
+            var productImage = span.querySelector('[app-role = "productImg"]');
+            productImage.setAttribute('src', prImg)
+            var productLists = rItem.querySelector('[app-role="product"]');
+            productLists.appendChild(document.importNode(span, true));
+        });
     }
 
     $(rItem).sortable({
