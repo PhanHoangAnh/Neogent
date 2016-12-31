@@ -88,7 +88,9 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                 }
                 shop.collections = savedData;
                 shop.markModified('collections');
-                shop.markModified('collections.$.img');
+                shop.markModified('collections.img');
+
+                shop.markModified('collections.$.productLists');
             }
             shop.save(function(error) {
                 if (error) {

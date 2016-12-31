@@ -147,35 +147,13 @@ function createNewCollectionGroup(name, collection) {
         collDesc.innerHTML = collection["collDesc"];
         rItem["DATASTORE"]['collDesc'] = collection["collDesc"];
         var products = collection["productLists"];
-        var items = shopInfo.items;
         products.forEach(function(obj) {
             var span = document.getElementById("band").content;
-            var prName, prId;
-            var prImg = "imgs/gamebanner.jpg";
-            items.forEach(function(item) {
-                var atts = item['atts'];
-                if (item.systemSKU == obj) {
-                    console.log("match item");
-                    prId = obj;
-                    atts.forEach(function(att) {
-                        //get information of product base on systemSKU;
-                        var isImg = false;
-                        if (att['sysId'] == "sysProductName") {
-                            prName = att["InputValue"];
-                        }
-                        if (att['data-controlType'] == 'image' && isImg == false) {
-                            isImg = true;
-                            prImg = att['InputValue'];
-                        }
-
-                    })
-                }
-            });
             var productName = span.querySelector('[app-role="band"]')
-            productName.innerHTML = prName
-            productName.id = prImg;
-            var productImage = span.querySelector('[app-role = "productImg"]');
-            productImage.setAttribute('src', prImg)
+            productName.innerHTML = obj["name"];
+            productName.id = obj['id'];
+            var productImg = span.querySelector('[app-role="productImg"]');
+            productImg.setAttribute('src', obj['img']);
             var productLists = rItem.querySelector('[app-role="product"]');
             productLists.appendChild(document.importNode(span, true));
         });
@@ -189,14 +167,20 @@ function createNewCollectionGroup(name, collection) {
 
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
+            var tempObj = {};
             s.innerHTML = elem.innerHTML;
-            rItem["DATASTORE"]['productLists'].push(elem.id);
+            tempObj.name = elem.innerHTML;
+            tempObj.id = elem.id;
+
             var productImg = span.querySelector('[app-role="productImg"]');
             if (elem["PRODUCT_IMAGE"]) {
                 productImg.setAttribute('src', elem['PRODUCT_IMAGE']);
+                tempObj.img = elem['PRODUCT_IMAGE'];
             } else {
                 productImg.setAttribute('src', "imgs/gamebanner.jpg");
+                tempObj.img = "imgs/gamebanner.jpg";
             }
+            rItem["DATASTORE"]['productLists'].push(tempObj);
             var productLists = rItem.querySelector('[app-role="product"]');
             productLists.appendChild(document.importNode(span, true));
 
@@ -338,8 +322,28 @@ function attImgRatio_change(evt, elem) {
 }
 
 function deleteProduct(elem) {
+
     var productElem = findElem(elem, "productElement");
+    var systemSKU = productElem.querySelector('[app-role="band"]').id;
+    if (!systemSKU) {
+        systemSKU = "";
+    }
+    var dataHandler = findElem(productElem, "dataHandler");
+    var products = dataHandler["DATASTORE"]["productLists"];
+    var deleteObj;
+    dataHandler["DATASTORE"]["productLists"].forEach(function(obj) {
+        // console.log('systemSKU: ', systemSKU, ' obj.id: ', obj.id, obj.id == systemSKU);
+        if (obj.id == systemSKU && obj.name == productElem.querySelector('[app-role="band"]').innerHTML) {
+            deleteObj = obj;
+            return false;
+        }
+    });
+    console.log('deleteObj: ', deleteObj);
+    if (products instanceof Array && products.indexOf(deleteObj) !== -1) {
+        products.splice(products.indexOf(deleteObj), 1);
+    }
     productElem.parentNode.removeChild(productElem);
+
 }
 
 function updateDesc(elem) {
@@ -377,6 +381,7 @@ function saveCollection() {
     });
     var endpoint = 'update';
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, savedData, fn_cb);
+    console.log(savedData);
 
     function fn_cb(returnObj) {
         console.log(returnObj)
@@ -389,7 +394,6 @@ function reloadCollections(collections) {
     if (collections instanceof Array) {
         collections.forEach(function(coll) {
             var result = createNewCollectionGroup(coll['name'], coll);
-            console.log(result);
         })
     }
 }
