@@ -2,6 +2,97 @@ var currentImg;
 var currentDataStore;
 var connectedGroup = [];
 
+function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: fbToken
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+    };
+    // Make post request to getToken Endpoint
+    var currentUrl = '../../getToken';
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        method: 'POST',
+        data: json_data,
+        // data: compObj,
+        complete: function(data, status, jqXHR) {
+            if (!data.responseJSON.errNum) {
+                var encrypted_app_token = data.responseJSON.encrypted_app_token;
+                var _app_token = cryptoUtil.aesDecryptor(encrypted_app_token, aes_key);
+                app_token = JSON.parse(_app_token).app_token;
+                localStorage.setItem("app_token", app_token);
+                //for testing only                
+                if (fn_cb) {
+                    fn_cb(app_token);
+                }
+            }
+        }
+    });
+}
+
+function checkToken(uid, token, RSAPublicKey, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: token
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+    };
+    var currentUrl = '../../checkToken';
+    $.ajax({
+        // url: './userToken',
+        url: currentUrl,
+        cache: false,
+        method: 'POST',
+        headers: { "cache-control": "no-cache" },
+        data: json_data,
+        // contentType:'application/json',
+        complete: function(data, status, jqXHR) {
+            // console.log(data);
+            // if (data.status == 401 || !data.responseJSON.auth) {
+            //     window.location = "/";
+            // }
+            if (fn_cb) {
+                fn_cb(data.responseJSON);
+            }
+
+        }
+    });
+}
+
+function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayload, fn_cb) {
+    var _data = {
+        userName: uid,
+        password: token,
+        data: payload
+    };
+    aes_key = cryptoUtil.generateAESKey();
+    var json_data = {
+        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key),
+        exPayload: exPayload
+    };
+    $.ajax({
+        // url: './userToken',
+        url: endpoint,
+        cache: false,
+        method: 'POST',
+        contentType: "application/json; charset=utf-8",
+        headers: { "cache-control": "no-cache" },
+        data: JSON.stringify(json_data),
+        // contentType:'application/json',
+        complete: function(data, status, jqXHR) {
+            if (fn_cb) {
+                fn_cb(data.responseJSON);
+            }
+        }
+    });
+}
+
 function openModal(event, elem) {
     $("#myModal").modal();
     baseLine = getBaseLine(elem);
@@ -15,18 +106,17 @@ function updateProductLists(products) {
         var atts = obj.atts;
         var imgAtt;
         var systemSKU = obj['systemSKU'];
-        console.log('systemSKU', systemSKU);
+
         atts.forEach(function(att) {
             var isImg = false;
             if (att['sysId'] == "sysProductName") {
                 productName.innerHTML = att["InputValue"];
-                console.log(att['InputValue']);
+
             }
             if (att['data-controlType'] == 'image' && isImg == false) {
                 isImg = true;
                 productImage.setAttribute('src', att['InputValue']);
                 imgAtt = att['InputValue'];
-                console.log(att['InputValue']);
             }
         });
         productName.id = systemSKU;
@@ -38,7 +128,7 @@ function updateProductLists(products) {
     })
 }
 
-function createNewCategoriesGroup(name) {
+function createNewCategoriesGroup(name, collection) {
     // for create categories function
     var catTemp = document.getElementById("collsTemp").content;
     baseLine.parentNode.insertBefore(document.importNode(catTemp, true), baseLine);

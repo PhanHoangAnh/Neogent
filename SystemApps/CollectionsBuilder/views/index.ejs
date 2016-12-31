@@ -66,6 +66,15 @@
             <img app-role="AppIcon">
         </a>
     </template>
+    <template id="FbPad">
+        <div class="user-account">
+            <div class="fb-avatar">
+                <span class="username-text" app-role="fbName"></span>
+                <span class="avatar-img"><img app-role = "fbAvatar">
+            </span>
+            </div>
+        </div>
+    </template>
     <template id = "productTemplate">
         <li class="ui-state-highlight row" app-role="product">
             <div class="colls-img" ><img app-role = "productImage" src="imgs/gamebanner.jpg"></div>
@@ -296,7 +305,9 @@
     <!--  -->
     <script type="text/javascript" src="js/c2runtime.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+    <script src="js/Crypto/cryptoUtils.js"></script>
     <script type="text/javascript" src="js/CollsBuilder/collsbuilder.js"></script>
+    <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 </body>
 <script type="text/javascript">
 $(function() {
@@ -329,12 +340,14 @@ $(function() {
     });;
 });
 var shopInfo
+var RSAPublicKey;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
     shopInfo = <%- JSON.stringify(shopInfo) %>
+    RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
     console.log("shopInfo", shopInfo)
 
     LoadApp();
@@ -359,6 +372,46 @@ $(document).ready(function() {
             root.appendChild(document.importNode(AppTemplate, true));
         }
     };
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+
+    function getStatus(objFb) {
+        // console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            systoken = localStorage.getItem("app_token");
+            if (systoken) {
+                checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
+            } else {
+                getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            }
+
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));
+
+        }
+    }
+
+    function afterGetToken(token) {
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+
+    function afterCheckToken(result) {
+        //console.log(result)
+        if (result.errNum != 0) {
+            getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            return;
+        }
+    }
 
     $("#catLists").sortable({
         connectWith: ".dynamic"
