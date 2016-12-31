@@ -7,9 +7,39 @@ function openModal(event, elem) {
     baseLine = getBaseLine(elem);
 }
 
+function updateProductLists(products) {
+    products.forEach(function(obj) {
+        var productTemplate = document.getElementById("productTemplate").content;
+        var productImage = productTemplate.querySelector('[app-role = "productImage"]');
+        var productName = productTemplate.querySelector('[app-role="productName"]');
+        var atts = obj.atts;
+        var imgAtt;
+        var systemSKU = obj['systemSKU'];
+        console.log('systemSKU', systemSKU);
+        atts.forEach(function(att) {
+            var isImg = false;
+            if (att['sysId'] == "sysProductName") {
+                productName.innerHTML = att["InputValue"];
+                console.log(att['InputValue']);
+            }
+            if (att['data-controlType'] == 'image' && isImg == false) {
+                isImg = true;
+                productImage.setAttribute('src', att['InputValue']);
+                imgAtt = att['InputValue'];
+                console.log(att['InputValue']);
+            }
+        });
+        productName.id = systemSKU;
+        var catLists = document.getElementById('catLists');
+        catLists.appendChild(document.importNode(productTemplate, true));
+        var rItem = document.getElementById(systemSKU);
+        rItem['PRODUCT_IMAGE'] = imgAtt;
 
+    })
+}
 
 function createNewCategoriesGroup(name) {
+    // for create categories function
     var catTemp = document.getElementById("collsTemp").content;
     baseLine.parentNode.insertBefore(document.importNode(catTemp, true), baseLine);
     var rItem = previousElementSibling(baseLine);
@@ -22,9 +52,20 @@ function createNewCategoriesGroup(name) {
     $(rItem).sortable({
         receive: function(e, ui) {
             ui.sender.sortable("cancel");
+            var elem = ui.item[0].querySelector('[app-role = "productName"]');
+            var systemSKU = elem.id;
+
+            console.log(systemSKU);
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
-            s.innerHTML = ui.item[0].querySelector('[app-role="dataContent"]').innerHTML;
+            s.innerHTML = elem.innerHTML;
+            rItem["DATASTORE"]['productLists'].push(elem.id);
+            var productImg = span.querySelector('[app-role="productImg"]');
+            if (elem["PRODUCT_IMAGE"]) {
+                productImg.setAttribute('src', elem['PRODUCT_IMAGE']);
+            } else {
+                productImg.setAttribute('src', "imgs/gamebanner.jpg");
+            }
             var productLists = rItem.querySelector('[app-role="product"]');
             productLists.appendChild(document.importNode(span, true));
 

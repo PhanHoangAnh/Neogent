@@ -78,8 +78,11 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
-        if (err) {
-
+        if (err || !shop) {
+            var objResult = {};
+            objResult.status = -10
+            objResult.err = error;
+            objResult.return_id = null;
         } else {
             var savedData = req.body.exPayload;
             var catGroups = [];

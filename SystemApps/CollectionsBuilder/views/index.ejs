@@ -66,6 +66,12 @@
             <img app-role="AppIcon">
         </a>
     </template>
+    <template id = "productTemplate">
+        <li class="ui-state-highlight row" app-role="product">
+            <div class="colls-img" ><img app-role = "productImage" src="imgs/gamebanner.jpg"></div>
+            <div class="colls-name" app-role="productName">Item 3</div>
+        </li>
+    </template>
     <template id="popoverHeader">
         <div>
             Edit <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
@@ -78,15 +84,15 @@
                     Edit Collection's Name
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <input type="text" style = "width: 100%;" oninput="updateName(this)" app-role="nameInput">
+                    <input type="text" style="width: 100%;" oninput="updateName(this)" app-role="nameInput">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     Edit Collection's Description
                     <textarea app-role: "collDescription" rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
-                </div>                
-            </div>             
+                </div>
+            </div>
             <div>
                 <button type="button" class="btn btn-primary center-block" onclick="closePop(this)">Close</button>
             </div>
@@ -157,29 +163,29 @@
                         <!-- <p>Listing droppable Products here</p> -->
                         <ul id="catLists" class="connectedSortable">
                             <li class="ui-state-highlight row" app-role="product">
-                                <div class="colls-img"><img src="imgs/gamebanner.jpg" ></div>
-                                <div class="colls-name" app-role="dataContent">Item 1</div>
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="productName">Item 1</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
-                                <div class="colls-img"><img src="imgs/gamebanner.jpg" ></div>
-                                <div class="colls-name" app-role="dataContent">Item 2</div>
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="productName">Item 2</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
-                                <div class="colls-img"><img src="imgs/gamebanner.jpg" ></div>
-                                <div class="colls-name" app-role="dataContent">Item 3</div>
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="productName">Item 3</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
-                                <div class="colls-img"><img src="imgs/gamebanner.jpg" ></div>
-                                <div class="colls-name" app-role="dataContent">Item 4</div>
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="productName">Item 4</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
-                                <div class="colls-img"><img src="imgs/gamebanner.jpg" ></div>
-                                <div class="colls-name" app-role="dataContent">Item 5</div>
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="productName">Item 5</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
-                                <div class="colls-img"><img src="imgs/gamebanner.jpg" ></div>
-                                <div class="colls-name" app-role="dataContent">Item 6</div>
-                            </li>                           
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="productName">Item 6</div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -356,7 +362,8 @@ $(document).ready(function() {
 
     $("#catLists").sortable({
         connectWith: ".dynamic"
-    })
+    });
+    updateProductLists(shopInfo.items);
 
 });
 

@@ -56,7 +56,7 @@ function homeEndPoint(req, res, next) {
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
-        if (err) {
+        if (err || !shop) {
             // console.log("Error from Mongoose:")
         } else {
             var customElem = systemAttribute.system;
@@ -100,7 +100,7 @@ router.get("/getOptionSets", function(req, res, next) {
     var optionSets = mongoose.model('OptionSets');
     var query = { shopName: req.shopname };
     optionSets.find(query, function(err, doc) {
-        if (err) {
+        if (err || !doc) {
             objResult.status = 4;
             objResult.err = err;
             res.send(objResult);
@@ -136,7 +136,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
             if (exPayload[i]["InputValue"] && exPayload[i]["InputValue"].indexOf("data:image/png;base64") !== -1) {
                 var result = writeBase64ImageSync(filePath, exPayload[i]["InputValue"]);
                 if (result) {
-                    exPayload[i]["InputValue"] = req.shopname + "/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";
+                    exPayload[i]["InputValue"] = '/' + req.shopname + "/imgs/" + systemSKU + "_" + exPayload[i]["sysId"].toString() + ".png";
                 }
             }
         }
@@ -147,7 +147,7 @@ router.post("/updateProduct", checkToken, checkAuth, function(req, res, next) {
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
-        if (err) {
+        if (err || !shop) {
             // console.log("Error from Mongoose:")
         } else {
             if (isAddNewItem) {
@@ -337,7 +337,7 @@ function updateCategoryAndBrandName(shop, product) {
     var Shops = mongoose.model('Shops');
     // find Shops via Shops Name
     Shops.findOne({ shopname: shop }, function(err, shop) {
-        if (err) {
+        if (err || !shop) {
             return;
         }
         var categories = shop.categories
@@ -443,9 +443,9 @@ function updateCategoryAndBrandName(shop, product) {
         });
         // List of objects which contain sysSKU in oldBrandNameContainSKU only, not in pBrandValues
         var neededModifyBns = oldBrandNameContainSKU.filter(function(obj) {
-            if(obj.name){
+            if (obj.name) {
                 return pBrandValues.indexOf(obj.name) == -1;
-            }            
+            }
         });
         // Only in pBrandValues;
         var newBns = pBrandValues.filter(function(obj) {

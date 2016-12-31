@@ -349,7 +349,7 @@ function reloadProductAtts(object) {
             if (productControls[i].getAttribute("data-controltype") == "imgMask") {
                 var img = document.createElement('img');
                 img.setAttribute('app-img', true);
-                img.setAttribute('src', "/" + productControls[i]["DATASTORE"]["InputValue"]);
+                img.setAttribute('src', productControls[i]["DATASTORE"]["InputValue"]);
                 img.style.position = "absolute";
                 productControls[i].parentNode.insertBefore(img, productControls[i]);
             }

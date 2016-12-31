@@ -53,7 +53,7 @@
         </div>
     </div>
     <template id="band">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" app-role="productElement">
+        <div class="colls-item" app-role="productElement">
             <span class="item-band">
                 <span app-role = "closeBnt" onclick="deleteProduct(this)" class="x-close">&times;</span>
             </span>
@@ -66,14 +66,33 @@
             <img app-role="AppIcon">
         </a>
     </template>
+    <template>
+        <li class="ui-state-highlight row" app-role="product">
+            <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+            <div class="colls-name" app-role="dataContent">Item 3</div>
+        </li>
+    </template>
     <template id="popoverHeader">
         <div>
-            Edit Description <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
+            Edit <a href="#" class="close" data-dismiss="alert" onclick="closePop(this)">×</a>
         </div>
     </template>
     <template id="collDescElem">
         <div>
-            <textarea app-role: "collDescription" rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    Edit Collection's Name
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" style="width: 100%;" oninput="updateName(this)" app-role="nameInput">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    Edit Collection's Description
+                    <textarea app-role: "collDescription" rows="10" cols="29" oninput="updateDesc(this)" app-role="descInput"></textarea>
+                </div>
+            </div>
             <div>
                 <button type="button" class="btn btn-primary center-block" onclick="closePop(this)">Close</button>
             </div>
@@ -95,7 +114,7 @@
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <div class="colls-list">
                         <p class="cat-name">Products</p>
-                        <div app-role="product" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                        <div app-role="product" class="colls-row"></div>
                     </div>
                 </div>
             </div>
@@ -141,16 +160,32 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h4>Available Products</h4>
-                        <!-- <p>Listing droppable categories here</p> -->
+                        <!-- <p>Listing droppable Products here</p> -->
                         <ul id="catLists" class="connectedSortable">
-                            <li class="ui-state-highlight" app-role="product">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> <img src="imgs/CatLogo.png" class="logo"></div>
-                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">Item</div>
+                            <li class="ui-state-highlight row" app-role="product">
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="dataContent">Item 1</div>
                             </li>
-                            <li class="ui-state-highlight" app-role="product">Item 2</li>
-                            <li class="ui-state-highlight" app-role="product">Item 3</li>
-                            <li class="ui-state-highlight" app-role="product">Item 4</li>
-                            <li class="ui-state-highlight" app-role="product">Item 5</li>
+                            <li class="ui-state-highlight row" app-role="product">
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="dataContent">Item 2</div>
+                            </li>
+                            <li class="ui-state-highlight row" app-role="product">
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="dataContent">Item 3</div>
+                            </li>
+                            <li class="ui-state-highlight row" app-role="product">
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="dataContent">Item 4</div>
+                            </li>
+                            <li class="ui-state-highlight row" app-role="product">
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="dataContent">Item 5</div>
+                            </li>
+                            <li class="ui-state-highlight row" app-role="product">
+                                <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
+                                <div class="colls-name" app-role="dataContent">Item 6</div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -327,7 +362,8 @@ $(document).ready(function() {
 
     $("#catLists").sortable({
         connectWith: ".dynamic"
-    })
+    });
+    updateProductLists(shopInfo.items);
 
 });
 
@@ -342,7 +378,7 @@ window.onscroll = function() {
 };
 
 function myFunction() {
-    if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
         document.getElementById("availableItems").classList.add("sticky");
     } else {
         document.getElementById("availableItems").classList.remove("sticky");

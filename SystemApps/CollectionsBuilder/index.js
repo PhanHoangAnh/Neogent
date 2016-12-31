@@ -39,42 +39,26 @@ objResult.err = null;
 objResult.return_id = null;
 
 router.get('/', function(req, res, next) {
-    var Shops = mongoose.model('Shops');
-    Shops.findOne({ shopname: req.shopname }, function(err, shop) {
-        if (err || !shop) {
-            res.sendStatus(404);
-            return;
-        } else {
-            var shopInfo = {
-                avatars: shop.avatars,
-                longitude: shop.longitude,
-                latitude: shop.latitude,
-                shopname: shop.shopname,
-                showName: shop.showName,
-                slogan: shop.slogan,
-                companyName: shop.companyName,
-                contact_phone: shop.contact_phone,
-                contact_email: shop.contact_email,
-                address: shop.address,
-                categories: shop.categories.map(function(obj) {
-                    return obj["name"];
-                }),
-                brandNames: shop.brandNames.map(function(obj) {
-                    return obj["name"];
-                })
-            };
-            res.render('index', {
-                title: 'Hello, this is template Application of : ' + req.shopname,
-                data: setting,
-                RSApublicKey: keyPair.public,
-                shopInfo: shopInfo
-            });
-        }
-    });
+
+    // var shop = getFlatShopProducts('convit');
+    // console.log('shop', shop);
+
+    getFlatShopProducts(req.shopname, getFlatProduct);
+    function getFlatProduct(err, shopInfo) {
+        console.log(err);
+        console.log(shopInfo);
+        res.render('index', {
+            title: 'Hello, this is template Application of : ' + req.shopname,
+            data: setting,
+            RSApublicKey: keyPair.public,
+            shopInfo: shopInfo
+        });
+    }
+
 });
 
-router.post("/update",function(req,res,next){
-    
+router.post("/update", function(req, res, next) {
+
 })
 
 
