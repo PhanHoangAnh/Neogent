@@ -308,7 +308,7 @@ function saveCatAndBrands() {
     })
 
     var endpoint = 'update';
-    console.log("saveDataStores: ", saveDataStores);
+    // console.log("saveDataStores: ", saveDataStores);
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
 

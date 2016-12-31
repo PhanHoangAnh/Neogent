@@ -128,7 +128,7 @@ function updateProductLists(products) {
     })
 }
 
-function createNewCategoriesGroup(name, collection) {
+function createNewCollectionGroup(name, collection) {
     // for create categories function
     var catTemp = document.getElementById("collsTemp").content;
     baseLine.parentNode.insertBefore(document.importNode(catTemp, true), baseLine);
@@ -138,6 +138,15 @@ function createNewCategoriesGroup(name, collection) {
     rItem["DATASTORE"] = {}
     rItem["DATASTORE"]["name"] = name;
     rItem["DATASTORE"]['productLists'] = [];
+    if (collection) {
+        rItem["DATASTORE"]['productLists'] = collection["productLists"];
+        var image = rItem.querySelector('[app-role="collectionImg"]');
+        image.setAttribute('src', collection['img']);
+        rItem["DATASTORE"]['img'] = collection['img'];
+        var collDesc = rItem.querySelector('[app-role="colDesc"]');
+        collDesc.innerHTML = collection["collDesc"];
+        rItem["DATASTORE"]['collDesc'] = collection["collDesc"];
+    }
 
     $(rItem).sortable({
         receive: function(e, ui) {
@@ -145,7 +154,6 @@ function createNewCategoriesGroup(name, collection) {
             var elem = ui.item[0].querySelector('[app-role = "productName"]');
             var systemSKU = elem.id;
 
-            console.log(systemSKU);
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
             s.innerHTML = elem.innerHTML;
@@ -214,7 +222,7 @@ function createNewCategoriesGroup(name, collection) {
 
 function createNew() {
     var catName = document.getElementById("catName").value;
-    createNewCategoriesGroup(catName);
+    createNewCollectionGroup(catName);
 }
 
 function getBaseLine(elem) {
@@ -324,5 +332,31 @@ function findElem(el, att) {
         return findElem(el.parentNode, att);
     } else {
         return el;
+    }
+}
+
+//business region
+function saveCollection() {
+    var dataHandlers = document.querySelectorAll('[app-role="dataHandler"]');
+    var savedData = [];
+    dataHandlers.forEach(function(obj) {
+        savedData.push(obj['DATASTORE']);
+    });
+    var endpoint = 'update';
+    postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, savedData, fn_cb);
+
+    function fn_cb(returnObj) {
+        console.log(returnObj)
+    }
+}
+
+function reloadCollections(collections) {
+    elem = document.getElementById("createCat");
+    baseLine = getBaseLine(elem);
+    if (collections instanceof Array) {
+        collections.forEach(function(coll) {
+            var result = createNewCollectionGroup(coll['name'], coll);
+            console.log(result);
+        })
     }
 }

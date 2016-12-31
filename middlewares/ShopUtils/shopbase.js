@@ -23,6 +23,7 @@ function getFlatShopProducts(shopname, fn_cb) {
                 address: shop.address,
                 categories: shop.categories,
                 brandNames: shop.brandNames,
+                collections: shop.collections,
             };
             var items = shop.items;
             var flatItems = []
