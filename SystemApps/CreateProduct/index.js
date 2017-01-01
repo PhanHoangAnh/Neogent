@@ -246,8 +246,9 @@ router.get("/:systemSKU", function(req, res, next) {
             next();
         }
     });
-}, homeEndPoint)
-router.delete("/", checkToken, checkAuth, deleteProduct)
+}, homeEndPoint);
+
+router.delete("/", checkToken, checkAuth, deleteProduct);
 
 router.delete("/:systemSKU", checkToken, checkAuth, deleteProduct);
 
@@ -257,10 +258,7 @@ function deleteProduct(req, res, next) {
     if (!systemSKU) {
         return
     }
-    var item = {};
-    item.systemSKU = systemSKU;
-    // updateCategory(req.shopname, item);
-    // updateBrandName(req.shopname, item);
+
     var Shops = mongoose.model('Shops');
     Shops.update({
         shopname: req.shopname
@@ -272,6 +270,7 @@ function deleteProduct(req, res, next) {
             objResult.err = null;
             objResult.return_id = systemSKU;
             res.send(objResult);
+            //            
             var nullProduct = {};
             // update data
             nullProduct.systemSKU = systemSKU;
@@ -286,7 +285,7 @@ function deleteProduct(req, res, next) {
             sysBrandName["attributes"]["sysId"] = 'sysBrandName';
             sysBrandName['InputValue'] = [];
             nullProduct.productAtttributes.push(sysBrandName);
-            updateCategoryAndBrandName(req.shopname, nullProduct);
+            updateCategoryAndBrandName(req.shopname, nullProduct, true);
             return;
         } else {
             objResult.status = -3
@@ -297,7 +296,6 @@ function deleteProduct(req, res, next) {
         }
     });
 }
-
 
 // Business Region
 function writeBase64ImageSync(fileName, imgData) {
@@ -313,7 +311,7 @@ function writeBase64ImageSync(fileName, imgData) {
 
 }
 
-function updateCategoryAndBrandName(shop, product) {
+function updateCategoryAndBrandName(shop, product, isDel) {
     // CATEGORIES UPDATE REGION
     // template of singgle category
     // {
@@ -501,8 +499,22 @@ function updateCategoryAndBrandName(shop, product) {
             if (brandNames.indexOf(item) !== -1) {
                 brandNames[brandNames.indexOf(item)]["categories"] = realFlatCats;
             }
-        })
+        });
+        // update collection in case of product is deleted
+        if (isDel) {
+            var collections = shop.collections;
+            var colls = collections.filter(function(col) {
+                return col.productLists.filter(function(pr) {
+                    if (pr.id == product.systemSKU) {
+                        col.productLists.splice(col.productLists.indexOf(pr.id), 1)
+                    };
+                    return;
+                });
+            });
 
+            shop.collections = colls;
+            //console.log(colls);
+        };
         shop.markModified('mixed.type');
         shop.markModified('categories');
         shop.markModified('categories.$.products');
@@ -510,6 +522,8 @@ function updateCategoryAndBrandName(shop, product) {
         shop.markModified('brandNames');
         shop.markModified('brandNames.$.products');
         shop.markModified('brandNames.$.categories');
+        shop.markModified('collections')
+        shop.markModified('collections.$.productLists');
 
         shop.save(function(err) {
             console.log("check err: ", err);
