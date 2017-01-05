@@ -286,6 +286,7 @@ function addMoreBackgroundImg(el, image) {
         item.parentNode.removeChild(item);
     }, false);
     if (image) {
+        console.log("image: ", image);
         img.setAttribute('src', window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + image);
     }
 }
@@ -373,7 +374,7 @@ function loadShopInfo(shopInfo) {
             var addMoreBG = document.getElementById('AddmoreBackrgound');
             shopInfo[i].filter(function(obj) {
                 addMoreBackgroundImg(addMoreBG, obj);
-            })            
+            })
         } else if (i == "avatars") {
             var imgPath = window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/" + shopInfo[i];
             document.getElementById('logo').setAttribute('src', imgPath);

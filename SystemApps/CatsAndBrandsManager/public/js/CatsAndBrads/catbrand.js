@@ -389,7 +389,7 @@ function generateCatGroups(groups) {
                 })(j);
             }
 
-            var brandGroup = getElement(cats, "brandGroup");
+            var brandGroup = getElement(cats, "brandHandler");
             brandGroup["DATASTORE"] = {}
             brandGroup["DATASTORE"]["name"] = brandnames[n]['name'];
             brandGroup["DATASTORE"]['categories'] = brandnames[n]['categories'];
@@ -446,7 +446,7 @@ function generateCatGroups(groups) {
 
 function changeBrandBackground(elem) {
 
-    var brandGroup = getElement(elem, "brandGroup");
+    var brandGroup = getElement(elem, "brandHandler");
     currentImg = brandGroup.querySelector('[app-role="icon"]');
     currentDataStore = brandGroup;
     //console.log("changeBrandBackground", currentImg);

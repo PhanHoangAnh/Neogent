@@ -75,10 +75,10 @@ objResult.return_id = null;
 //
 router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
     var mainData = req.body.payload.data
-    // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", mainData);
-    // console.log("Wall Image: ", req.body.exPayload.walls.length);
-    // console.log("address: ", mainData.address);
-    // //var optionSets = dbEngine.OptionSets();
+        // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", mainData);
+        // console.log("Wall Image: ", req.body.exPayload.walls.length);
+        // console.log("address: ", mainData.address);
+        // //var optionSets = dbEngine.OptionSets();
     var Shops = mongoose.model('Shops');
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
         if (err) {

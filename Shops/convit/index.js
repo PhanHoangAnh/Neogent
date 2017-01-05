@@ -12,7 +12,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 router.get('/', function(req, res, next) {
     // res.send("hello, this is template Application");
     // console.log("-----Hahaha from template");
-    res.render('template', { title: 'Hello, this is template Application of : ' + req.shopname });
+    // res.render('index', { title: 'Hello, this is template Application of : ' + req.shopname });
+
+    getFlatShopProducts(req.shopname, getFlatProduct);
+
+    function getFlatProduct(err, shopInfo) {
+        res.render('index', {
+            title: 'Hello, this is template Application of : ' + req.shopname,
+            RSApublicKey: keyPair.public,
+            shopInfo: shopInfo
+        });
+    }
 });
 //
 
