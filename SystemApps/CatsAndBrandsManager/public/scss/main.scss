@@ -183,7 +183,7 @@ img {
     &, li {@include border-radius(2px);}
     li {
       margin: 0 5px 5px 5px; padding: 5px;
-      background: #FFFDC8;
+      background: #FFFFE0; border-color: #FFFFE0;
       cursor: pointer;
     }
   }
@@ -239,7 +239,9 @@ img {
     h4 {margin-top: 0;}
     &.sticky {
       position: fixed;
-      top: 50px; right: 0;
+      top: 50px; right: 0; /*bottom: 30px;*/ bottom: 0;
+	  z-index: 10;
+	  .panel.panel-default {height: 100%;}
     }
     .nav-tabs > li.active > a {
       &, &:focus, &:hover {

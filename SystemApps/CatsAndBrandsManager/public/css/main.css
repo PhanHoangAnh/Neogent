@@ -1687,7 +1687,8 @@ img {
 .create-catandbrand .connectedSortable li {
   margin: 0 5px 5px 5px;
   padding: 5px;
-  background: #FFFDC8;
+  background: #FFFFE0;
+  border-color: #FFFFE0;
   cursor: pointer;
 }
 /* line 192, ../scss/main.scss */
@@ -1825,25 +1826,32 @@ img {
   position: fixed;
   top: 50px;
   right: 0;
+  /*bottom: 30px;*/
+  bottom: 0;
+  z-index: 10;
 }
-/* line 245, ../scss/main.scss */
+/* line 244, ../scss/main.scss */
+.create-catandbrand .available-items.sticky .panel.panel-default {
+  height: 100%;
+}
+/* line 247, ../scss/main.scss */
 .create-catandbrand .available-items .nav-tabs > li.active > a, .create-catandbrand .available-items .nav-tabs > li.active > a:focus, .create-catandbrand .available-items .nav-tabs > li.active > a:hover {
   background: #FFF;
 }
-/* line 249, ../scss/main.scss */
+/* line 251, ../scss/main.scss */
 .create-catandbrand .available-items .tab-content {
   padding-top: 15px;
 }
-/* line 251, ../scss/main.scss */
+/* line 253, ../scss/main.scss */
 .create-catandbrand .available-items .panel {
   min-height: 365px;
 }
-/* line 253, ../scss/main.scss */
+/* line 255, ../scss/main.scss */
 .create-catandbrand .brand-name, .create-catandbrand .cat-name {
   width: 140px;
   padding-right: 10px;
 }
-/* line 254, ../scss/main.scss */
+/* line 256, ../scss/main.scss */
 .create-catandbrand .fr-row {
   vertical-align: middle;
   margin-bottom: 15px;
@@ -1861,15 +1869,15 @@ img {
   font-size: 0;
   line-height: 0;
 }
-/* line 258, ../scss/main.scss */
+/* line 260, ../scss/main.scss */
 .create-catandbrand .fr-row .brand-name {
   float: left;
 }
-/* line 259, ../scss/main.scss */
+/* line 261, ../scss/main.scss */
 .create-catandbrand .fr-row input[type="text"], .create-catandbrand .fr-row textarea {
   width: 36.5%;
 }
-/* line 262, ../scss/main.scss */
+/* line 264, ../scss/main.scss */
 .create-catandbrand .fr-row textarea {
   min-height: 100px;
 }
