@@ -443,6 +443,9 @@ function updateCollectionState(elem) {
             el["DATASTORE"]['isPromoted'] = false;
         });
         currentDataHandler["DATASTORE"]['isPromoted'] = true;
+        var enableCheckbox = currentDataHandler.querySelector('[app-role="enabledCollection"]');
+        enableCheckbox.checked = true;
+        currentDataHandler["DATASTORE"]['enabledCollection'] = true;
     } else {
         currentDataHandler["DATASTORE"][elemAtts] = elem.checked;
     }
