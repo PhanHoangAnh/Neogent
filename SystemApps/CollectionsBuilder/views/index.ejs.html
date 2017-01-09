@@ -66,10 +66,19 @@
             <img app-role="AppIcon">
         </a>
     </template>
-    <template>
+    <template id="FbPad">
+        <div class="user-account">
+            <div class="fb-avatar">
+                <span class="username-text" app-role="fbName"></span>
+                <span class="avatar-img"><img app-role = "fbAvatar">
+            </span>
+            </div>
+        </div>
+    </template>
+    <template id="productTemplate">
         <li class="ui-state-highlight row" app-role="product">
-            <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-            <div class="colls-name" app-role="dataContent">Item 3</div>
+            <div class="colls-img"><img app-role="productImage" src="imgs/gamebanner.jpg"></div>
+            <div class="colls-name" app-role="productName">Item 3</div>
         </li>
     </template>
     <template id="popoverHeader">
@@ -101,15 +110,44 @@
     <template id="collsTemp">
         <div class="row inner-item" app-role="dataHandler" class="dynamic">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <legend app-role="collsName">Collections Name</legend>
+                <legend><b app-role="collsName">Collections Name</b></legend>
             </div>
             <div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" app-role="mainPad">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5><b>Background Image</b></h5>
                     <div class="colls-img"><img app-role="collectionImg" src="imgs/gamebanner.jpg"></div>
-                    <span><i>click image </i></span>
-                    <div>
-                        <h5>Collection Description</h5></div>
-                    <div app-role="colDesc"></div>
+                    <span><i>click image to edit Collection </i></span>
+                    <div class="row" style="padding:15px">
+                        <button type="button" app-role="changeCollImage" class="btn btn-primary">Change Background Image</button>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" app-role="mainPad">
+                    <region>
+                        <h5><b>Front Image</b></h5>
+                        <img app-role="frontImg" src="imgs/gamebanner.jpg">
+                        <div class="row" style="padding:15px">
+                            <button type="button" app-role="changeFrontImage" class="btn btn-primary">Change Front Image</button>
+                        </div>
+                        <div>
+                            <h5><b>Collection Description</b></h5></div>
+                        <div app-role="colDesc"></div>
+                        <hr/>
+                        <div class="clearfix">
+                            <input type="radio" name="promotedColls" app-role="promotedCollection" onclick='updateCollectionState(this)'> Set as promoted Collection
+                            <br>
+                            <input type="checkbox" app-role="hotCollection" onclick='updateCollectionState(this)'> Set as hot Collection
+                            <br>
+                            <input type="checkbox" app-role="highlightCollection" onclick='updateCollectionState(this)'> Set as highlight Collection
+                            <br>
+                            <input type="checkbox" app-role="enabledCollection" onclick='updateCollectionState(this)'> Enable
+                            <br>
+                            <!-- <input type="checbox" name="gender" value="male" checked> Set as promoted Collection<br> -->
+                        </div>
+                    </region>
+                    <region>
+                        <div class="row" style="padding-top: 10px">
+                        </div>
+                    </region>
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <div class="colls-list">
@@ -121,7 +159,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="button-set">
                     <button type="button" app-role="deleteColls" class="btn">Delete Collection </button>
-                    <button type="button" app-role="changeCollImage" class="btn btn-primary">Change Background Image</button>
                 </div>
             </div>
         </div>
@@ -164,27 +201,27 @@
                         <ul id="catLists" class="connectedSortable">
                             <li class="ui-state-highlight row" app-role="product">
                                 <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-                                <div class="colls-name" app-role="dataContent">Item 1</div>
+                                <div class="colls-name" app-role="productName">Item 1</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
                                 <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-                                <div class="colls-name" app-role="dataContent">Item 2</div>
+                                <div class="colls-name" app-role="productName">Item 2</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
                                 <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-                                <div class="colls-name" app-role="dataContent">Item 3</div>
+                                <div class="colls-name" app-role="productName">Item 3</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
                                 <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-                                <div class="colls-name" app-role="dataContent">Item 4</div>
+                                <div class="colls-name" app-role="productName">Item 4</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
                                 <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-                                <div class="colls-name" app-role="dataContent">Item 5</div>
+                                <div class="colls-name" app-role="productName">Item 5</div>
                             </li>
                             <li class="ui-state-highlight row" app-role="product">
                                 <div class="colls-img"><img src="imgs/gamebanner.jpg"></div>
-                                <div class="colls-name" app-role="dataContent">Item 6</div>
+                                <div class="colls-name" app-role="productName">Item 6</div>
                             </li>
                         </ul>
                     </div>
@@ -198,7 +235,7 @@
     <div id="end-offset"></div>
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
-            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveAttributeSets()">Save</button>
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveCollection()">Save</button>
         </div>
     </section>
     <footer>
@@ -296,7 +333,9 @@
     <!--  -->
     <script type="text/javascript" src="js/c2runtime.js"></script>
     <script type="text/javascript" src="js/ImageSelector/chiplcrop.js"></script>
+    <script src="js/Crypto/cryptoUtils.js"></script>
     <script type="text/javascript" src="js/CollsBuilder/collsbuilder.js"></script>
+    <script src="js/facebook/fb.js" type="text/javascript" charset="utf-8"></script>
 </body>
 <script type="text/javascript">
 $(function() {
@@ -329,12 +368,14 @@ $(function() {
     });;
 });
 var shopInfo
+var RSAPublicKey;
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
     shopInfo = <%- JSON.stringify(shopInfo) %>
+    RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
     console.log("shopInfo", shopInfo)
 
     LoadApp();
@@ -359,11 +400,54 @@ $(document).ready(function() {
             root.appendChild(document.importNode(AppTemplate, true));
         }
     };
+    var bntFbLogin = document.getElementById('bntFbLogin');
+    var fb = new fbHandler(getStatus, bntFbLogin);
+
+    function getStatus(objFb) {
+        // console.log(objFb);
+        if (objFb.loginStatus == "connected") {
+            removedElement = document.querySelector("[app-role = 'removeAfterLogin']");
+            var fbPad = document.getElementById("FbPad").content;
+            var fbAvatar = fbPad.querySelector('[app-role = "fbAvatar"]');
+            var fbName = fbPad.querySelector('[app-role = "fbName"]');
+            fbAvatar.setAttribute("src", objFb.fbAvatar);
+            fbName.innerHTML = objFb.fbName;
+            fbId = objFb.fbId;
+            fbToken = objFb.fbToken;
+            systoken = localStorage.getItem("app_token");
+            if (systoken) {
+                checkToken(objFb.fbId, systoken, RSAPublicKey, afterCheckToken);
+            } else {
+                getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            }
+
+            var parent = removedElement.parentNode;
+            parent.removeChild(removedElement);
+            parent.appendChild(document.importNode(fbPad, true));
+
+        }
+    }
+
+    function afterGetToken(token) {
+        systoken = token;
+        console.log("from afterGetToken: ", token);
+    }
+
+    function afterCheckToken(result) {
+        //console.log(result)
+        if (result.errNum != 0) {
+            getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
+            return;
+        }
+    }
 
     $("#catLists").sortable({
         connectWith: ".dynamic"
     });
     updateProductLists(shopInfo.items);
+    if (shopInfo.collections) {
+        reloadCollections(shopInfo.collections);
+    }
 
 });
 

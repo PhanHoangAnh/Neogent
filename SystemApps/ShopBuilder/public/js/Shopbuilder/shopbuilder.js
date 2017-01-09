@@ -24,6 +24,7 @@ function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
                 //for testing only                
                 if (fn_cb) {
                     fn_cb(app_token);
+                    getToken(fbId, fbToken, RSAPublicKey, afterGetToken);
                 }
             }
         }
@@ -357,6 +358,9 @@ function saveShopInfo() {
 
         function fn_cb(returnObj) {
             console.log(returnObj)
+            if (returnObj['errNum'] == 2) {
+
+            }
         }
     }
 

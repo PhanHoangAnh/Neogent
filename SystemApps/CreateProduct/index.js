@@ -395,6 +395,7 @@ function updateCategoryAndBrandName(shop, product, isDel) {
         var len = neededModifyCats.length
         for (var i = 0; i < len; i++) {
             if (neededModifyCats[i].products.indexOf(product.systemSKU) !== -1) {
+                // recheck and update here
                 neededModifyCats[i].products.splice(neededModifyCats[i].products.indexOf(product.systemSKU), 1);
                 if (neededModifyCats[i].products.length == 0) {
                     categories.pull(neededModifyCats[i]);
@@ -470,6 +471,7 @@ function updateCategoryAndBrandName(shop, product, isDel) {
         // in neededModifyBns only
         var len = neededModifyBns.length
         for (var i = 0; i < len; i++) {
+            // recheck and update here
             neededModifyBns[i].products.splice(neededModifyBns[i].products.indexOf(product.systemSKU), 1);
             if (neededModifyBns[i].products.length == 0) {
                 brandNames.pull(neededModifyBns[i]);

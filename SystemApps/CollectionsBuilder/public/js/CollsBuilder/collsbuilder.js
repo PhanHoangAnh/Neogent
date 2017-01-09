@@ -138,11 +138,20 @@ function createNewCollectionGroup(name, collection) {
     rItem["DATASTORE"] = {}
     rItem["DATASTORE"]["name"] = name;
     rItem["DATASTORE"]['productLists'] = [];
+
+    var promotedCollection = rItem.querySelector('[app-role="promotedCollection"]');
+    var hotCollection = rItem.querySelector('[app-role="hotCollection"]');
+    var highlightCollection = rItem.querySelector('[app-role="highlightCollection"]');
+    var enabledCollection = rItem.querySelector('[app-role="enabledCollection"]');
+
     if (collection) {
         rItem["DATASTORE"]['productLists'] = collection["productLists"];
         var image = rItem.querySelector('[app-role="collectionImg"]');
         image.setAttribute('src', collection['img']);
         rItem["DATASTORE"]['img'] = collection['img'];
+        var frontImg = rItem.querySelector('[app-role="frontImg"]');
+        frontImg.setAttribute('src', collection['frontImg']);
+        rItem["DATASTORE"]["frontImg"]= collection["frontImg"];
         var collDesc = rItem.querySelector('[app-role="colDesc"]');
         collDesc.innerHTML = collection["collDesc"];
         rItem["DATASTORE"]['collDesc'] = collection["collDesc"];
@@ -197,13 +206,24 @@ function createNewCollectionGroup(name, collection) {
     deleteButton.addEventListener('click', function() {
         rItem.parentNode.removeChild(rItem);
     }, false);
+
     var changeCollImage = rItem.querySelector('[app-role="changeCollImage"]');
     changeCollImage.addEventListener('click', function() {
         currentImg = rItem.querySelector('[app-role = "collectionImg"]');
+        currentImg.role = "background";
         currentDataStore = rItem;
         $("#m_wall").modal();
     }, false);
-    var img = rItem.querySelector('[app-role="collectionImg"]');
+
+    var changeFrontImage = rItem.querySelector('[app-role="changeFrontImage"]');
+    changeFrontImage.addEventListener('click', function() {
+        currentImg = rItem.querySelector('[app-role="frontImg"]');
+        currentImg.role = "frontend"
+        currentDataStore = rItem;
+        $("#m_wall").modal();
+    })
+
+    var img = rItem.querySelector('[app-role="frontImg"]');
     $(img).popover({
         title: function() {
             var popoverHeader = document.getElementById('popoverHeader').content;
@@ -295,10 +315,14 @@ function wallPreview(data) {
     document.getElementById('wall_preview-md').setAttribute('src', data);
     document.getElementById('wall_preview-sm').setAttribute('src', data);
     //document.getElementById("openInput").classList.add("hiddenElem");
-    //document.getElementById('wallHolder').setAttribute('src', data);
+    //document.getElementById('wallHolder').setAttribute('src', data);    
     if (currentImg) {
         currentImg.setAttribute('src', data);
-        currentDataStore["DATASTORE"]["img"] = data;
+        if (currentImg.role == "background") {
+            currentDataStore["DATASTORE"]["img"] = data;
+        } else {
+            currentDataStore["DATASTORE"]["frontImg"] = data;
+        }
     }
 }
 
@@ -396,4 +420,11 @@ function reloadCollections(collections) {
             var result = createNewCollectionGroup(coll['name'], coll);
         })
     }
+}
+
+function updateCollectionState(elem) {
+    // console.log(elem);
+    // console.log(elem.checked);
+    var elemAtts = elem.getAttribute("app-role");
+    console.log(elemAtts);
 }

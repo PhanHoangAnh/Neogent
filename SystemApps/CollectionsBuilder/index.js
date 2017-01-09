@@ -82,12 +82,19 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                                 savedData[n]["img"] = '/' + req.shopname + "/imgs/Collection_" + n + ".png";;
                             }
                         }
+                        if (savedData[n]["frontImg"] && savedData[n]["frontImg"].indexOf("data:image/png;base64") !== -1) {
+                            var filePath = "./Shops/" + req.shopname + "/public/imgs/CollFace" + n + ".png";
+                            var result = writeBase64ImageSync(filePath, savedData[n]["frontImg"]);
+                            if (result) {
+                                savedData[n]["frontImg"] = '/' + req.shopname + "/imgs/CollFace" + n + ".png";;
+                            }
+                        }
                     }(i);
                 }
                 shop.collections = savedData;
                 shop.markModified('collections');
                 shop.markModified('collections.img');
-
+                shop.markModified('collections.frontImg');
                 shop.markModified('collections.$.productLists');
             }
             shop.save(function(error) {

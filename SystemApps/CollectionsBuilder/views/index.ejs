@@ -75,9 +75,9 @@
             </div>
         </div>
     </template>
-    <template id = "productTemplate">
+    <template id="productTemplate">
         <li class="ui-state-highlight row" app-role="product">
-            <div class="colls-img" ><img app-role = "productImage" src="imgs/gamebanner.jpg"></div>
+            <div class="colls-img"><img app-role="productImage" src="imgs/gamebanner.jpg"></div>
             <div class="colls-name" app-role="productName">Item 3</div>
         </li>
     </template>
@@ -110,19 +110,48 @@
     <template id="collsTemp">
         <div class="row inner-item" app-role="dataHandler" class="dynamic">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <legend ><b app-role="collsName">Collections Name</b></legend>
+                <legend><b app-role="collsName">Collections Name</b></legend>
             </div>
             <div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" app-role="mainPad">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h5><b>Background Image</b></h5>
                     <div class="colls-img"><img app-role="collectionImg" src="imgs/gamebanner.jpg"></div>
-                    <span><i>click image to edit Collection </i></span>
-                    <div>
-                        <h5><b>Collection Description</b></h5></div>
-                    <div app-role="colDesc"></div>
+                    <div class="row" style="padding:15px">
+                        <button type="button" app-role="changeCollImage" class="btn btn-primary">Change Background Image</button>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" app-role="mainPad">
+                    <region>
+                        <h5><b>Front Image</b></h5>
+                        <img app-role="frontImg" src="imgs/gamebanner.jpg">
+                        <span><i>click image to edit Collection's Content </i></span>
+                        <div class="row" style="padding:15px">
+                            <button type="button" app-role="changeFrontImage" class="btn btn-primary">Change Front Image</button>
+                        </div>
+                        <div>
+                            <h5><b>Collection Description</b></h5></div>
+                        <div app-role="colDesc"></div>
+                        <hr/>
+                        <div class="clearfix">
+                            <input type="radio" name="promotedColls" app-role="promotedCollection" onclick='updateCollectionState(this)'> Set as promoted Collection
+                            <br>
+                            <input type="checkbox" app-role="hotCollection" onclick='updateCollectionState(this)'> Set as hot Collection
+                            <br>
+                            <input type="checkbox" app-role="highlightCollection" onclick='updateCollectionState(this)'> Set as highlight Collection
+                            <br>
+                            <input type="checkbox" app-role="enabledCollection" onclick='updateCollectionState(this)'> Enable
+                            <br>
+                            <!-- <input type="checbox" name="gender" value="male" checked> Set as promoted Collection<br> -->
+                        </div>
+                    </region>
+                    <region>
+                        <div class="row" style="padding-top: 10px">
+                        </div>
+                    </region>
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                     <div class="colls-list">
-                        <p class="cat-name">Products</p>
+                        <p class="cat-name"><h5><b>Products</b></h5></p>
                         <div app-role="product" class="colls-row"></div>
                     </div>
                 </div>
@@ -130,7 +159,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="button-set">
                     <button type="button" app-role="deleteColls" class="btn">Delete Collection </button>
-                    <button type="button" app-role="changeCollImage" class="btn btn-primary">Change Background Image</button>
                 </div>
             </div>
         </div>
@@ -417,7 +445,7 @@ $(document).ready(function() {
         connectWith: ".dynamic"
     });
     updateProductLists(shopInfo.items);
-    if(shopInfo.collections){
+    if (shopInfo.collections) {
         reloadCollections(shopInfo.collections);
     }
 
