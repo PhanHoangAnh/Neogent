@@ -151,7 +151,7 @@ function createNewCollectionGroup(name, collection) {
         rItem["DATASTORE"]['img'] = collection['img'];
         var frontImg = rItem.querySelector('[app-role="frontImg"]');
         frontImg.setAttribute('src', collection['frontImg']);
-        rItem["DATASTORE"]["frontImg"]= collection["frontImg"];
+        rItem["DATASTORE"]["frontImg"] = collection["frontImg"];
         var collDesc = rItem.querySelector('[app-role="colDesc"]');
         collDesc.innerHTML = collection["collDesc"];
         rItem["DATASTORE"]['collDesc'] = collection["collDesc"];
@@ -426,5 +426,15 @@ function updateCollectionState(elem) {
     // console.log(elem);
     // console.log(elem.checked);
     var elemAtts = elem.getAttribute("app-role");
-    console.log(elemAtts);
+    // console.log(elemAtts);
+    var currentDataHandler = findElem(elem, "dataHandler");
+    if (elemAtts == "promotedCollection") {
+        var dataHandlers = document.querySelectorAll('[app-role="dataHandler"]');
+        dataHandlers.forEach(function(el) {
+            el["DATASTORE"]['isPromoted'] = false;
+        });
+        currentDataHandler["DATASTORE"]['isPromoted'] = true;
+    } else {
+        currentDataHandler["DATASTORE"][elemAtts] = elem.checked;
+    }
 }
