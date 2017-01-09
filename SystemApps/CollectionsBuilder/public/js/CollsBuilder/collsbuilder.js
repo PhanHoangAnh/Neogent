@@ -139,11 +139,6 @@ function createNewCollectionGroup(name, collection) {
     rItem["DATASTORE"]["name"] = name;
     rItem["DATASTORE"]['productLists'] = [];
 
-    var promotedCollection = rItem.querySelector('[app-role="promotedCollection"]');
-    var hotCollection = rItem.querySelector('[app-role="hotCollection"]');
-    var highlightCollection = rItem.querySelector('[app-role="highlightCollection"]');
-    var enabledCollection = rItem.querySelector('[app-role="enabledCollection"]');
-
     if (collection) {
         rItem["DATASTORE"]['productLists'] = collection["productLists"];
         var image = rItem.querySelector('[app-role="collectionImg"]');
@@ -166,6 +161,20 @@ function createNewCollectionGroup(name, collection) {
             var productLists = rItem.querySelector('[app-role="product"]');
             productLists.appendChild(document.importNode(span, true));
         });
+
+        var promotedCollection = rItem.querySelector('[app-role="promotedCollection"]');
+        promotedCollection.checked = collection['isPromoted'];
+        rItem["DATASTORE"]['isPromoted'] = collection['isPromoted'];
+
+        var hotCollection = rItem.querySelector('[app-role="hotCollection"]');
+        hotCollection.checked = rItem["DATASTORE"]["hotCollection"] = collection["hotCollection"];
+
+        var highlightCollection = rItem.querySelector('[app-role="highlightCollection"]');
+        highlightCollection.checked = rItem["DATASTORE"]["highlightCollection"] = collection["highlightCollection"];
+
+        var enabledCollection = rItem.querySelector('[app-role="enabledCollection"]');
+        enabledCollection.checked = rItem["DATASTORE"]["enabledCollection"] = collection["enabledCollection"];
+
     }
 
     $(rItem).sortable({
