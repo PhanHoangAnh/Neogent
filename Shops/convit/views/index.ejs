@@ -33,6 +33,76 @@ function toggleSearch() {
 <body class="home-page" id="body">
     <!-- masthead -->
     <templateRegion>
+        <template id="menuCover">
+            <li>
+                <a href="#" app-role="mainMenu">Men</a>
+            </li>
+        </template>
+        <template id="singleCategory">
+            <li>
+                <a href="product-page.html" app-role="singleCat"></a>
+            </li>
+        </template>
+        <template id='singleBrand'>
+            <li>
+                <a href="product-page.html" app-role = "menuLink"><img app-role="brandImage" src=""></a>
+            </li>
+        </template>
+        <template id="menuMainDetails">
+            <!-- <menuDetail> -->
+            <li>
+                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" app-role="categoriesGroupName">Women</a>
+                <div class="mega-menu dropmenu" aria-labelledby="women">
+                    <div class="menu-col by-shop">
+                        <h3>Shop</h3>
+                        <ul class="" app-role="categoriesContainer">
+                        </ul>
+                    </div>
+                    <div class="menu-col by-brand">
+                        <h3>by Brand</h3>
+                        <ul class="" app-role="brandNameContainer">
+                            <!-- <li>
+                                <a href="product-page.html"><img src="imgs/brands/adidas.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/onitsuta.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/dr-martens.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/on-the-wall.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/k-swiss.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/supra.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/new-balance.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/toms.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/puma.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/vault.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/lacoste.png"></a>
+                            </li>
+                            <li>
+                                <a href="product-page.html"><img src="imgs/brands/converse-cons.png"></a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- </menuDetail> -->
+        </template>
         <template id="productItem">
             <div class="col-sm-4 col-xs-12" app-role="productItem">
                 <div class="col-item">
@@ -114,77 +184,8 @@ function toggleSearch() {
                     <!--/menu button for mobile-->
                     <!--menu-->
                     <nav class="collapse navbar-collapse " role="navigation">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="#" id="women" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Women</a>
-                                <div class="mega-menu dropmenu" aria-labelledby="women">
-                                    <div class="menu-col by-shop">
-                                        <h3>Shop</h3>
-                                        <ul class="">
-                                            <li><a href="product-page.html">Dresses</a></li>
-                                            <li><a href="product-page.html">Skirts</a></li>
-                                            <li><a href="product-page.html">Outerwear</a></li>
-                                            <li><a href="product-page.html">Tops</a></li>
-                                            <li><a href="product-page.html">Bottom</a></li>
-                                            <li><a href="product-page.html">Lingerie</a></li>
-                                            <li><a href="product-page.html">Shoes</a></li>
-                                            <li><a href="product-page.html">Bags</a></li>
-                                            <li><a href="product-page.html">Sunglasses</a></li>
-                                            <li><a href="product-page.html">Accessories</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="menu-col by-brand">
-                                        <h3>by Brand</h3>
-                                        <ul class="">
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/adidas.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/onitsuta.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/dr-martens.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/on-the-wall.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/k-swiss.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/supra.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/new-balance.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/toms.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/puma.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/vault.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/lacoste.png"></a>
-                                            </li>
-                                            <li>
-                                                <a href="product-page.html"><img src="imgs/brands/converse-cons.png"></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="#">Men</a>
-                            </li>
-                            <li>
-                                <a href="#">Kid</a>
-                            </li>
-                            <li>
-                                <a href="#">Sale</a>
-                            </li>
+                        <ul class="nav navbar-nav" id="mainMenu">
+
                         </ul>
                     </nav>
                     <!--/menu-->
@@ -301,8 +302,8 @@ function toggleSearch() {
                         <a class="left c-btn" href="#carousel-example" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                         <a class="right c-btn" href="#carousel-example" data-slide="next"><i class="fa fa-angle-right"></i></a>
                     </div>
-                    <div class="carousel-inner product-wrap" app-role="carouselContainer" id = "carouselContainer">
-<!--                         <div class="item active">
+                    <div class="carousel-inner product-wrap" app-role="carouselContainer" id="carouselContainer">
+                        <!--                         <div class="item active">
                             <div class="row">
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="col-item">
@@ -733,6 +734,7 @@ function toggleSearch() {
         shopInfo = <%- JSON.stringify(shopInfo) %>
         RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
         createFrontPage(shopInfo);
+        createMenus(shopInfo);
         // console.log("shopInfo", shopInfo)
 
     });
