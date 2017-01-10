@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
-  
 </head>
 <script type="text/javascript">
 //Huyen Anh added code here
@@ -33,8 +32,54 @@ function toggleSearch() {
 
 <body class="home-page" id="body">
     <!-- masthead -->
-    <div id="masthead" app-role="staticImage">        
-        <a app-role = "promotedCollLink" href="product-page.html" style="width: 30% ; top: 60%" class="main-text"><img app-role="promotedCollImage"  src="imgs/banner/main-text.png"><span>Best Collection</span></a>
+    <templateRegion>
+        <template id="productItem">
+            <div class="col-sm-4 col-xs-12" app-role="productItem">
+                <div class="col-item">
+                    <div class="photo imgs-item">
+                        <span class="tag-label new">New</span>
+                        <img src="imgs/products/p02.jpg" app-role="productImage">
+                        <a href="product-detail.html"></a>
+                        <div class='focus'></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="rating">
+                            <span>☆</span>
+                            <span>☆</span>
+                            <span>☆</span>
+                            <span>☆</span>
+                            <span>☆</span>
+                            <span class="rated" style="width: 0;"></span>
+                        </div>
+                        <h4><a href="product-detail.html" app-role="productName">Lorem ipsum dolor sit amet</a></h4>
+                        <div class="price">Price: 6,00.00SGD</div>
+                        <div class="action-item">
+                            <div class="col-xs-6">
+                                <div class="items">
+                                    <i class="fa fa-heart"></i>
+                                    <br />Save for late
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="items">
+                                    <div style="border-left: dotted 1px; padding-left: 5px">
+                                        <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="carouselRow">
+            <div class="item">
+                <div class="row" app-role="carouselRow"></div>
+            </div>
+        </template>
+    </templateRegion>
+    <div id="masthead" app-role="staticImage">
+        <a app-role="promotedCollLink" href="product-page.html" style="width: 30% ; top: 60%" class="main-text"><img app-role="promotedCollImage" src="imgs/banner/main-text.png"><span>Best Collection</span></a>
         <span app-role="promotedCollName"></span>
     </div>
     <!-- /masthead -->
@@ -232,13 +277,15 @@ function toggleSearch() {
             <!--static block 1-->
             <div class="row promos">
                 <div class="col-sm-6 col-xs-12">
-                    <div class="imgs-item" >
-                        <a href="#"><img app-role = "hotColls" src="imgs/banner/large03.jpg"></a>
+                    <div class="imgs-item">
+                        <a href="#"><img app-role="hotColls" src="imgs/banner/large03.jpg"></a>
+                        <h2 app-role="collTitle"></h2>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <div class="imgs-item">
-                        <a href="#"><img app-role = "hotColls" src="imgs/banner/large04.jpg"></a>
+                        <a href="#"><img app-role="hotColls" src="imgs/banner/large04.jpg"></a>
+                        <h1 app-role="collTitle"></h1>
                     </div>
                 </div>
             </div>
@@ -254,8 +301,8 @@ function toggleSearch() {
                         <a class="left c-btn" href="#carousel-example" data-slide="prev"><i class="fa fa-angle-left"></i></a>
                         <a class="right c-btn" href="#carousel-example" data-slide="next"><i class="fa fa-angle-right"></i></a>
                     </div>
-                    <div class="carousel-inner product-wrap">
-                        <div class="item active">
+                    <div class="carousel-inner product-wrap" app-role="carouselContainer" id = "carouselContainer">
+<!--                         <div class="item active">
                             <div class="row">
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="col-item">
@@ -479,7 +526,7 @@ function toggleSearch() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
