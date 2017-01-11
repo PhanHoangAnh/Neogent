@@ -1828,7 +1828,6 @@ img {
   right: 0;
   /*bottom: 30px;*/
   bottom: 0;
-  z-index: 10;
 }
 /* line 244, ../scss/main.scss */
 .create-catandbrand .available-items.sticky .panel.panel-default {

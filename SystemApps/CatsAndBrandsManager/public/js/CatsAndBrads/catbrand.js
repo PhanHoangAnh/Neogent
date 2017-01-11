@@ -308,7 +308,7 @@ function saveCatAndBrands() {
     })
 
     var endpoint = 'update';
-    // console.log("saveDataStores: ", saveDataStores);
+    console.log("saveDataStores: ", saveDataStores);
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
 
@@ -368,6 +368,8 @@ function generateCatGroups(groups) {
             var brandPad = document.getElementById("brandTemp").content;
             var legend = brandPad.querySelector('[app-role="setsName"]');
             var image = brandPad.querySelector('[app-role="icon"]');
+            var hotBrandName = brandPad.querySelector('[app-role="hotBrandName"]');
+            hotBrandName.checked = brandnames[n]['displayInFrontPage'];
             var contentId = "contentId_" + n;
             var cats = brandPad.querySelector('[app-role = "cats"]');
             cats.id = contentId;
@@ -395,6 +397,7 @@ function generateCatGroups(groups) {
             brandGroup["DATASTORE"]['categories'] = brandnames[n]['categories'];
             brandGroup["DATASTORE"]['img'] = brandnames[n]['img'];
             brandGroup["DATASTORE"]['description'] = brandnames[n]['description'];
+            brandGroup["DATASTORE"]['displayInFrontPage'] = brandnames[n]['displayInFrontPage'];
             brandGroup.setAttribute("app-role", 'brandHandler');
             var description = brandGroup.querySelector('[app-role = "description"]');
             description.innerHTML = brandnames[n]['description'];
@@ -442,6 +445,12 @@ function generateCatGroups(groups) {
 
         }
     }
+}
+
+function updateBrandState(elem) {
+    var mainPad = findElem(elem, "brandHandler");
+    mainPad["DATASTORE"]['displayInFrontPage'] = elem.checked;
+    console.log(elem.checked);
 }
 
 function changeBrandBackground(elem) {
