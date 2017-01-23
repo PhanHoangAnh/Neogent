@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>html2json example</title>
+<div id="test">
+    <div>
+        <div id="mocha" app-role="thisIsMe"></div>
+        <h1>see the source and console</h1>
+    </div>
+</div>
+<script src="../lib/Pure-JavaScript-HTML5-Parser/htmlparser.js"></script>
+<script src="../src/html2json.js"></script>
+<script>
+var html = document.getElementById("test").innerHTML.trim();
+console.log(html);
+var json = html2json(html);
+console.log(JSON.stringify(json, ' ', ' '));
+// console.log(html === json2html(json), typeof(json2html(json)));
+
+// var fragment = documentElement;
+
+// // html.appendChild(document.importNode(fragment, true));
+// console.log(fragment);
+
+// var parser = new DOMParser();
+// var doc = parser.parseFromString(fragment, "text/xml");
+
+// document.getElementById("test").appendChild(doc.documentElement)
+
+var fragment = document.createRange().createContextualFragment(json2html(json));
+
+document.body.appendChild(fragment);
+</script>

@@ -112,7 +112,7 @@ function toggleSearch() {
             </div>
         </template>
     </templateRegion>
-    <div id="masthead" app-role="staticImage">
+    <div id="masthead" app-role="staticImage" style = "border-bottom: #e9ebee solid 1px;">
         <a app-role="promotedCollLink" href="product-page.html" class="main-text"><img app-role="promotedCollImage" src="imgs/banner/main-text.png"><span class="txt-promo">Best Collection</span></a>
         <span app-role="promotedCollName"></span>
     </div>
@@ -240,7 +240,13 @@ function toggleSearch() {
         <!--center-->
         <div class="container" app-moveup: 0>
             <!--static block 1-->
-            <div class="row promos">
+            <div class = "slide-up">
+                <div class="title">
+                    <h2>Hot Collections</h2>
+                    <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
+                </div>
+            </div>    
+            <div class="row promos">                
                 <div class="col-sm-6 col-xs-12">
                     <div class="imgs-item">
                         <a href="#"><img app-role="hotColls" src="imgs/banner/large03.jpg"></a>
@@ -258,7 +264,7 @@ function toggleSearch() {
             <!--carousel featuring product-->
             <div class="slide-up hidden-xs">
                 <div class="title">
-                    <h2>Featuring Items</h2>
+                    <h2>Highlight Products</h2>
                     <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
                 </div>
                 <div id="carousel-example" class="carousel slide carousel-fade" data-ride="carousel">
@@ -273,6 +279,12 @@ function toggleSearch() {
             </div>
             <!--/carousel featuring product-->
             <!--static block 2-->
+            <div class = "slide-up">
+                <div class="title">
+                    <h2>Hot Brandnames</h2>
+                    <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
+                </div>
+            </div> 
             <div class="row promos subs hidden-xs" id = "hotBrandsContainer">
                 <div class="col-sm-4 col-xs-12" app-role = "hotBrand">
                     <div class="imgs-item" >

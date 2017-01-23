@@ -23,7 +23,7 @@ var setting = [{
     url: "catandbrand",
     path: "../CatsAndBrandsManager/",
     logo: "template/imgs/LogoSamples/1.png"
-},{
+}, {
     name: "Collections Builder",
     url: "collectionsbuilder",
     path: "../CollectionsBuilder/",
@@ -53,7 +53,14 @@ var setting = [{
     url: "template",
     path: "../AppTemplate/",
     logo: "template/imgs/LogoSamples/5.png"
+}, {
+    name: "Labs",
+    url: "labs",
+    path: "../Labs/",
+    logo: "template/imgs/LogoSamples/4.png"
 }]
+
+
 
 
 
