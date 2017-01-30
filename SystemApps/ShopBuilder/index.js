@@ -6,6 +6,7 @@ var router = express.Router();
 var path = require("path");
 var mongoose = require("mongoose");
 var fs = require('fs');
+var jp = require('jsonpath');
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
@@ -75,10 +76,7 @@ objResult.return_id = null;
 //
 router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
     var mainData = req.body.payload.data
-        // console.log("Attribute of Shop: ", req.shopname, "updateOptionSets incomming data: ", mainData);
-        // console.log("Wall Image: ", req.body.exPayload.walls.length);
-        // console.log("address: ", mainData.address);
-        // //var optionSets = dbEngine.OptionSets();
+    
     var Shops = mongoose.model('Shops');
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
         if (err) {
@@ -123,7 +121,32 @@ router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
         }
         shop.avatars = avatar;
         shop.markModified('avatars');
-        shop.static_content = req.body.exPayload.staticContent;
+        // update feature
+        // console.log("new static content: ", req.body.exPayload.staticContent);
+        var sContent = req.body.exPayload.staticContent;
+        if (sContent && sContent instanceof Array) {
+            sContent.map(function(content, index) {
+                // console.log(sContent);
+                content = JSON.parse(content);
+                jp.apply(content, '$..src', function(value) {
+                    var imgID = mongoose.Types.ObjectId().toString();
+                    if (value.indexOf("data:image/png;base64") !== -1) {
+                        var filePath = "./Shops/" + req.shopname + "/public/imgs/staticImg_" + imgID + ".png";
+                        var result = writeBase64ImageSync(filePath, value);
+                        if (result) {
+                            value = "/" + req.shopname + "/imgs/staticImg_" + imgID + ".png";
+                        }
+                    }
+                    return value;
+                });
+                var images = jp.query(content, '$..src');
+                sContent[index] = content;
+                return content;
+            });
+        }
+        shop.static_content = sContent;
+        // end of update feature       
+        shop.markModified('static_content');
         shop.save(function(err, doc) {
             if (err) {
                 objResult.status = 2
@@ -174,6 +197,60 @@ function writeBase64ImageSync(fileName, imgData) {
     }
 
 }
+
+// helper libs
+// http://techslides.com/how-to-parse-and-search-json-in-javascript
+
+// function getObjects(obj, key, val) {
+//     var objects = [];
+//     for (var i in obj) {
+//         if (!obj.hasOwnProperty(i)) continue;
+//         if (typeof obj[i] == 'object') {
+//             objects = objects.concat(getObjects(obj[i], key, val));
+//         } else
+//         //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+//         if (i == key && obj[i] == val || i == key && val == '') { //
+//             objects.push(obj);
+//         } else if (obj[i] == val && key == '') {
+//             //only add if the object is not already in the array
+//             if (objects.lastIndexOf(obj) == -1) {
+//                 objects.push(obj);
+//             }
+//         }
+//     }
+//     return objects;
+// }
+
+// //return an array of values that match on a certain key
+// function getValues(obj, key) {
+//     var objects = [];
+//     for (var i in obj) {
+//         if (!obj.hasOwnProperty(i)) continue;
+//         if (typeof obj[i] == 'object') {
+//             objects = objects.concat(getValues(obj[i], key));
+//         } else if (i == key) {
+//             objects.push(obj[i]);
+//         }
+//     }
+//     return objects;
+// }
+
+// //return an array of keys that match on a certain value
+// function getKeys(obj, val) {
+//     var objects = [];
+//     for (var i in obj) {
+//         if (!obj.hasOwnProperty(i)) continue;
+//         if (typeof obj[i] == 'object') {
+//             objects = objects.concat(getKeys(obj[i], val));
+//         } else if (obj[i] == val) {
+//             objects.push(i);
+//         }
+//     }
+//     return objects;
+// }
+
+
+
 
 app.use(router);
 module.exports = app;

@@ -1,3 +1,5 @@
+var aes_key;
+
 function getToken(uid, fbToken, RSAPublicKey, fn_cb) {
     var _data = {
         userName: uid,
@@ -68,7 +70,7 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayloa
         password: token,
         data: payload
     };
-    aes_key = cryptoUtil.generateAESKey();
+    // aes_key = cryptoUtil.generateAESKey();    
     var json_data = {
         data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key),
         exPayload: exPayload
@@ -270,8 +272,36 @@ function addMoreStaticContent(el, content) {
     deleteBnt.addEventListener('click', function() {
         contentPad.parentNode.removeChild(contentPad);
     }, false);
-    if (content) {
-        contentPad.querySelector('[app-role="static_content"]').value = content;
+    // upgrade feature
+    // var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
+    var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
+    if (!content) {
+        var quill = new Quill(dynamicContent, {
+            modules: {
+                formula: false,
+                syntax: false,
+                toolbar: toolbarOptions
+
+            },
+            placeholder: 'Compose an epic...',
+            theme: 'snow'
+        });
+    } else {
+        // contentPad.querySelector('[app-role="static_content"]').value = JSON.stringify(content);
+        //update featrue
+        var fragment = document.createRange().createContextualFragment(json2html(content));
+        dynamicContent.appendChild(fragment);
+        var quill = new Quill(dynamicContent, {
+            modules: {
+                formula: false,
+                syntax: false,
+                toolbar: toolbarOptions
+
+            },
+            theme: 'snow'
+        });
+
+        //
     }
 }
 
@@ -328,16 +358,30 @@ function saveShopInfo() {
             exPayload.walls.push(img.getAttribute('src').replace(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/", ""));
         }
     });
-    var staticContentHandler = document.querySelectorAll('[app-role="static_content"]');
-    staticContentHandler.forEach(function(elem) {
-        exPayload.staticContent.push(elem.value);
-    })
+    // var staticContentHandler = document.querySelectorAll('[app-role="static_content"]');
+    // staticContentHandler.forEach(function(elem) {
+    //     exPayload.staticContent.push(elem.value);
+    // })
     if (document.getElementById('iconHolder').getAttribute('src').indexOf("data:image/png;base64") !== -1) {
         exPayload.avatars = document.getElementById('iconHolder').getAttribute('src');
     } else {
         exPayload.avatars = document.getElementById('iconHolder').getAttribute('src').replace(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/", "");
     }
+
+
+    // upgrade features
+    var dynamicContentHandler = document.querySelectorAll('[app-role="dynamicContent"]');
+    var orderNumber = 1;
+    dynamicContentHandler.forEach(function(dyc) {
+        var html = dyc.innerHTML;
+        var jsonHtml = html2json(html);
+        jsonHtml.orderNumber = orderNumber;
+        orderNumber++;
+        exPayload.staticContent.push(JSON.stringify(jsonHtml));
+        // console.log("jsonHtml: ", jsonHtml);
+    });
     console.log("staticContent: ", exPayload.staticContent);
+    //
     var atts = document.querySelectorAll("[app-input]");
     var pendding = false;
     for (var i = 0; i < atts.length; i++) {
@@ -348,12 +392,15 @@ function saveShopInfo() {
             atts[i].parentNode.classList.add("missing");
         }
     }
-    //console.log("shopInfo: ", shopInfo);
+    //console.log("shopInfo: ", shopInfo);    
     console.log(pendding);
     if (!pendding) {
         // sending shopInfo to server
         var endpoint = 'updateShop';
         // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
+        // delete duplicate and unnecessary attribute to reduce workload of encrypter
+        delete shopInfo.staticContent;
+        delete shopInfo.walls;
         postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, exPayload, fn_cb);
 
         function fn_cb(returnObj) {

@@ -15,7 +15,7 @@ var Shop_schema = new Schema({
     showName: { type: String },
     slogan: { type: String },
     companyName: { type: String },
-    static_content: [String],
+    static_content: [Schema.Types.Mixed],
     contact_phone: { type: Number },
     contact_email: { type: String },
     address: { type: String },

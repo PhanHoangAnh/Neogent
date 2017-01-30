@@ -1,6 +1,6 @@
 var toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-    ['blockquote', 'code-block'],
+    ['blockquote'],
 
     [{
         'header': 1
@@ -12,19 +12,19 @@ var toolbarOptions = [
     }, {
         'list': 'bullet'
     }],
-    [{
-        'script': 'sub'
-    }, {
-        'script': 'super'
-    }], // superscript/subscript
+    // [{
+    //     'script': 'sub'
+    // }, {
+    //     'script': 'super'
+    // }], // superscript/subscript
     [{
         'indent': '-1'
     }, {
         'indent': '+1'
     }], // outdent/indent
-    [{
-        'direction': 'rtl'
-    }], // text direction
+    // [{
+    //     'direction': 'rtl'
+    // }], // text direction
 
     [{
         'size': ['small', false, 'large', 'huge']

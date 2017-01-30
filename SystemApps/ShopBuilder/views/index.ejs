@@ -17,7 +17,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
 <!--script type="text/javascript" src='js/navbar.js'></script-->
 
 <body>
@@ -40,7 +39,7 @@
                     <div>
                         <img src="img/CatLogo.png" class="logo" id='logo'>
                     </div>
-                    <div class='site-name hidden-xs' id = "companyName">
+                    <div class='site-name hidden-xs' id="companyName">
                         AbcJSC
                     </div>
                     <div>
@@ -51,7 +50,7 @@
                         </div>
                     </div>
                     <span class="hambugger" onclick="toggleMenu()">
-                        <span class="menu-bar"></span>                   
+                        <span class="menu-bar"></span>
                     </span>
                     <div id="menuBroad" class="menu-board">
                         <div id="AppManagerBoard" class="mini-broad-cover">
@@ -86,20 +85,21 @@
             </div>
         </div>
     </template> -->
-    
     <template id="textAreaInput">
         <div class="row control" id="24">
             <div class="col-md-3 col-lg-3">
                 <label>Static Content</label>
             </div>
             <div class="col-md-9 col-lg-9">
-                <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea>
-                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
-                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
+                <div style = "background-color: white;">
+                    <div app-role="dynamicContent"></div>
+                    <!-- <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea> -->
+                    <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
+                    <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
+                </div>
             </div>
         </div>
     </template>
-   
     <template id="imgInput">
         <div class="row control">
             <div class="col-md-3 col-lg-3">
@@ -133,7 +133,7 @@
                         <label>Shop's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" onchange= 'updatePage(this)'app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" onchange='updatePage(this)' app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
                     </div>
                 </div>
                 <div class="row control" id="18">
@@ -141,16 +141,16 @@
                         <label>Shop's Slogan</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" onchange= 'updatePage(this)' app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" onchange='updatePage(this)' app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
                 </div>
                 <div class="row control" id="19" data-controltype="text">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Company's Name or Group's Name</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange= 'updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                 </div>
-<!--                 <div class="row control" id="24">
+                <!--                 <div class="row control" id="24">
                     <div class="col-md-3 col-lg-3">
                         <label>Static Content</label>
                     </div>
@@ -194,7 +194,7 @@
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
-                </div>                
+                </div>
                 <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
@@ -308,7 +308,7 @@
                     <p style="margin-left: 15px">Drag the image to take an wall</p>
                     <!-- <div class="row"> -->
                     <div class="row" style="padding-bottom: 15px">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                           
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                 <input type="number" id="attImgXRatio" app-role="attImgXRatio" name="x-ratio" placeholder="X ratio" onchange="attImgRatio_change(event,this)">
                             </div>
@@ -367,7 +367,7 @@
     <script src="js/libs/html2json.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/libs/quill.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/Shopbuilder/editor.js" type="text/javascript" charset="utf-8"></script>
-    </body>
+</body>
 <script type="text/javascript">
 $(function() {
 
@@ -403,15 +403,15 @@ var fbId;
 var fbToken;
 var conBnt;
 var RSAPublicKey;
-var shopInfo ={};
+var shopInfo = {};
 $(document).ready(function() {
     /** code inside **/
     var masthead = $("#masthead");
     masthead.addClass('start');
     var data = <%- JSON.stringify(data) %>
     RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
-    shopInfo =<%-JSON.stringify(shopInfo)%>   
-    //console.log("shopInfo: ", shopInfo);
+    shopInfo = <%-JSON.stringify(shopInfo)%>
+        console.log("shopInfo: ", shopInfo);
     loadShopInfo(shopInfo);
 
     LoadApp();
@@ -481,16 +481,16 @@ $(document).ready(function() {
         }
     }
 
-    document.getElementById('iconHolder').addEventListener('click', openIconModal, false);    
+    document.getElementById('iconHolder').addEventListener('click', openIconModal, false);
     document.querySelector('#iconFile').addEventListener('change', function(el) {
         initIcon(this);
     }, false);
     document.querySelector('#wallFile').addEventListener('change', function() {
         initWall(this);
     }, false);
-    
 
-    
+
+
 });
 
 /** Huyen Anh added code here **/
@@ -502,7 +502,6 @@ window.onload = function() {
 function toggleMenu() {
     document.getElementById('nav').classList.toggle('menu-active');
 }
-
 </script>
 
 </html>
