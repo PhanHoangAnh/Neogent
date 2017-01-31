@@ -91,7 +91,7 @@
                 <label>Static Content</label>
             </div>
             <div class="col-md-9 col-lg-9">
-                <div>
+                <div style="background-color: white;">
                     <div app-role="dynamicContent"></div>
                     <!-- <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea> -->
                     <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
@@ -150,16 +150,7 @@
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                 </div>
-                <!--                 <div class="row control" id="24">
-                    <div class="col-md-3 col-lg-3">
-                        <label>Static Content</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea>
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
-                    </div>
-                </div> -->
-                <div class="row control" app-role="rowCover">
+                <!-- <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
@@ -167,7 +158,7 @@
                             <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row control" id="29" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Contact Email</label>
@@ -195,7 +186,7 @@
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
                 </div>
-                <div class="row control" app-role="rowCover">
+                <!-- <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
@@ -203,7 +194,7 @@
                             <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row control" id="27" data-controltype="text" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Shop Address</label>
@@ -226,8 +217,16 @@
             </div>
         </div>
         <div class="row">
-            <!--  <div class="col-xs- col-sm- col-md- col-lg-">
-            </div> -->
+            <div class="row control" app-role="rowCover">
+                <div class="col-md-3 col-lg-3">
+                </div>
+                <div class="col-md-9 col-lg-9">
+                    <div class="text-right">
+                        <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>
+                        <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /Right Sidebar -->
@@ -411,7 +410,7 @@ $(document).ready(function() {
     var data = <%- JSON.stringify(data) %>
     RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
     shopInfo = <%-JSON.stringify(shopInfo)%>
-        // console.log("shopInfo: ", shopInfo);
+    console.log("shopInfo: ", shopInfo);
     loadShopInfo(shopInfo);
 
     LoadApp();

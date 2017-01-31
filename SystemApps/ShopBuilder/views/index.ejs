@@ -87,11 +87,11 @@
     </template> -->
     <template id="textAreaInput">
         <div class="row control" id="24">
-            <div class="col-md-3 col-lg-3">
+            <div class="col-md-12 col-lg-12">
                 <label>Static Content</label>
             </div>
-            <div class="col-md-9 col-lg-9">
-                <div style = "background-color: white;">
+            <div class="col-md-12 col-lg-12">
+                <div style="background-color: white;">
                     <div app-role="dynamicContent"></div>
                     <!-- <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea> -->
                     <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
@@ -101,16 +101,18 @@
         </div>
     </template>
     <template id="imgInput">
+    <div class="col-md-6 col-lg-6">
         <div class="row control">
-            <div class="col-md-3 col-lg-3">
+            <div class="col-md-2 col-lg-2">
                 <label data-controltype="label">Shop's background</label>
             </div>
-            <div class="col-md-9 col-lg-9">
+            <div class="col-md-10 col-lg-10">
                 <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
                 <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
             </div>
         </div>
+    </div>
     </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/whole-home-remodeling-banner.jpg') no-repeat top center; background-size: 110% auto; opacity: 1">
@@ -150,16 +152,7 @@
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                 </div>
-                <!--                 <div class="row control" id="24">
-                    <div class="col-md-3 col-lg-3">
-                        <label>Static Content</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea>
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
-                    </div>
-                </div> -->
-                <div class="row control" app-role="rowCover">
+                <!-- <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
@@ -167,7 +160,7 @@
                             <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row control" id="29" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Contact Email</label>
@@ -195,7 +188,7 @@
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
                 </div>
-                <div class="row control" app-role="rowCover">
+                <!-- <div class="row control" app-role="rowCover">
                     <div class="col-md-3 col-lg-3">
                     </div>
                     <div class="col-md-9 col-lg-9">
@@ -203,13 +196,36 @@
                             <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="row control" id="27" data-controltype="text" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Shop Address</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
                         <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12">Provide Shop address by typing input or drag on map bellow</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="row control" app-role="rowCover">
+                <div class="col-md-3 col-lg-3">
+                </div>
+                <div class="col-md-9 col-lg-9">
+                    <div class="text-right">
+                        <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
+                        <!-- <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row control" app-role="rowCover">
+                <div class="col-md-3 col-lg-3">
+                </div>
+                <div class="col-md-9 col-lg-9">
+                    <div class="text-right">
+                        <!-- <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button> -->
+                        <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -224,10 +240,6 @@
                 <b>Closest matching address:</b>
                 <div id="address"></div>
             </div>
-        </div>
-        <div class="row">
-            <!--  <div class="col-xs- col-sm- col-md- col-lg-">
-            </div> -->
         </div>
     </div>
     <!-- /Right Sidebar -->
@@ -411,7 +423,7 @@ $(document).ready(function() {
     var data = <%- JSON.stringify(data) %>
     RSAPublicKey = <%-JSON.stringify(RSApublicKey)%>
     shopInfo = <%-JSON.stringify(shopInfo)%>
-        console.log("shopInfo: ", shopInfo);
+    console.log("shopInfo: ", shopInfo);
     loadShopInfo(shopInfo);
 
     LoadApp();
