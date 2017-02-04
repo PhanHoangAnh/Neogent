@@ -1558,12 +1558,7 @@ img {
   padding: 10px;
 }
 
-/* line 113, ../scss/main.scss */
-.row.control {
-  clear: both;
-}
-
-/* line 116, ../scss/main.scss */
+/* line 112, ../scss/main.scss */
 .bkg-list {
   position: relative;
   padding-bottom: 54px;
@@ -1574,15 +1569,15 @@ img {
   -webkit-column-count: 2;
   column-count: 2;
 }
-/* line 125, ../scss/main.scss */
+/* line 121, ../scss/main.scss */
 .bkg-list .bkg-item {
   position: relative;
   display: inline-block;
   float: none;
-  width: 100%;
+  width: auto;
   margin-bottom: 1em;
 }
-/* line 131, ../scss/main.scss */
+/* line 127, ../scss/main.scss */
 .bkg-list .btn-set {
   position: absolute;
   bottom: 0;

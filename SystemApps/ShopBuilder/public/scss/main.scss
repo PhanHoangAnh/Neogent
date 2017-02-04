@@ -109,10 +109,6 @@ img {
   .inner-tool {padding: 10px;}
 }
 
-.row {
-  &.control {clear: both;}
-}
-
 .bkg-list {
   position: relative;
   padding-bottom: 54px;
@@ -125,7 +121,7 @@ img {
   .bkg-item {
     position: relative;
     display: inline-block;
-    float: none; width: 100%;
+    float: none; width: auto;
     margin-bottom: 1em;
   }
   .btn-set {
