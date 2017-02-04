@@ -318,12 +318,9 @@ function addMoreBackgroundImg(el, image) {
     var staticBackGroundImg = document.getElementById("imgInput").content
     imgId++;
     var _img = staticBackGroundImg.querySelector('[app-role ="imgBackground"]')
-    _img.id = "img_" + imgId   
-
+    _img.id = "img_" + imgId;
     root.appendChild(document.importNode(staticBackGroundImg, true));
-    var img = document.getElementById("img_" + imgId);
-    console.log("lastChild: ", img);
-    // var img = item.querySelector('[app-role ="imgBackground"]');
+    var img = document.getElementById("img_" + imgId);    
     img.addEventListener('click', openBackgroundModal, false);
     var deleteBnt = img.parentNode.querySelector('[app-role ="deleteBnt"]')
     deleteBnt.addEventListener('click', function() {
