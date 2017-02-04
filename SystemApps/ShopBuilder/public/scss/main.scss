@@ -46,7 +46,7 @@ img {
   .btn {border-radius: 2px;}
 
   .control {
-    padding: 10px;
+    padding: 10px 0;
   }
 
   .ui-sortable-placeholder {
@@ -104,12 +104,18 @@ img {
     color: inherit;
   }
 }
+.editor-tool {
+  background: #FFF; padding: 0;
+  .inner-tool {padding: 10px;}
+}
 
 .row {
   &.control {clear: both;}
 }
 
 .bkg-list {
+  position: relative;
+  padding-bottom: 54px;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
@@ -121,6 +127,11 @@ img {
     display: inline-block;
     float: none; width: 100%;
     margin-bottom: 1em;
+  }
+  .btn-set {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
   }
 }
 
