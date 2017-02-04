@@ -98,6 +98,13 @@ img {
   }
 }//end .attribute-sets
 
+
+.ql-toolbar, .ql-container {
+  label, .help-block, a , span {
+    color: inherit;
+  }
+}
+
 .row {
   &.control {clear: both;}
 }

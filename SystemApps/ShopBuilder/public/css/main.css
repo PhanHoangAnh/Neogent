@@ -1543,12 +1543,17 @@ img {
   clear: left;
 }
 
-/* line 102, ../scss/main.scss */
+/* line 103, ../scss/main.scss */
+.ql-toolbar label, .ql-toolbar .help-block, .ql-toolbar a, .ql-toolbar span, .ql-container label, .ql-container .help-block, .ql-container a, .ql-container span {
+  color: inherit;
+}
+
+/* line 109, ../scss/main.scss */
 .row.control {
   clear: both;
 }
 
-/* line 105, ../scss/main.scss */
+/* line 112, ../scss/main.scss */
 .bkg-list {
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
@@ -1557,7 +1562,7 @@ img {
   -webkit-column-count: 2;
   column-count: 2;
 }
-/* line 112, ../scss/main.scss */
+/* line 119, ../scss/main.scss */
 .bkg-list .bkg-item {
   position: relative;
   display: inline-block;
