@@ -38,8 +38,8 @@
       <file leaf-file-name="main.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ShopBuilder/public/scss/main.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.93621016" vertical-offset="1711" max-vertical-offset="2448">
-              <caret line="130" column="16" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.20262665" vertical-offset="1796" max-vertical-offset="2329">
+              <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -316,7 +316,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -422,8 +422,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ShopBuilder/public/scss/main.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93621016" vertical-offset="1711" max-vertical-offset="2448">
-          <caret line="130" column="16" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.20262665" vertical-offset="1796" max-vertical-offset="2329">
+          <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
           <folding />
         </state>
       </provider>
