@@ -126,10 +126,13 @@ img {
   }
   .btn-set {
     position: absolute;
-    top: auto;
-    bottom: 0; left: 0;
+    top: auto; bottom: 0;
+    left: 0; right: 0;
     width: 100%;
   }
 }
-
+.row.control {
+  .btn-set {text-align: right;}
+}
+.info-panel {color: #FFF; padding-bottom: 10px;}
 
