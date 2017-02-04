@@ -1580,6 +1580,7 @@ img {
 /* line 127, ../scss/main.scss */
 .bkg-list .btn-set {
   position: absolute;
+  top: auto;
   bottom: 0;
   left: 0;
   width: 100%;
