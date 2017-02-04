@@ -25,7 +25,8 @@ function getFlatShopProducts(shopname, fn_cb) {
                 brandNames: shop.brandNames,
                 collections: shop.collections,
                 catGroups: shop.catGroups,
-                walls: shop.walls
+                walls: shop.walls,
+                staticContents: shop.static_content
             };
             var items = shop.items;
             var flatItems = []

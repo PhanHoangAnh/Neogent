@@ -117,6 +117,8 @@ function createFrontPage(shopInfo) {
         hotBrandName.innerHTML = hotBrands[n]['name'];
     }
 
+    updateStaticContent(shopInfo);
+
 }
 
 function createMenus(shopInfo) {
@@ -177,4 +179,28 @@ function removeDuplicates(originalArray, prop) {
         newArray.push(lookupObject[i]);
     }
     return newArray;
+}
+
+function updateStaticContent(shopInfo) {
+    var staticContents = shopInfo.staticContents;
+    var staticContentsElems = document.querySelectorAll('[app-role = "staticContent"]');
+
+    for (var i = 0; i < staticContents.length; i++) {
+        var singleContent = staticContents[i];
+        // console.log("singleContent: ", singleContent);
+        if (staticContentsElems[i]) {
+            var fragment = document.createRange().createContextualFragment(json2html(singleContent));
+            staticContentsElems[i].appendChild(fragment);
+            // remove attribute contenteditable
+            var contenteditables = staticContentsElems[i].querySelectorAll('[contenteditable="true"]');
+            contenteditables.forEach(function(elem) {
+                elem.setAttribute('contenteditable', false);
+            });
+            var removedElems = staticContentsElems[i].getElementsByClassName("ql-tooltip ql-hidden");
+
+            for (var j = 0; j < removedElems.length; j++) {
+                removedElems[j].parentNode.removeChild(removedElems[j]);
+            }
+        }
+    }
 }
