@@ -101,18 +101,18 @@
         </div>
     </template>
     <template id="imgInput">
-    <div class="col-md-6 col-lg-6 bkg-item">
-        <div class="row control">
-            <div class="col-md-2 col-lg-2">
-                <label data-controltype="label">Shop's background</label>
-            </div>
-            <div class="col-md-10 col-lg-10">
-                <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
-                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
-                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
+        <div class="col-md-6 col-lg-6 bkg-item">
+            <div class="row control">
+                <div class="col-md-2 col-lg-2">
+                    <label data-controltype="label">Shop's background</label>
+                </div>
+                <div class="col-md-10 col-lg-10">
+                    <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
+                    <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
+                    <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
+                </div>
             </div>
         </div>
-    </div>
     </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/whole-home-remodeling-banner.jpg') no-repeat top center; background-size: 110% auto; opacity: 1">
@@ -206,26 +206,28 @@
                 </div>
             </div>
         </div>
-        
-        <div class="row" >
-			<div class="row bkg-list">Anh đặt vào đây cho em</div>
-            <div class="row control" app-role="rowCover">
-                <div class="col-md-3 col-lg-3">
-                </div>
-                <div class="col-md-9 col-lg-9">
-                    <div class="text-right">
-                        <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
-                        <!-- <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button> -->
+        <div class="row">
+            <div class="row bkg-list">Anh đặt vào đây cho em
+                <div class="row control" app-role="rowCover">
+                    <div class="col-md-3 col-lg-3">
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <div class="text-right">
+                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
+                            <!-- <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button> -->
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row control">
-                <div class="col-md-3 col-lg-3">
-                </div>
-                <div class="col-md-9 col-lg-9">
-                    <div class="text-right">
-                        <!-- <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button> -->
-                        <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                <div app-role="rowCover">
+                    <div class="col-md-3 col-lg-3">
+                    </div>
+                    <div class="col-md-9 col-lg-9">
+                        <div class="text-right">
+                            <!-- <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button> -->
+                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                        </div>
                     </div>
                 </div>
             </div>
