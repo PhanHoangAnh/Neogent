@@ -1544,7 +1544,7 @@ img {
 }
 
 /* line 103, ../scss/main.scss */
-.ql-toolbar label, .ql-toolbar .help-block, .ql-toolbar a, .ql-toolbar span, .ql-container label, .ql-container .help-block, .ql-container a, .ql-container span {
+.ql-toolbar label, .ql-toolbar .help-block, .ql-toolbar a, .ql-toolbar span, .ql-container label, .ql-container .help-block, .ql-container a, .ql-container span, .editor-tool label, .editor-tool .help-block, .editor-tool a, .editor-tool span {
   color: inherit;
 }
 
