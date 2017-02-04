@@ -273,8 +273,10 @@ img {
     .colls-row {
       -moz-column-width: 18em;
       -webkit-column-width: 18em;
+      column-width: 18em;
       -moz-column-gap: 1em;
-      -webkit-column-gap:1em;
+      -webkit-column-gap: 1em;
+      column-gap: 1em;
     }
     .colls-item {
       position: relative;
