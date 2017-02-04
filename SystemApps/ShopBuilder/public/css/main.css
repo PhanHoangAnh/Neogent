@@ -1487,7 +1487,7 @@ img {
 }
 /* line 48, ../scss/main.scss */
 .shop-buider .control {
-  padding: 10px;
+  padding: 10px 0;
 }
 /* line 52, ../scss/main.scss */
 .shop-buider .ui-sortable-placeholder {
@@ -1548,13 +1548,25 @@ img {
   color: inherit;
 }
 
+/* line 107, ../scss/main.scss */
+.editor-tool {
+  background: #FFF;
+  padding: 0;
+}
 /* line 109, ../scss/main.scss */
+.editor-tool .inner-tool {
+  padding: 10px;
+}
+
+/* line 113, ../scss/main.scss */
 .row.control {
   clear: both;
 }
 
-/* line 112, ../scss/main.scss */
+/* line 116, ../scss/main.scss */
 .bkg-list {
+  position: relative;
+  padding-bottom: 54px;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
@@ -1562,11 +1574,18 @@ img {
   -webkit-column-count: 2;
   column-count: 2;
 }
-/* line 119, ../scss/main.scss */
+/* line 125, ../scss/main.scss */
 .bkg-list .bkg-item {
   position: relative;
   display: inline-block;
   float: none;
   width: 100%;
   margin-bottom: 1em;
+}
+/* line 131, ../scss/main.scss */
+.bkg-list .btn-set {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
