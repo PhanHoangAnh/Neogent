@@ -1561,7 +1561,6 @@ img {
 /* line 112, ../scss/main.scss */
 .bkg-list {
   position: relative;
-  padding-bottom: 54px;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
@@ -1569,7 +1568,7 @@ img {
   -webkit-column-count: 2;
   column-count: 2;
 }
-/* line 121, ../scss/main.scss */
+/* line 120, ../scss/main.scss */
 .bkg-list .bkg-item {
   position: relative;
   display: inline-block;
@@ -1577,22 +1576,13 @@ img {
   width: auto;
   margin-bottom: 1em;
 }
-/* line 127, ../scss/main.scss */
-.bkg-list .btn-set {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-}
 
-/* line 135, ../scss/main.scss */
+/* line 128, ../scss/main.scss */
 .row.control .btn-set {
   text-align: right;
 }
 
-/* line 137, ../scss/main.scss */
+/* line 130, ../scss/main.scss */
 .info-panel {
   color: #FFF;
   padding-bottom: 10px;

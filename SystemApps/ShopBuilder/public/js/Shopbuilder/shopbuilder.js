@@ -279,7 +279,7 @@ function addMoreStaticContent(el, content) {
         'sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'
     ];
     Quill.register(FontAttributor, true);
-    
+
     var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
     if (!content) {
         var quill = new Quill(dynamicContent, {
@@ -311,14 +311,21 @@ function addMoreStaticContent(el, content) {
     }
 }
 
+var imgId = 0
+
 function addMoreBackgroundImg(el, image) {
-    var root = getRowCover(el).parentNode;
+    var root = document.getElementById("imageHandler");
     var staticBackGroundImg = document.getElementById("imgInput").content
-    root.insertBefore(document.importNode(staticBackGroundImg, true), getRowCover(el));
-    var item = previousElementSibling(getRowCover(el));
-    var img = item.querySelector('[app-role ="imgBackground"]');
+    imgId++;
+    var _img = staticBackGroundImg.querySelector('[app-role ="imgBackground"]')
+    _img.id = "img_" + imgId   
+
+    root.appendChild(document.importNode(staticBackGroundImg, true));
+    var img = document.getElementById("img_" + imgId);
+    console.log("lastChild: ", img);
+    // var img = item.querySelector('[app-role ="imgBackground"]');
     img.addEventListener('click', openBackgroundModal, false);
-    var deleteBnt = item.querySelector('[app-role ="deleteBnt"]')
+    var deleteBnt = img.parentNode.querySelector('[app-role ="deleteBnt"]')
     deleteBnt.addEventListener('click', function() {
         item.parentNode.removeChild(item);
     }, false);

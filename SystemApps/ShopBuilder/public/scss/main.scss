@@ -111,7 +111,6 @@ img {
 
 .bkg-list {
   position: relative;
-  padding-bottom: 54px;
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
@@ -123,12 +122,6 @@ img {
     display: inline-block;
     float: none; width: auto;
     margin-bottom: 1em;
-  }
-  .btn-set {
-    position: absolute;
-    top: auto; bottom: 0;
-    left: 0; right: 0;
-    width: 100%;
   }
 }
 .row.control {
