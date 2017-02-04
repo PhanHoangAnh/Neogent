@@ -38,9 +38,9 @@ var toolbarOptions = [
     }, {
         'background': []
     }], // dropdown with defaults from theme
-    [{
-        'font': []
-    }],
+    // [{
+    //     'font': []
+    // }],
     [{
         'align': []
     }],

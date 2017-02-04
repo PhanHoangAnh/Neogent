@@ -324,7 +324,7 @@ function addMoreBackgroundImg(el, image) {
     img.addEventListener('click', openBackgroundModal, false);
     var deleteBnt = img.parentNode.querySelector('[app-role ="deleteBnt"]')
     deleteBnt.addEventListener('click', function() {
-        item.parentNode.removeChild(item);
+        img.parentNode.removeChild(img);
     }, false);
     if (image) {
         console.log("image: ", image);
