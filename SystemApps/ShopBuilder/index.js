@@ -76,7 +76,7 @@ objResult.return_id = null;
 //
 router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
     var mainData = req.body.payload.data
-    
+
     var Shops = mongoose.model('Shops');
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {
         if (err) {
@@ -130,13 +130,16 @@ router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
                 content = JSON.parse(content);
                 jp.apply(content, '$..src', function(value) {
                     var imgID = mongoose.Types.ObjectId().toString();
-                    if (value.indexOf("data:image/png;base64") !== -1) {
+                    console.log(" indexOf: ", value.indexOf("data:image/png;base64") !== -1 );
+                    if (value.indexOf("data:image/") !== -1 ) {
+                        console.log("find src here");
                         var filePath = "./Shops/" + req.shopname + "/public/imgs/staticImg_" + imgID + ".png";
                         var result = writeBase64ImageSync(filePath, value);
                         if (result) {
                             value = "/" + req.shopname + "/imgs/staticImg_" + imgID + ".png";
                         }
                     }
+                    console.log("new value: ", value);
                     return value;
                 });
                 var images = jp.query(content, '$..src');

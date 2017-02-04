@@ -274,6 +274,12 @@ function addMoreStaticContent(el, content) {
     }, false);
     // upgrade feature
     // var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
+    var FontAttributor = Quill.import('attributors/class/font');
+    FontAttributor.whitelist = [
+        'sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'
+    ];
+    Quill.register(FontAttributor, true);
+    
     var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
     if (!content) {
         var quill = new Quill(dynamicContent, {
