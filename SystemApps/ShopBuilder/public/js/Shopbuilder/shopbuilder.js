@@ -274,11 +274,16 @@ function addMoreStaticContent(el, content) {
     }, false);
     // upgrade feature
     // var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
-    var FontAttributor = Quill.import('attributors/class/font');
-    FontAttributor.whitelist = [
-        'sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'
-    ];
-    Quill.register(FontAttributor, true);
+    // var FontAttributor = Quill.import('attributors/class/font');
+    // FontAttributor.whitelist = [
+    //     'sofia', 'slabo', 'roboto', 'inconsolata', 'ubuntu'
+    // ];
+    // Quill.register(FontAttributor, true);
+
+    // follow http://codepen.io/anon/pen/NbWJGb
+    var icons = Quill.import('ui/icons');
+    // icons['bgcolor'] = '<i app-role ="bgcolor" class="fa fa-sticky-note-o" aria-hidden="true"></i>';
+    icons['bgcolor'] = '<i app-role ="bgcolor" class="fa fa-sticky-note-o" aria-hidden="true"></i>';
 
     var dynamicContent = contentPad.querySelector('[app-role = "dynamicContent"]');
     if (!content) {
@@ -306,9 +311,14 @@ function addMoreStaticContent(el, content) {
             },
             theme: 'snow'
         });
-
         //
     }
+
+    var bgcolor = contentPad.querySelector('[app-role ="bgcolor"]');
+    bgcolor.addEventListener('click', function() {
+        console.log(this);
+        document.getElementById('colorPicker').click();
+    })
 }
 
 var imgId = 0
@@ -320,7 +330,7 @@ function addMoreBackgroundImg(el, image) {
     var _img = staticBackGroundImg.querySelector('[app-role ="imgBackground"]')
     _img.id = "img_" + imgId;
     root.appendChild(document.importNode(staticBackGroundImg, true));
-    var img = document.getElementById("img_" + imgId);    
+    var img = document.getElementById("img_" + imgId);
     img.addEventListener('click', openBackgroundModal, false);
     var deleteBnt = img.parentNode.querySelector('[app-role ="deleteBnt"]')
     deleteBnt.addEventListener('click', function() {

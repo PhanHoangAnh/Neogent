@@ -46,7 +46,7 @@ var toolbarOptions = [
     }],
 
     [
-        'image', 'video', 'link'
+        'image', 'video', 'link', 'bgcolor'
     ],
     ['clean'] // remove formatting button
 ];
