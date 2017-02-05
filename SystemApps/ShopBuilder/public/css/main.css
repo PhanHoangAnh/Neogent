@@ -1564,9 +1564,9 @@ img {
   -moz-column-gap: 1em;
   -webkit-column-gap: 1em;
   column-gap: 1em;
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
-  column-count: 2;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
 }
 /* line 120, ../scss/main.scss */
 .bkg-list .bkg-item {
@@ -1576,13 +1576,42 @@ img {
   width: auto;
   margin-bottom: 1em;
 }
-
+/* line 125, ../scss/main.scss */
+.bkg-list .bkg-item .bottom-bar {
+  text-align: right;
+  zoom: 1;
+}
+/* line 82, ../scss/_mixins.scss */
+.bkg-list .bkg-item .bottom-bar:after {
+  content: '.';
+  display: block;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
 /* line 128, ../scss/main.scss */
+.bkg-list .bkg-item .bottom-bar button {
+  float: left;
+}
+/* line 129, ../scss/main.scss */
+.bkg-list .bkg-item .bottom-bar label {
+  margin-right: 7px;
+}
+/* line 130, ../scss/main.scss */
+.bkg-list .bkg-item .bottom-bar input[type="number"] {
+  width: 80px;
+}
+
+/* line 137, ../scss/main.scss */
 .row.control .btn-set {
   text-align: right;
 }
 
-/* line 130, ../scss/main.scss */
+/* line 139, ../scss/main.scss */
 .info-panel {
   color: #FFF;
   padding-bottom: 10px;
