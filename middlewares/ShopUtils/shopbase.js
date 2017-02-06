@@ -47,6 +47,16 @@ function getFlatShopProducts(shopname, fn_cb) {
                 flatItems.push(tempObj);
             });
             shopInfo.items = flatItems;
+            function getEnableCols(){
+                
+                return null;
+            };
+            function getPromotedColl(){
+                return null;
+            };
+            function getHighlightedColls(){
+                return null;
+            };
             fn_cb(err, shopInfo);
         }
     });

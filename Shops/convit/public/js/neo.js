@@ -58,7 +58,7 @@ function createFrontPage(shopInfo) {
 
     highlightProducts = removeDuplicates(highlightProducts, "id");
 
-    console.log("highlightProducts", highlightProducts);
+    // console.log("highlightProducts", highlightProducts);
     // build carousel for highlightProducts
     var hi_length = highlightProducts.length;
     var numberOfRows = Math.floor(highlightProducts.length / 3) + 1;
@@ -67,7 +67,7 @@ function createFrontPage(shopInfo) {
     } else {
         hi_length = highlightProducts.length + 3 - (highlightProducts.length % 3);
     }
-    console.log("numberOfRows: ", numberOfRows, "hi_length: ", hi_length, highlightProducts.length);
+    // console.log("numberOfRows: ", numberOfRows, "hi_length: ", hi_length, highlightProducts.length);
 
     var carouselContainer = document.getElementById("carouselContainer");
     for (var i = 0; i < numberOfRows; i++) {

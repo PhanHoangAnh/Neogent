@@ -17,6 +17,13 @@ router.get('/', function(req, res, next) {
     getFlatShopProducts(req.shopname, getFlatProduct);
 
     function getFlatProduct(err, shopInfo) {
+        var collections = shopInfo.collections.filter(function(item) {
+            if (item.enabledCollection) {
+                return item;
+            };
+        });
+        console.log("collections: ", collections);
+        shopInfo.collections = collections;
         res.render('index', {
             title: 'Hello, this is template Application of : ' + req.shopname,
             RSApublicKey: keyPair.public,
