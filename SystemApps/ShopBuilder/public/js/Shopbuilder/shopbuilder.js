@@ -243,10 +243,12 @@ function updateShopInfo(evt) {
     shopInfo[att] = this.value;
 }
 
+var attImgXRatio = 16;
+var attImgYRatio = 9;
+
 function attImgRatio_change(evt, elem) {
     var appRole = elem.getAttribute("app-role");
-    var attImgXRatio = 16;
-    var attImgYRatio = 9
+
     if (appRole == "attImgXRatio") {
         attImgXRatio = elem.value;
     } else if (appRole == "attImgYRatio") {
@@ -262,6 +264,7 @@ function attImgRatio_change(evt, elem) {
     imageBox.style.height = applyHeight;
 }
 
+var current_staticContent;
 
 function addMoreStaticContent(el, content) {
     var root = getRowCover(el).parentNode;
@@ -316,9 +319,11 @@ function addMoreStaticContent(el, content) {
 
     var bgcolor = contentPad.querySelector('[app-role ="bgcolor"]');
     bgcolor.addEventListener('click', function() {
-        console.log(this);
+        current_staticContent = dynamicContent;
+        console.log(current_staticContent);
         document.getElementById('colorPicker').click();
-    })
+    });
+
 }
 
 var imgId = 0
@@ -463,4 +468,9 @@ function loadShopInfo(shopInfo) {
             })
         }
     }
-}
+};
+
+var colorPicker = document.getElementById('colorPicker')
+colorPicker.addEventListener("input", function() {
+    current_staticContent.style.backgroundColor = colorPicker.value;
+});

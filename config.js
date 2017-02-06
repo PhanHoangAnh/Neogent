@@ -25,6 +25,7 @@ global["dbEngine"] = require("./middlewares/databases/dbEngine");
 
 // shop utils
 global['getFlatShopProducts'] = require("./middlewares/ShopUtils/shopbase").getFlatShopProducts;
+global['getBasicShopInfo'] = require("./middlewares/ShopUtils/shopbase").getBasicShopInfo;
 
 module.exports = {
     'database': 'mongodb://localhost/Neogento'

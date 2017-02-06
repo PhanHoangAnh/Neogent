@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 function getFlatShopProducts(shopname, fn_cb) {
-    console.log('shopname', shopname);
+    // console.log('shopname', shopname);
     if (!fn_cb || typeof fn_cb !== "function") {
         return null;
     }
@@ -47,14 +47,17 @@ function getFlatShopProducts(shopname, fn_cb) {
                 flatItems.push(tempObj);
             });
             shopInfo.items = flatItems;
-            function getEnableCols(){
-                
+
+            function getEnableCols() {
+
                 return null;
             };
-            function getPromotedColl(){
+
+            function getPromotedColl() {
                 return null;
             };
-            function getHighlightedColls(){
+
+            function getHighlightedColls() {
                 return null;
             };
             fn_cb(err, shopInfo);
@@ -62,6 +65,33 @@ function getFlatShopProducts(shopname, fn_cb) {
     });
 };
 
+function getBasicShopInfo(req, res) {
+    getFlatShopProducts(req.shopname, fnCb);
+
+    function fnCb(err, shopInfo) {
+        if (shopInfo && shopInfo.collections) {
+            var collections = shopInfo.collections.filter(function(item) {
+                if (item.enabledCollection) {
+                    return item;
+                };
+            });
+            shopInfo.collections = collections;
+        };
+
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('index', {
+                title: 'Hello, this is template Application of : ' + req.shopname,
+                RSApublicKey: keyPair.public,
+                shopInfo: shopInfo
+            });
+        }
+
+    }
+}
+
 module.exports = {
-    getFlatShopProducts: getFlatShopProducts
+    getFlatShopProducts: getFlatShopProducts,
+    getBasicShopInfo: getBasicShopInfo
 }
