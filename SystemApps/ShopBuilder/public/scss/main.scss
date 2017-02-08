@@ -119,9 +119,12 @@ img {
   column-count: 3;
   .bkg-item {
     position: relative;
-    display: inline-block;
+    //display: inline-block;
     float: none; width: auto;
     margin-bottom: 1em;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
+    display: table;
     .bottom-bar {
       text-align: right;
       @include clearfix;
