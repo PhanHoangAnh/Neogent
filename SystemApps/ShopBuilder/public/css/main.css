@@ -1567,18 +1567,28 @@ img {
   -moz-column-count: 3;
   -webkit-column-count: 3;
   column-count: 3;
+  /*width: 100%;
+  -moz-column-gap: 15px;
+  -webkit-column-gap: 15px;
+  column-gap: 15px;
+  -moz-column-width: 320px;
+  -webkit-column-width: 320px;
+  column-width: 320px;*/
 }
-/* line 120, ../scss/main.scss */
+/* line 127, ../scss/main.scss */
 .bkg-list .bkg-item {
   position: relative;
-  float: none;
-  width: auto;
   margin-bottom: 1em;
   page-break-inside: avoid;
+  -moz-break-inside: avoid-column;
   break-inside: avoid-column;
   display: table;
+ /*display: inline-block;
+-moz-column-break-inside: avoid;
+-webkit-column-break-inside: avoid;
+column-break-inside: avoid;*/
 }
-/* line 128, ../scss/main.scss */
+/* line 140, ../scss/main.scss */
 .bkg-list .bkg-item .bottom-bar {
   text-align: right;
   zoom: 1;
@@ -1595,25 +1605,25 @@ img {
   font-size: 0;
   line-height: 0;
 }
-/* line 131, ../scss/main.scss */
+/* line 143, ../scss/main.scss */
 .bkg-list .bkg-item .bottom-bar button {
   float: left;
 }
-/* line 132, ../scss/main.scss */
+/* line 144, ../scss/main.scss */
 .bkg-list .bkg-item .bottom-bar label {
   margin-right: 7px;
 }
-/* line 133, ../scss/main.scss */
+/* line 145, ../scss/main.scss */
 .bkg-list .bkg-item .bottom-bar input[type="number"] {
   width: 80px;
 }
 
-/* line 140, ../scss/main.scss */
+/* line 152, ../scss/main.scss */
 .row.control .btn-set {
   text-align: right;
 }
 
-/* line 142, ../scss/main.scss */
+/* line 154, ../scss/main.scss */
 .info-panel {
   color: #FFF;
   padding-bottom: 10px;
