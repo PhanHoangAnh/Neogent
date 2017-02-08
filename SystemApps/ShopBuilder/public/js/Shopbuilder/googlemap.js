@@ -1,4 +1,6 @@
-$(document).ready(function() {
+$(document).ready(prepareMap)
+
+function prepareMap() {
     var geocoder = new google.maps.Geocoder();
 
     function geocodePosition(pos) {
@@ -24,7 +26,7 @@ $(document).ready(function() {
     updatePos();
 
     function updatePos() {
-          //var infoWindow = new google.maps.InfoWindow({map: map});
+        //var infoWindow = new google.maps.InfoWindow({map: map});
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -139,5 +141,8 @@ $(document).ready(function() {
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     });
-
-})
+    var mapCover = document.getElementById("mapCover")
+    google.maps.event.addDomListener(mapCover, "click", function(){
+         google.maps.event.trigger(window, 'resize', {});
+    })
+}

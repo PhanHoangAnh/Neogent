@@ -477,14 +477,9 @@ colorPicker.addEventListener("input", function() {
 
 // adding feature to googlemap
 
-var mapCover = document.getElementById("mapCover")
-mapCover.addEventListener('click', function() {
-    google.maps.event.trigger(map, "resize");
-    map.setCenter(center);
-})
+// var mapCover = document.getElementById("mapCover")
 
-// google.maps.event.addDomListener(mapCover, 'click', function() {
-//     //alert("clicked");
-//     var center = map.getCenter();
 
-// });
+// mapCover.addEventListener('click', function() {
+//    google.maps.event.trigger(window, 'resize', {});
+// })
