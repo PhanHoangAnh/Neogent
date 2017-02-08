@@ -478,13 +478,9 @@ colorPicker.addEventListener("input", function() {
 // adding feature to googlemap
 
 var mapCover = document.getElementById("mapCover")
-mapCover.addEventListener('click', function() {
+
+google.maps.event.addDomListener(mapCover, 'click', function() {
+    var center = map.getCenter();
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
-})
-
-// google.maps.event.addDomListener(mapCover, 'click', function() {
-//     //alert("clicked");
-//     var center = map.getCenter();
-
-// });
+});
