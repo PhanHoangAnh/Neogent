@@ -474,3 +474,13 @@ var colorPicker = document.getElementById('colorPicker')
 colorPicker.addEventListener("input", function() {
     current_staticContent.style.backgroundColor = colorPicker.value;
 });
+
+// adding feature to googlemap
+
+var mapCover = document.getElementById("mapCover")
+
+google.maps.event.addDomListener(mapCover, 'click', function() {
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+});

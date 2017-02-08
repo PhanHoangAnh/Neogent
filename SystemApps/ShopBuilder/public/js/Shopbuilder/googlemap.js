@@ -20,46 +20,56 @@ $(document).ready(function() {
         timeout: 5000,
         maximumAge: 0
     };
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            var pos;
-            if (!shopInfo.longitude && !shopInfo.latitude) {
-                pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-            } else {
-                pos = {
-                    lat: shopInfo.latitude,
-                    lng: shopInfo.longitude
-                }
-            }
 
-            latLng = new google.maps.LatLng(pos.lat, pos.lng);
-            // infoWindow.setPosition(pos);
-            // infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-        }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-        }, options);
-    } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
+    updatePos();
+
+    function updatePos() {
+          //var infoWindow = new google.maps.InfoWindow({map: map});
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos;
+                if (!shopInfo.longitude && !shopInfo.latitude) {
+                    pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                } else {
+                    pos = {
+                        lat: parseFloat(shopInfo.latitude),
+                        lng: parseFloat(shopInfo.longitude)
+                    }
+                }
+
+                latLng = new google.maps.LatLng(pos.lat, pos.lng);
+                // infoWindow.setPosition(pos);
+                // infoWindow.setContent('Location found.');
+                map.setCenter(pos);
+            }, function() {
+                //handleLocationError(true, infoWindow, map.getCenter());
+            }, options);
+        } else {
+            // Browser doesn't support Geolocation
+            //  handleLocationError(false, infoWindow, map.getCenter());
+        }
+        // 
     }
-    // 
 
     function updateMarkerStatus(str) {
         document.getElementById('markerStatus').innerHTML = str;
-
     }
 
     function updateMarkerPosition(latLng) {
-        shopInfo.latitude = latLng.lat();
-        shopInfo.longitude = latLng.lng();
-        document.getElementById('info').innerHTML = [
-            latLng.lat(),
-            latLng.lng()
-        ].join(', ');
+        if (!latLng) {
+            updatePos();
+        } else {
+            shopInfo.latitude = latLng.lat();
+            shopInfo.longitude = latLng.lng();
+            document.getElementById('info').innerHTML = [
+                latLng.lat(),
+                latLng.lng()
+            ].join(', ');
+        }
     }
 
     function updateMarkerAddress(str) {

@@ -91,8 +91,8 @@
                 <label>Static Content</label>
             </div>
             <div class="col-md-12 col-lg-12 editor-tool">
-                <div style="background-color: white;">
-                    <div app-role="dynamicContent"></div>
+                <div app-role="dynamicContent"></div>
+                <div class="inner-tool">
                     <!-- <textarea class="col-md-12 col-lg-12 form-control" rows="11" app-role="static_content"></textarea> -->
                     <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Something about your shop</span>
                     <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
@@ -101,18 +101,19 @@
         </div>
     </template>
     <template id="imgInput">
-    <div class="col-md-6 col-lg-6 bkg-item">
-        <div class="row control">
-            <div class="col-md-2 col-lg-2">
-                <label data-controltype="label">Shop's background</label>
-            </div>
-            <div class="col-md-10 col-lg-10">
+        <div class="col-md-4 col-lg-4 bkg-item">
+            <div class="row control">
+                <!-- <div class="col-md-12 col-lg-12"> -->
                 <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
-                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select background image for your shop</span>
-                <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
+                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Click to Select background image for your shop</span>
+                <div class="bottom-bar">
+                    <button app-role="deleteBnt" type="button" class="btn btn-danger">Delete</button>
+                    <label>Order Number</label>
+                    <input type="number" />
+                </div>
+                <!-- </div> -->
             </div>
         </div>
-    </div>
     </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('img/whole-home-remodeling-banner.jpg') no-repeat top center; background-size: 110% auto; opacity: 1">
@@ -128,122 +129,113 @@
     <hr>
     <!-- Main part -->
     <div class="container-fluid shop-buider" id="start-offset">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelLeft">
-                <div class="row control" id="17">
-                    <div class="col-md-3 col-lg-3">
-                        <label>Shop's Name</label>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+            <li><a id="mapCover" data-toggle="tab" href="#mapTab">Info</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelLeft">
+                        <div class="row control" id="17">
+                            <div class="col-md-3 col-lg-3">
+                                <label>Shop's Name</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" onchange='updatePage(this)' app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
+                            </div>
+                        </div>
+                        <div class="row control" id="18">
+                            <div class="col-md-3 col-lg-3">
+                                <label>Shop's Slogan</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" onchange='updatePage(this)' app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
+                        </div>
+                        <div class="row control" id="19" data-controltype="text">
+                            <div class="col-md-3 col-lg-3">
+                                <label data-controltype="label">Company's Name or Group's Name</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
+                        </div>
+                        <!-- <div class="row control" app-role="rowCover">
+                        <div class="col-md-3 col-lg-3">
+                        </div>
+                        <div class="col-md-9 col-lg-9">
+                            <div class="text-right">
+                                <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                            </div>
+                        </div>
+                    </div> -->
                     </div>
-                    <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="showname" onchange='updatePage(this)' app-input="showName"><span class="help-block col-md-12 col-lg-12">Display Name of Shop</span>
-                    </div>
-                </div>
-                <div class="row control" id="18">
-                    <div class="col-md-3 col-lg-3">
-                        <label>Shop's Slogan</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="slogan" onchange='updatePage(this)' app-input="slogan"><span class="help-block col-md-12 col-lg-12">Emphasize your message to customers</span></div>
-                </div>
-                <div class="row control" id="19" data-controltype="text">
-                    <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Company's Name or Group's Name</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
-                </div>
-                <!-- <div class="row control" app-role="rowCover">
-                    <div class="col-md-3 col-lg-3">
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <div class="text-right">
-                            <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelRight">
+                        <div class="row control" id="26" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
+                            <div class="col-md-3 col-lg-3">
+                                <label data-controltype="label">Contact Phone Number</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
+                        </div>
+                        <div class="row control" id="29" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
+                            <div class="col-md-3 col-lg-3">
+                                <label data-controltype="label">Contact Email</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="email" placeholder="Contact Email" app-input="contact_email"><span class="help-block col-md-12 col-lg-12">Contact Email</span></div>
+                        </div>
+                        <div class="row control" id="22" data-controltype="image">
+                            <div class="col-md-3 col-lg-3">
+                                <label data-controltype="label">Shop Icon</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <div style="width: 55px;height: 55px;">
+                                    <img id="iconHolder" style="width: 100%; height:auto" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-type="icon">
+                                </div>
+                                <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select shop's icon</span>
+                            </div>
                         </div>
                     </div>
-                </div> -->
-                <div class="row control" id="29" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
-                    <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Contact Email</label>
+                </div>
+                <div class="row">
+                    <div class="row bkg-list" id="imageHandler">
                     </div>
-                    <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="email" placeholder="Contact Email" app-input="contact_email"><span class="help-block col-md-12 col-lg-12">Contact Email</span></div>
+                    <div class="row control" app-role="rowCover">
+                        <div class="btn-set">
+                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
+                            <!-- <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button> -->
+                        </div>
+                    </div>
+                    <div class="row control">
+                        <div app-role="rowCover">
+                            <div class="btn-set">
+                                <!-- <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button> -->
+                                <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelRight">
-                <div class="row control" id="22" data-controltype="image">
-                    <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Shop Icon</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <div style="width: 55px;height: 55px;">
-                            <img id="iconHolder" style="width: 100%; height:auto" src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-type="icon">
-                        </div>
-                        <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Select shop's icon</span>
-                    </div>
-                </div>
-                <div class="row control" id="26" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
-                    <div class="col-md-3 col-lg-3">
-                        <label data-controltype="label">Contact Phone Number</label>
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="number" placeholder="Contact Phone Number" app-input="contact_phone"><span class="help-block col-md-12 col-lg-12" data-controltype="describe">Contact Phone Number</span></div>
-                </div>
-                <!-- <div class="row control" app-role="rowCover">
-                    <div class="col-md-3 col-lg-3">
-                    </div>
-                    <div class="col-md-9 col-lg-9">
-                        <div class="text-right">
-                            <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
-                        </div>
-                    </div>
-                </div> -->
+            <div id="mapTab" class="tab-pane fade">
                 <div class="row control" id="27" data-controltype="text" style="position: relative; left: 0px; top: 0px;">
                     <div class="col-md-3 col-lg-3">
                         <label data-controltype="label">Shop Address</label>
                     </div>
                     <div class="col-md-9 col-lg-9">
-                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12">Provide Shop address by typing input or drag on map bellow</span></div>
+                        <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Provide Shop address by typing input or drag on map bellow" data-controltype="text" id="textAddress"><span class="help-block col-md-12 col-lg-12">Provide Shop address by typing input or drag on the bellow map </span></div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="row" >
-			<div class="row bkg-list">Anh đặt vào đây cho em
-                <div class="row control" app-role="rowCover">
-                <div class="col-md-3 col-lg-3">
-                </div>
-                <div class="col-md-9 col-lg-9">
-                    <div class="text-right">
-                        <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
-                        <!-- <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button> -->
+                <div class="row">
+                    <!-- Google Map Area -->
+                    <div id="mapCanvas" class="map-canvas" style="height: 70vh; margin: 10px 0;"></div>
+                    <div id="infoPanel" class="info-panel">
+                        <b>Marker status:</b>
+                        <div id="markerStatus"><i>Click and drag the marker.</i></div>
+                        <b>Current position:</b>
+                        <div id="info"></div>
+                        <b>Closest matching address:</b>
+                        <div id="address"></div>
                     </div>
                 </div>
-            </div>
-            </div>
-            
-            <div class="row control">
-                <div app-role="rowCover">
-                <div class="col-md-3 col-lg-3">
-                </div>
-                <div class="col-md-9 col-lg-9">
-                    <div class="text-right">
-                        <!-- <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button> -->
-                        <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- Google Map Area -->
-            <div id="mapCanvas" style="height: 70vh; margin: 10px 0;"></div>
-            <div id="infoPanel">
-                <b>Marker status:</b>
-                <div id="markerStatus"><i>Click and drag the marker.</i></div>
-                <b>Current position:</b>
-                <div id="info"></div>
-                <b>Closest matching address:</b>
-                <div id="address"></div>
             </div>
         </div>
     </div>
@@ -253,6 +245,7 @@
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
             <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo()">Save</button>
+            <input type="color" id="colorPicker" tabindex=-1 class="hidden">
         </div>
     </section>
     <footer>
