@@ -77,7 +77,7 @@ objResult.err = null;
 objResult.return_id = null;
 //
 router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
-    var mainData = req.body.payload.data
+    var mainData = req.body.exPayload.basicInfo
 
     var Shops = mongoose.model('Shops');
     Shops.findOne({ shopname: req.shopname }, function(err, shop) {

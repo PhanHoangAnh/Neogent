@@ -17,6 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.js" type="text/javascript"></script>
 <!--script type="text/javascript" src='js/navbar.js'></script-->
 
 <body>
@@ -92,7 +93,7 @@
     </template>
     <template id="imgInput">
         <div class=" bkg-item">
-            <div >
+            <div>
                 <!-- <div class="col-md-12 col-lg-12"> -->
                 <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Click to Select background image for your shop</span>
@@ -103,6 +104,18 @@
                 </div>
                 <!-- </div> -->
             </div>
+        </div>
+    </template>
+    <template id = "notification">
+        <div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' + '
+            <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' + '
+            <span data-notify="icon"></span> ' + '
+            <span data-notify="title">{1}</span> ' + '
+            <span data-notify="message">{2}</span>' + '
+            <div class="progress" data-notify="progressbar">' + '
+                <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' + '
+            </div>' + '
+            <a href="{3}" target="{4}" data-notify="url"></a>' + '
         </div>
     </template>
     <!-- /NavBar -->
@@ -121,9 +134,9 @@
     <div class="container-fluid shop-buider" id="start-offset">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Basic Info</a></li>
-            <li ><a data-toggle="tab" href="#backgroundWalls">Background Walls</a></li>
-            <li ><a data-toggle="tab" href="#staticContent">Static Content</a></li>
-            <li><a id = "mapCover" data-toggle="tab" href="#mapTab">Map && Address</a></li>
+            <li><a data-toggle="tab" href="#backgroundWalls">Background Walls</a></li>
+            <li><a data-toggle="tab" href="#staticContent">Static Content</a></li>
+            <li><a id="mapCover" data-toggle="tab" href="#mapTab">Map && Address</a></li>
         </ul>
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
@@ -151,8 +164,22 @@
                             <div class="col-md-9 col-lg-9">
                                 <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                         </div>
+                        <div class="row control" data-controltype="text">
+                            <div class="col-md-3 col-lg-3">
+                                <label data-controltype="label">Hot Collection's Label</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Hot Collection's" onchange='updatePage(this)' app-input="hotCollsLabel"><span class="help-block col-md-12 col-lg-12">Display Name of Hot Collection </span></div>
+                        </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelRight">
+                        <div class="row control" data-controltype="text">
+                            <div class="col-md-3 col-lg-3">
+                                <label data-controltype="label">Highlight Product's Label</label>
+                            </div>
+                            <div class="col-md-9 col-lg-9">
+                                <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Highlight Products" onchange='updatePage(this)' app-input="highlightLabel"><span class="help-block col-md-12 col-lg-12">Display Name of Highlight Products</span></div>
+                        </div>
                         <div class="row control" id="26" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
                             <div class="col-md-3 col-lg-3">
                                 <label data-controltype="label">Contact Phone Number</label>
@@ -193,7 +220,7 @@
                 </div>
             </div>
             <div id="staticContent" class="tab-pane fade ">
-                <div class="row">    
+                <div class="row">
                     <div class="row control">
                         <div app-role="rowCover">
                             <div class="btn-set">

@@ -46,7 +46,7 @@ function prepareMap() {
                 latLng = new google.maps.LatLng(pos.lat, pos.lng);
                 // infoWindow.setPosition(pos);
                 // infoWindow.setContent('Location found.');
-                map.setCenter(pos);
+                // map.setCenter(pos);
             }, function() {
                 //handleLocationError(true, infoWindow, map.getCenter());
             }, options);

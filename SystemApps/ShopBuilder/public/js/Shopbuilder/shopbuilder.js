@@ -418,7 +418,7 @@ function saveShopInfo() {
         }
     }
     //console.log("shopInfo: ", shopInfo);    
-    console.log(pendding);
+    // console.log(pendding);
     if (!pendding) {
         // sending shopInfo to server
         var endpoint = 'updateShop';
@@ -426,12 +426,50 @@ function saveShopInfo() {
         // delete duplicate and unnecessary attribute to reduce workload of encrypter
         delete shopInfo.staticContent;
         delete shopInfo.walls;
-        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, exPayload, fn_cb);
+        exPayload.basicInfo = shopInfo;
+        postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, exPayload, fn_cb);
+
+        var notify = $.notify({
+            icon: 'glyphicon glyphicon-warning-sign',
+            title: 'System Info',
+        }, {
+            element: 'body',
+            position: null,
+            type: "info",
+            allow_dismiss: true,
+            newest_on_top: false,
+            showProgressbar: true,
+            placement: {
+                from: "bottom",
+                align: "center"
+            },
+            offset: 20,
+            spacing: 10,
+            z_index: 1031,
+            // delay: 5000,
+            timer: 1000,
+            url_target: '_blank',
+            mouse_over: null,
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutUp'
+            },
+            icon_type: 'class',
+            template: document.getElementById("notification").innerHTML
+        });
+        notify.update('message', "start saving process");
 
         function fn_cb(returnObj) {
-            console.log(returnObj)
-            if (returnObj['errNum'] == 2) {
+            console.log(returnObj);
 
+            if (returnObj['errNum'] == 2) {
+                notify.update('type', 'warning');
+                notify.update('message', returnObj.errMessage);
+                notify.update('delay', 5);
+            } else {
+                notify.update('type', 'success');
+                notify.update('message', "Your data has been saved");
+                notify.update('delay', 3);
             }
         }
     }
@@ -474,12 +512,3 @@ var colorPicker = document.getElementById('colorPicker')
 colorPicker.addEventListener("input", function() {
     current_staticContent.style.backgroundColor = colorPicker.value;
 });
-
-// adding feature to googlemap
-
-// var mapCover = document.getElementById("mapCover")
-
-
-// mapCover.addEventListener('click', function() {
-//    google.maps.event.trigger(window, 'resize', {});
-// })
