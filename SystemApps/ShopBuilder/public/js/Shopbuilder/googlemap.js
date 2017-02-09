@@ -86,18 +86,17 @@ function prepareMap() {
 
 
     function initialize() {
-        // var latLng = new google.maps.LatLng(-34.397, 150.644);
-        var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+        map = new google.maps.Map(document.getElementById('mapCanvas'), {
             zoom: 15,
             center: latLng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
         var marker = new google.maps.Marker({
             position: latLng,
-            title: 'Your current position',
+            title: 'Vị trí hiện tại của bạn',
             map: map,
             draggable: true
-        });
+        });;
 
         // Update current position info.
         updateMarkerPosition(latLng);
@@ -118,31 +117,21 @@ function prepareMap() {
             geocodePosition(marker.getPosition());
         });
     }
-
-
-
-    var map = new google.maps.Map(document.getElementById('mapCanvas'), {
-        zoom: 15,
-        center: latLng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    var marker = new google.maps.Marker({
-        position: latLng,
-        title: 'Vị trí hiện tại của bạn',
-        map: map,
-        draggable: true
-    });;
-    // Onload handler to fire off the app.
-    google.maps.event.addDomListener(window, 'load', initialize);
     // Onload handler to fire off the app.
     google.maps.event.addDomListener(window, 'load', initialize);
     google.maps.event.addDomListener(window, "resize", function() {
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
+        console.log(latLng.lat(), latLng.lng());
+        map.setCenter({ lat: latLng.lat(), lng: latLng.lng() });
+        // map.panTo({lat:latLng.lat(), lng:latLng.lng()});
     });
     var mapCover = document.getElementById("mapCover")
-    google.maps.event.addDomListener(mapCover, "click", function(){
-         google.maps.event.trigger(window, 'resize', {});
-    })
+    mapCover.addEventListener('click', function() {
+        setTimeout(function() {
+            // google.maps.event.trigger(map, 'resize');
+            google.maps.event.trigger(window, "resize", {});
+            // map.setCenter(latLng);
+        }, 500)
+    });
 }
