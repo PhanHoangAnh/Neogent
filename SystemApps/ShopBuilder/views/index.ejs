@@ -113,7 +113,7 @@
             <strong><span data-notify="title">{1}</span></strong>
             <hr style="margin:5px">
             <span style = "display:block; text-align:center" data-notify="message">{2}</span>
-            <div class="progress" data-notify="progressbar" style = "height: 10px">
+            <div class="progress" data-notify="progressbar" style = "height: 5px">
                 <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; "></div>
             </div>
             <a href="{3}" target="{4}" data-notify="url"></a>
@@ -259,7 +259,7 @@
     <div id="end-offset"></div>
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
-            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo()">Save</button>
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveShopInfo(this)">Save</button>
             <input type="color" id="colorPicker" tabindex=-1 class="hidden">
         </div>
     </section>
