@@ -121,8 +121,7 @@ function prepareMap() {
     google.maps.event.addDomListener(window, 'load', initialize);
     google.maps.event.addDomListener(window, "resize", function() {
         var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        console.log(latLng.lat(), latLng.lng());
+        google.maps.event.trigger(map, "resize");        
         map.setCenter({ lat: latLng.lat(), lng: latLng.lng() });
         // map.panTo({lat:latLng.lat(), lng:latLng.lng()});
     });
