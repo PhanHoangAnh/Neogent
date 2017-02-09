@@ -405,7 +405,7 @@ function saveShopInfo() {
         exPayload.staticContent.push(JSON.stringify(jsonHtml));
         // console.log("jsonHtml: ", jsonHtml);
     });
-    console.log("staticContent: ", exPayload.staticContent);
+    // console.log("staticContent: ", exPayload.staticContent);
     //
     var atts = document.querySelectorAll("[app-input]");
     var pendding = false;

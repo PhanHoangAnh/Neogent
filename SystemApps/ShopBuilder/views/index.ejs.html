@@ -75,16 +75,6 @@
             </div>
         </div>
     </template>
-    <!-- <template id="controlTemplate">
-        <div class="col-md-6 col-lg-6 control" style="position: relative; left: 0px; top: 0px;">
-            <div class="col-md-3 col-lg-3">
-                <label data-controltype="label"></label>
-            </div>
-            <div class="col-md-9 col-lg-9" app-role="inputHandler">
-                <span class="help-block col-md-12 col-lg-12" data-controltype="describe"></span>
-            </div>
-        </div>
-    </template> -->
     <template id="textAreaInput">
         <div class="row control" id="24">
             <div class="col-md-12 col-lg-12">
@@ -101,8 +91,8 @@
         </div>
     </template>
     <template id="imgInput">
-        <div class="col-md-4 col-lg-4 bkg-item">
-            <div class="row control">
+        <div class=" bkg-item">
+            <div >
                 <!-- <div class="col-md-12 col-lg-12"> -->
                 <img src="https://rawgit.com/PhanHoangAnh/CreateDynamicAttributeSets/master/materials/sample.jpg" app-role="imgBackground">
                 <span class="help-block col-md-12 col-lg-12" data-controltype="describe">Click to Select background image for your shop</span>
@@ -130,8 +120,10 @@
     <!-- Main part -->
     <div class="container-fluid shop-buider" id="start-offset">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-            <li><a id="mapCover" data-toggle="tab" href="#mapTab">Info</a></li>
+            <li class="active"><a data-toggle="tab" href="#home">Basic Info</a></li>
+            <li ><a data-toggle="tab" href="#backgroundWalls">Background Walls</a></li>
+            <li ><a data-toggle="tab" href="#staticContent">Static Content</a></li>
+            <li><a id = "mapCover" data-toggle="tab" href="#mapTab">Map && Address</a></li>
         </ul>
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
@@ -159,15 +151,6 @@
                             <div class="col-md-9 col-lg-9">
                                 <input class="col-md-12 col-lg-12 form-control" type="text" placeholder="Company Name" onchange='updatePage(this)' app-input="companyName"><span class="help-block col-md-12 col-lg-12">Display Company or Group's Name</span></div>
                         </div>
-                        <!-- <div class="row control" app-role="rowCover">
-                        <div class="col-md-3 col-lg-3">
-                        </div>
-                        <div class="col-md-9 col-lg-9">
-                            <div class="text-right">
-                                <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
-                            </div>
-                        </div>
-                    </div> -->
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="pannelRight">
                         <div class="row control" id="26" data-controltype="number" style="position: relative; left: 0px; top: 0px;">
@@ -197,20 +180,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div id="backgroundWalls" class="tab-pane fade ">
                 <div class="row">
                     <div class="row bkg-list" id="imageHandler">
                     </div>
                     <div class="row control" app-role="rowCover">
                         <div class="btn-set">
                             <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button>
-                            <!-- <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button> -->
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="staticContent" class="tab-pane fade ">
+                <div class="row">    
                     <div class="row control">
                         <div app-role="rowCover">
                             <div class="btn-set">
-                                <!-- <button id="AddmoreBackrgound" type="button" class="btn btn-primary" onclick=addMoreBackgroundImg(this)>Add More Background Wallpaper..</button> -->
-                                <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add Static Content..</button>
+                                <button id="AddmoreStaticContent" type="button" class="btn btn-primary" onclick=addMoreStaticContent(this)>Add More Static Content..</button>
                             </div>
                         </div>
                     </div>

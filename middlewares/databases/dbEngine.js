@@ -26,6 +26,8 @@ var Shop_schema = new Schema({
     brandNames: [Schema.Types.Mixed],
     collections: [Schema.Types.Mixed],
     extends: [Schema.Types.Mixed],
+    hotCollsLabel: { type: String },
+    highlightLabel: { type: String },
 });
 
 var Option_Sets = new Schema({

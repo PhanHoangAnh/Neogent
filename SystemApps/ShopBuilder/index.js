@@ -55,7 +55,9 @@ router.get('/', function(req, res, next) {
                 staticContent: shop.static_content,
                 contact_phone: shop.contact_phone,
                 contact_email: shop.contact_email,
-                address: shop.address
+                address: shop.address,
+                hotCollsLabel: shop.hotCollsLabel,
+                highlightLabel: shop.highlightLabel,
             };
             res.render('index', {
                 title: 'Hello, this is template Application of : ' + req.shopname,
@@ -93,6 +95,8 @@ router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
         shop.companyName = mainData.companyName;
         shop.contact_email = mainData.contact_email;
         shop.contact_phone = mainData.contact_phone;
+        shop.hotCollsLabel = mainData.hotCollsLabel;
+        shop.highlightLabel = mainData.highlightLabel;
 
         var walls = req.body.exPayload.walls;
         if (walls && walls instanceof Array) {
@@ -130,8 +134,8 @@ router.post("/updateShop", checkToken, checkAuth, function(req, res, next) {
                 content = JSON.parse(content);
                 jp.apply(content, '$..src', function(value) {
                     var imgID = mongoose.Types.ObjectId().toString();
-                    console.log(" indexOf: ", value.indexOf("data:image/png;base64") !== -1 );
-                    if (value.indexOf("data:image/") !== -1 ) {
+                    console.log(" indexOf: ", value.indexOf("data:image/png;base64") !== -1);
+                    if (value.indexOf("data:image/") !== -1) {
                         console.log("find src here");
                         var filePath = "./Shops/" + req.shopname + "/public/imgs/staticImg_" + imgID + ".png";
                         var result = writeBase64ImageSync(filePath, value);
