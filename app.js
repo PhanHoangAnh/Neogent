@@ -41,6 +41,8 @@ app.use("/:shopname/app", function(req, res, next) {
     req.shopname = req.params.shopname;
     next();
 }, appManager);
+
+
 app.use('/:shopname', function(req, res, next) {
     req.shopname = req.params.shopname;
     next();

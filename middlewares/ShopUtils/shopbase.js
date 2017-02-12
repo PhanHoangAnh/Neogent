@@ -42,6 +42,9 @@ function getFlatShopProducts(shopname, fn_cb) {
                         subAtt["sysId"] = atts[n]["attributes"]["sysId"];
                         subAtt["InputValue"] = atts[n]["InputValue"];
                         tempObj.atts.push(subAtt);
+                        tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
+                        tempObj.atts.push(subAtt);
+
                     }
                 }
                 flatItems.push(tempObj);
@@ -77,7 +80,8 @@ function getBasicShopInfo(req, res) {
             });
             shopInfo.collections = collections;
         };
-
+        // console.log("current __filename : ", __filename);
+        // console.log("current __dirname : ", __dirname);
         if (err) {
             res.send(err);
         } else {
