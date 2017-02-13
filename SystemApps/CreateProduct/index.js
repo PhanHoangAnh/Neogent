@@ -502,21 +502,24 @@ function updateCategoryAndBrandName(shop, product, isDel) {
                 brandNames[brandNames.indexOf(item)]["categories"] = realFlatCats;
             }
         });
-        // update collection in case of product is deleted
-        if (isDel) {
-            var collections = shop.collections;
-            var colls = collections.filter(function(col) {
-                return col.productLists.filter(function(pr) {
-                    if (pr.id == product.systemSKU) {
-                        col.productLists.splice(col.productLists.indexOf(pr.id), 1)
-                    };
-                    return;
-                });
-            });
 
-            shop.collections = colls;
-            //console.log(colls);
-        };
+        // update collection in case product is deleted or modified
+        var collections = shop.collections;
+        var colls = collections.filter(function(col) {
+            return col.productLists.filter(function(pr) {
+                if (pr.id == product.systemSKU) {
+                    if (isDel) {
+                        col.productLists.splice(col.productLists.indexOf(pr.id), 1)
+                    } else {
+                        pr['PRODUCT_DATA'] = getFlatProductData(product);                        
+                    }
+                };
+                return;
+            });
+        });
+        shop.collections = colls;
+        //console.log(colls);
+
         shop.markModified('mixed.type');
         shop.markModified('categories');
         shop.markModified('categories.$.products');
@@ -532,6 +535,16 @@ function updateCategoryAndBrandName(shop, product, isDel) {
         })
     })
 
+}
+
+function getFlatProductData(product) {
+    console.log('pr', product)
+    var tempObj ={};
+    var atts = product.productAtttributes;
+    for (var i = 0; i < atts.length; i++) {
+        tempObj[atts[i]["attributes"]["sysId"]] = atts[i]["InputValue"]
+    }
+    return tempObj;
 }
 
 
@@ -563,7 +576,18 @@ function getRealFlatBrands(shop, products) {
     return realFlatBrands.filter(function(item, pos) {
         return realFlatBrands.indexOf(item) == pos;
     })
-}
+};
+
+// function updateCategories(shop, product, isDel) {
+//     var Shops = mongoose.model('Shops');
+//     Shops.findOne({ shopname: shop }, function(err, shop) {
+//         if (err || !shop) {
+//             return;
+//         }
+
+//     });
+
+// }
 
 
 app.use(router);
