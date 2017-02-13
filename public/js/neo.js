@@ -59,7 +59,7 @@ function createFrontPage(shopInfo) {
 
     highlightProducts = removeDuplicates(highlightProducts, "id");
 
-    // console.log("highlightProducts", highlightProducts);
+    console.log("highlightProducts", highlightProducts);
     // build carousel for highlightProducts
     var hi_length = highlightProducts.length;
     var numberOfRows = Math.floor(highlightProducts.length / 3) + 1;
@@ -90,6 +90,10 @@ function createFrontPage(shopInfo) {
             productImage.setAttribute('src', highlightProducts[k]["img"]);
             var productName = productItem.querySelector('[app-role="productName"]')
             productName.innerHTML = highlightProducts[k]['name'];
+            var currentPriceElem = productItem.querySelector('[app-role="currentPrice"]');
+            currentPriceElem.innerHTML = highlightProducts[k]['PRODUCT_DATA']['sysCurrentPrice'];
+            var currencyElem = productItem.querySelector('[app-role = "currency"]');
+            currencyElem.innerHTML = highlightProducts[k]['PRODUCT_DATA']['sysCurrency'];
             var carouselRow = document.getElementById("carousel_" + Math.floor(n / 3));
             carouselRow.appendChild(document.importNode(productItem, true));
         }
