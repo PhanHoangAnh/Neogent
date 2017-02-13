@@ -628,7 +628,7 @@ function postSensitiveData(uid, token, RSAPublicKey, endpoint, payload, exPayloa
     });
 }
 // Business Region
-function saveProduct() {
+function saveProduct(el) {
     var productAttList = document.getElementById("content").querySelectorAll('[app-datastore="true"]');
     var productAttCollection = [];
     var exProductAttCollection = [];
@@ -652,12 +652,55 @@ function saveProduct() {
     var endpoint = "updateProduct";
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, payload, exProductAttCollection, saveProductCb);
     //console.log(productAttCollection);
+    el.disabled = true;
 
-    function saveProductCb(cb_json) {
-        console.log("Product is saved: ", cb_json);
-        if (cb_json.return_id) {
-            systemSKU = cb_json.return_id;
-            console.log(systemSKU);
+    var notify = $.notify({
+        icon: 'glyphicon glyphicon-warning-sign',
+        title: 'System Info',
+    }, {
+        element: 'body',
+        position: null,
+        type: "info",
+        allow_dismiss: true,
+        newest_on_top: false,
+        showProgressbar: true,
+        placement: {
+            from: "bottom",
+            align: "center"
+        },
+        offset: 20,
+        spacing: 10,
+        z_index: 1031,
+        delay: 5000,
+        timer: 100,
+        url_target: '_blank',
+        mouse_over: null,
+        animate: {
+            // enter: 'animated fadeInDown',
+            // exit: 'animated fadeOutUp'
+            enter: 'animated flipInY',
+            exit: 'animated flipOutX'
+        },
+        icon_type: 'class',
+        template: document.getElementById("notification").innerHTML
+    });
+    notify.update('message', "start saving process");
+
+    function saveProductCb(returnObj) {
+        console.log(returnObj);
+        el.disabled = false;
+        if (returnObj['errNum'] == 2) {
+            notify.update('type', 'warning');
+            notify.update('message', returnObj.errMessage);
+            notify.update('delay', 5000);
+        } else if (returnObj['return_id']) {
+            notify.update('type', 'success'); // success
+            notify.update('message', "Your data has been saved");
+            notify.update('delay', 113000);
+        } else {
+            notify.update('type', 'danger'); //danger
+            notify.update('message', "Something go wrong here");
+            notify.update('delay', 5000);
         }
     }
 }
@@ -686,7 +729,7 @@ function deleteProduct() {
         return;
     }
     // var endpoint = window.location.href;
-    var endpoint = '' ;
+    var endpoint = '';
     //fbId, systoken, RSAPublicKey
     var _data = {
         userName: fbId,

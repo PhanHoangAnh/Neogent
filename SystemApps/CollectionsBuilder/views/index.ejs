@@ -16,6 +16,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.js" type="text/javascript"></script>
+
 <!--script type="text/javascript" src='js/navbar.js'></script-->
 
 <body>
@@ -163,6 +165,19 @@
             </div>
         </div>
     </template>
+    <template id = "notification">
+        <div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">
+            <button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>           
+            <span data-notify="icon"></span>
+            <strong><span data-notify="title">{1}</span></strong>
+            <hr style="margin:5px">
+            <span style = "display:block; text-align:center" data-notify="message">{2}</span>
+            <div class="progress" data-notify="progressbar" style = "height: 5px">
+                <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; "></div>
+            </div>
+            <a href="{3}" target="{4}" data-notify="url"></a>
+        </div>
+    </template>
     <!-- /NavBar -->
     <section class='heading-page' style="background:url('imgs/gamebanner_02.jpg') no-repeat top center; background-size: 100% auto; opacity: 1">
         <div class="container-fluid">
@@ -235,7 +250,7 @@
     <div id="end-offset"></div>
     <section class="divider">
         <div style="padding: 70px 0; text-align: center;">
-            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveCollection()">Save</button>
+            <button type="button" class="btn btn-primary" style="width: 100px;" onclick="saveCollection(this)">Save</button>
         </div>
     </section>
     <footer>

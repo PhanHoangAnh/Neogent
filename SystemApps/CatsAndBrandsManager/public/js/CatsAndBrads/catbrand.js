@@ -291,7 +291,7 @@ function attImgRatio_change(evt, elem) {
     imageBox.style.height = applyHeight;
 }
 //
-function saveCatAndBrands() {
+function saveCatAndBrands(el) {
     var saveElems = document.querySelectorAll('[app-role="catGroup"]');
     var saveDataStores = [];
     saveElems.forEach(function(obj) {
@@ -311,9 +311,56 @@ function saveCatAndBrands() {
     console.log("saveDataStores: ", saveDataStores);
     // postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, shopInfo, fn_cb);
     postSensitiveData(fbId, systoken, RSAPublicKey, endpoint, null, saveDataStores, fn_cb);
+    el.disabled = true;
+
+    var notify = $.notify({
+        icon: 'glyphicon glyphicon-warning-sign',
+        title: 'System Info',
+    }, {
+        element: 'body',
+        position: null,
+        type: "info",
+        allow_dismiss: true,
+        newest_on_top: false,
+        showProgressbar: true,
+        placement: {
+            from: "bottom",
+            align: "center"
+        },
+        offset: 20,
+        spacing: 10,
+        z_index: 1031,
+        delay: 5000,
+        timer: 100,
+        url_target: '_blank',
+        mouse_over: null,
+        animate: {
+            // enter: 'animated fadeInDown',
+            // exit: 'animated fadeOutUp'
+            enter: 'animated flipInY',
+            exit: 'animated flipOutX'
+        },
+        icon_type: 'class',
+        template: document.getElementById("notification").innerHTML
+    });
+    notify.update('message', "start saving process");
 
     function fn_cb(returnObj) {
-        console.log(returnObj)
+        console.log('returnObj',returnObj);
+        el.disabled = false;
+        if (returnObj['errNum'] == 2) {
+            notify.update('type', 'warning');
+            notify.update('message', returnObj.errMessage);
+            notify.update('delay', 5000);
+        } else if (!returnObj['err']) {
+            notify.update('type', 'success'); // success
+            notify.update('message', "Your data has been saved");
+            notify.update('delay', 113000);
+        } else {
+            notify.update('type', 'danger'); //danger
+            notify.update('message', "Something go wrong here");
+            notify.update('delay', 5000);
+        }
     }
 }
 
