@@ -43,32 +43,18 @@ function getFlatShopProducts(shopname, fn_cb) {
                         subAtt["InputValue"] = atts[n]["InputValue"];
                         tempObj.atts.push(subAtt);
                         tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
-                        tempObj.atts.push(subAtt);
-
                     }
                 }
                 flatItems.push(tempObj);
             });
             shopInfo.items = flatItems;
-
-            function getEnableCols() {
-
-                return null;
-            };
-
-            function getPromotedColl() {
-                return null;
-            };
-
-            function getHighlightedColls() {
-                return null;
-            };
             fn_cb(err, shopInfo);
         }
     });
 };
 
 function getBasicShopInfo(req, res) {
+    //
     getFlatShopProducts(req.shopname, fnCb);
 
     function fnCb(err, shopInfo) {
@@ -81,7 +67,7 @@ function getBasicShopInfo(req, res) {
             shopInfo.collections = collections;
         };
         // console.log("current __filename : ", __filename);
-        // console.log("current __dirname : ", __dirname);
+        // console.log("current __dirname : ", __dirname);        
         if (err) {
             res.send(err);
         } else {

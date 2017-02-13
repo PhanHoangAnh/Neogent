@@ -106,7 +106,6 @@ function updateProductLists(products) {
         var atts = obj.atts;
         var imgAtt;
         var systemSKU = obj['systemSKU'];
-
         atts.forEach(function(att) {
             var isImg = false;
             if (att['sysId'] == "sysProductName") {
@@ -120,10 +119,13 @@ function updateProductLists(products) {
             }
         });
         productName.id = systemSKU;
+        delete obj.atts;
+
         var catLists = document.getElementById('catLists');
         catLists.appendChild(document.importNode(productTemplate, true));
         var rItem = document.getElementById(systemSKU);
         rItem['PRODUCT_IMAGE'] = imgAtt;
+        rItem['PRODUCT_DATA'] = obj
 
     })
 }
@@ -189,7 +191,8 @@ function createNewCollectionGroup(name, collection) {
             s.innerHTML = elem.innerHTML;
             tempObj.name = elem.innerHTML;
             tempObj.id = elem.id;
-
+            tempObj["PRODUCT_DATA"] = elem["PRODUCT_DATA"];
+            console.log('product data: ', elem['PRODUCT_DATA']);
             var productImg = span.querySelector('[app-role="productImg"]');
             if (elem["PRODUCT_IMAGE"]) {
                 productImg.setAttribute('src', elem['PRODUCT_IMAGE']);

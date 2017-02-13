@@ -1,4 +1,5 @@
 function createFrontPage(shopInfo) {
+    //from main
     console.log(shopInfo);
 
     var avatars = shopInfo.avatars;

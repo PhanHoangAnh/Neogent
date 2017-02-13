@@ -3,20 +3,10 @@ var path = require("path");
 var app = express();
 var router = express.Router();
 
-router.use(function(req, res, next) {
-    // var shopPath = path.join(path.resolve("../public"), req.shopname);
-    // res.send(shopPath);    
-    // res.render('index', { title: 'Express' });
-    if (req.shopname == "register") {
-        next();
-    } else {
-        var nextPath = path.join("../Shops", req.shopname);
-        var shopHandler = require(path.join(nextPath, "index"));
-        shopHandler(req, res, next);
-    }
-
-
-});
+// app.set('views', path.join(__dirname, 'views'))
+app.set('views', './views')
+// app.set('view engine', 'ejs');
+app.use('/', express.static('public'));
 
 router.use("/checkToken", checkToken, function(req, res, next) {
     var sendObj = {};
@@ -39,6 +29,13 @@ router.use("/checkAuth", checkToken, checkAuth, function(req, res, next) {
 
 // var url = "template";
 router.post("/getToken", getToken);
+
+
+router.use(function(req, res, next) {
+    var nextPath = path.join("../Shops", req.shopname);
+    var shopHandler = require(path.join(nextPath, "index"));
+    shopHandler(req, res, next);
+});
 
 app.use(router)
 module.exports = app;
