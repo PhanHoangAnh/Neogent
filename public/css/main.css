@@ -4804,6 +4804,17 @@ footer li:last-child:after {
     transform: translate(-50%, -50%);
 }
 
+#carousel-promo .controls .c-btn {
+    background-image: none;
+    left: -40px;
+    color: #000;
+    height: 100%;
+    padding-top: 0;
+}
+
+#carousel-promo .controls .c-btn.right {left: auto; right: -40px;}
+#carousel-promo .controls .c-btn i {font-size: 70px;}
+
 
 /* line 366, ../scss/main.scss */
 

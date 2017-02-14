@@ -272,10 +272,11 @@ function wallPreview(data) {
     }
 }
 
+var attImgXRatio = 16;
+var attImgYRatio = 9
+
 function attImgRatio_change(evt, elem) {
     var appRole = elem.getAttribute("app-role");
-    var attImgXRatio = 16;
-    var attImgYRatio = 9
     if (appRole == "attImgXRatio") {
         attImgXRatio = elem.value;
     } else if (appRole == "attImgYRatio") {
@@ -346,7 +347,7 @@ function saveCatAndBrands(el) {
     notify.update('message', "start saving process");
 
     function fn_cb(returnObj) {
-        console.log('returnObj',returnObj);
+        console.log('returnObj', returnObj);
         el.disabled = false;
         if (returnObj['errNum'] == 2) {
             notify.update('type', 'warning');

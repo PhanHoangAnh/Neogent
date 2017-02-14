@@ -466,12 +466,12 @@ function saveShopInfo(el) {
         function fn_cb(returnObj) {
             console.log(returnObj);
             el.disabled = false;
-            if (returnObj['errNum'] == 2 ) {
+            if (returnObj['errNum'] == 2) {
                 notify.update('type', 'warning');
                 notify.update('message', returnObj.errMessage);
                 notify.update('delay', 5000);
             } else if (returnObj['return_id']) {
-                notify.update('type', 'success');// success
+                notify.update('type', 'success'); // success
                 notify.update('message', "Your data has been saved");
                 notify.update('delay', 113000);
             } else {

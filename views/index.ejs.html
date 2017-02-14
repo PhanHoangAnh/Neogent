@@ -109,14 +109,14 @@ function toggleSearch() {
         <template id = "hotCollItem">
             <div class="col-sm-6 col-xs-12">
                 <div class="imgs-item">
-                    <a href="#"  ><img app-role="hotCollImg" src=""></a>
+                    <a href="#" app-role="hotCollImg" ><img src=""></a>
                     <h2 app-role="collTitle"></h2>
                 </div>
             </div>
         </template>
-        <template id="hotCollRow">
+                <template id="carouselRow">
             <div class="item">
-                <div class="row promos" app-role="hotCarouselRow"></div>
+                <div class="row" app-role="carouselRow"></div>
             </div>
         </template>
     </templateRegion>
@@ -247,7 +247,7 @@ function toggleSearch() {
         <!--center-->
         <div class="container" app-moveup: 0>
             <!--static block 1-->
-<!--             <div class="slide-up">
+            <div class="slide-up">
                 <div class="title">
                     <h2>Hot Collections</h2>
                     <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
@@ -266,7 +266,7 @@ function toggleSearch() {
                         <h2 app-role="collTitle"></h2>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- carosel for promo -->
             <div class="slide-up hidden-xs">
                 <div class="title">
@@ -279,7 +279,7 @@ function toggleSearch() {
                         <a class="right c-btn" href="#carousel-hotcoll" data-slide="next"><i class="fa fa-angle-right"></i></a>
                     </div>
                     <div class="carousel-inner product-wrap" app-role="carouselHotColls" id="carouselHotColls">
-<!--                         <div class="item active">
+                        <div class="item active">
                             <div class="col-sm-6 col-xs-12">
                                 <div class="imgs-item">
                                     <a href="#"><img src="imgs/banner/large03.jpg"></a>
@@ -292,8 +292,8 @@ function toggleSearch() {
                                     <h2 app-role="collTitle"></h2>
                                 </div>
                             </div>
-                        </div> -->
-<!--                         <div class="item">
+                        </div>
+                        <div class="item">
                             <div class="col-sm-6 col-xs-12">
                                 <div class="imgs-item">
                                     <a href="#"><img src="imgs/banner/large03.jpg"></a>
@@ -306,7 +306,7 @@ function toggleSearch() {
                                     <h2 app-role="collTitle"></h2>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>

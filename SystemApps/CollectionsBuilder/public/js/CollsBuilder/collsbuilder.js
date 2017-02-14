@@ -338,10 +338,10 @@ function wallPreview(data) {
     }
 }
 
+var attImgXRatio = 16;
+var attImgYRatio = 9
 function attImgRatio_change(evt, elem) {
     var appRole = elem.getAttribute("app-role");
-    var attImgXRatio = 16;
-    var attImgYRatio = 9
     if (appRole == "attImgXRatio") {
         attImgXRatio = elem.value;
     } else if (appRole == "attImgYRatio") {
