@@ -37,7 +37,8 @@ function createFrontPage(shopInfo) {
     var promotedCollImage = masthead.querySelector('[app-role="promotedCollImage"]');
     promotedCollImage.setAttribute("src", promotedColl["frontImg"]);
     var promotedCollName = masthead.querySelector('[app-role="promotedCollName"]');
-
+    var promotedCollLink = masthead.querySelector('[app-role="promotedCollLink"]');
+    promotedCollLink.setAttribute('href', "/collections/"+promotedColl.id);
     // create hot Collections:
     // var hotCollElems = document.querySelectorAll('[app-role = "hotColls"]');
     // var hotCollTitles = document.querySelectorAll('[app-role = "collTitle"]');
@@ -68,6 +69,8 @@ function createFrontPage(shopInfo) {
         var hotCollectionItem = document.getElementById('hotCollItem').content;
         var hotCollImg = hotCollectionItem.querySelector('[app-role="hotCollImg"]');
         hotCollImg.setAttribute('src', hotColls[k]['frontImg']);
+        var hotCollLink = hotCollectionItem.querySelector('[app-role = "hotCollLink"]');
+        hotCollLink.setAttribute('href', "/collections/" + hotColls[k].id);
         var collTitle = hotCollectionItem.querySelector('[app-role="collTitle"]');
         collTitle.innerHTML = hotColls[k]['name'];
         var carouselRow = document.getElementById("carouselHotColls_" + Math.floor(i / 2));

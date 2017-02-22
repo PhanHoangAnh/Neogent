@@ -89,10 +89,14 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                                 savedData[n]["frontImg"] = '/' + req.shopname + "/imgs/CollFace" + n + ".png";;
                             }
                         }
+                        if (!savedData[n].id) {
+                            savedData[n].id = n;
+                        }
                     }(i);
                 }
                 shop.collections = savedData;
                 shop.markModified('collections');
+                shop.markModified('collections.id');
                 shop.markModified('collections.img');
                 shop.markModified('collections.frontImg');
                 shop.markModified('collections.$.productLists');
