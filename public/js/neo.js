@@ -39,15 +39,113 @@ function createFrontPage(shopInfo) {
     var promotedCollName = masthead.querySelector('[app-role="promotedCollName"]');
     var promotedCollLink = masthead.querySelector('[app-role="promotedCollLink"]');
     promotedCollLink.setAttribute('href', "/collections/" + promotedColl.id);
-    // create hot Collections:
-    // var hotCollElems = document.querySelectorAll('[app-role = "hotColls"]');
-    // var hotCollTitles = document.querySelectorAll('[app-role = "collTitle"]');
-    // for (var i = 0; i < hotCollElems.length; i++) {
-    //     hotCollElems[i].setAttribute('src', hotColls[i]["frontImg"]);
-    //     hotCollTitles[i].innerHTML = hotColls[i]["name"];
-    // };
     // create hot Collections carosel
+    createHotCollection(hotColls);
 
+    // merge product of highlightColls;
+    var highlightProducts = [];
+    highlightedColls.forEach(function(coll) {
+        highlightProducts = highlightProducts.concat(coll['productLists'])
+    });
+    highlightProducts = removeDuplicates(highlightProducts, "id");
+
+    createHighlightProducts(highlightProducts);
+
+    var brandNames = shopInfo.brandNames;
+    var hotBrands = brandNames.filter(function(brand) {
+        return brand["displayInFrontPage"] == true;
+    });
+
+    //build carosel for hot brands name  
+    createHotBrandsName(hotBrands);
+    updateStaticContent(shopInfo);
+
+}
+
+function createMenus(shopInfo) {
+    var catGroups = shopInfo.catGroups;
+    var brandNames = shopInfo.brandNames;
+    var mainMenu = document.getElementById('mainMenu');
+    var menuId = 0;
+    catGroups.forEach(function(catGroup) {
+        var menuMainDetails = document.getElementById('menuMainDetails').content;
+
+        var categoriesContainer = menuMainDetails.querySelector('[app-role="categoriesContainer"]');
+        categoriesContainer.id = "cat_" + menuId;
+        var brandNameContainer = menuMainDetails.querySelector('[app-role="brandNameContainer"]');
+        brandNameContainer.id = "brand_" + menuId;
+
+
+        var categoriesGroupName = menuMainDetails.querySelector('[app-role="categoriesGroupName"]');
+        categoriesGroupName.innerHTML = catGroup["Title"];
+        mainMenu.appendChild(document.importNode(menuMainDetails, true));
+
+        var cats = catGroup["cats"];
+        cats.forEach(function(cat) {
+            var singleCategory = document.getElementById('singleCategory').content;
+            var singleCat = singleCategory.querySelector('[app-role="singleCat"]');
+            singleCat.innerHTML = cat;
+            var categoriesContainer = document.getElementById("cat_" + menuId);
+            categoriesContainer.appendChild(document.importNode(singleCategory, true));
+        });
+
+        var brands = catGroup["brands"];
+        brands.forEach(function(brand) {
+            var singleBrand = document.getElementById('singleBrand').content;
+            var brandImage = singleBrand.querySelector('[app-role="brandImage"]');
+            var brandObject = brandNames.filter(function(br) {
+                return br['name'] == brand;
+            });
+            console.log("brandObject: ", brandObject[0]);
+            brandImage.setAttribute('src', brandObject[0]["img"]);
+            var brandNameContainer = document.getElementById("brand_" + menuId);
+            brandNameContainer.appendChild(document.importNode(singleBrand, true));
+        });
+
+        menuId++;
+    })
+}
+
+// utility
+function removeDuplicates(originalArray, prop) {
+    var newArray = [];
+    var lookupObject = {};
+
+    for (var i in originalArray) {
+        lookupObject[originalArray[i][prop]] = originalArray[i];
+    }
+
+    for (i in lookupObject) {
+        newArray.push(lookupObject[i]);
+    }
+    return newArray;
+}
+
+function updateStaticContent(shopInfo) {
+    var staticContents = shopInfo.staticContents;
+    var staticContentsElems = document.querySelectorAll('[app-role = "staticContent"]');
+
+    for (var i = 0; i < staticContents.length; i++) {
+        var singleContent = staticContents[i];
+        // console.log("singleContent: ", singleContent);
+        if (staticContentsElems[i]) {
+            var fragment = document.createRange().createContextualFragment(json2html(singleContent));
+            staticContentsElems[i].appendChild(fragment);
+            // remove attribute contenteditable
+            var contenteditables = staticContentsElems[i].querySelectorAll('[contenteditable="true"]');
+            contenteditables.forEach(function(elem) {
+                elem.setAttribute('contenteditable', false);
+            });
+            var removedElems = staticContentsElems[i].getElementsByClassName("ql-tooltip ql-hidden");
+
+            for (var j = 0; j < removedElems.length; j++) {
+                removedElems[j].parentNode.removeChild(removedElems[j]);
+            }
+        }
+    }
+}
+
+function createHotCollection(hotColls) {
     var numberOfRows = Math.floor(hotColls.length / 2) + 1;
     if (hotColls.length % 2 == 0) {
         numberOfRows = numberOfRows - 1;
@@ -78,19 +176,9 @@ function createFrontPage(shopInfo) {
         carouselRow.appendChild(document.importNode(hotCollectionItem, true));
     }
     document.querySelectorAll('[app-role="hotCarouselRow"]')[0].parentNode.classList.add('active');
-    // merge product of highlightColls;
-    var highlightProducts = [];
-    // highlightProducts = highlightProducts.filter(function(elem, post) {
-    //     console.log("elem: ", elem, "post: ", post, highlightProducts.indexOf(elem));
-    //     return highlightProducts.indexOf(elem) == post;
-    // });
-    highlightedColls.forEach(function(coll) {
-        highlightProducts = highlightProducts.concat(coll['productLists'])
-    });
-    highlightProducts = removeDuplicates(highlightProducts, "id");
+}
 
-    console.log("highlightProducts", highlightProducts);
-    // build carousel for highlightProducts
+function createHighlightProducts(highlightProducts) {
     var hi_length = highlightProducts.length;
     var numberOfRows = Math.floor(highlightProducts.length / 3) + 1;
     if (highlightProducts.length % 3 == 0) {
@@ -137,15 +225,9 @@ function createFrontPage(shopInfo) {
     }
     var carouselRowElems = document.querySelectorAll('[app-role="carouselRow"]');
     carouselRowElems[0].parentNode.classList.add("active");
-    // console.log("caroselRow: ", carouselRowElems);
+}
 
-    // build hot BrandList
-    var brandNames = shopInfo.brandNames;
-    var hotBrands = brandNames.filter(function(brand) {
-        return brand["displayInFrontPage"] == true;
-    });
-    
-    //build carosel for hot brands name
+function createHotBrandsName(hotBrands) {
     var carouselHotBrands = document.getElementById('carouselHotBrands');
     console.log("hotBrands: ", hotBrands, carouselHotBrands);
     // calculate number of Rows
@@ -179,107 +261,4 @@ function createFrontPage(shopInfo) {
     }
     var hotBrandRow = document.querySelectorAll('[app-role= "hotBrandRow"]');
     hotBrandRow[0].parentNode.classList.add("active");
-    //
-    // var hotBrandsContainer = document.getElementById('hotBrandsContainer');
-    // var hotBrandElems = document.querySelectorAll('[app-role = "hotBrand"]');
-
-    // for (var i = 0; i < hotBrandElems.length; i++) {
-    //     var hotBrandImg = hotBrandElems[i].querySelector('[app-role = "hotBrandImg"]');
-    //     var hotBrandName = hotBrandElems[i].querySelector('[app-role ="hotBrandName"]');
-    //     var n = i;
-    //     if (!hotBrands[i]) {
-    //         n = i - hotBrands.length;
-    //     };
-    //     hotBrandImg.setAttribute('src', hotBrands[n]["img"]);
-    //     hotBrandName.innerHTML = hotBrands[n]['name'];
-
-    // }
-
-
-    updateStaticContent(shopInfo);
-
-}
-
-function createMenus(shopInfo) {
-    var catGroups = shopInfo.catGroups;
-    var brandNames = shopInfo.brandNames;
-    var mainMenu = document.getElementById('mainMenu');
-    var menuId = 0;
-    catGroups.forEach(function(catGroup) {
-        var menuMainDetails = document.getElementById('menuMainDetails').content;
-
-        var categoriesContainer = menuMainDetails.querySelector('[app-role="categoriesContainer"]');
-        categoriesContainer.id = "cat_" + menuId;
-        var brandNameContainer = menuMainDetails.querySelector('[app-role="brandNameContainer"]');
-        brandNameContainer.id = "brand_" + menuId;
-
-
-        var categoriesGroupName = menuMainDetails.querySelector('[app-role="categoriesGroupName"]');
-        categoriesGroupName.innerHTML = catGroup["Title"];
-        mainMenu.appendChild(document.importNode(menuMainDetails, true));
-
-        var cats = catGroup["cats"];
-        cats.forEach(function(cat) {
-            var singleCategory = document.getElementById('singleCategory').content;
-            var singleCat = singleCategory.querySelector('[app-role="singleCat"]');
-            singleCat.innerHTML = cat;
-            var categoriesContainer = document.getElementById("cat_" + menuId);
-            categoriesContainer.appendChild(document.importNode(singleCategory, true));
-        });
-
-        var brands = catGroup["brands"];
-        brands.forEach(function(brand) {
-            var singleBrand = document.getElementById('singleBrand').content;
-            var brandImage = singleBrand.querySelector('[app-role="brandImage"]');
-            var brandObject = brandNames.filter(function(br) {
-                return br['name'] == brand;
-            });
-            console.log("brandObject: ", brandObject[0]);
-            brandImage.setAttribute('src', brandObject[0]["img"]);
-            var brandNameContainer = document.getElementById("brand_" + menuId);
-            brandNameContainer.appendChild(document.importNode(singleBrand, true));
-        });
-
-        menuId++;
-
-    })
-}
-
-// utility
-function removeDuplicates(originalArray, prop) {
-    var newArray = [];
-    var lookupObject = {};
-
-    for (var i in originalArray) {
-        lookupObject[originalArray[i][prop]] = originalArray[i];
-    }
-
-    for (i in lookupObject) {
-        newArray.push(lookupObject[i]);
-    }
-    return newArray;
-}
-
-function updateStaticContent(shopInfo) {
-    var staticContents = shopInfo.staticContents;
-    var staticContentsElems = document.querySelectorAll('[app-role = "staticContent"]');
-
-    for (var i = 0; i < staticContents.length; i++) {
-        var singleContent = staticContents[i];
-        // console.log("singleContent: ", singleContent);
-        if (staticContentsElems[i]) {
-            var fragment = document.createRange().createContextualFragment(json2html(singleContent));
-            staticContentsElems[i].appendChild(fragment);
-            // remove attribute contenteditable
-            var contenteditables = staticContentsElems[i].querySelectorAll('[contenteditable="true"]');
-            contenteditables.forEach(function(elem) {
-                elem.setAttribute('contenteditable', false);
-            });
-            var removedElems = staticContentsElems[i].getElementsByClassName("ql-tooltip ql-hidden");
-
-            for (var j = 0; j < removedElems.length; j++) {
-                removedElems[j].parentNode.removeChild(removedElems[j]);
-            }
-        }
-    }
 }
