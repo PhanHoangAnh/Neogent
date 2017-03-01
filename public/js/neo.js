@@ -38,7 +38,7 @@ function createFrontPage(shopInfo) {
     promotedCollImage.setAttribute("src", promotedColl["frontImg"]);
     var promotedCollName = masthead.querySelector('[app-role="promotedCollName"]');
     var promotedCollLink = masthead.querySelector('[app-role="promotedCollLink"]');
-    promotedCollLink.setAttribute('href', "/collections/"+promotedColl.id);
+    promotedCollLink.setAttribute('href', "/collections/" + promotedColl.id);
     // create hot Collections:
     // var hotCollElems = document.querySelectorAll('[app-role = "hotColls"]');
     // var hotCollTitles = document.querySelectorAll('[app-role = "collTitle"]');
@@ -144,20 +144,57 @@ function createFrontPage(shopInfo) {
     var hotBrands = brandNames.filter(function(brand) {
         return brand["displayInFrontPage"] == true;
     });
-    console.log("hotBrands: ", hotBrands);
-    var hotBrandsContainer = document.getElementById('hotBrandsContainer');
-    var hotBrandElems = document.querySelectorAll('[app-role = "hotBrand"]');
-
-    for (var i = 0; i < hotBrandElems.length; i++) {
-        var hotBrandImg = hotBrandElems[i].querySelector('[app-role = "hotBrandImg"]');
-        var hotBrandName = hotBrandElems[i].querySelector('[app-role ="hotBrandName"]');
-        var n = i;
-        if (!hotBrands[i]) {
-            n = i - hotBrands.length;
-        };
-        hotBrandImg.setAttribute('src', hotBrands[n]["img"]);
-        hotBrandName.innerHTML = hotBrands[n]['name'];
+    
+    //build carosel for hot brands name
+    var carouselHotBrands = document.getElementById('carouselHotBrands');
+    console.log("hotBrands: ", hotBrands, carouselHotBrands);
+    // calculate number of Rows
+    var hotBrandRowsNumber = Math.floor(hotBrands.length / 3) + 1;
+    var hot_length = hotBrands.length;
+    if (hotBrands.length % 3 == 0) {
+        hotBrandRowsNumber = hotBrandRowsNumber - 1;
+    } else {
+        hot_length = hotBrands.length + 3 - (hotBrands.length % 3);
     }
+    var hotBrandsContainer = carouselHotBrands.querySelector('[app-role="carouselContainer"]');
+    console.log('hotBrandRowsNumber: ', hotBrandRowsNumber);
+    for (var i = 0; i < hotBrandRowsNumber; i++) {
+        var hotBrandRow = document.getElementById("hotBrandRow").content;
+        var row = hotBrandRow.querySelector('[app-role="hotBrandRow"]');
+        row.id = "HotBrandsCarousel_" + i;
+        hotBrandsContainer.appendChild(document.importNode(hotBrandRow, true));
+    }
+    for (var i = 0; i < hot_length; i++) {
+        var k = i;
+        if (!hotBrands[k]) {
+            k = i - hotBrands.length;
+        }
+        var hotBrandItem = document.getElementById('hotBrandItem').content;
+        var hotBrandImg = hotBrandItem.querySelector('[app-role="hotBrandImg"]');
+        var hotBrandName = hotBrandItem.querySelector('[app-role= "hotBrandName"]');
+        hotBrandImg.setAttribute('src', hotBrands[k]["img"]);
+        hotBrandName.innerHTML = hotBrands[k]['name'];
+        var hotBrandRow = document.getElementById('HotBrandsCarousel_' + Math.floor(i / 3));
+        hotBrandRow.appendChild(document.importNode(hotBrandItem, true));
+    }
+    var hotBrandRow = document.querySelectorAll('[app-role= "hotBrandRow"]');
+    hotBrandRow[0].parentNode.classList.add("active");
+    //
+    // var hotBrandsContainer = document.getElementById('hotBrandsContainer');
+    // var hotBrandElems = document.querySelectorAll('[app-role = "hotBrand"]');
+
+    // for (var i = 0; i < hotBrandElems.length; i++) {
+    //     var hotBrandImg = hotBrandElems[i].querySelector('[app-role = "hotBrandImg"]');
+    //     var hotBrandName = hotBrandElems[i].querySelector('[app-role ="hotBrandName"]');
+    //     var n = i;
+    //     if (!hotBrands[i]) {
+    //         n = i - hotBrands.length;
+    //     };
+    //     hotBrandImg.setAttribute('src', hotBrands[n]["img"]);
+    //     hotBrandName.innerHTML = hotBrands[n]['name'];
+
+    // }
+
 
     updateStaticContent(shopInfo);
 

@@ -106,10 +106,10 @@ function toggleSearch() {
                 <div class="row" app-role="carouselRow"></div>
             </div>
         </template>
-        <template id = "hotCollItem">
+        <template id="hotCollItem">
             <div class="col-sm-6 col-xs-12">
                 <div class="imgs-item">
-                    <a app-role = "hotCollLink" href="#"  ><img app-role="hotCollImg" src=""></a>
+                    <a app-role="hotCollLink" href="#"><img app-role="hotCollImg" src=""></a>
                     <h2 app-role="collTitle"></h2>
                 </div>
             </div>
@@ -118,6 +118,19 @@ function toggleSearch() {
             <div class="item">
                 <div class="row promos" app-role="hotCarouselRow"></div>
             </div>
+        </template>
+        <template id="hotBrandRow">
+            <div class="item">
+                <div class="row promos" app-role="hotBrandRow"></div>
+            </div>
+        </template>
+        <template id = 'hotBrandItem'>
+            <div class="col-sm-4 col-xs-12" app-role="hotBrand">
+                    <div class="imgs-item">
+                        <a href="#"><img app-role="hotBrandImg" src="imgs/banner/promo03.jpg"></a>
+                        <span app-role="hotBrandName"></span>
+                    </div>
+                </div>
         </template>
     </templateRegion>
     <div id="masthead" app-role="staticImage" style="border-bottom: #e9ebee solid 1px;">
@@ -245,28 +258,7 @@ function toggleSearch() {
     <!--Home container-->
     <div class="home-container" id="start-offset">
         <!--center-->
-        <div class="container" app-moveup: 0>
-            <!--static block 1-->
-<!--             <div class="slide-up">
-                <div class="title">
-                    <h2>Hot Collections</h2>
-                    <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
-                </div>
-            </div>
-            <div class="row promos">
-                <div class="col-sm-6 col-xs-12">
-                    <div class="imgs-item">
-                        <a href="#"><img app-role="hotColls" src="imgs/banner/large03.jpg"></a>
-                        <h2 app-role="collTitle"></h2>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                    <div class="imgs-item">
-                        <a href="#"><img app-role="hotColls" src="imgs/banner/large04.jpg"></a>
-                        <h2 app-role="collTitle"></h2>
-                    </div>
-                </div>
-            </div> -->
+        <div class="container" app-moveup: 0>            
             <!-- carosel for promo -->
             <div class="slide-up hidden-xs">
                 <div class="title">
@@ -279,34 +271,7 @@ function toggleSearch() {
                         <a class="right c-btn" href="#carousel-hotcoll" data-slide="next"><i class="fa fa-angle-right"></i></a>
                     </div>
                     <div class="carousel-inner product-wrap" app-role="carouselHotColls" id="carouselHotColls">
-<!--                         <div class="item active">
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="imgs-item">
-                                    <a href="#"><img src="imgs/banner/large03.jpg"></a>
-                                    <h2 app-role="collTitle"></h2>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="imgs-item">
-                                    <a href="#"><img src="imgs/banner/large04.jpg"></a>
-                                    <h2 app-role="collTitle"></h2>
-                                </div>
-                            </div>
-                        </div> -->
-<!--                         <div class="item">
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="imgs-item">
-                                    <a href="#"><img src="imgs/banner/large03.jpg"></a>
-                                    <h2 app-role="collTitle"></h2>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="imgs-item">
-                                    <a href="#"><img src="imgs/banner/large04.jpg"></a>
-                                    <h2 app-role="collTitle"></h2>
-                                </div>
-                            </div>
-                        </div> -->
+                        <!--  -->
                     </div>
                 </div>
             </div>
@@ -327,33 +292,23 @@ function toggleSearch() {
                 </div>
             </div>
             <!--/carousel featuring product-->
-            <!--static block 2-->
-            <div class="slide-up">
+            <div class="slide-up hidden-xs">
                 <div class="title">
                     <h2>Hot Brandnames</h2>
                     <p><em>At vero eos et accusamus et iusto odio dignissimos ducimus</em></p>
                 </div>
-            </div>
-            <div class="row promos subs hidden-xs" id="hotBrandsContainer">
-                <div class="col-sm-4 col-xs-12" app-role="hotBrand">
-                    <div class="imgs-item">
-                        <a href="#"><img app-role="hotBrandImg" src="imgs/banner/promo03.jpg"></a>
-                        <span app-role="hotBrandName"></span>
+                <div id="carouselHotBrands" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="controls">
+                        <a class="left c-btn" href="#carouselHotBrands" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                        <a class="right c-btn" href="#carouselHotBrands" data-slide="next"><i class="fa fa-angle-right"></i></a>
                     </div>
-                </div>
-                <div class="col-sm-4 col-xs-12" app-role="hotBrand">
-                    <div class="imgs-item">
-                        <a href="#"><img app-role="hotBrandImg" src="imgs/banner/promo04.jpg"></a>
-                        <span app-role="hotBrandName"></span>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-xs-12" app-role="hotBrand">
-                    <div class="imgs-item">
-                        <a href="#"><img app-role="hotBrandImg" src="imgs/banner/promo06.jpg"></a>
-                        <span app-role="hotBrandName"></span>
+                    <div class="carousel-inner product-wrap" app-role="carouselContainer">
+                        <!--  -->         
                     </div>
                 </div>
             </div>
+            <!--static block 2-->
+
             <!--/static block 2-->
         </div>
         <!--/center-->
@@ -362,35 +317,7 @@ function toggleSearch() {
             <div class="container">
                 <div class="row">
                     <!-- <div class="most-title">
-                        <h2>Most used category</h2>
-                        <p><em>Top search products categories & most used sub categories</em></p>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 m-items">
-                        <div class="circle-block">
-                            <div>
-                                <i class="fa fa-envira"></i>
-                                <h4>Women</h4>
-                                <a href="#">shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 m-items">
-                        <div class="circle-block">
-                            <div>
-                                <i class="fa fa-motorcycle"></i>
-                                <h4>Men</h4>
-                                <a href="#">shop now</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-xs-12 m-items">
-                        <div class="circle-block">
-                            <div>
-                                <i class="fa fa-child"></i>
-                                <h4>Kids</h4>
-                                <a href="#">shop now</a>
-                            </div>
-                        </div>
+                        
                     </div> -->
                     <div class="most-title" app-role="staticContent">
                     </div>
@@ -426,9 +353,7 @@ function toggleSearch() {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6" app-role="staticContent">
-                        <!-- <h3>Spring Dress Collection</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                       <!--  -->
                     </div>
                     <div class="col-sm-6"></div>
                 </div>
@@ -442,9 +367,7 @@ function toggleSearch() {
                 <div class="row">
                     <div class="col-sm-6"></div>
                     <div class="col-sm-6" app-role="staticContent">
-                        <!--                         <h3>Sport Collection. The New sesion is here</h3>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+                        <!--  -->
                     </div>
                 </div>
             </div>
