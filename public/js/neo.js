@@ -145,9 +145,9 @@ function updateStaticContent(shopInfo) {
     }
 }
 
-function createHotCollection(hotColls) {
-    var numberOfRows = Math.floor(hotColls.length / 2) + 1;
-    if (hotColls.length % 2 == 0) {
+function createHotCollection(hotColls, collNum = 2) {
+    var numberOfRows = Math.floor(hotColls.length / collNum) + 1;
+    if (hotColls.length % collNum == 0) {
         numberOfRows = numberOfRows - 1;
     }
     var carouselHotColls = document.getElementById('carouselHotColls');
@@ -158,7 +158,7 @@ function createHotCollection(hotColls) {
         carouselHotColls.appendChild(document.importNode(carouselRow, true));
     }
 
-    var numberOfDisplay = hotColls.length + hotColls.length % 2;
+    var numberOfDisplay = hotColls.length + hotColls.length % collNum;
     for (var i = 0; i < numberOfDisplay; i++) {
         var k = i;
         if (!hotColls[i]) {
@@ -171,20 +171,20 @@ function createHotCollection(hotColls) {
         hotCollLink.setAttribute('href', "/collections/" + hotColls[k].id);
         var collTitle = hotCollectionItem.querySelector('[app-role="collTitle"]');
         collTitle.innerHTML = hotColls[k]['name'];
-        var carouselRow = document.getElementById("carouselHotColls_" + Math.floor(i / 2));
+        var carouselRow = document.getElementById("carouselHotColls_" + Math.floor(i / collNum));
         console.log('carouselRow: ', carouselRow);
         carouselRow.appendChild(document.importNode(hotCollectionItem, true));
     }
     document.querySelectorAll('[app-role="hotCarouselRow"]')[0].parentNode.classList.add('active');
 }
 
-function createHighlightProducts(highlightProducts) {
+function createHighlightProducts(highlightProducts, collNum = 3) {
     var hi_length = highlightProducts.length;
-    var numberOfRows = Math.floor(highlightProducts.length / 3) + 1;
-    if (highlightProducts.length % 3 == 0) {
+    var numberOfRows = Math.floor(highlightProducts.length / collNum) + 1;
+    if (highlightProducts.length % collNum == 0) {
         numberOfRows = numberOfRows - 1;
     } else {
-        hi_length = highlightProducts.length + 3 - (highlightProducts.length % 3);
+        hi_length = highlightProducts.length + collNum - (highlightProducts.length % collNum);
     }
     // console.log("numberOfRows: ", numberOfRows, "hi_length: ", hi_length, highlightProducts.length);
 
@@ -212,34 +212,33 @@ function createHighlightProducts(highlightProducts) {
             currentPriceElem.innerHTML = highlightProducts[k]['PRODUCT_DATA']['sysCurrentPrice'];
             var currencyElem = productItem.querySelector('[app-role = "currency"]');
             currencyElem.innerHTML = highlightProducts[k]['PRODUCT_DATA']['sysCurrency'];
-            var carouselRow = document.getElementById("carousel_" + Math.floor(n / 3));
-            carouselRow.appendChild(document.importNode(productItem, true));
-            //
             var itemLink = "product/" + highlightProducts[k]['id'];
             var productLinks = productItem.querySelectorAll('[app-role="productLink"]');
             productLinks.forEach(function(element) {
                 element.setAttribute('href', itemLink);
             });
             productName.setAttribute('href', itemLink);
+            var carouselRow = document.getElementById("carousel_" + Math.floor(n / collNum));
+            carouselRow.appendChild(document.importNode(productItem, true));
+            //
+
         }
     }
     var carouselRowElems = document.querySelectorAll('[app-role="carouselRow"]');
     carouselRowElems[0].parentNode.classList.add("active");
 }
 
-function createHotBrandsName(hotBrands) {
+function createHotBrandsName(hotBrands, collNum = 3) {
     var carouselHotBrands = document.getElementById('carouselHotBrands');
-    console.log("hotBrands: ", hotBrands, carouselHotBrands);
     // calculate number of Rows
-    var hotBrandRowsNumber = Math.floor(hotBrands.length / 3) + 1;
+    var hotBrandRowsNumber = Math.floor(hotBrands.length / collNum) + 1;
     var hot_length = hotBrands.length;
-    if (hotBrands.length % 3 == 0) {
+    if (hotBrands.length % collNum == 0) {
         hotBrandRowsNumber = hotBrandRowsNumber - 1;
     } else {
-        hot_length = hotBrands.length + 3 - (hotBrands.length % 3);
+        hot_length = hotBrands.length + collNum - (hotBrands.length % collNum);
     }
     var hotBrandsContainer = carouselHotBrands.querySelector('[app-role="carouselContainer"]');
-    console.log('hotBrandRowsNumber: ', hotBrandRowsNumber);
     for (var i = 0; i < hotBrandRowsNumber; i++) {
         var hotBrandRow = document.getElementById("hotBrandRow").content;
         var row = hotBrandRow.querySelector('[app-role="hotBrandRow"]');
@@ -255,9 +254,13 @@ function createHotBrandsName(hotBrands) {
         var hotBrandImg = hotBrandItem.querySelector('[app-role="hotBrandImg"]');
         var hotBrandName = hotBrandItem.querySelector('[app-role= "hotBrandName"]');
         hotBrandImg.setAttribute('src', hotBrands[k]["img"]);
+        var itemLink = "brand/" + hotBrands[k]['name'];
+        var brandLinks = hotBrandItem.querySelector('[app-role="brandLinks"]');
+        brandLinks.setAttribute('href', itemLink);
         hotBrandName.innerHTML = hotBrands[k]['name'];
-        var hotBrandRow = document.getElementById('HotBrandsCarousel_' + Math.floor(i / 3));
-        hotBrandRow.appendChild(document.importNode(hotBrandItem, true));
+        var hotBrandRow = document.getElementById('HotBrandsCarousel_' + Math.floor(i / collNum));
+        hotBrandRow.appendChild(document.importNode(hotBrandItem, true));        
+       
     }
     var hotBrandRow = document.querySelectorAll('[app-role= "hotBrandRow"]');
     hotBrandRow[0].parentNode.classList.add("active");
