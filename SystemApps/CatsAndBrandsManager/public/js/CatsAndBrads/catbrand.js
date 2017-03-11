@@ -116,10 +116,16 @@ function createNewCategoriesGroup(name) {
             s.innerHTML = ui.item[0].querySelector('[app-role="content"]').innerHTML;
             var appRole = ui.item[0].getAttribute("app-role");
             if (appRole == "category") {
-                var cat = rItem.querySelector('[app-role="categories"]');
+                var cat = rItem.querySelector('[app-role="categories"]');                
                 if (rItem["DATASTORE"]['cats'].indexOf(s.innerHTML) == -1) {
                     cat.appendChild(document.importNode(span, true));
-                    rItem["DATASTORE"]['cats'].push(s.innerHTML);
+                    // update here
+                    var catObj = {}; 
+                    catObj.name = s.innerHTML;
+                    catObj.id = ui.item[0].querySelector('[app-role="content"]').getAttribute('cat-id');
+                    // console.log('catObj: ', catObj);
+                    // rItem["DATASTORE"]['cats'].push(s.innerHTML);
+                    rItem["DATASTORE"]['cats'].push(catObj);
                 }
             }
             if (appRole == "brand") {
@@ -127,6 +133,7 @@ function createNewCategoriesGroup(name) {
                 if (rItem["DATASTORE"]['brands'].indexOf(s.innerHTML) == -1) {
                     brand.appendChild(document.importNode(span, true));
                     rItem["DATASTORE"]['brands'].push(s.innerHTML);
+                    // update here
                 }
             }
         }
@@ -388,7 +395,7 @@ function generateCatGroups(groups) {
         item.cats.filter(function(obj) {
             var span = document.getElementById("band").content;
             var s = span.querySelector('[app-role = "band"]');
-            s.innerHTML = obj;
+            s.innerHTML = obj['name'];
             catLine.appendChild(document.importNode(span, true));
         });
         item.brands.filter(function(obj) {
@@ -481,7 +488,7 @@ function generateCatGroups(groups) {
             var brandcats = document.getElementById("brandcats").content;
             var span = brandcats.querySelector('[app-role = "content"]')
             span.id = "br_" + n;
-            span.innerHTML = categories[n];
+            span.innerHTML = categories[n]["name"];            
             var item = document.importNode(brandcats, true);
             // item.innerHTML = categories[n];
             // item.id = "cat_" + n;
@@ -490,7 +497,7 @@ function generateCatGroups(groups) {
             var rItem = document.getElementById(span.id);
             //rItem.innerHTML = categories[n];
             rItem.parentNode.setAttribute("app-role", "category");
-
+            rItem.setAttribute("cat-id", categories[n]["id"]);
         }
     }
 }

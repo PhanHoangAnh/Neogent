@@ -69,22 +69,20 @@ function createMenus(shopInfo) {
     var menuId = 0;
     catGroups.forEach(function(catGroup) {
         var menuMainDetails = document.getElementById('menuMainDetails').content;
-
         var categoriesContainer = menuMainDetails.querySelector('[app-role="categoriesContainer"]');
         categoriesContainer.id = "cat_" + menuId;
         var brandNameContainer = menuMainDetails.querySelector('[app-role="brandNameContainer"]');
         brandNameContainer.id = "brand_" + menuId;
 
-
         var categoriesGroupName = menuMainDetails.querySelector('[app-role="categoriesGroupName"]');
         categoriesGroupName.innerHTML = catGroup["Title"];
         mainMenu.appendChild(document.importNode(menuMainDetails, true));
-
         var cats = catGroup["cats"];
-        cats.forEach(function(cat) {
-            var singleCategory = document.getElementById('singleCategory').content;
+        cats.forEach(function(cat) {            
+            var singleCategory = document.getElementById('singleCategory').content;            
             var singleCat = singleCategory.querySelector('[app-role="singleCat"]');
-            singleCat.innerHTML = cat;
+            singleCat.setAttribute('href', "categories/"+cat['id']);
+            singleCat.innerHTML = cat['name'];
             var categoriesContainer = document.getElementById("cat_" + menuId);
             categoriesContainer.appendChild(document.importNode(singleCategory, true));
         });
@@ -93,9 +91,12 @@ function createMenus(shopInfo) {
         brands.forEach(function(brand) {
             var singleBrand = document.getElementById('singleBrand').content;
             var brandImage = singleBrand.querySelector('[app-role="brandImage"]');
+            var brandLinks = singleBrand.querySelector('[app-role="menuLink"]');
+
             var brandObject = brandNames.filter(function(br) {
                 return br['name'] == brand;
             });
+            brandLinks.setAttribute('href','brands/'+brandObject[0]['id']);
             console.log("brandObject: ", brandObject[0]);
             brandImage.setAttribute('src', brandObject[0]["img"]);
             var brandNameContainer = document.getElementById("brand_" + menuId);
@@ -254,7 +255,7 @@ function createHotBrandsName(hotBrands, collNum = 3) {
         var hotBrandImg = hotBrandItem.querySelector('[app-role="hotBrandImg"]');
         var hotBrandName = hotBrandItem.querySelector('[app-role= "hotBrandName"]');
         hotBrandImg.setAttribute('src', hotBrands[k]["img"]);
-        var itemLink = "brand/" + hotBrands[k]['name'];
+        var itemLink = "brands/" + hotBrands[k]['id'];
         var brandLinks = hotBrandItem.querySelector('[app-role="brandLinks"]');
         brandLinks.setAttribute('href', itemLink);
         hotBrandName.innerHTML = hotBrands[k]['name'];

@@ -410,6 +410,9 @@ function updateCategoryAndBrandName(shop, product, isDel) {
                 categories[categories.indexOf(sameCats[i])].products.push(product.systemSKU);
             }
         }
+        for (var i = 0; i< categories.length; i ++){
+            categories[i]['id']= i;
+        }
         // BRANDNAME UPDATE REGION
         // template of singgle brandName
         // {
@@ -502,7 +505,9 @@ function updateCategoryAndBrandName(shop, product, isDel) {
                 brandNames[brandNames.indexOf(item)]["categories"] = realFlatCats;
             }
         });
-
+        for(var i = 0; i< shop.brandNames.length; i++){
+            shop.brandNames[i]['id']= i;
+        }
         // update collection in case product is deleted or modified
         var collections = shop.collections;
         var colls = collections.filter(function(col) {
@@ -511,12 +516,16 @@ function updateCategoryAndBrandName(shop, product, isDel) {
                     if (isDel) {
                         col.productLists.splice(col.productLists.indexOf(pr.id), 1)
                     } else {
-                        pr['PRODUCT_DATA'] = getFlatProductData(product);                        
+                        pr['PRODUCT_DATA'] = getFlatProductData(product);
                     }
                 };
                 return;
             });
         });
+        
+        for (var i = 0; i < colls.length; i++) {
+            colls[i]['id'] = i;
+        };
         shop.collections = colls;
         //console.log(colls);
 
@@ -539,7 +548,7 @@ function updateCategoryAndBrandName(shop, product, isDel) {
 
 function getFlatProductData(product) {
     console.log('pr', product)
-    var tempObj ={};
+    var tempObj = {};
     var atts = product.productAtttributes;
     for (var i = 0; i < atts.length; i++) {
         tempObj[atts[i]["attributes"]["sysId"]] = atts[i]["InputValue"]

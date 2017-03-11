@@ -57,7 +57,9 @@ router.get('/', function(req, res, next) {
                 contact_email: shop.contact_email,
                 address: shop.address,
                 categories: shop.categories.map(function(obj) {
-                    return obj["name"];
+                    delete obj.products;
+                    delete obj.brandNames
+                    return obj;
                 }),
                 brandNames: shop.brandNames,
                 catGroups: shop.catGroups
@@ -99,7 +101,7 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                             }
                         }
                         if (savedData[n]["type"] == "catGroup") {
-                            delete savedData[n]["type"];
+                            delete savedData[n]["type"];                            
                             catGroups.push(savedData[n]);
                         } else if (savedData[n]["type"] == "brand") {
                             delete savedData[n]["type"];
@@ -108,6 +110,7 @@ router.post("/update", checkToken, checkAuth, function(req, res, next) {
                                     shop.brandNames[shop.brandNames.indexOf(br)]['img'] = savedData[n]['img'];
                                     shop.brandNames[shop.brandNames.indexOf(br)]['description'] = savedData[n]['description'];
                                     shop.brandNames[shop.brandNames.indexOf(br)]['displayInFrontPage'] = savedData[n]['displayInFrontPage'];
+                                    //                                    
                                 }
                             })
                         }
