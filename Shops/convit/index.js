@@ -5,16 +5,20 @@ var app = express();
 var router = express.Router();
 var path = require("path");
 
-console.log("app.settings ", app.get('views'), app.get('view engine'));
+// console.log("app.settings ", app.get('views'), app.get('view engine'));
 // Do not remove this command during develoment mode
-// app.set('views', path.join(__dirname, 'views'))
+// coreApp.set('views', path.join(__dirname, 'views'))
 
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
+// coreApp.set('view engine', 'ejs');
+coreApp.use(express.static(path.join(__dirname, 'public')));
 
-router.get('/', getBasicShopInfo);
+
+router.get('/test',function(req,res,next){
+	res.send("test");
+})
+router.use(coreApp);
+
 //
-
 
 app.use(router);
 module.exports = app;

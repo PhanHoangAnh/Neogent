@@ -1,4 +1,7 @@
 var mongoose = require("mongoose");
+var express = require('express');
+var app = express();
+var router = express.Router();
 
 function getFlatShopProducts(shopname, fn_cb) {
     // console.log('shopname', shopname);
@@ -66,8 +69,6 @@ function getBasicShopInfo(req, res) {
             });
             shopInfo.collections = collections;
         };
-        // console.log("current __filename : ", __filename);
-        // console.log("current __dirname : ", __dirname);        
         if (err) {
             res.send(err);
         } else {
@@ -81,7 +82,18 @@ function getBasicShopInfo(req, res) {
     }
 }
 
+function getCollections(req,res){
+    // res.sendStatus(200);
+    res.render('productList',{
+
+    })
+
+}
+
+
 module.exports = {
     getFlatShopProducts: getFlatShopProducts,
-    getBasicShopInfo: getBasicShopInfo
+    getBasicShopInfo: getBasicShopInfo,
+    getCollections: getCollections
+    
 }
