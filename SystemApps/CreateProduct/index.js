@@ -393,26 +393,47 @@ function updateCategoryAndBrandName(shop, product, isDel) {
         // modify old cat objects in categories
         // in oldCatContainSKU only
         var len = neededModifyCats.length
+        var removeCatFlags = false;
         for (var i = 0; i < len; i++) {
             if (neededModifyCats[i].products.indexOf(product.systemSKU) !== -1) {
                 // recheck and update here
                 neededModifyCats[i].products.splice(neededModifyCats[i].products.indexOf(product.systemSKU), 1);
                 if (neededModifyCats[i].products.length == 0) {
                     categories.pull(neededModifyCats[i]);
-                    // update brahdName                        
+                    removeCatFlags = true;
+                    // update brahdNames and shop.catGroups
+                    shop.catGroups.forEach(function(group) {
+                        group['cats'].forEach(function(cat) {
+                            if (cat['name'] == neededModifyCats[i]['name']) {
+                                group['cats'].pull(cat);
+                            }
+                        })
+                    })
                 };
             };
         }
 
         for (var i = 0; i < sameCats.length; i++) {
             if (sameCats[i].products.indexOf(product.systemSKU) < 0) {
-                //sameCats[i].products = sameCats[i].products.concat(product.systemSKU);
                 categories[categories.indexOf(sameCats[i])].products.push(product.systemSKU);
             }
         }
-        for (var i = 0; i< categories.length; i ++){
-            categories[i]['id']= i;
+
+        for (var i = 0; i < categories.length; i++) {
+            categories[i]['id'] = i;
+            if (removeCatFlags == true) {
+                // must update id of categories in shop.
+                for (var j = 0; j < shop.catGroups.length; j++) {
+                    catList = shop.catGroups[j]['cats'];
+                    for (var k = 0; k < catList.length; k++) {
+                        if (catList[k]['name'] == categories[i]['name']) {
+                            catList[k]['id'] == categories[i]['id']
+                        }
+                    }
+                }
+            }
         }
+
         // BRANDNAME UPDATE REGION
         // template of singgle brandName
         // {
@@ -472,13 +493,22 @@ function updateCategoryAndBrandName(shop, product, isDel) {
         };
         // modify old brandName objects in brandNames
         // in neededModifyBns only
+        var removeBrandFlag = false;
         var len = neededModifyBns.length
         for (var i = 0; i < len; i++) {
             // recheck and update here
             neededModifyBns[i].products.splice(neededModifyBns[i].products.indexOf(product.systemSKU), 1);
             if (neededModifyBns[i].products.length == 0) {
                 brandNames.pull(neededModifyBns[i]);
-                // update Categories                    
+                removeBrandFlag = true;
+                // update Categories and shop.
+                shop.catGroups.forEach(function(group) {
+                    group['brands'].forEach(function(brand) {
+                        if (brand['name'] == neededModifyBns[i]['name']) {
+                            group['brands'].pull(brand);
+                        }
+                    })
+                })
             }
         };
 
@@ -505,8 +535,8 @@ function updateCategoryAndBrandName(shop, product, isDel) {
                 brandNames[brandNames.indexOf(item)]["categories"] = realFlatCats;
             }
         });
-        for(var i = 0; i< shop.brandNames.length; i++){
-            shop.brandNames[i]['id']= i;
+        for (var i = 0; i < shop.brandNames.length; i++) {
+            shop.brandNames[i]['id'] = i;
         }
         // update collection in case product is deleted or modified
         var collections = shop.collections;
@@ -522,7 +552,7 @@ function updateCategoryAndBrandName(shop, product, isDel) {
                 return;
             });
         });
-        
+
         for (var i = 0; i < colls.length; i++) {
             colls[i]['id'] = i;
         };
@@ -538,6 +568,9 @@ function updateCategoryAndBrandName(shop, product, isDel) {
         shop.markModified('brandNames.$.categories');
         shop.markModified('collections')
         shop.markModified('collections.$.productLists');
+        shop.markModified('catGroups');
+        shop.markModified('catGroups.$.cats');
+        shop.markModified('catGroups.$.brands');
 
         shop.save(function(err) {
             console.log("check err: ", err);
