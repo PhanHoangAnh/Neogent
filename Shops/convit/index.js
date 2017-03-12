@@ -13,9 +13,14 @@ var path = require("path");
 coreApp.use(express.static(path.join(__dirname, 'public')));
 
 
-router.get('/test',function(req,res,next){
-	res.send("test");
-})
+router.get('/test', function(req, res, next) {
+    res.send("test");
+});
+var testObj = {
+    id: 5,
+    text: 'convitcon'
+}
+coreApp.setTemplateMapper(testObj);
 router.use(coreApp);
 
 //

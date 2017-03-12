@@ -78,10 +78,10 @@ function createMenus(shopInfo) {
         categoriesGroupName.innerHTML = catGroup["Title"];
         mainMenu.appendChild(document.importNode(menuMainDetails, true));
         var cats = catGroup["cats"];
-        cats.forEach(function(cat) {            
-            var singleCategory = document.getElementById('singleCategory').content;            
+        cats.forEach(function(cat) {
+            var singleCategory = document.getElementById('singleCategory').content;
             var singleCat = singleCategory.querySelector('[app-role="singleCat"]');
-            singleCat.setAttribute('href', "categories/"+cat['id']);
+            singleCat.setAttribute('href', "/" + shopInfo.shopname + "/" + "categories/" + cat['id']);
             singleCat.innerHTML = cat['name'];
             var categoriesContainer = document.getElementById("cat_" + menuId);
             categoriesContainer.appendChild(document.importNode(singleCategory, true));
@@ -96,8 +96,7 @@ function createMenus(shopInfo) {
             var brandObject = brandNames.filter(function(br) {
                 return br['name'] == brand;
             });
-            brandLinks.setAttribute('href','brands/'+brandObject[0]['id']);
-            console.log("brandObject: ", brandObject[0]);
+            brandLinks.setAttribute('href', "/" + shopInfo.shopname + "/" + 'brands/' + brandObject[0]['id']);            
             brandImage.setAttribute('src', brandObject[0]["img"]);
             var brandNameContainer = document.getElementById("brand_" + menuId);
             brandNameContainer.appendChild(document.importNode(singleBrand, true));
@@ -260,8 +259,8 @@ function createHotBrandsName(hotBrands, collNum = 3) {
         brandLinks.setAttribute('href', itemLink);
         hotBrandName.innerHTML = hotBrands[k]['name'];
         var hotBrandRow = document.getElementById('HotBrandsCarousel_' + Math.floor(i / collNum));
-        hotBrandRow.appendChild(document.importNode(hotBrandItem, true));        
-       
+        hotBrandRow.appendChild(document.importNode(hotBrandItem, true));
+
     }
     var hotBrandRow = document.querySelectorAll('[app-role= "hotBrandRow"]');
     hotBrandRow[0].parentNode.classList.add("active");

@@ -20,16 +20,15 @@ router.get("/collections", function(req, res, next) {
 
 router.get("/collections/:id", function(req, res, next) {
     req.collectionId = req.params.id;
-    getCollections(req, res, next);
+    getCollections(req, res, next, 'productLists');
 })
 
-router.get("/", getBasicShopInfo);
+router.get("/", function(req, res, next) {
+    getBasicShopInfo(req, res, next, 'index')
+});
 
-app.getCoreApp = function() {
-    return this;
-}
-app.getCoreRouter = function() {
-    return router
+app.setTemplateMapper = function(mapArrays) {
+    console.log("mapArrays: ", mapArrays);
 }
 
 app.use(router);

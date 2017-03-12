@@ -56,7 +56,7 @@ function getFlatShopProducts(shopname, fn_cb) {
     });
 };
 
-function getBasicShopInfo(req, res) {
+function getBasicShopInfo(req, res, next, template = 'index') {
     //
     getFlatShopProducts(req.shopname, fnCb);
 
@@ -72,7 +72,7 @@ function getBasicShopInfo(req, res) {
         if (err) {
             res.send(err);
         } else {
-            res.render('index', {
+            res.render(template, {
                 title: 'Hello, this is template Application of : ' + req.shopname,
                 RSApublicKey: keyPair.public,
                 shopInfo: shopInfo
@@ -82,12 +82,27 @@ function getBasicShopInfo(req, res) {
     }
 }
 
-function getCollections(req,res){
-    // res.sendStatus(200);
-    res.render('productList',{
+function getCollections(req, res, next, template = "productLists") {
 
-    })
+    getFlatShopProducts(req.shopname, fnCb);
+    var collectionId = req.collectionId;
 
+    function fnCb(err, shopInfo) {
+        if (!err) {
+            if (collectionId) {
+                template = template;
+            } else {
+                res.send("Not yet available Template");
+            }
+            res.render(template, {
+                shopInfo: shopInfo, 
+                collectionId: collectionId
+            })
+        } else {
+
+        }
+
+    }
 }
 
 
@@ -95,5 +110,5 @@ module.exports = {
     getFlatShopProducts: getFlatShopProducts,
     getBasicShopInfo: getBasicShopInfo,
     getCollections: getCollections
-    
+
 }
