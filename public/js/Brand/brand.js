@@ -9,9 +9,6 @@ function GenerateCollPage(shopInfo) {
     // defaulColl = collections.filter(function(coll) {
     //     return coll.id == collId;
     // })[0];
-
-
-
     createLogo(shopInfo.avatars, shopInfo.shopname);
     createMenus(shopInfo);
     createMainBanner(category);
