@@ -58,8 +58,8 @@
         <template id='productRowItem'>
             <div class="col-item">
                 <div class="photo img-item">
-                    <img src="/img/products/p04.jpg">
-                    <a href="product-detail.html"></a>
+                    <img app-role = "productImage" src="/img/products/p04.jpg">
+                    <a app-role = "productLink" href="product-detail.html"></a>
                     <div class='focus'></div>
                 </div>
                 <div class="detail-item">
@@ -71,8 +71,8 @@
                         <span>☆</span>
                         <span class="rated" style="width: 90%;"></span>
                     </div>
-                    <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                    <div class="price">Price: 6,00.00SGD</div>
+                    <h4><a href="product-detail.html" app-role = "productName">Lorem ipsum dolor sit amet</a></h4>
+                    <div class="price" app-role = "productPrice">Price: 6,00.00SGD</div>
                     <div class="action-item">
                         <div class="col-xs-6">
                             <div class="items">
@@ -83,7 +83,7 @@
                         <div class="col-xs-6">
                             <div class="items">
                                 <div style="border-left: dotted 1px; padding-left: 5px">
-                                    <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
+                                    <a href="product-detail.html" app-role = "productLink"><i class="fa fa-list"></i><br />More details</a>
                                 </div>
                             </div>
                         </div>
@@ -420,281 +420,8 @@
                     </div>
                     <!--/top toolbar-->
                     <!--product wrap-->
-                    <div class="product-wrap list">
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <span class="tag-label sale">Sale!</span>
-                                <img src="img/products/p01.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 80%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <span class="tag-label new">New</span>
-                                <img src="/img/products/p02.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 0;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <img src="/img/products/p03.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 70%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <img src="/img/products/p04.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 90%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <img src="/img/products/p05.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 80%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <img src="/img/products/p06.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 80%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <img src="/img/products/p07.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 60%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-item">
-                            <div class="photo img-item">
-                                <img src="/img/products/p08.jpg">
-                                <a href="product-detail.html"></a>
-                                <div class='focus'></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="rating">
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span>☆</span>
-                                    <span class="rated" style="width: 80%;"></span>
-                                </div>
-                                <h4><a href="product-detail.html">Lorem ipsum dolor sit amet</a></h4>
-                                <div class="price">Price: 6,00.00SGD</div>
-                                <div class="action-item">
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <i class="fa fa-heart"></i>
-                                            <br />Save for late
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="items">
-                                            <div style="border-left: dotted 1px; padding-left: 5px">
-                                                <a href="product-detail.html"><i class="fa fa-list"></i><br />More details</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="product-wrap list" id = 'productsBoard'>
+                        <!-- Adding dynamic products template here -->
                     </div>
                     <!--/product wrap-->
                     <!--bottom toolbar-->
@@ -805,6 +532,7 @@
     var shopInfo = <%-JSON.stringify(shopInfo)%>
     var shopInfo = <%-JSON.stringify(shopInfo)%>
     var collectionId = <%-JSON.stringify(collectionId)%>
+    var pageType = <%-JSON.stringify(pageType)%>
     console.log('shopInfo: ', shopInfo, collectionId);
     GenerateCollPage(shopInfo, collectionId);
     </script>

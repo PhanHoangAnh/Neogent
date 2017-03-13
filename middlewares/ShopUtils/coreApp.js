@@ -16,12 +16,23 @@ router.get("/collections", function(req, res, next) {
     // req.collectionId = req.params.id;
     // getCollections(req, res, next);
     res.sendStatus(200);
-})
+});
 
 router.get("/collections/:id", function(req, res, next) {
     req.collectionId = req.params.id;
-    getCollections(req, res, next, 'productLists');
-})
+    getCollections(req, res, next, 'collection');
+});
+
+router.get("/categories/:id", function (req,res,next){
+	req.categoryId = req.params.id;
+    getCategory(req, res, next, 'category');
+});
+
+router.get("/brands/:id", function (req,res,next){
+    req.categoryId = req.params.id;
+    getCategory(req, res, next, 'brand');
+});
+    	
 
 router.get("/", function(req, res, next) {
     getBasicShopInfo(req, res, next, 'index')

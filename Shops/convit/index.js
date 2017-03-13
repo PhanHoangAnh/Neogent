@@ -20,7 +20,7 @@ var testObj = {
     id: 5,
     text: 'convitcon'
 }
-coreApp.setTemplateMapper(testObj);
+// coreApp.setTemplateMapper(testObj);
 router.use(coreApp);
 
 //

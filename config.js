@@ -28,6 +28,8 @@ var shopbase = require("./middlewares/ShopUtils/shopbase")
 global['getFlatShopProducts'] = shopbase.getFlatShopProducts;
 global['getBasicShopInfo'] = shopbase.getBasicShopInfo;
 global['getCollections'] = shopbase.getCollections;
+global['getCategory'] = shopbase.getCategory;
+global['getBrandName'] - shopbase.getBrandName;
 
 global['coreApp'] = require("./middlewares/ShopUtils/coreApp");
 

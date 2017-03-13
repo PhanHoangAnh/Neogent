@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>NeoGent | Product Page</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body class="category-page">
+    <templateRegion>
+        <template id="menuCover">
+            <li>
+                <a href="#" app-role="mainMenu">Men</a>
+            </li>
+        </template>
+        <template id="menuMainDetails">
+            <!-- <menuDetail> -->
+            <li>
+                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" app-role="categoriesGroupName">Women</a>
+                <div class="mega-menu dropmenu" aria-labelledby="women">
+                    <div class="menu-col by-shop">
+                        <h3>Shop</h3>
+                        <ul class="" app-role="categoriesContainer">
+                        </ul>
+                    </div>
+                    <div class="menu-col by-brand">
+                        <h3>by Brand</h3>
+                        <ul class="" app-role="brandNameContainer">
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!-- </menuDetail> -->
+        </template>
+        <template id="singleCategory">
+            <li>
+                <a href="product-page.html" app-role="singleCat"></a>
+            </li>
+        </template>
+        <template id='singleBrand'>
+            <li>
+                <a href="product-page.html" app-role="menuLink"><img style="filter: grayscale(1)" app-role="brandImage" src=""></a>
+            </li>
+        </template>
+        <template id='productRowItem'>
+            <div class="col-item">
+                <div class="photo img-item">
+                    <img app-role = "productImage" src="/img/products/p04.jpg">
+                    <a app-role = "productLink" href="product-detail.html"></a>
+                    <div class='focus'></div>
+                </div>
+                <div class="detail-item">
+                    <div class="rating">
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span>☆</span>
+                        <span class="rated" style="width: 90%;"></span>
+                    </div>
+                    <h4><a href="product-detail.html" app-role = "productName">Lorem ipsum dolor sit amet</a></h4>
+                    <div class="price" app-role = "productPrice">Price: 6,00.00SGD</div>
+                    <div class="action-item">
+                        <div class="col-xs-6">
+                            <div class="items">
+                                <i class="fa fa-heart"></i>
+                                <br />Save for late
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="items">
+                                <div style="border-left: dotted 1px; padding-left: 5px">
+                                    <a href="product-detail.html" app-role = "productLink"><i class="fa fa-list"></i><br />More details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </templateRegion>
+    <!-- main banner -->
+    <div class="main-banner " id='mainBanner'>
+        <div class="inner">
+            <div class="container">
+                <h1 class="title" app-role="collectionTitle">Sub category</h1>
+                <div class="desc">
+                    <p app-role="titleDescription">
+                        <!-- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        <br />Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. -->
+                        <!-- Adding dynamic conntent here -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /main banner -->
+    <!-- NavBar -->
+    <div id="nav-wrapper">
+        <div id="nav" class="navbar navbar-inverse navbar-static-top navbar" role="navigation">
+            <!--top nav-->
+            <div class="navbar-top">
+                <div class="container">
+                    <div class="login">
+                        <span>login with</span><a href="#" title="facebook"><i class="fa fa-facebook"></i></a><a href="login.html" title="Neo"><i class="fa fa-neogent"></i></a>
+                        <!--span>Anh Tran</span><a><img src="img/avatar/ava.jpg"></a><a href="#">log out</a-->
+                    </div>
+                </div>
+            </div>
+            <!--/top nav-->
+            <div class="container">
+                <div class="row">
+                    <div class="logo" id="logo">
+                        <a href="home-page.html" app-role="logoLink"><img app-role="avatar" alt="NeoGent"></a>
+                    </div>
+                    <!--menu btn for mobile-->
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!--/menu button for mobile-->
+                    <!--menu-->
+                    <nav class="collapse navbar-collapse " role="navigation">
+                        <ul class="nav navbar-nav" id='mainMenu'>
+                            <!-- Adding Menu templete to this section -->
+                        </ul>
+                    </nav>
+                    <!--/menu-->
+                    <!--right navbar-->
+                    <div class="navbar-rightside">
+                        <div class="minicart-wrapper dropdown">
+                            <a href="#" class="cart" id="minicart-wrap" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="count">3</span>
+                            </a>
+                            <div class="minicart-dropdown" aria-labelledby="minicart-wrap">
+                                <!--empty minicart-->
+                                <!--div class="minicart-empty">
+                                    <p>Your shopping bag is currently empty.</p>
+                                    <a href="product-page.html" class="btn">Continue Shopping</a>
+                                </div-->
+                                <!--/empty minicart-->
+                                <!--full minicart-->
+                                <div class="minicart-full">
+                                    <ul class="minicart-total">
+                                        <li><span class="num">3</span> items</li>
+                                        <li class="total">
+                                            <span>Subtotal</span>
+                                            <span>1,500.00 SGD</span>
+                                        </li>
+                                        <li><a href="checkout.html" class="btn">Checkout</a></li>
+                                    </ul>
+                                    <ul class="minicart-list">
+                                        <li>
+                                            <a href="product-detail.html" class="product-img"><img src="/img/products/p01.jpg"></a>
+                                            <div class="product-detail">
+                                                <p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+                                                <p class="price">6,00.00 SGD</p>
+                                                <p class="group">
+                                                    <span class="qty">Qty:</span><span class="value">1</span>
+                                                </p>
+                                            </div>
+                                            <span class="remove-button"></span>
+                                        </li>
+                                        <li>
+                                            <a href="product-detail.html" class="product-img"><img src="/img/products/p03.jpg"></a>
+                                            <div class="product-detail">
+                                                <p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+                                                <p class="price">5,00.00 SGD</p>
+                                                <p class="group">
+                                                    <span class="qty">Qty:</span><span class="value">1</span>
+                                                </p>
+                                            </div>
+                                            <span class="remove-button"></span>
+                                        </li>
+                                        <li>
+                                            <a href="product-detail.html" class="product-img"><img src="/img/products/p05.jpg"></a>
+                                            <div class="product-detail">
+                                                <p class="name"><a href="product-detail.html">Lorem ipsum dolor sit amet</a></p>
+                                                <p class="price">4,00.00 SGD</p>
+                                                <p class="group">
+                                                    <span class="qty">Qty:</span><span class="value">1</span>
+                                                </p>
+                                            </div>
+                                            <span class="remove-button"></span>
+                                        </li>
+                                    </ul>
+                                    <div class="minicart-bottom">
+                                        <a href="shopping-bag.html" class="btn">View bag</a>
+                                    </div>
+                                </div>
+                                <!--/full minicart-->
+                            </div>
+                        </div>
+                        <div class="search-wrapper" onclick="toggleSearch()">
+                            <span class="search"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                    <!--/right navbar-->
+                    <div class="search-inner" id="search-box">
+                        <form>
+                            <input type="text" placeholder="Search...">
+                            <button type="button" class="btn"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /NavBar -->
+    <!--ProductList container-->
+    <div id="start-offset" class="productlist-container">
+        <!--breadcrumb-->
+        <div class="container">
+            <ol class="breadcrumb" id='breadcrumbs'>
+                <li><a app-role='hompage'>Home</a></li>
+                <li><a app-role='collections'>Collections</a></li>
+                <li class="active" app-role='collectionDetails'>Subcategory</li>
+            </ol>
+        </div>
+        <!--/breadcrumb-->
+        <div class="container">
+            <div class="row">
+                <!--left side: filer column-->
+                <div class="col-sm-3">
+                    <!--Filter block-->
+                    <div class="filter-wrap">
+                        <h2>Refine by</h2>
+                        <div class="accordion" id="filterBy">
+                            <div class="filter-group">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#filterBy" href="#productType">
+                                    Product Type
+                                </a>
+                                </div>
+                                <div id="productType" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <ul class="filter-items">
+                                            <li class="item-selected"><a href="#">Dresses</a></li>
+                                            <li><a href="#">Skirts</a></li>
+                                            <li><a href="#">Outerwear</a></li>
+                                            <li><a href="#">Tops</a></li>
+                                            <li><a href="#">Bottom</a></li>
+                                            <li><a href="#">Lingerie</a></li>
+                                            <li><a href="#">Shoes</a></li>
+                                            <li><a href="#">Bags</a></li>
+                                            <li><a href="#">Sunglasses</a></li>
+                                            <li><a href="#">Accessories</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#filterBy" href="#brand">
+                                    Brand
+                                </a>
+                                </div>
+                                <div id="brand" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <ul class="filter-items">
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/adidas.png"> Adidas</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/onitsuta.png"> Onitsuta</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/dr-martens.png"> Dr Martens</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/on-the-wall.png"> On the wall</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/k-swiss.png"> K-swiss</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/supra.png"> Supra</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/new-balance.png"> New Balance</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/toms.png"> Toms</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/puma.png"> Puma</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/vault.png"> Vault</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/lacoste.png"> Lacoste</a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="/img/brands/hover/converse-cons.png"> Converse Cons</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#filterBy" href="#size">
+                                    Size
+                                </a>
+                                </div>
+                                <div id="size" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <ul class="filter-items">
+                                            <li><a href="#">XS</a></li>
+                                            <li><a href="#">S</a></li>
+                                            <li><a href="#">M</a></li>
+                                            <li><a href="#">L</a></li>
+                                            <li><a href="#">XL</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#filterBy" href="#color">
+                                    Color
+                                </a>
+                                </div>
+                                <div id="color" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <ul class="filter-items">
+                                            <li><a href="#">Black</a></li>
+                                            <li><a href="#">White</a></li>
+                                            <li><a href="#">Grey</a></li>
+                                            <li><a href="#">Gold</a></li>
+                                            <li><a href="#">Silver</a></li>
+                                            <li><a href="#">Beige</a></li>
+                                            <li><a href="#">Purple</a></li>
+                                            <li><a href="#">Brown</a></li>
+                                            <li><a href="#">Red</a></li>
+                                            <li><a href="#">Orange</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#filterBy" href="#material">
+                                    Material
+                                </a>
+                                </div>
+                                <div id="material" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <ul class="filter-items">
+                                            <li><a href="#">Cotton</a></li>
+                                            <li><a href="#">Fleece</a></li>
+                                            <li><a href="#">Mesh</a></li>
+                                            <li><a href="#">Nylon</a></li>
+                                            <li><a href="#">Polyester</a></li>
+                                            <li><a href="#">Spandex</a></li>
+                                            <li><a href="#">Wool</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <div class="heading">
+                                    <a class="toggle collapsed" data-toggle="collapse" data-parent="#filterBy" href="#price">
+                                    Price
+                                </a>
+                                </div>
+                                <div id="price" class="accordion-body collapse">
+                                    <div class="inner">
+                                        <ul class="filter-items">
+                                            <li><a href="#">$30.00 - $39.99</a></li>
+                                            <li><a href="#">$50.00 - $59.99</a></li>
+                                            <li><a href="#">$60.00 - $69.99</a></li>
+                                            <li><a href="#">$70.00 - $79.99</a></li>
+                                            <li><a href="#">$80.00 and above</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Filter block-->
+                </div>
+                <!--/left side: filer column-->
+                <!--right side: product grid-->
+                <div class="col-sm-9">
+                    <!--top toolbar-->
+                    <div class="toolbar top">
+                        <span class="total-items" id='numberOfProduct'>72 products</span>
+                        <div class="short-by">
+                            <select>
+                                <option value="">New arrivals</option>
+                                <option value="">Price (low to high)</option>
+                                <option value="">Price (high to low)</option>
+                                <option value="">Product name</option>
+                            </select>
+                        </div>
+                        <div class="modes-mode hidden-xs">
+                            <a href="product-page.html" class="grid" title="grid mode"><i class="fa fa-th"></i></a>
+                            <span class="list" title="list mode"><i class="fa fa-th-list"></i></span>
+                        </div>
+                    </div>
+                    <!--/top toolbar-->
+                    <!--product wrap-->
+                    <div class="product-wrap list" id = 'productsBoard'>
+                        <!-- Adding dynamic products template here -->
+                    </div>
+                    <!--/product wrap-->
+                    <!--bottom toolbar-->
+                    <div class="toolbar bottom">
+                        <!--pagination-->
+                        <div class="pagination-wrap">
+                            <a href="#" class="prev disabled"><i class="fa fa-angle-left"></i></a>
+                            <span class="num">1/9</span>
+                            <a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+                            <ul class="pagination">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul>
+                        </div>
+                        <!--/pagination-->
+                    </div>
+                    <!--/bottom toolbar-->
+                </div>
+                <!--/right side: product grid-->
+            </div>
+        </div>
+    </div>
+    <!--/ProductList container-->
+    <div id="end-offset">
+        <footer>
+            <div class="footer container">
+                <div class="row">
+                    <!--col-->
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a href="cms-about-us.html">Corporate Profile</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                            <li><a href="cms-site-map.html">Site map</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>Online Help</h4>
+                        <ul>
+                            <li><a href="cms-shipping-returns.html">Shipping &amp; Returns</a></li>
+                            <li><a href="cms-faq.html">FAQ</a></li>
+                            <li><a href="cms-privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="cms-term-conditions.html">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <h4>Subscribe</h4>
+                        <div class="subscribe-form">
+                            <form>
+                                <input type="email" placeholder="Your email address">
+                                <!--p class="label-error">Email: This field is required.</p-->
+                                <button type="button" class="btn">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!--/col-->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <p class="copy-right">Copyright © 2016 NeoGent. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="/js/Category/category.js"></script>
+    <script type="text/javascript">
+    /* Custom JS */
+    //--// Bootstrap component
+    $(function() {
+        // $('#nav-wrapper').height($("#nav").height());
+        // $('#nav-wrapper').height(200);
+        $('#nav').affix({
+            offset: {
+                top: function() {
+                    // Do other stuff here-- chipl
+                    return $('#start-offset').offset().top / 2;
+                }
+            }
+        });
+        // Sidebar affix
+        $('#sidebar').affix({
+            offset: {
+                top: $('#start-offset').offset().top + 0,
+                bottom: $('#end-offset').outerHeight() - 20
+            }
+        }).on('affix.bs.affix', function() { // before affix
+            $(this).css({
+                /*'top': headerHeight,*/ // for fixed height
+                'width': $(this).outerWidth() // variable widths
+            });
+        }).on('affix-bottom.bs.affix', function() { // before affix-bottom
+            // $(this).css('bottom', 'auto'); // THIS is what makes the jumping
+        });;
+
+    });
+    $('.carousel').carousel({
+        interval: 2000 * 10
+    });
+    //Huyen Anh added code here
+    function toggleSearch() {
+        document.getElementById('search-box').classList.toggle('open');
+    }
+    var shopInfo = <%-JSON.stringify(shopInfo)%>
+    var shopInfo = <%-JSON.stringify(shopInfo)%>
+    
+    var pageType = <%-JSON.stringify(pageType)%>
+    console.log('shopInfo: ', shopInfo);
+    GenerateCollPage(shopInfo);
+
+    </script>
+</body>
+
+</html>

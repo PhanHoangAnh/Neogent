@@ -1,21 +1,23 @@
 // console.log('collection.js');
 
-var defaulColl;
-var collections;
 
-function GenerateCollPage(shopInfo, collId) {
-    collections = shopInfo.collections
+var brand;
 
-    defaulColl = collections.filter(function(coll) {
-        return coll.id == collId;
-    })[0];
-    
+function GenerateCollPage(shopInfo) {
+    category = shopInfo.brand
+
+    // defaulColl = collections.filter(function(coll) {
+    //     return coll.id == collId;
+    // })[0];
+
+
+
     createLogo(shopInfo.avatars, shopInfo.shopname);
     createMenus(shopInfo);
-    createMainBanner(defaulColl);
-    creageBreadcrumb(defaulColl, shopInfo.shopname);
-    informNumberOfProduct(defaulColl);
-    createProductBoard(defaulColl['productLists'], shopInfo.shopname);
+    createMainBanner(category);
+    creageBreadcrumb(category, shopInfo.shopname);
+    informNumberOfProduct(category);
+    createProductBoard(category['products'], shopInfo.shopname);
 }
 
 function createLogo(imgSrc, link) {
@@ -77,7 +79,7 @@ function createMainBanner(defaulColl) {
     }
     var collectionTitle = mainBanner.querySelector('[app-role = "collectionTitle"]')
     console.log('defaulColl', defaulColl);
-    collectionTitle.innerText = defaulColl['name'] +" " + pageType;
+    collectionTitle.innerText = defaulColl['name'] + " " + pageType;
     var titleDescription = mainBanner.querySelector('[app-role = "titleDescription"]');
     titleDescription.innerText = defaulColl['collDesc'];
 
@@ -86,13 +88,13 @@ function createMainBanner(defaulColl) {
 function creageBreadcrumb(defaulColl, shopname) {
     var breadcrmbs = document.getElementById('breadcrumbs');
     breadcrumbs.querySelector("[app-role = 'hompage']").setAttribute('href', '/' + shopname);
-    breadcrumbs.querySelector("[app-role = 'collections']").setAttribute('href', '/' + shopname + '/' + "collections");
+    breadcrumbs.querySelector("[app-role = 'collections']").setAttribute('href', '/' + shopname + '/' + "Category");
     breadcrumbs.querySelector("[app-role = 'collectionDetails']").innerText = defaulColl['name'];
 }
 
 function informNumberOfProduct(defaulColl) {
     var numberOfProduct = document.getElementById('numberOfProduct');
-    numberOfProduct.innerText = defaulColl['productLists'].length + " Products";
+    numberOfProduct.innerText = defaulColl['products'].length + " Products";
 }
 
 function createProductBoard(productLists, shopname) {
@@ -103,14 +105,14 @@ function createProductBoard(productLists, shopname) {
         var productImage = productItem.querySelector('[app-role = "productImage"]');
         productImage.setAttribute('src', product['img']);
         var productLinks = productItem.querySelectorAll('[app-role = "productLink"]');
-        productLinks.forEach(function(productLink){
-        	productLink.setAttribute('href', '/' + shopname + '/product/' + product['id']);
+        productLinks.forEach(function(productLink) {
+            productLink.setAttribute('href', '/' + shopname + '/product/' + product['id']);
         });
-        
+
         var productName = productItem.querySelector('[app-role = "productName"]')
-        productName.innerText = product['name'];
+        productName.innerText = product['sysProductName'];
         var productPrice = productItem.querySelector('[app-role = "productPrice"]');
-        productPrice.innerText = product['PRODUCT_DATA']['sysCurrentPrice'] + " " + product['PRODUCT_DATA']['sysCurrency']
+        productPrice.innerText = product['sysCurrentPrice'] + " " + product['sysCurrency']
         productsBoard.appendChild(document.importNode(productItem, true));
     })
 
