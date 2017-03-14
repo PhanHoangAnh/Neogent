@@ -113,6 +113,16 @@ function createProductBoard(productLists, shopname) {
         productsBoard.appendChild(document.importNode(productItem, true));
     })
 
-
-
 };
+
+function changeDisplayMode(elem) {
+    console.log('changeDisplayMode: ', elem);
+    var productsBoard = document.getElementById('productsBoard');
+    if (elem.getAttribute('app-role') == 'gridMode') {
+        productsBoard.classList.remove('list');
+        productsBoard.classList.add('grid');
+    } else {
+        productsBoard.classList.add('list');
+        productsBoard.classList.remove('grid');
+    }
+}

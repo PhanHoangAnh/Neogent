@@ -9,7 +9,7 @@ function GenerateCollPage(shopInfo, collId) {
     defaulColl = collections.filter(function(coll) {
         return coll.id == collId;
     })[0];
-    
+
     createLogo(shopInfo.avatars, shopInfo.shopname);
     createMenus(shopInfo);
     createMainBanner(defaulColl);
@@ -77,7 +77,7 @@ function createMainBanner(defaulColl) {
     }
     var collectionTitle = mainBanner.querySelector('[app-role = "collectionTitle"]')
     console.log('defaulColl', defaulColl);
-    collectionTitle.innerText = defaulColl['name'] +" " + pageType;
+    collectionTitle.innerText = defaulColl['name'] + " " + pageType;
     var titleDescription = mainBanner.querySelector('[app-role = "titleDescription"]');
     titleDescription.innerText = defaulColl['collDesc'];
 
@@ -103,10 +103,10 @@ function createProductBoard(productLists, shopname) {
         var productImage = productItem.querySelector('[app-role = "productImage"]');
         productImage.setAttribute('src', product['img']);
         var productLinks = productItem.querySelectorAll('[app-role = "productLink"]');
-        productLinks.forEach(function(productLink){
-        	productLink.setAttribute('href', '/' + shopname + '/product/' + product['id']);
+        productLinks.forEach(function(productLink) {
+            productLink.setAttribute('href', '/' + shopname + '/product/' + product['id']);
         });
-        
+
         var productName = productItem.querySelector('[app-role = "productName"]')
         productName.innerText = product['name'];
         var productPrice = productItem.querySelector('[app-role = "productPrice"]');
@@ -117,3 +117,15 @@ function createProductBoard(productLists, shopname) {
 
 
 };
+
+function changeDisplayMode(elem) {
+    console.log('changeDisplayMode: ', elem);
+    var productsBoard = document.getElementById('productsBoard');    
+    if (elem.getAttribute('app-role') == 'gridMode') {
+        productsBoard.classList.remove('list');
+        productsBoard.classList.add('grid');
+    } else {
+        productsBoard.classList.add('list');
+        productsBoard.classList.remove('grid');
+    }
+}
