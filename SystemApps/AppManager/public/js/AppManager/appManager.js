@@ -66,7 +66,7 @@ $(document).ready(function() {
             method: 'POST',
             data: json_data,
             // data: compObj,
-            complete: function(data, status, jqXHR) {
+            complete: function(data, status, jqXHR) {                
                 if (!data.responseJSON.errNum) {
                     var encrypted_app_token = data.responseJSON.encrypted_app_token;
                     var _app_token = cryptoUtil.aesDecryptor(encrypted_app_token, aes_key);

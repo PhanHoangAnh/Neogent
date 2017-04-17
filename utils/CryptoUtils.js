@@ -19,7 +19,7 @@ function decryptRequest(req, res, next) {
 
     var RSAKey = cryptico.RSAKey.parse(JSON.stringify(keyPair.private));
     // https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
-    var encrypt_Request = req.body.data || req.query.token || req.headers['x-access-token'];    
+    var encrypt_Request = req.body.data || req.query.token || req.headers['x-access-token'];
     if (!encrypt_Request) {
         errObj.errNum = 1;
         errObj.errMessage = "Missing Encrypted Object"
@@ -131,7 +131,15 @@ function extendFbAccessToken(req, res, next) {
         qs: params
     }, function(err, resp, body) {
         var results = qs.parse(body);
-        if (results.access_token == undefined) {
+        var keys = Object.keys(results);
+        for (var key in results) {
+            var objKey = JSON.parse(key);
+            if (objKey['access_token']) {
+                results.access_token = objKey['access_token'];
+            }
+        }
+
+        if (!results.access_token) {
             errObj.errNum = 5;
             errObj.errMessage = "Invalid fb_shortToken";
             res.send(JSON.stringify(errObj));
