@@ -4,17 +4,18 @@
 var brand;
 
 function GenerateCollPage(shopInfo) {
-    category = shopInfo.brand
+    brands = shopInfo.items
+    console.log('brands: ', brands)
 
     // defaulColl = collections.filter(function(coll) {
     //     return coll.id == collId;
     // })[0];
     createLogo(shopInfo.avatars, shopInfo.shopname);
     createMenus(shopInfo);
-    createMainBanner(category);
-    creageBreadcrumb(category, shopInfo.shopname);
-    informNumberOfProduct(category);
-    createProductBoard(category['products'], shopInfo.shopname);
+    createMainBanner(brands);
+    creageBreadcrumb(brands, shopInfo.shopname);
+    informNumberOfProduct(brands);
+    createProductBoard(brands['products'], shopInfo.shopname);
 }
 
 function createLogo(imgSrc, link) {

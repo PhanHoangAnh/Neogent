@@ -118,8 +118,7 @@ function createProductBoard(productLists, shopname) {
 
 };
 
-function changeDisplayMode(elem) {
-    console.log('changeDisplayMode: ', elem);
+function changeDisplayMode(elem) {    
     var productsBoard = document.getElementById('productsBoard');    
     if (elem.getAttribute('app-role') == 'gridMode') {
         productsBoard.classList.remove('list');

@@ -82,55 +82,6 @@ function getBasicShopInfo(req, res, next, template = 'index') {
     }
 }
 
-function getShopInforWithCategoryId(shopname, catID, fn_cb) {
-    var Shops = mongoose.model('Shops');
-    Shops.findOne({ shopname: shopname }, function(err, shop) {
-        if (err || !shop) {
-            fn_cb(err, shop);
-        } else {
-            var shopInfo = {
-                avatars: shop.avatars,
-                longitude: shop.longitude,
-                latitude: shop.latitude,
-                shopname: shop.shopname,
-                showName: shop.showName,
-                slogan: shop.slogan,
-                companyName: shop.companyName,
-                contact_phone: shop.contact_phone,
-                contact_email: shop.contact_email,
-                address: shop.address,
-                categories: shop.categories,
-                brandNames: shop.brandNames,
-                collections: shop.collections,
-                catGroups: shop.catGroups,
-                walls: shop.walls,
-                staticContents: shop.static_content
-            };
-            var items = shop.items;
-            var flatItems = []
-            items.forEach(function(obj) {
-                var tempObj = {};
-                tempObj.atts = [];
-                tempObj.systemSKU = obj.systemSKU;
-                var atts = obj.productAtttributes;
-                for (var i = 0; i < atts.length; i++) {
-                    with({ n: i }) {
-                        var subAtt = {};
-                        subAtt["data-controlType"] = atts[n]["data-controlType"]
-                        subAtt["sysId"] = atts[n]["attributes"]["sysId"];
-                        subAtt["InputValue"] = atts[n]["InputValue"];
-                        tempObj.atts.push(subAtt);
-                        tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
-                    }
-                }
-                flatItems.push(tempObj);
-            });
-            //shopInfo.items = flatItems;
-            fn_cb(err, shopInfo);
-        }
-    });
-
-}
 
 function getCollections(req, res, next, template = "collection", pageType = "collection") {
 
@@ -185,12 +136,57 @@ function getShopInforWithCategoryId(shopname, catID, fn_cb) {
         }
 
         function getCategoryFromShop(catId) {
-            var category = shop.categories.filter(function(cat) {
-                return cat.id = catID;
-            })[0];
-            // console.log("category: ", category);
+            var category = shop.categories.filter(function(cat) {                
+                return cat.id == catID;
+            })[0];            
+            if (!category) {
+                return;
+            }
             category.products = getFlatItem(shop, category.products);
             return category;
+        }
+    });
+}
+
+function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
+    var Shops = mongoose.model('Shops');
+    Shops.findOne({ shopname: shopname }, function(err, shop) {
+        if (err || !shop) {
+            fn_cb(err, shop);
+        } else {
+            var shopInfo = {
+                avatars: shop.avatars,
+                longitude: shop.longitude,
+                latitude: shop.latitude,
+                shopname: shop.shopname,
+                showName: shop.showName,
+                slogan: shop.slogan,
+                companyName: shop.companyName,
+                contact_phone: shop.contact_phone,
+                contact_email: shop.contact_email,
+                address: shop.address,
+                categories: shop.categories,
+                brandNames: shop.brandNames,
+                collections: shop.collections,
+                catGroups: shop.catGroups,
+                walls: shop.walls,
+                staticContents: shop.static_content, 
+                items : getBrandFromShop(brandId),
+            };
+
+            // shopInfo.items = flatItems;
+            fn_cb(err, shopInfo);
+        }
+
+        function getBrandFromShop(brandId) {
+            var brand = shop.brandNames.filter(function(br) {                
+                return br.id == brandId;
+            })[0];            
+            if (!brand) {
+                return null;
+            }
+            brand.products = getFlatItem(shop, brand.products);           
+            return brand;
         }
     });
 }
@@ -203,8 +199,6 @@ function getFlatItem(shop, productArray) {
         })
     })
 
-    // console.log("flatItems: ", items);
-    // var items = shop.items;
     var flatItems = []
     items.forEach(function(obj) {
         var tempObj = {};
@@ -220,7 +214,7 @@ function getFlatItem(shop, productArray) {
         }
         flatItems.push(tempObj);
     });
-    console.log('from getFlatItem: ', flatItems);
+    // console.log('from getFlatItem: ', flatItems);
     return flatItems;
 }
 
@@ -253,14 +247,15 @@ function getCategory(req, res, next, template = "category", pageType = "category
 
 function getBrandName(req, res, next, template = "brand", pageType = "brand") {
 
-    var categoryId = req.categoryId;
+    var brandId = req.brandId;
+    console.log('brandId: ', brandId);
 
-    getShopInforWithCategoryId(req.shopname, categoryId, fnCb)
+    getShopInforWithBrandsId(req.shopname, brandId, fnCb)
 
     function fnCb(err, shopInfo) {
         //console.log("shopInfo: ", shopInfo.categories);
         if (!err) {
-            if (categoryId) {
+            if (brandId) {
                 template = template;
                 res.render(template, {
                     shopInfo: shopInfo,
@@ -280,5 +275,6 @@ module.exports = {
     getFlatShopProducts: getFlatShopProducts,
     getBasicShopInfo: getBasicShopInfo,
     getCollections: getCollections,
-    getCategory: getCategory
+    getCategory: getCategory,
+    getBrandName: getBrandName,
 }

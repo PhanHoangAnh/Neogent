@@ -28,9 +28,9 @@ router.get("/categories/:id", function (req,res,next){
     getCategory(req, res, next, 'category');
 });
 
-router.get("/brands/:id", function (req,res,next){
-    req.categoryId = req.params.id;
-    getCategory(req, res, next, 'brand');
+router.get("/brands/:id", function (req,res,next){   
+    req.brandId = req.params.id;
+    getBrandName(req, res, next, 'brand');
 });
     	
 
