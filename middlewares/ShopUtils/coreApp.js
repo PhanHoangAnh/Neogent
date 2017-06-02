@@ -5,9 +5,10 @@ var app = express();
 var router = express.Router();
 var path = require("path");
 
-// console.log("app.settings ", app.get('views'), app.get('view engine'));
 // Do not remove this command during develoment mode
 // app.set('views', path.join(__dirname, 'views'))
+
+// console.log("check views directory: ", app.locals.setting.views)
 
 app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, 'public')));
@@ -38,9 +39,9 @@ router.get("/", function(req, res, next) {
     getBasicShopInfo(req, res, next, 'index')
 });
 
-app.setTemplateMapper = function(mapArrays) {
-    console.log("mapArrays: ", mapArrays);
-}
+// app.setTemplateMapper = function(mapArrays) {
+//     console.log("mapArrays: ", mapArrays);
+// }
 
 app.use(router);
 module.exports = app;

@@ -12,6 +12,8 @@ var path = require("path");
 // coreApp.set('view engine', 'ejs');
 coreApp.use(express.static(path.join(__dirname, 'public')));
 
+// console.log('__dirname: ', path.join(__dirname, 'public'));
+// console.log('resolve: ..............', path.resolve());
 
 router.get('/test', function(req, res, next) {
     res.send("test");

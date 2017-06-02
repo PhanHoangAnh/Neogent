@@ -3,9 +3,9 @@ var path = require("path");
 var app = express();
 var router = express.Router();
 
-app.set('views', path.join(__dirname, 'views'))
-app.set('views', './views')
-    // app.set('view engine', 'ejs');
+// app.set('views', path.join(__dirname, 'views'))
+// app.set('views', './views')
+// app.set('view engine', 'ejs');
 // css and js return first here
 app.use('/', express.static('public'));
 

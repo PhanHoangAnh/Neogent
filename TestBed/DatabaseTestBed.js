@@ -8,6 +8,7 @@ var requestify = require('requestify');
 var cryptoUtil = require('./cryptoUtils.js');
 
 var keyPair = JSON.parse(fs.readFileSync('../temp', 'utf8'));
+
 var RSAPublicKey = keyPair.public;
 
 var myFb_uid = '1835134196';
