@@ -12,7 +12,7 @@ var keyPair = JSON.parse(fs.readFileSync('../temp', 'utf8'));
 var RSAPublicKey = keyPair.public;
 
 var myFb_uid = '1835134196';
-var fb_Token = 'EAAC4yL1bZA7IBAN9zAKbjH5fWgpUyAJfZBM1AlatYGiAb3DYy9raZBvCTMc45asX4cGRKYojSDOmIbUlklTCqFUqDmPdtDoIiWUfcKsZAqsXrgzXMnPMVuxBGCApNZCZBJ6wj4J1rsxGaao0ul3qdIsh1XZBpf3T0vSOTwRKXmWQExYhgpnNdZA6';
+var fb_Token = 'EAAC4yL1bZA7IBACv9eR1gTJA7s0E3H21oVmzlSfh8hqGsA7Mc0qmemM6ra0qDiv0rSu4ZBsG79otwt6xlZBuluxugZC73Be0YoKeUXWdaLcjLqgkmsB05QGk2ZB37vtbtcNtz27dn8wS5ZBHjFKzejSFXeZCPhJiYZA1bhqiqheDJ1ZCibbGlHW52';
 
 function ping() {
     // create mock object
@@ -32,7 +32,7 @@ function ping() {
         url: ' https://localhost.io:3000/',
         qs: json_data
     }, function (err, resp, body) {
-        console.log("BODY:\n", body);
+        console.log("BODY:\n", body, "resp", resp);
     });
 
 
@@ -51,8 +51,8 @@ function checkToken(access_Token) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
     requestify.post('https://localhost.io:3000/abcd/checkToken', {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
-    })
+            data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, aes_key)
+        })
         .then(function (response) {
             // Get the response body (JSON parsed or jQuery object for XMLs)
             console.log(response.getBody());
@@ -72,8 +72,8 @@ function getToken() {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
     requestify.post('https://localhost.io:3000/abcd/getToken', {
-        data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, temp_aes_key)
-    })
+            data: cryptoUtil.EncryptJSON(_data, RSAPublicKey, temp_aes_key)
+        })
         .then(function (response) {
             // Get the response body (JSON parsed or jQuery object for XMLs)
             // resObject = JSON.parse(response.getBody());
@@ -101,14 +101,39 @@ function getToken() {
 // getToken();
 
 
-function check_getCollection(id){
-    
+function check_getCollection(id) {
+
 }
 
-function check_getBrand(id){
-    
+function check_getBrand(id) {
+
+}
+
+function getProductAtts() {
+    // request.get({
+    //     url: ' https://localhost.io:3000/convit/listAtts',
+    //     qs: null
+    // }, function (err, resp, body) {
+    //     console.log("BODY:\n", body, "RESP: ", resp);
+    // });
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    requestify.get('https://localhost.io:3000/convit/listAtts')
+    // requestify.get('https://www.google.com.vn')
+    // https://localhost.io:3000/convit/collections
+    // requestify.get('https://localhost.io:3000/convit/collections')
+        .then(function (response) {
+            console.log("Received: ");
+            console.log(response.getBody());
+        })
 }
 
 
 
-// console.log("Done");
+// ping();
+
+checkToken(fb_Token);
+
+getToken();
+
+getProductAtts();
+console.log("Done");

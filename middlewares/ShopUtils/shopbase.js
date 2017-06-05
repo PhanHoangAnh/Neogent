@@ -9,7 +9,9 @@ function getFlatShopProducts(shopname, fn_cb) {
         return null;
     }
     var Shops = mongoose.model('Shops');
-    Shops.findOne({ shopname: shopname }, function(err, shop) {
+    Shops.findOne({
+        shopname: shopname
+    }, function (err, shop) {
         if (err || !shop) {
             fn_cb(err, shop);
         } else {
@@ -33,13 +35,15 @@ function getFlatShopProducts(shopname, fn_cb) {
             };
             var items = shop.items;
             var flatItems = []
-            items.forEach(function(obj) {
+            items.forEach(function (obj) {
                 var tempObj = {};
                 tempObj.atts = [];
                 tempObj.systemSKU = obj.systemSKU;
                 var atts = obj.productAtttributes;
                 for (var i = 0; i < atts.length; i++) {
-                    with({ n: i }) {
+                    with({
+                        n: i
+                    }) {
                         var subAtt = {};
                         subAtt["data-controlType"] = atts[n]["data-controlType"]
                         subAtt["sysId"] = atts[n]["attributes"]["sysId"];
@@ -62,7 +66,7 @@ function getBasicShopInfo(req, res, next, template = 'index') {
 
     function fnCb(err, shopInfo) {
         if (shopInfo && shopInfo.collections) {
-            var collections = shopInfo.collections.filter(function(item) {
+            var collections = shopInfo.collections.filter(function (item) {
                 if (item.enabledCollection) {
                     return item;
                 };
@@ -108,7 +112,9 @@ function getCollections(req, res, next, template = "collection", pageType = "col
 
 function getShopInforWithCategoryId(shopname, catID, fn_cb) {
     var Shops = mongoose.model('Shops');
-    Shops.findOne({ shopname: shopname }, function(err, shop) {
+    Shops.findOne({
+        shopname: shopname
+    }, function (err, shop) {
         if (err || !shop) {
             fn_cb(err, shop);
         } else {
@@ -136,9 +142,9 @@ function getShopInforWithCategoryId(shopname, catID, fn_cb) {
         }
 
         function getCategoryFromShop(catId) {
-            var category = shop.categories.filter(function(cat) {                
+            var category = shop.categories.filter(function (cat) {
                 return cat.id == catID;
-            })[0];            
+            })[0];
             if (!category) {
                 return;
             }
@@ -150,7 +156,9 @@ function getShopInforWithCategoryId(shopname, catID, fn_cb) {
 
 function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
     var Shops = mongoose.model('Shops');
-    Shops.findOne({ shopname: shopname }, function(err, shop) {
+    Shops.findOne({
+        shopname: shopname
+    }, function (err, shop) {
         if (err || !shop) {
             fn_cb(err, shop);
         } else {
@@ -170,8 +178,8 @@ function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
                 collections: shop.collections,
                 catGroups: shop.catGroups,
                 walls: shop.walls,
-                staticContents: shop.static_content, 
-                items : getBrandFromShop(brandId),
+                staticContents: shop.static_content,
+                items: getBrandFromShop(brandId),
             };
 
             // shopInfo.items = flatItems;
@@ -179,13 +187,13 @@ function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
         }
 
         function getBrandFromShop(brandId) {
-            var brand = shop.brandNames.filter(function(br) {                
+            var brand = shop.brandNames.filter(function (br) {
                 return br.id == brandId;
-            })[0];            
+            })[0];
             if (!brand) {
                 return null;
             }
-            brand.products = getFlatItem(shop, brand.products);           
+            brand.products = getFlatItem(shop, brand.products);
             return brand;
         }
     });
@@ -249,19 +257,20 @@ function getBrandName(req, res, next, template = "brand", pageType = "brand") {
 // 
 function getFlatItem(shop, productArray) {
 
-    var items = shop.items.filter(function(item) {
-        return productArray.map(function(product) {
+    var items = shop.items.filter(function (item) {
+        return productArray.map(function (product) {
             return item.systemSKU == product;
         })
     })
-
     var flatItems = []
-    items.forEach(function(obj) {
+    items.forEach(function (obj) {
         var tempObj = {};
         tempObj.systemSKU = obj.systemSKU;
         var atts = obj.productAtttributes;
         for (var i = 0; i < atts.length; i++) {
-            with({ n: i }) {
+            with({
+                n: i
+            }) {
                 tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
                 if (atts[n]["data-controlType"] == 'image') {
                     tempObj['img'] = atts[n]["InputValue"];
@@ -274,14 +283,38 @@ function getFlatItem(shop, productArray) {
     return flatItems;
 }
 
-function listingAllProductAttributes(shopname, cb_fn){
+function listingAllProductAttributes(shopname, cb_fn) {
     var Shops = mongoose.model('Shops');
-    Shops.findOne( {shopname: shopname}, function(err, shop){
-        if (err){
+    Shops.findOne({
+        shopname: shopname
+    }, function (err, shop) {
+        if (err) {
             cb_fn(err, null);
-        }else{
+        } else {
             // listing all items attributes and their values:
-            
+            var items = shop.items;
+            var flatItems = []
+            items.forEach(function (obj) {
+                var tempObj = {};
+                tempObj.atts = [];
+                tempObj.systemSKU = obj.systemSKU;
+                var atts = obj.productAtttributes;
+                for (var i = 0; i < atts.length; i++) {
+                    with({
+                        n: i
+                    }) {
+                        var subAtt = {};
+                        subAtt["data-controlType"] = atts[n]["data-controlType"]
+                        subAtt["sysId"] = atts[n]["attributes"]["sysId"];
+                        subAtt["InputValue"] = atts[n]["InputValue"];
+                        tempObj.atts.push(subAtt);
+                        tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
+                    }
+                }
+                flatItems.push(tempObj);
+            });
+            console.log("from listingAllProductAttributes: shopbase line 317: ", flatItems);      
+            cb_fn();
         }
     })
 }
