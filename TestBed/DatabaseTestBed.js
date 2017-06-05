@@ -94,10 +94,21 @@ function getToken() {
         });
 }
 
-ping();
+// ping();
 
 // checkToken(fb_Token);
 
 // getToken();
+
+
+function check_getCollection(id){
+    
+}
+
+function check_getBrand(id){
+    
+}
+
+
 
 // console.log("Done");

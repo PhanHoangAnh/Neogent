@@ -7,7 +7,7 @@ var path = require("path");
 
 // console.log("app.settings ", app.get('views'), app.get('view engine'));
 // Do not remove this command during develoment mode
-// coreApp.set('views', path.join(__dirname, 'views'))
+// coreApp.set('views', path.join(__dirname, 'views'));
 
 // coreApp.set('view engine', 'ejs');
 coreApp.use(express.static(path.join(__dirname, 'public')));

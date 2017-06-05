@@ -191,32 +191,6 @@ function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
     });
 }
 
-function getFlatItem(shop, productArray) {
-
-    var items = shop.items.filter(function(item) {
-        return productArray.map(function(product) {
-            return item.systemSKU == product;
-        })
-    })
-
-    var flatItems = []
-    items.forEach(function(obj) {
-        var tempObj = {};
-        tempObj.systemSKU = obj.systemSKU;
-        var atts = obj.productAtttributes;
-        for (var i = 0; i < atts.length; i++) {
-            with({ n: i }) {
-                tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
-                if (atts[n]["data-controlType"] == 'image') {
-                    tempObj['img'] = atts[n]["InputValue"];
-                }
-            }
-        }
-        flatItems.push(tempObj);
-    });
-    // console.log('from getFlatItem: ', flatItems);
-    return flatItems;
-}
 
 
 function getCategory(req, res, next, template = "category", pageType = "category") {
@@ -270,6 +244,47 @@ function getBrandName(req, res, next, template = "brand", pageType = "brand") {
         }
     };
 }
+// 
+// Utilities
+// 
+function getFlatItem(shop, productArray) {
+
+    var items = shop.items.filter(function(item) {
+        return productArray.map(function(product) {
+            return item.systemSKU == product;
+        })
+    })
+
+    var flatItems = []
+    items.forEach(function(obj) {
+        var tempObj = {};
+        tempObj.systemSKU = obj.systemSKU;
+        var atts = obj.productAtttributes;
+        for (var i = 0; i < atts.length; i++) {
+            with({ n: i }) {
+                tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
+                if (atts[n]["data-controlType"] == 'image') {
+                    tempObj['img'] = atts[n]["InputValue"];
+                }
+            }
+        }
+        flatItems.push(tempObj);
+    });
+    // console.log('from getFlatItem: ', flatItems);
+    return flatItems;
+}
+
+function listingAllProductAttributes(shopname, cb_fn){
+    var Shops = mongoose.model('Shops');
+    Shops.findOne( {shopname: shopname}, function(err, shop){
+        if (err){
+            cb_fn(err, null);
+        }else{
+            // listing all items attributes and their values:
+            
+        }
+    })
+}
 
 module.exports = {
     getFlatShopProducts: getFlatShopProducts,
@@ -277,4 +292,5 @@ module.exports = {
     getCollections: getCollections,
     getCategory: getCategory,
     getBrandName: getBrandName,
+    listingAllProductAttributes: listingAllProductAttributes,
 }
