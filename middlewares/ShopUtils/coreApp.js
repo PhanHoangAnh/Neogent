@@ -38,14 +38,27 @@ router.get("/brands/:id", function (req, res, next) {
 
 router.get('/listAtts', function (req, res, next) {
     console.log('ShopName: ', req.shopname);
-    // listingAllProductAttributes(req.shopname, printOut);
-    // function printOut(err, result){
-    console.log("here: ............... ");
-    var sendObj = {};
-    sendObj.info = "listAtts"
-    res.send(sendObj);
-    res.end();
-    // }
+    listingAllProductAttributes(req.shopname, printOut);
+
+    function printOut(err, result) {
+        // 
+        var aggregateObj = {};
+        for (var i = 0 ; i< result.length; i ++){
+            Object.keys(result[i]).forEach(function(key){
+                console.log('--------------------');
+                console.log(key, result[i][key]);
+
+            })
+        }
+        // 
+        // console.log("here: ............... ");
+        // console.log(result);
+        // var sendObj = {};
+        // sendObj.msg = "listAtts"
+        // sendObj.info = result;
+        res.send(sendObj);
+        res.end();
+    }
 })
 
 

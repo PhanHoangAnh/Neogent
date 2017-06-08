@@ -296,7 +296,7 @@ function listingAllProductAttributes(shopname, cb_fn) {
             var flatItems = []
             items.forEach(function (obj) {
                 var tempObj = {};
-                tempObj.atts = [];
+                // tempObj.atts = [];
                 tempObj.systemSKU = obj.systemSKU;
                 var atts = obj.productAtttributes;
                 for (var i = 0; i < atts.length; i++) {
@@ -307,14 +307,17 @@ function listingAllProductAttributes(shopname, cb_fn) {
                         subAtt["data-controlType"] = atts[n]["data-controlType"]
                         subAtt["sysId"] = atts[n]["attributes"]["sysId"];
                         subAtt["InputValue"] = atts[n]["InputValue"];
-                        tempObj.atts.push(subAtt);
-                        tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"]
+                        subAtt["describe"] = atts[n]["attributes"]["describe"];
+                        // console.log(atts[n]["attributes"]["describe"]);
+                        tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"];
+                        tempObj["describe"] = atts[n]["attributes"]["describe"];
                     }
+
                 }
+                
                 flatItems.push(tempObj);
             });
-            console.log("from listingAllProductAttributes: shopbase line 317: ", flatItems);      
-            cb_fn();
+            cb_fn(null, flatItems);
         }
     })
 }
