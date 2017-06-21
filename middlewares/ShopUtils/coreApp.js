@@ -50,12 +50,12 @@ router.get('/listAtts', function (req, res, next) {
 
             })
         }
-        // 
-        // console.log("here: ............... ");
-        // console.log(result);
-        // var sendObj = {};
-        // sendObj.msg = "listAtts"
-        // sendObj.info = result;
+        
+        console.log("here: ............... ");
+        console.log(result);
+        var sendObj = {};
+        sendObj.msg = "listAtts"
+        sendObj.info = result;
         res.send(sendObj);
         res.end();
     }
