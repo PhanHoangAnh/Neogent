@@ -11,7 +11,7 @@ function getFlatShopProducts(shopname, fn_cb) {
     var Shops = mongoose.model('Shops');
     Shops.findOne({
         shopname: shopname
-    }, function (err, shop) {
+    }, function(err, shop) {
         if (err || !shop) {
             fn_cb(err, shop);
         } else {
@@ -35,7 +35,7 @@ function getFlatShopProducts(shopname, fn_cb) {
             };
             var items = shop.items;
             var flatItems = []
-            items.forEach(function (obj) {
+            items.forEach(function(obj) {
                 var tempObj = {};
                 tempObj.atts = [];
                 tempObj.systemSKU = obj.systemSKU;
@@ -66,7 +66,7 @@ function getBasicShopInfo(req, res, next, template = 'index') {
 
     function fnCb(err, shopInfo) {
         if (shopInfo && shopInfo.collections) {
-            var collections = shopInfo.collections.filter(function (item) {
+            var collections = shopInfo.collections.filter(function(item) {
                 if (item.enabledCollection) {
                     return item;
                 };
@@ -114,7 +114,7 @@ function getShopInforWithCategoryId(shopname, catID, fn_cb) {
     var Shops = mongoose.model('Shops');
     Shops.findOne({
         shopname: shopname
-    }, function (err, shop) {
+    }, function(err, shop) {
         if (err || !shop) {
             fn_cb(err, shop);
         } else {
@@ -142,7 +142,7 @@ function getShopInforWithCategoryId(shopname, catID, fn_cb) {
         }
 
         function getCategoryFromShop(catId) {
-            var category = shop.categories.filter(function (cat) {
+            var category = shop.categories.filter(function(cat) {
                 return cat.id == catID;
             })[0];
             if (!category) {
@@ -158,7 +158,7 @@ function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
     var Shops = mongoose.model('Shops');
     Shops.findOne({
         shopname: shopname
-    }, function (err, shop) {
+    }, function(err, shop) {
         if (err || !shop) {
             fn_cb(err, shop);
         } else {
@@ -187,7 +187,7 @@ function getShopInforWithBrandsId(shopname, brandId, fn_cb) {
         }
 
         function getBrandFromShop(brandId) {
-            var brand = shop.brandNames.filter(function (br) {
+            var brand = shop.brandNames.filter(function(br) {
                 return br.id == brandId;
             })[0];
             if (!brand) {
@@ -257,13 +257,13 @@ function getBrandName(req, res, next, template = "brand", pageType = "brand") {
 // 
 function getFlatItem(shop, productArray) {
 
-    var items = shop.items.filter(function (item) {
-        return productArray.map(function (product) {
+    var items = shop.items.filter(function(item) {
+        return productArray.map(function(product) {
             return item.systemSKU == product;
         })
     })
     var flatItems = []
-    items.forEach(function (obj) {
+    items.forEach(function(obj) {
         var tempObj = {};
         tempObj.systemSKU = obj.systemSKU;
         var atts = obj.productAtttributes;
@@ -287,14 +287,14 @@ function listingAllProductAttributes(shopname, cb_fn) {
     var Shops = mongoose.model('Shops');
     Shops.findOne({
         shopname: shopname
-    }, function (err, shop) {
+    }, function(err, shop) {
         if (err) {
             cb_fn(err, null);
         } else {
             // listing all items attributes and their values:
             var items = shop.items;
             var flatItems = []
-            items.forEach(function (obj) {
+            items.forEach(function(obj) {
                 var tempObj = {};
                 // tempObj.atts = [];
                 tempObj.systemSKU = obj.systemSKU;
@@ -314,13 +314,98 @@ function listingAllProductAttributes(shopname, cb_fn) {
                     }
 
                 }
-                
+
                 flatItems.push(tempObj);
             });
             cb_fn(null, flatItems);
         }
     })
 }
+
+function savingGlobalAttribute(shopname, cb_fn) {
+    var Shops = mongoose.model('Shops');
+    Shops.findOne({
+        shopname: shopname
+    }, function(err, shop) {
+        if (err) {
+            cb_fn(err, null);
+        } else {
+            var items = shop.items;
+            var aggregateObj = {};
+            items.forEach(function(elem) {
+                var atts = elem.productAtttributes;
+                var tempObj = {};
+                for (var i = 0; i < atts.length; i++) {
+                    with({
+                        n: i
+                    }) {
+                        if (!atts[n]["attributes"]["sysId"]) {
+                            atts[n]["attributes"]["sysId"] = atts[n]["attributes"]["label"] + "_" + atts[n]["sysId"];
+                        }
+
+                        tempObj[atts[n]["attributes"]["sysId"]] = atts[n]["InputValue"];
+                        //   tempObj[atts[n]["attributes"]] = atts[n]["attributes"]["label"];
+                        console.log('tempObj -----------: \n ', tempObj);
+                        if (!aggregateObj.hasOwnProperty(atts[n]["attributes"]["sysId"])) {
+                            aggregateObj[atts[n]["attributes"]["sysId"]] = [];
+                        };
+                        var InputValue = atts[n]["InputValue"];
+                        var property = atts[n]["attributes"]["sysId"];
+                        if (InputValue instanceof Array) {
+                            // 1. Flattening InputValue
+                            InputValue = [].concat.apply([], atts[n]["InputValue"])
+                            aggregateObj[property] = aggregateObj[property].concat(InputValue.filter(function(item) {
+                                return aggregateObj[property].indexOf(item) < 0;
+                            }));
+                            // console.log('\x1b[33m%s\x1b[0m: ', "Property: ", property, " InstanceOf Array", InputValue, aggregateObj[property]);
+                            // if (aggregateObj[property].indexOf(InputValue) < 0) 
+                        } else {
+                            // console.log('\x1b[33m%s\x1b[0m: ', aggregateObj[property], " IndexOf: ", aggregateObj[property].indexOf(InputValue), InputValue);
+                            aggregateObj[property].push(InputValue)
+                        }
+                        aggregateObj[property] = aggregateObj[property].filter((thing, index, self) => self.findIndex((t) => {
+                            return isRawObjectsEquivalent(t, thing);
+                        }) === index)
+
+                    }
+                }
+
+
+            });
+
+
+            function isRawObjectsEquivalent(a, b) {
+                // Create arrays of property names
+                var aProps = Object.getOwnPropertyNames(a);
+                var bProps = Object.getOwnPropertyNames(b);
+
+                // If number of properties is different,
+                // objects are not equivalent
+                if (aProps.length != bProps.length) {
+                    return false;
+                }
+
+                for (var i = 0; i < aProps.length; i++) {
+                    var propName = aProps[i];
+
+                    // If values of same property are not equal,
+                    // objects are not equivalent
+                    if (a[propName] !== b[propName]) {
+                        return false;
+                    }
+                }
+
+                // If we made it this far, objects
+                // are considered equivalent
+                return true;
+            }
+            console.log("===============================");
+            console.log(aggregateObj);
+            cb_fn(null, aggregateObj);
+        }
+    })
+}
+
 
 module.exports = {
     getFlatShopProducts: getFlatShopProducts,
@@ -329,4 +414,5 @@ module.exports = {
     getCategory: getCategory,
     getBrandName: getBrandName,
     listingAllProductAttributes: listingAllProductAttributes,
+    savingGlobalAttribute: savingGlobalAttribute
 }

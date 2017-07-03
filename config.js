@@ -31,6 +31,8 @@ global['getCollections'] = shopbase.getCollections;
 global['getCategory'] = shopbase.getCategory;
 global['getBrandName'] = shopbase.getBrandName;
 global['listingAllProductAttributes'] = shopbase.listingAllProductAttributes;
+//savingGlobalAttribute
+global['savingGlobalAttribute'] = shopbase.savingGlobalAttribute;
 
 global['coreApp'] = require("./middlewares/ShopUtils/coreApp");
 
