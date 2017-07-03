@@ -1312,26 +1312,21 @@ function getFlatAtt() {
                         return aggregateObj[property].indexOf(item) < 0;
                     }));
                     // console.log('\x1b[33m%s\x1b[0m: ', "Property: ", property, " InstanceOf Array", InputValue, aggregateObj[property]);
-                } else if (aggregateObj[property].indexOf(InputValue) < 0) {
-                    console.log('\x1b[33m%s\x1b[0m: ', aggregateObj[property], " IndexOf: ", aggregateObj[property].indexOf(InputValue), InputValue);
+                    // if (aggregateObj[property].indexOf(InputValue) < 0) 
+                } else {
+                    // console.log('\x1b[33m%s\x1b[0m: ', aggregateObj[property], " IndexOf: ", aggregateObj[property].indexOf(InputValue), InputValue);
                     aggregateObj[property].push(InputValue)
                 }
+                aggregateObj[property] = aggregateObj[property].filter((thing, index, self) => self.findIndex((t) => {
+                    return isEquivalent(t, thing);
+                }) === index)
 
-                console.log('\x1b[36m%s\x1b[0m', 'aggregateObj' + property + '["sysId"]] : ', aggregateObj[atts[n]["attributes"]["sysId"]]);
-                console.log('\x1b[36m%s\x1b[0m', "InputValue: ", InputValue);
-                //   if (aggregateObj[atts[n]["attributes"]["sysId"]].indexOf(atts[n]["InputValue"]) == -1) {
-                //       aggregateObj[atts[n]["attributes"]["sysId"]].concat(InputValue);
-                //       //   .filter(function (item) {
-                //       //       return aggregateObj[atts[n]["attributes"]["sysId"]].indexOf(item) < 0;
-                //       //   }));
-                //   }
             }
         }
 
 
     });
-    console.log("===============================");
-    console.log(aggregateObj);
+
 
     function isEquivalent(a, b) {
         // Create arrays of property names
@@ -1358,6 +1353,8 @@ function getFlatAtt() {
         // are considered equivalent
         return true;
     }
+    console.log("===============================");
+    console.log(aggregateObj);
 
 
 }
