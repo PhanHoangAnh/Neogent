@@ -1318,7 +1318,7 @@ function getFlatAtt() {
                     aggregateObj[property].push(InputValue)
                 }
                 aggregateObj[property] = aggregateObj[property].filter((thing, index, self) => self.findIndex((t) => {
-                    return isEquivalent(t, thing);
+                    return isRawObjectsEquivalent(t, thing);
                 }) === index)
 
             }
@@ -1328,7 +1328,7 @@ function getFlatAtt() {
     });
 
 
-    function isEquivalent(a, b) {
+    function isRawObjectsEquivalent(a, b) {
         // Create arrays of property names
         var aProps = Object.getOwnPropertyNames(a);
         var bProps = Object.getOwnPropertyNames(b);
