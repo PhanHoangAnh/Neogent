@@ -1,6 +1,7 @@
 var fs = require('fs');
 var keyPair = JSON.parse(fs.readFileSync('temp', 'utf8'));
-var SSOServices = require("./middlewares/SSOServices/SsoUtils");
+// var SSOServices = require("./middlewares/SSOServices/SsoUtils");
+var utils = require('./utils/CryptoUtils.js');
 
 
 // variables
@@ -8,8 +9,10 @@ global["keyPair"] = JSON.parse(fs.readFileSync('temp', 'utf8'));
 global['jwtsecret'] = 'convitbuocloai1';
 
 //public function
-global['getToken'] = SSOServices.getToken;
-global['checkToken'] = SSOServices.checkToken;
+// global['getToken'] = SSOServices.getToken;
+// global['checkToken'] = SSOServices.checkToken;
+global['getToken'] = [utils.decryptRequest, utils.getToken];
+global['checkToken'] = [utils.decryptRequest, utils.checkToken];
 global['checkAuth'] = require("./middlewares/SSOServices/AuthoriserUtils").checkAuth;
 
 // Mapping independent Applications

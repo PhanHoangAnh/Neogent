@@ -34,6 +34,7 @@ router.post("/getToken", getToken);
 
 router.use(function(req, res, next) {
     var nextPath = path.join("../Shops", req.shopname);    
+    console.log("main index: ", nextPath);
     var shopHandler = require(path.join(nextPath, "index"));
     shopHandler(req, res, next);
 });

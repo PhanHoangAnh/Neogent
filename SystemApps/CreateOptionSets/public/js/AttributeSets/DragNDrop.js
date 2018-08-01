@@ -929,6 +929,7 @@ function createNewSet() {
     loadOptionSets(compObj);
 }
 
+
 function cloneSet() {
     delete compObj.objId;
 }

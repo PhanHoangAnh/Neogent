@@ -1285,7 +1285,6 @@ var mockObj = [{
 
 function getFlatAtt() {
     var aggregateObj = {};
-
     mockObj.forEach(function (elem) {
         var atts = elem.productAtttributes;
         var tempObj = {};

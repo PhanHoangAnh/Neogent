@@ -26,7 +26,7 @@ var DecryptionResult = cryptico.decrypt(result, RSAKey);
 
 console.log ('DecryptionResult: ', DecryptionResult.plaintext);
 
-var DecryptRSA = JSON.parse(DecryptionResult.plaintext);
+var DecryptRSA = JSON.parse(decodeUIR(DecryptionResult.plaintext));
 
 var aes_key = DecryptRSA.key;
 

@@ -62,6 +62,9 @@ function checkToken(req, res, next) {
         var checkObject = map.get(fb_uid);
         if (checkObject.app_token == app_token) {
             next();
+        } else {
+            // check validity of app_token
+            jwt.verify(app_token, jwtsecret, decodeJwt);
         }
     } else {
         // check validity of app_token
